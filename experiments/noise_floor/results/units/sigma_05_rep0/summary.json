@@ -1,0 +1,784 @@
+{
+  "complete": true,
+  "unit_tag": "sigma_05_rep0",
+  "model_path": "/nvme0/if/permutation/experiments/noise_floor/tmp/noise_checkpoint",
+  "mutation": "identity",
+  "mutation_report": {
+    "variant": "identity",
+    "layers": 0,
+    "perm_sha256": []
+  },
+  "resource": {
+    "mode": "normal",
+    "gpu_memory_utilization": 0.28,
+    "max_model_len": 4096,
+    "max_num_seqs": 256,
+    "snapshot": {
+      "index": 0,
+      "name": "NVIDIA GeForce RTX 4090",
+      "total_mib": 49140,
+      "used_mib": 1,
+      "free_mib": 48508,
+      "gpu_util_percent": 0,
+      "checked_at_utc": "2026-07-13T04:40:46Z",
+      "raw": "0, NVIDIA GeForce RTX 4090, 49140, 1, 48508, 0"
+    }
+  },
+  "determinism": {
+    "VLLM_BATCH_INVARIANT": "1",
+    "enforce_eager": true,
+    "enable_prefix_caching": false,
+    "dtype": "bfloat16",
+    "temperature": 0.0
+  },
+  "environment": {
+    "python": "3.11.15 (main, Jun 11 2026, 15:20:16) [GCC 14.3.0]",
+    "torch": "2.11.0+cu130",
+    "cuda": "13.0",
+    "transformers": "5.13.0",
+    "vllm": "0.24.0"
+  },
+  "tokenized_path": "/nvme0/if/permutation/experiments/ffn_permutation/results_base/tokenized.json",
+  "tokenized_sha256": "a2d552b648d56798126cf751bc915c59b112c1ed9d9b59268939f973d86a01e5",
+  "n_prompts": 32,
+  "mean_nll": 6.114845065736309,
+  "records": [
+    {
+      "position": 0,
+      "prompt_id": 0,
+      "tag": "zh-common",
+      "n_input_tokens": 25,
+      "mean_nll": 6.662948594021145,
+      "n_nll_tokens": 24,
+      "generated_token_id": 68990,
+      "logits": {
+        "shape": [
+          151936
+        ],
+        "torch_dtype": "torch.float32",
+        "numel": 151936,
+        "element_size": 4,
+        "raw_file": "prompt_00.raw.bin",
+        "float32_file": "prompt_00.float32.npy",
+        "raw_sha256": "5ef2566558d7b52a1d0be6885a4890399743b7768d831aae48ced8fcf30d5bff",
+        "raw_path": "logits/prompt_00.raw.bin",
+        "float32_path": "logits/prompt_00.float32.npy",
+        "float32_sha256": "dd788ac6f8a141715952b9db04decf26ab307d6562f343c3d02c3e1a505f6ff2"
+      }
+    },
+    {
+      "position": 1,
+      "prompt_id": 1,
+      "tag": "en-common",
+      "n_input_tokens": 26,
+      "mean_nll": 6.244370819330215,
+      "n_nll_tokens": 25,
+      "generated_token_id": 3838,
+      "logits": {
+        "shape": [
+          151936
+        ],
+        "torch_dtype": "torch.float32",
+        "numel": 151936,
+        "element_size": 4,
+        "raw_file": "prompt_01.raw.bin",
+        "float32_file": "prompt_01.float32.npy",
+        "raw_sha256": "e6b6d536de162029f45e2eff738ec9bb9a21e1d34620e3db9f12e1099023e6a2",
+        "raw_path": "logits/prompt_01.raw.bin",
+        "float32_path": "logits/prompt_01.float32.npy",
+        "float32_sha256": "dd205957dd0f9fcf10d57e0e55b66edff89638be0bd64118a980d104bb21a277"
+      }
+    },
+    {
+      "position": 2,
+      "prompt_id": 2,
+      "tag": "zh-common",
+      "n_input_tokens": 21,
+      "mean_nll": 8.687306096404791,
+      "n_nll_tokens": 20,
+      "generated_token_id": 18493,
+      "logits": {
+        "shape": [
+          151936
+        ],
+        "torch_dtype": "torch.float32",
+        "numel": 151936,
+        "element_size": 4,
+        "raw_file": "prompt_02.raw.bin",
+        "float32_file": "prompt_02.float32.npy",
+        "raw_sha256": "d56ae99b1894b301e0ffb3132556aa59ce0dcd5dfb40c4f4a1c122256af7a52c",
+        "raw_path": "logits/prompt_02.raw.bin",
+        "float32_path": "logits/prompt_02.float32.npy",
+        "float32_sha256": "35ae7e16c195d9b32c09da7c946877ceee451f1ebef8e1ae8137b67ca2505afa"
+      }
+    },
+    {
+      "position": 3,
+      "prompt_id": 3,
+      "tag": "en-common",
+      "n_input_tokens": 19,
+      "mean_nll": 7.729287617736393,
+      "n_nll_tokens": 18,
+      "generated_token_id": 3838,
+      "logits": {
+        "shape": [
+          151936
+        ],
+        "torch_dtype": "torch.float32",
+        "numel": 151936,
+        "element_size": 4,
+        "raw_file": "prompt_03.raw.bin",
+        "float32_file": "prompt_03.float32.npy",
+        "raw_sha256": "a94780fd2fff25d2bd00e05e59df74f612fa0d06615d3a2a2368592dbdcd7e69",
+        "raw_path": "logits/prompt_03.raw.bin",
+        "float32_path": "logits/prompt_03.float32.npy",
+        "float32_sha256": "ec4bb43680a748c1f7d65e38f53eb9a66d7f4761bcc698800d9b99728a1f19fe"
+      }
+    },
+    {
+      "position": 4,
+      "prompt_id": 4,
+      "tag": "zh-math",
+      "n_input_tokens": 23,
+      "mean_nll": 7.5137677544897254,
+      "n_nll_tokens": 22,
+      "generated_token_id": 151494,
+      "logits": {
+        "shape": [
+          151936
+        ],
+        "torch_dtype": "torch.float32",
+        "numel": 151936,
+        "element_size": 4,
+        "raw_file": "prompt_04.raw.bin",
+        "float32_file": "prompt_04.float32.npy",
+        "raw_sha256": "4be38def553274e33859a03e2bad26940c8d771384391e529186770e4047d794",
+        "raw_path": "logits/prompt_04.raw.bin",
+        "float32_path": "logits/prompt_04.float32.npy",
+        "float32_sha256": "d042284a4f2c2b485421f5bedb7591714eeaa918a0fba9d7a3b6be72ff8b7a23"
+      }
+    },
+    {
+      "position": 5,
+      "prompt_id": 5,
+      "tag": "en-math",
+      "n_input_tokens": 27,
+      "mean_nll": 6.179009419221145,
+      "n_nll_tokens": 26,
+      "generated_token_id": 46254,
+      "logits": {
+        "shape": [
+          151936
+        ],
+        "torch_dtype": "torch.float32",
+        "numel": 151936,
+        "element_size": 4,
+        "raw_file": "prompt_05.raw.bin",
+        "float32_file": "prompt_05.float32.npy",
+        "raw_sha256": "71cb3cb0659a9177664f3c36f81859fde89bcd6b0047e7f2b6ac15b465ae4e37",
+        "raw_path": "logits/prompt_05.raw.bin",
+        "float32_path": "logits/prompt_05.float32.npy",
+        "float32_sha256": "5241495a1bb78311fe338475e4a97510795984e3d3a13681afc03f8ab0fd54cf"
+      }
+    },
+    {
+      "position": 6,
+      "prompt_id": 6,
+      "tag": "zh-math",
+      "n_input_tokens": 37,
+      "mean_nll": 4.173748453383969,
+      "n_nll_tokens": 36,
+      "generated_token_id": 11622,
+      "logits": {
+        "shape": [
+          151936
+        ],
+        "torch_dtype": "torch.float32",
+        "numel": 151936,
+        "element_size": 4,
+        "raw_file": "prompt_06.raw.bin",
+        "float32_file": "prompt_06.float32.npy",
+        "raw_sha256": "3762fc352f579077458612d10c75c5ca03a51ca4a651849168c7270926750c1c",
+        "raw_path": "logits/prompt_06.raw.bin",
+        "float32_path": "logits/prompt_06.float32.npy",
+        "float32_sha256": "b730785a36f0d47b9e5fae8468b932b6d13d824167f3f055f4efefb57273f73d"
+      }
+    },
+    {
+      "position": 7,
+      "prompt_id": 7,
+      "tag": "en-math",
+      "n_input_tokens": 35,
+      "mean_nll": 4.55240971074604,
+      "n_nll_tokens": 34,
+      "generated_token_id": 66637,
+      "logits": {
+        "shape": [
+          151936
+        ],
+        "torch_dtype": "torch.float32",
+        "numel": 151936,
+        "element_size": 4,
+        "raw_file": "prompt_07.raw.bin",
+        "float32_file": "prompt_07.float32.npy",
+        "raw_sha256": "a0b955d545ae62eb2f9357989d1c04b114f27b90b4aeefa2047117176cb5c3bf",
+        "raw_path": "logits/prompt_07.raw.bin",
+        "float32_path": "logits/prompt_07.float32.npy",
+        "float32_sha256": "221da93e54be6b5cb782858f6c2d4d5af97bbe42a7652eef807e8bb352713d0c"
+      }
+    },
+    {
+      "position": 8,
+      "prompt_id": 8,
+      "tag": "zh-translate",
+      "n_input_tokens": 30,
+      "mean_nll": 5.695915087800602,
+      "n_nll_tokens": 29,
+      "generated_token_id": 77091,
+      "logits": {
+        "shape": [
+          151936
+        ],
+        "torch_dtype": "torch.float32",
+        "numel": 151936,
+        "element_size": 4,
+        "raw_file": "prompt_08.raw.bin",
+        "float32_file": "prompt_08.float32.npy",
+        "raw_sha256": "9904de65e0feab9d0d644ba909a06d8a768a6934c8d61381f968f8c21cbbc047",
+        "raw_path": "logits/prompt_08.raw.bin",
+        "float32_path": "logits/prompt_08.float32.npy",
+        "float32_sha256": "14430a322d4081b16aa8d72de22a2e84b7ac87bca295d7092f1376416ac0bdd9"
+      }
+    },
+    {
+      "position": 9,
+      "prompt_id": 9,
+      "tag": "en-translate",
+      "n_input_tokens": 23,
+      "mean_nll": 7.256797816265713,
+      "n_nll_tokens": 22,
+      "generated_token_id": 71703,
+      "logits": {
+        "shape": [
+          151936
+        ],
+        "torch_dtype": "torch.float32",
+        "numel": 151936,
+        "element_size": 4,
+        "raw_file": "prompt_09.raw.bin",
+        "float32_file": "prompt_09.float32.npy",
+        "raw_sha256": "fc143c14a6d7ff74f5d32f0fa2d6513ed7692e9c283c3daabbd77e1b73646d5c",
+        "raw_path": "logits/prompt_09.raw.bin",
+        "float32_path": "logits/prompt_09.float32.npy",
+        "float32_sha256": "3f8b153c4f5a5de8c5ecfee12c1983c7bfee55e6e532ba70873a7b0323cd1f54"
+      }
+    },
+    {
+      "position": 10,
+      "prompt_id": 10,
+      "tag": "zh-translate",
+      "n_input_tokens": 29,
+      "mean_nll": 6.145989235956222,
+      "n_nll_tokens": 28,
+      "generated_token_id": 99360,
+      "logits": {
+        "shape": [
+          151936
+        ],
+        "torch_dtype": "torch.float32",
+        "numel": 151936,
+        "element_size": 4,
+        "raw_file": "prompt_10.raw.bin",
+        "float32_file": "prompt_10.float32.npy",
+        "raw_sha256": "e043beeb13de639c5a5678d8dcb2e07b8ffc723aa36f21d37903f9e6d88033b3",
+        "raw_path": "logits/prompt_10.raw.bin",
+        "float32_path": "logits/prompt_10.float32.npy",
+        "float32_sha256": "fb46e945d050fc0a7e058b3ab6db509bfbfe3cd4b6a5c8a02c68a46f2a4cef34"
+      }
+    },
+    {
+      "position": 11,
+      "prompt_id": 11,
+      "tag": "en-translate",
+      "n_input_tokens": 22,
+      "mean_nll": 7.883851370641163,
+      "n_nll_tokens": 21,
+      "generated_token_id": 87506,
+      "logits": {
+        "shape": [
+          151936
+        ],
+        "torch_dtype": "torch.float32",
+        "numel": 151936,
+        "element_size": 4,
+        "raw_file": "prompt_11.raw.bin",
+        "float32_file": "prompt_11.float32.npy",
+        "raw_sha256": "6a67307dbb161d141f9ce8c082673529c70561943575985539f37fb8769c18ba",
+        "raw_path": "logits/prompt_11.raw.bin",
+        "float32_path": "logits/prompt_11.float32.npy",
+        "float32_sha256": "bc7d15bdc189a0219fd91f56a81b90053f44636952b0ab56f0c56d1c4f04e521"
+      }
+    },
+    {
+      "position": 12,
+      "prompt_id": 12,
+      "tag": "en-code",
+      "n_input_tokens": 26,
+      "mean_nll": 6.0550091442093255,
+      "n_nll_tokens": 25,
+      "generated_token_id": 2610,
+      "logits": {
+        "shape": [
+          151936
+        ],
+        "torch_dtype": "torch.float32",
+        "numel": 151936,
+        "element_size": 4,
+        "raw_file": "prompt_12.raw.bin",
+        "float32_file": "prompt_12.float32.npy",
+        "raw_sha256": "280048e515854b6ea9e455289bc2d75ae2a8055b4c435296768db2f8b3b89dcb",
+        "raw_path": "logits/prompt_12.raw.bin",
+        "float32_path": "logits/prompt_12.float32.npy",
+        "float32_sha256": "124e901d6b116344f421d5a64279824b5c77eace96f771c153ab2d7c8f9ca249"
+      }
+    },
+    {
+      "position": 13,
+      "prompt_id": 13,
+      "tag": "zh-code",
+      "n_input_tokens": 27,
+      "mean_nll": 5.5397765294003944,
+      "n_nll_tokens": 26,
+      "generated_token_id": 11622,
+      "logits": {
+        "shape": [
+          151936
+        ],
+        "torch_dtype": "torch.float32",
+        "numel": 151936,
+        "element_size": 4,
+        "raw_file": "prompt_13.raw.bin",
+        "float32_file": "prompt_13.float32.npy",
+        "raw_sha256": "f2a1077681a117cd1b99e782e43fbddab93e59fcc1cd24ab8965219388ee81cb",
+        "raw_path": "logits/prompt_13.raw.bin",
+        "float32_path": "logits/prompt_13.float32.npy",
+        "float32_sha256": "b38b7c393dd4995fd0ab93ee327c9a133eeefd1b31fbfcee05539d1f1249bd25"
+      }
+    },
+    {
+      "position": 14,
+      "prompt_id": 14,
+      "tag": "en-code",
+      "n_input_tokens": 39,
+      "mean_nll": 4.288861913655541,
+      "n_nll_tokens": 38,
+      "generated_token_id": 785,
+      "logits": {
+        "shape": [
+          151936
+        ],
+        "torch_dtype": "torch.float32",
+        "numel": 151936,
+        "element_size": 4,
+        "raw_file": "prompt_14.raw.bin",
+        "float32_file": "prompt_14.float32.npy",
+        "raw_sha256": "1d0c9b34a2d85d31a8eb6658d6f2ee42214a03d99eb984b36667429a1088e400",
+        "raw_path": "logits/prompt_14.raw.bin",
+        "float32_path": "logits/prompt_14.float32.npy",
+        "float32_sha256": "0b22a0603b3089ff4814e4169222c1b22fcb8536ca320ee877f69473717f11e4"
+      }
+    },
+    {
+      "position": 15,
+      "prompt_id": 15,
+      "tag": "zh-code",
+      "n_input_tokens": 31,
+      "mean_nll": 5.767118487755457,
+      "n_nll_tokens": 30,
+      "generated_token_id": 107083,
+      "logits": {
+        "shape": [
+          151936
+        ],
+        "torch_dtype": "torch.float32",
+        "numel": 151936,
+        "element_size": 4,
+        "raw_file": "prompt_15.raw.bin",
+        "float32_file": "prompt_15.float32.npy",
+        "raw_sha256": "545c9fa473b65b8e789c4a76b4960b9755f8e6b17a4851cc81ac957ecb95afd9",
+        "raw_path": "logits/prompt_15.raw.bin",
+        "float32_path": "logits/prompt_15.float32.npy",
+        "float32_sha256": "54f7af6f8cbd1715cf3fc66413a2da2a6aba93376916633e6d6d0e701750fbe3"
+      }
+    },
+    {
+      "position": 16,
+      "prompt_id": 16,
+      "tag": "zh-reason",
+      "n_input_tokens": 48,
+      "mean_nll": 3.8033080756344755,
+      "n_nll_tokens": 47,
+      "generated_token_id": 101140,
+      "logits": {
+        "shape": [
+          151936
+        ],
+        "torch_dtype": "torch.float32",
+        "numel": 151936,
+        "element_size": 4,
+        "raw_file": "prompt_16.raw.bin",
+        "float32_file": "prompt_16.float32.npy",
+        "raw_sha256": "24e4d0e2581115664627304a35a5b4f805e7afe5c91837fc2059be981b131d9d",
+        "raw_path": "logits/prompt_16.raw.bin",
+        "float32_path": "logits/prompt_16.float32.npy",
+        "float32_sha256": "01839cd3d916bdc8e84dc58a708b7e6c271e94ef0ba0fedd58f86453ce6964fe"
+      }
+    },
+    {
+      "position": 17,
+      "prompt_id": 17,
+      "tag": "en-reason",
+      "n_input_tokens": 41,
+      "mean_nll": 4.3841760453186,
+      "n_nll_tokens": 40,
+      "generated_token_id": 131006,
+      "logits": {
+        "shape": [
+          151936
+        ],
+        "torch_dtype": "torch.float32",
+        "numel": 151936,
+        "element_size": 4,
+        "raw_file": "prompt_17.raw.bin",
+        "float32_file": "prompt_17.float32.npy",
+        "raw_sha256": "3d3ae5126a48777c723183b1a3670817d882baeec7b45f4d756aefc22524321c",
+        "raw_path": "logits/prompt_17.raw.bin",
+        "float32_path": "logits/prompt_17.float32.npy",
+        "float32_sha256": "17fa13cfa61f69a80416d8252cb824ad7fa6fafeaa75bffb3177763a1322a86d"
+      }
+    },
+    {
+      "position": 18,
+      "prompt_id": 18,
+      "tag": "zh-knowledge",
+      "n_input_tokens": 18,
+      "mean_nll": 8.494453940321417,
+      "n_nll_tokens": 17,
+      "generated_token_id": 52510,
+      "logits": {
+        "shape": [
+          151936
+        ],
+        "torch_dtype": "torch.float32",
+        "numel": 151936,
+        "element_size": 4,
+        "raw_file": "prompt_18.raw.bin",
+        "float32_file": "prompt_18.float32.npy",
+        "raw_sha256": "c5b2b3c6ae62f05067e417e028131d1ed03ff613f67e195c3fb61ab49570af72",
+        "raw_path": "logits/prompt_18.raw.bin",
+        "float32_path": "logits/prompt_18.float32.npy",
+        "float32_sha256": "95e1b0d7fa14ef58432c7b5f73ff4bc5eb484176e3526f42c4118f8bbb0c318c"
+      }
+    },
+    {
+      "position": 19,
+      "prompt_id": 19,
+      "tag": "en-knowledge",
+      "n_input_tokens": 20,
+      "mean_nll": 7.644756982201024,
+      "n_nll_tokens": 19,
+      "generated_token_id": 71703,
+      "logits": {
+        "shape": [
+          151936
+        ],
+        "torch_dtype": "torch.float32",
+        "numel": 151936,
+        "element_size": 4,
+        "raw_file": "prompt_19.raw.bin",
+        "float32_file": "prompt_19.float32.npy",
+        "raw_sha256": "b248872355271905f47a25d24f461bffe5a20b7d0c19ad158633f02cd54175d1",
+        "raw_path": "logits/prompt_19.raw.bin",
+        "float32_path": "logits/prompt_19.float32.npy",
+        "float32_sha256": "926b1ffe71e7cff7fe11e8719439dc0c6352cfd1e5c661ef936528d085bbb52c"
+      }
+    },
+    {
+      "position": 20,
+      "prompt_id": 20,
+      "tag": "zh-knowledge",
+      "n_input_tokens": 25,
+      "mean_nll": 6.361968237596254,
+      "n_nll_tokens": 24,
+      "generated_token_id": 99225,
+      "logits": {
+        "shape": [
+          151936
+        ],
+        "torch_dtype": "torch.float32",
+        "numel": 151936,
+        "element_size": 4,
+        "raw_file": "prompt_20.raw.bin",
+        "float32_file": "prompt_20.float32.npy",
+        "raw_sha256": "016e073b3fc7f5e8ea156eae7dcbdcbb1091b8aad76c300fdc369433ac7061b0",
+        "raw_path": "logits/prompt_20.raw.bin",
+        "float32_path": "logits/prompt_20.float32.npy",
+        "float32_sha256": "652a41b0d48af7a22dd7d2bbe9bade7e6cb0be2b04b9ac2a106b0f1f124b4403"
+      }
+    },
+    {
+      "position": 21,
+      "prompt_id": 21,
+      "tag": "en-knowledge",
+      "n_input_tokens": 21,
+      "mean_nll": 7.143605643790215,
+      "n_nll_tokens": 20,
+      "generated_token_id": 66637,
+      "logits": {
+        "shape": [
+          151936
+        ],
+        "torch_dtype": "torch.float32",
+        "numel": 151936,
+        "element_size": 4,
+        "raw_file": "prompt_21.raw.bin",
+        "float32_file": "prompt_21.float32.npy",
+        "raw_sha256": "de61dbe5f76b3c8a9a800cce6a35c7b33ed081f59a089ee88a9389afaa3662ef",
+        "raw_path": "logits/prompt_21.raw.bin",
+        "float32_path": "logits/prompt_21.float32.npy",
+        "float32_sha256": "0c85a05a21bf46070fdefe801434804e31368673450a556709c5d70ab3bd9ffd"
+      }
+    },
+    {
+      "position": 22,
+      "prompt_id": 22,
+      "tag": "zh-short",
+      "n_input_tokens": 13,
+      "mean_nll": 10.32981974631548,
+      "n_nll_tokens": 12,
+      "generated_token_id": 95615,
+      "logits": {
+        "shape": [
+          151936
+        ],
+        "torch_dtype": "torch.float32",
+        "numel": 151936,
+        "element_size": 4,
+        "raw_file": "prompt_22.raw.bin",
+        "float32_file": "prompt_22.float32.npy",
+        "raw_sha256": "1b2ccc2af0b85d62346d15d6f75b18ace1995103ca76df3af27c36a4e62ad952",
+        "raw_path": "logits/prompt_22.raw.bin",
+        "float32_path": "logits/prompt_22.float32.npy",
+        "float32_sha256": "d99724421256f0254d587a190da624ed6db96779df9348b80420165e89c70ab3"
+      }
+    },
+    {
+      "position": 23,
+      "prompt_id": 23,
+      "tag": "en-short",
+      "n_input_tokens": 13,
+      "mean_nll": 10.054769823948542,
+      "n_nll_tokens": 12,
+      "generated_token_id": 95615,
+      "logits": {
+        "shape": [
+          151936
+        ],
+        "torch_dtype": "torch.float32",
+        "numel": 151936,
+        "element_size": 4,
+        "raw_file": "prompt_23.raw.bin",
+        "float32_file": "prompt_23.float32.npy",
+        "raw_sha256": "2c4e2e2191f81f81d65fb00f8d693fb712e11d12cf1fd81db91f0106d0f6000f",
+        "raw_path": "logits/prompt_23.raw.bin",
+        "float32_path": "logits/prompt_23.float32.npy",
+        "float32_sha256": "a3d25bd05d31875129ec1429c0326fcd5ab0735c42b2e370f7e319129bfe6beb"
+      }
+    },
+    {
+      "position": 24,
+      "prompt_id": 24,
+      "tag": "zh-long",
+      "n_input_tokens": 124,
+      "mean_nll": 2.6463515764595376,
+      "n_nll_tokens": 123,
+      "generated_token_id": 77091,
+      "logits": {
+        "shape": [
+          151936
+        ],
+        "torch_dtype": "torch.float32",
+        "numel": 151936,
+        "element_size": 4,
+        "raw_file": "prompt_24.raw.bin",
+        "float32_file": "prompt_24.float32.npy",
+        "raw_sha256": "4ac4c0c87d159033c3bb219eb55fa00b7b34298904411ecc1ca71a709d3f0aaa",
+        "raw_path": "logits/prompt_24.raw.bin",
+        "float32_path": "logits/prompt_24.float32.npy",
+        "float32_sha256": "de64eb6a3a546f0be9f1bd7dda2e8e0cceaecdabcb897dadaa8050a88d973041"
+      }
+    },
+    {
+      "position": 25,
+      "prompt_id": 25,
+      "tag": "en-long",
+      "n_input_tokens": 127,
+      "mean_nll": 2.601991169082577,
+      "n_nll_tokens": 126,
+      "generated_token_id": 71703,
+      "logits": {
+        "shape": [
+          151936
+        ],
+        "torch_dtype": "torch.float32",
+        "numel": 151936,
+        "element_size": 4,
+        "raw_file": "prompt_25.raw.bin",
+        "float32_file": "prompt_25.float32.npy",
+        "raw_sha256": "ff5937b67c9dc6ee28c827f4ec4929d9cb0ed28f5a0638fa09dad56b2b5d031a",
+        "raw_path": "logits/prompt_25.raw.bin",
+        "float32_path": "logits/prompt_25.float32.npy",
+        "float32_sha256": "e172da5e95ad95fd7b2af3e6d6f0eababe635e9b752e7e71fee09ed3abff9ebc"
+      }
+    },
+    {
+      "position": 26,
+      "prompt_id": 26,
+      "tag": "zh-long",
+      "n_input_tokens": 133,
+      "mean_nll": 2.4628095435588175,
+      "n_nll_tokens": 132,
+      "generated_token_id": 87752,
+      "logits": {
+        "shape": [
+          151936
+        ],
+        "torch_dtype": "torch.float32",
+        "numel": 151936,
+        "element_size": 4,
+        "raw_file": "prompt_26.raw.bin",
+        "float32_file": "prompt_26.float32.npy",
+        "raw_sha256": "22e90a526586cb6444d36e396c25e6c0cdd1cf35a7582fa3c83da5cf4207e6e7",
+        "raw_path": "logits/prompt_26.raw.bin",
+        "float32_path": "logits/prompt_26.float32.npy",
+        "float32_sha256": "4fd4075ece7929e015d534f65844b5b27409e15b09c79450f6bb0415ce6ee453"
+      }
+    },
+    {
+      "position": 27,
+      "prompt_id": 27,
+      "tag": "en-long",
+      "n_input_tokens": 126,
+      "mean_nll": 2.6426459138032516,
+      "n_nll_tokens": 125,
+      "generated_token_id": 785,
+      "logits": {
+        "shape": [
+          151936
+        ],
+        "torch_dtype": "torch.float32",
+        "numel": 151936,
+        "element_size": 4,
+        "raw_file": "prompt_27.raw.bin",
+        "float32_file": "prompt_27.float32.npy",
+        "raw_sha256": "604643af8ca1069530cf44cd8b89426b2a322ecf51ac2900ffb4f6588e0b3ce6",
+        "raw_path": "logits/prompt_27.raw.bin",
+        "float32_path": "logits/prompt_27.float32.npy",
+        "float32_sha256": "fb85ef1a7b7a6333cc4438a57d08af3ab9ade81c6b4cbab811d52abfd456101b"
+      }
+    },
+    {
+      "position": 28,
+      "prompt_id": 28,
+      "tag": "zh-mixed",
+      "n_input_tokens": 30,
+      "mean_nll": 6.231508166304436,
+      "n_nll_tokens": 29,
+      "generated_token_id": 18493,
+      "logits": {
+        "shape": [
+          151936
+        ],
+        "torch_dtype": "torch.float32",
+        "numel": 151936,
+        "element_size": 4,
+        "raw_file": "prompt_28.raw.bin",
+        "float32_file": "prompt_28.float32.npy",
+        "raw_sha256": "d329b5adca87a1f522dffca094dce665836c749144feaeada41f99df0741a80e",
+        "raw_path": "logits/prompt_28.raw.bin",
+        "float32_path": "logits/prompt_28.float32.npy",
+        "float32_sha256": "d8e5ad7d41b45c90335b6a38a928b39e04d76d9548aea2d657ead16a28dc9a35"
+      }
+    },
+    {
+      "position": 29,
+      "prompt_id": 29,
+      "tag": "en-mixed",
+      "n_input_tokens": 28,
+      "mean_nll": 6.278350043076056,
+      "n_nll_tokens": 27,
+      "generated_token_id": 50333,
+      "logits": {
+        "shape": [
+          151936
+        ],
+        "torch_dtype": "torch.float32",
+        "numel": 151936,
+        "element_size": 4,
+        "raw_file": "prompt_29.raw.bin",
+        "float32_file": "prompt_29.float32.npy",
+        "raw_sha256": "1cc8bf44f28c9a5aead98e262056c68a55a9c6b0aeda2e2dc4c73349e86ae20b",
+        "raw_path": "logits/prompt_29.raw.bin",
+        "float32_path": "logits/prompt_29.float32.npy",
+        "float32_sha256": "ac68247e9f26ffe5494349ab4f0dd26556484566524a30a318381bdf8a6e2ef0"
+      }
+    },
+    {
+      "position": 30,
+      "prompt_id": 30,
+      "tag": "zh-instruct",
+      "n_input_tokens": 24,
+      "mean_nll": 7.296554508416549,
+      "n_nll_tokens": 23,
+      "generated_token_id": 114566,
+      "logits": {
+        "shape": [
+          151936
+        ],
+        "torch_dtype": "torch.float32",
+        "numel": 151936,
+        "element_size": 4,
+        "raw_file": "prompt_30.raw.bin",
+        "float32_file": "prompt_30.float32.npy",
+        "raw_sha256": "fb7f16c3c8ab709c8ca3a99345d8fad9dcd524ce0b3fd1a07c755e0742417b7f",
+        "raw_path": "logits/prompt_30.raw.bin",
+        "float32_path": "logits/prompt_30.float32.npy",
+        "float32_sha256": "b67f7c67d906bb7c9021bc7b416fa6d84108e669970c758312bdafcd67aecd02"
+      }
+    },
+    {
+      "position": 31,
+      "prompt_id": 31,
+      "tag": "en-instruct",
+      "n_input_tokens": 24,
+      "mean_nll": 6.921804636716843,
+      "n_nll_tokens": 23,
+      "generated_token_id": 55221,
+      "logits": {
+        "shape": [
+          151936
+        ],
+        "torch_dtype": "torch.float32",
+        "numel": 151936,
+        "element_size": 4,
+        "raw_file": "prompt_31.raw.bin",
+        "float32_file": "prompt_31.float32.npy",
+        "raw_sha256": "6f3f2c088a2ac0bee5d9dfb66e057404f3ca57d56017e0ed083396ad1f9becc6",
+        "raw_path": "logits/prompt_31.raw.bin",
+        "float32_path": "logits/prompt_31.float32.npy",
+        "float32_sha256": "2609027ee04a93cf8d58e634977f74ea5ad570d64e46bc99888e3c713d550153"
+      }
+    }
+  ],
+  "elapsed_seconds": 24.389774799346924
+}

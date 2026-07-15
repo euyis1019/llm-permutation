@@ -1,0 +1,12 @@
+{
+  "medians_rel_l2": {
+    "identity": 0.0,
+    "F9-K100-all36": 0.0,
+    "F10-K100-all36": 0.009489267376256938,
+    "F7-all36": 0.009879054923433795
+  },
+  "f9_bitwise_equal": 32,
+  "f10_bitwise_equal": 0,
+  "f7_bitwise_equal": 0,
+  "f10_to_f7_median_ratio": 0.9605440449316408
+}

@@ -1,0 +1,252 @@
+{
+  "base": {
+    "n_splits": 200,
+    "split_seed": 12345,
+    "suite_macro": {
+      "gain_A": {
+        "mean_pp": 0.6305906267475372,
+        "sd_pp": 0.15280758835736885,
+        "frac_positive": 1.0
+      },
+      "gain_B": {
+        "mean_pp": 0.07048564115799871,
+        "sd_pp": 0.35856029525753175,
+        "frac_positive": 0.615
+      },
+      "gain_B_vs_baseline": {
+        "mean_pp": 0.5619644685335743,
+        "sd_pp": 0.42258610369626803,
+        "frac_positive": 0.89
+      }
+    },
+    "per_benchmark": {
+      "mmlu": {
+        "gain_A": {
+          "mean_pp": 0.682300000000001,
+          "sd_pp": 0.2029500184774565,
+          "frac_positive": 1.0
+        },
+        "gain_B": {
+          "mean_pp": -0.2503000000000006,
+          "sd_pp": 0.24765280131668221,
+          "frac_positive": 0.14
+        },
+        "gain_B_vs_baseline": {
+          "mean_pp": 0.20200000000000023,
+          "sd_pp": 0.35776528618634895,
+          "frac_positive": 0.47
+        }
+      },
+      "gsm8k": {
+        "gain_A": {
+          "mean_pp": 1.6441000000000003,
+          "sd_pp": 0.40183229088762873,
+          "frac_positive": 1.0
+        },
+        "gain_B": {
+          "mean_pp": -0.4441000000000002,
+          "sd_pp": 0.6963455966687809,
+          "frac_positive": 0.28
+        },
+        "gain_B_vs_baseline": {
+          "mean_pp": 0.5820000000000002,
+          "sd_pp": 0.9464016060848592,
+          "frac_positive": 0.655
+        }
+      },
+      "ceval": {
+        "gain_A": {
+          "mean_pp": 0.6377,
+          "sd_pp": 0.21111302659949735,
+          "frac_positive": 1.0
+        },
+        "gain_B": {
+          "mean_pp": -0.06569999999999959,
+          "sd_pp": 0.23197739113974036,
+          "frac_positive": 0.44
+        },
+        "gain_B_vs_baseline": {
+          "mean_pp": 0.3900000000000003,
+          "sd_pp": 0.3803945320322049,
+          "frac_positive": 0.67
+        }
+      },
+      "cmmlu": {
+        "gain_A": {
+          "mean_pp": 0.5462999999999999,
+          "sd_pp": 0.21584788625325907,
+          "frac_positive": 1.0
+        },
+        "gain_B": {
+          "mean_pp": 0.02170000000000022,
+          "sd_pp": 0.23302169426900993,
+          "frac_positive": 0.56
+        },
+        "gain_B_vs_baseline": {
+          "mean_pp": 0.19599999999999995,
+          "sd_pp": 0.3393876839250359,
+          "frac_positive": 0.485
+        }
+      },
+      "humaneval_plus": {
+        "gain_A": {
+          "mean_pp": 2.7810975609756086,
+          "sd_pp": 0.7897645621655779,
+          "frac_positive": 1.0
+        },
+        "gain_B": {
+          "mean_pp": 0.6457317073170732,
+          "sd_pp": 1.5295059283605095,
+          "frac_positive": 0.67
+        },
+        "gain_B_vs_baseline": {
+          "mean_pp": 0.481707317073171,
+          "sd_pp": 1.754138049710454,
+          "frac_positive": 0.52
+        }
+      },
+      "mbpp_plus": {
+        "gain_A": {
+          "mean_pp": 1.6103174603174601,
+          "sd_pp": 0.44205478445855234,
+          "frac_positive": 1.0
+        },
+        "gain_B": {
+          "mean_pp": -0.08121693121693113,
+          "sd_pp": 0.7408659663613516,
+          "frac_positive": 0.575
+        },
+        "gain_B_vs_baseline": {
+          "mean_pp": 0.9232804232804234,
+          "sd_pp": 0.9464801027903462,
+          "frac_positive": 0.765
+        }
+      }
+    }
+  },
+  "instruct": {
+    "n_splits": 200,
+    "split_seed": 12345,
+    "suite_macro": {
+      "gain_A": {
+        "mean_pp": 0.616594990751495,
+        "sd_pp": 0.1726183144369606,
+        "frac_positive": 1.0
+      },
+      "gain_B": {
+        "mean_pp": -0.05771070460704636,
+        "sd_pp": 0.32424772696294113,
+        "frac_positive": 0.445
+      },
+      "gain_B_vs_baseline": {
+        "mean_pp": -0.8532445476835722,
+        "sd_pp": 0.42734167327170897,
+        "frac_positive": 0.02
+      }
+    },
+    "per_benchmark": {
+      "mmlu": {
+        "gain_A": {
+          "mean_pp": 0.5224999999999995,
+          "sd_pp": 0.14609500333686967,
+          "frac_positive": 0.995
+        },
+        "gain_B": {
+          "mean_pp": 0.0814999999999998,
+          "sd_pp": 0.23842766198576862,
+          "frac_positive": 0.72
+        },
+        "gain_B_vs_baseline": {
+          "mean_pp": 0.15599999999999947,
+          "sd_pp": 0.3661475112574163,
+          "frac_positive": 0.49
+        }
+      },
+      "gsm8k": {
+        "gain_A": {
+          "mean_pp": 2.382700000000002,
+          "sd_pp": 0.5746953192779635,
+          "frac_positive": 1.0
+        },
+        "gain_B": {
+          "mean_pp": -0.8367000000000004,
+          "sd_pp": 1.0928417589019925,
+          "frac_positive": 0.275
+        },
+        "gain_B_vs_baseline": {
+          "mean_pp": -3.284000000000003,
+          "sd_pp": 1.3848263429036878,
+          "frac_positive": 0.005
+        }
+      },
+      "ceval": {
+        "gain_A": {
+          "mean_pp": 0.2529999999999998,
+          "sd_pp": 0.13674428690077003,
+          "frac_positive": 0.965
+        },
+        "gain_B": {
+          "mean_pp": -0.03699999999999992,
+          "sd_pp": 0.23147138052035818,
+          "frac_positive": 0.4
+        },
+        "gain_B_vs_baseline": {
+          "mean_pp": 0.1459999999999999,
+          "sd_pp": 0.19257206443303232,
+          "frac_positive": 0.365
+        }
+      },
+      "cmmlu": {
+        "gain_A": {
+          "mean_pp": 0.7012999999999998,
+          "sd_pp": 0.2377484174500434,
+          "frac_positive": 1.0
+        },
+        "gain_B": {
+          "mean_pp": 0.0006999999999994233,
+          "sd_pp": 0.42400649759172393,
+          "frac_positive": 0.505
+        },
+        "gain_B_vs_baseline": {
+          "mean_pp": -0.5340000000000005,
+          "sd_pp": 0.5340823906477357,
+          "frac_positive": 0.055
+        }
+      },
+      "humaneval_plus": {
+        "gain_A": {
+          "mean_pp": 2.416463414634145,
+          "sd_pp": 0.9081745472806291,
+          "frac_positive": 1.0
+        },
+        "gain_B": {
+          "mean_pp": 0.7298780487804875,
+          "sd_pp": 1.264312910490734,
+          "frac_positive": 0.67
+        },
+        "gain_B_vs_baseline": {
+          "mean_pp": -0.9573170731707313,
+          "sd_pp": 1.6626451084619485,
+          "frac_positive": 0.185
+        }
+      },
+      "mbpp_plus": {
+        "gain_A": {
+          "mean_pp": 1.5697089947089942,
+          "sd_pp": 0.413099092395873,
+          "frac_positive": 1.0
+        },
+        "gain_B": {
+          "mean_pp": 0.33240740740740704,
+          "sd_pp": 0.6332848057285982,
+          "frac_positive": 0.71
+        },
+        "gain_B_vs_baseline": {
+          "mean_pp": -0.029100529100528794,
+          "sd_pp": 0.767099975774936,
+          "frac_positive": 0.34
+        }
+      }
+    }
+  }
+}

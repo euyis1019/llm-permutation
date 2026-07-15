@@ -1,0 +1,21 @@
+{
+  "complete": true,
+  "post_hoc_supplement": true,
+  "tag": "supp_s2_ffn_sigma1_rep2",
+  "source": "/nvme0/if/models/Qwen3-4B-Base",
+  "sigma": 1e-05,
+  "seed": 4012,
+  "scope": "ffn",
+  "n_params_touched": 108,
+  "dtype": "bfloat16",
+  "noise_generation": "torch.randn(param.shape,dtype=param.dtype); noise.mul_(sigma); param.add_(noise)",
+  "stats": {
+    "n": 2689597440,
+    "changed": 321248352,
+    "base_sq": 1531312.625,
+    "diff_sq": 0.09157190466066822,
+    "changed_fraction": 0.11944105360243056,
+    "weight_rel_l2": 0.00024453959700704026
+  },
+  "elapsed_seconds": 111.69471406936646
+}

@@ -1,0 +1,42 @@
+{
+  "complete": true,
+  "expected_records": 1323,
+  "actual_records": 1323,
+  "families": 147,
+  "layers": [
+    0,
+    17,
+    35
+  ],
+  "inputs": [
+    "real",
+    "randn_s7_x1",
+    "randn_s7_x10"
+  ],
+  "capture": {
+    "prompt": {
+      "id": 24,
+      "tag": "zh-long",
+      "text": "请阅读下面的短文并回答问题。\n\n李华是一名中学教师，他每天早上六点起床，先去学校旁边的公园跑步半小时，然后回家吃早餐。早餐通常是一碗粥和一个鸡蛋。七点半他准时到学校，上午上三节数学课，下午批改作业并辅导学生。晚上他喜欢读历史类的书籍，十点半准时睡觉。周末他会陪家人去郊外爬山，或者在家里做饭。\n\n问题：李华早餐通常吃什么？他晚上喜欢读什么类型的书？"
+    },
+    "rendered_n_tokens": 124,
+    "model_config": {
+      "hidden_size": 2560,
+      "intermediate_size": 9728,
+      "num_hidden_layers": 36
+    }
+  },
+  "inversion_pairs": 1000000,
+  "environment": {
+    "torch": "2.11.0+cu130",
+    "transformers": "5.13.0",
+    "cuda": "13.0",
+    "device_name": "NVIDIA GeForce RTX 4090",
+    "allow_tf32_matmul": false,
+    "allow_tf32_cudnn": true,
+    "float32_matmul_precision": "highest",
+    "cudnn_deterministic": false,
+    "visible_devices": "0"
+  },
+  "elapsed_seconds": 45.1
+}

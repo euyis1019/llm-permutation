@@ -1,0 +1,97 @@
+{
+  "experiment": "noise_floor",
+  "preregistration": "/nvme0/if/permutation/experiments/noise_floor/EXPERIMENT_PLAN.md",
+  "criteria": {
+    "S0-1": {
+      "status": "pass",
+      "hard": true,
+      "observed": "32/32 bitwise equal",
+      "required": "32/32 bitwise equal",
+      "evidence": "results/part0_compare.json"
+    },
+    "S1-1": {
+      "status": "pass",
+      "hard": true,
+      "observed": "32/32 F9 bitwise equal",
+      "required": "32/32",
+      "evidence": "results/part1a_summary.json"
+    },
+    "S1-2": {
+      "status": "pass",
+      "hard": false,
+      "observed": {
+        "f10_all_nonbitwise": true,
+        "f7_all_nonbitwise": true,
+        "median_ratio_f10_over_f7": 0.9605440449316408
+      },
+      "required": "both non-bitwise and median ratio in [0.2,5]",
+      "evidence": "results/part1a_summary.json"
+    },
+    "S1-3": {
+      "status": "pass",
+      "hard": true,
+      "observed": {
+        "mmlu": 0.0,
+        "gsm8k": 0.0,
+        "ceval": 0.0,
+        "cmmlu": 0.0,
+        "humaneval_plus": 0.0,
+        "mbpp_plus": 0.0
+      },
+      "required": "zero correctness differences on all six benchmarks",
+      "evidence": "results/part1b_compare.json"
+    },
+    "S1-4": {
+      "status": "pass",
+      "hard": false,
+      "observed": {
+        "f10_rate": 0.01881812707015959,
+        "f3_rate": 0.02461431582569794,
+        "ratio": 0.7645196073462669
+      },
+      "required": "ratio in [0.2,5]",
+      "evidence": "results/part1b_compare.json"
+    },
+    "S2-1": {
+      "status": "fail",
+      "hard": false,
+      "observed": 0.5952380952380953,
+      "required": ">=0.9",
+      "evidence": "results/part2_summary.json"
+    },
+    "P6-1": {
+      "status": "fail",
+      "hard": false,
+      "prediction": true,
+      "observed": [],
+      "required": "a plateau segment at F7 ratio [1/3,3] with all smaller sigma tiers bitwise",
+      "evidence": "results/part6_summary.json"
+    },
+    "P6-2": {
+      "status": "fail",
+      "hard": false,
+      "prediction": true,
+      "observed": {
+        "estimate": 1e-06,
+        "method": "at_or_below_lowest_grid"
+      },
+      "required": "sigma_star >= 1e-4",
+      "evidence": "results/part6_summary.json"
+    }
+  },
+  "part6c": {
+    "eligible": false,
+    "status": "skipped",
+    "reason": "sigma_star outside [1e-4,1e-2]"
+  },
+  "overall": {
+    "status": "complete_with_soft_failures",
+    "all_hard_criteria_passed": true,
+    "hard_failures": [],
+    "soft_or_prediction_failures": [
+      "S2-1",
+      "P6-1",
+      "P6-2"
+    ]
+  }
+}

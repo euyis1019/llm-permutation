@@ -1,0 +1,489 @@
+{
+ "base": {
+  "benchmarks": {
+   "mmlu": {
+    "baseline_acc": 73.8,
+    "rerun_accs": [
+     73.8,
+     73.8,
+     73.8,
+     73.8,
+     73.8,
+     73.8,
+     73.8,
+     73.8,
+     73.8,
+     73.8
+    ],
+    "rerun_range_pp": 0.0,
+    "seed_mean": 74.25,
+    "seed_std_pp": 0.21794494717703386,
+    "seed_min": 73.8,
+    "seed_max": 74.6,
+    "offset_pp": 0.45000000000000034,
+    "offset_contrib_to_macro_pp": 0.07500000000000005,
+    "n_seeds_above_baseline": 19,
+    "n_seeds_below_baseline": 0,
+    "baseline_z_in_seed_cloud": -2.0647416048350817,
+    "n_questions": 500,
+    "mean_per_question_flip_rate": 0.0079,
+    "systematically_lost_questions": {
+     "n": 0,
+     "ids": []
+    },
+    "systematically_gained_questions": {
+     "n": 1,
+     "ids": [
+      "mmlu__global_facts__02571"
+     ]
+    }
+   },
+   "gsm8k": {
+    "baseline_acc": 77.2,
+    "rerun_accs": [
+     77.2,
+     77.2,
+     77.2,
+     77.2,
+     77.2,
+     77.2,
+     77.2,
+     77.2,
+     77.2,
+     77.2
+    ],
+    "rerun_range_pp": 0.0,
+    "seed_mean": 78.17,
+    "seed_std_pp": 0.6849087530467112,
+    "seed_min": 76.2,
+    "seed_max": 79.2,
+    "offset_pp": 0.9700000000000006,
+    "offset_contrib_to_macro_pp": 0.16166666666666676,
+    "n_seeds_above_baseline": 19,
+    "n_seeds_below_baseline": 1,
+    "baseline_z_in_seed_cloud": -1.416247048508445,
+    "n_questions": 500,
+    "mean_per_question_flip_rate": 0.0557,
+    "systematically_lost_questions": {
+     "n": 4,
+     "ids": [
+      "gsm8k__00443",
+      "gsm8k__00648",
+      "gsm8k__00691",
+      "gsm8k__01111"
+     ]
+    },
+    "systematically_gained_questions": {
+     "n": 5,
+     "ids": [
+      "gsm8k__00052",
+      "gsm8k__00122",
+      "gsm8k__00275",
+      "gsm8k__00347",
+      "gsm8k__01230"
+     ]
+    }
+   },
+   "ceval": {
+    "baseline_acc": 86.0,
+    "rerun_accs": [
+     86.0,
+     86.0,
+     86.0,
+     86.0,
+     86.0,
+     86.0,
+     86.0,
+     86.0,
+     86.0,
+     86.0
+    ],
+    "rerun_range_pp": 0.0,
+    "seed_mean": 86.44999999999999,
+    "seed_std_pp": 0.267394839142419,
+    "seed_min": 86.0,
+    "seed_max": 86.8,
+    "offset_pp": 0.45000000000000034,
+    "offset_contrib_to_macro_pp": 0.07500000000000005,
+    "n_seeds_above_baseline": 17,
+    "n_seeds_below_baseline": 0,
+    "baseline_z_in_seed_cloud": -1.682904582015202,
+    "n_questions": 500,
+    "mean_per_question_flip_rate": 0.0075,
+    "systematically_lost_questions": {
+     "n": 0,
+     "ids": []
+    },
+    "systematically_gained_questions": {
+     "n": 2,
+     "ids": [
+      "ceval__chinese_language_and_literature__0007",
+      "ceval__professional_tour_guide__0007"
+     ]
+    }
+   },
+   "cmmlu": {
+    "baseline_acc": 78.8,
+    "rerun_accs": [
+     78.8,
+     78.8,
+     78.8,
+     78.8,
+     78.8,
+     78.8,
+     78.8,
+     78.8,
+     78.8,
+     78.8
+    ],
+    "rerun_range_pp": 0.0,
+    "seed_mean": 78.97999999999999,
+    "seed_std_pp": 0.21817424229271445,
+    "seed_min": 78.60000000000001,
+    "seed_max": 79.4,
+    "offset_pp": 0.18000000000000016,
+    "offset_contrib_to_macro_pp": 0.030000000000000027,
+    "n_seeds_above_baseline": 13,
+    "n_seeds_below_baseline": 2,
+    "baseline_z_in_seed_cloud": -0.8250286473253495,
+    "n_questions": 500,
+    "mean_per_question_flip_rate": 0.0058,
+    "systematically_lost_questions": {
+     "n": 1,
+     "ids": [
+      "cmmlu__clinical_knowledge__0002"
+     ]
+    },
+    "systematically_gained_questions": {
+     "n": 0,
+     "ids": []
+    }
+   },
+   "humaneval_plus": {
+    "baseline_acc": 56.09756097560976,
+    "rerun_accs": [
+     56.09756097560976,
+     56.09756097560976,
+     56.09756097560976,
+     56.09756097560976,
+     56.09756097560976,
+     56.09756097560976,
+     56.09756097560976,
+     56.09756097560976,
+     56.09756097560976,
+     56.09756097560976
+    ],
+    "rerun_range_pp": 0.0,
+    "seed_mean": 55.97560975609757,
+    "seed_std_pp": 0.9944820994085393,
+    "seed_min": 54.268292682926834,
+    "seed_max": 58.536585365853654,
+    "offset_pp": -0.121951219512198,
+    "offset_contrib_to_macro_pp": -0.020325203252033002,
+    "n_seeds_above_baseline": 5,
+    "n_seeds_below_baseline": 9,
+    "baseline_z_in_seed_cloud": 0.12262786789699362,
+    "n_questions": 164,
+    "mean_per_question_flip_rate": 0.027439024390243903,
+    "systematically_lost_questions": {
+     "n": 0,
+     "ids": []
+    },
+    "systematically_gained_questions": {
+     "n": 0,
+     "ids": []
+    }
+   },
+   "mbpp_plus": {
+    "baseline_acc": 61.904761904761905,
+    "rerun_accs": [
+     61.904761904761905,
+     61.904761904761905,
+     61.904761904761905,
+     61.904761904761905,
+     61.904761904761905,
+     61.904761904761905,
+     61.904761904761905,
+     61.904761904761905,
+     61.904761904761905,
+     61.904761904761905
+    ],
+    "rerun_range_pp": 0.0,
+    "seed_mean": 62.936507936507944,
+    "seed_std_pp": 0.5909605265526111,
+    "seed_min": 61.64021164021164,
+    "seed_max": 64.02116402116403,
+    "offset_pp": 1.0317460317460303,
+    "offset_contrib_to_macro_pp": 0.17195767195767173,
+    "n_seeds_above_baseline": 19,
+    "n_seeds_below_baseline": 1,
+    "baseline_z_in_seed_cloud": -1.7458797760398073,
+    "n_questions": 378,
+    "mean_per_question_flip_rate": 0.027513227513227514,
+    "systematically_lost_questions": {
+     "n": 1,
+     "ids": [
+      "Mbpp/259"
+     ]
+    },
+    "systematically_gained_questions": {
+     "n": 3,
+     "ids": [
+      "Mbpp/460",
+      "Mbpp/608",
+      "Mbpp/755"
+     ]
+    }
+   }
+  },
+  "suite_macro": {
+   "baseline": 72.30038714672861,
+   "seed_mean": 72.79368628210092,
+   "seed_std_pp": 0.21442747972097942,
+   "offset_pp": 0.49329913537231107
+  }
+ },
+ "instruct": {
+  "benchmarks": {
+   "mmlu": {
+    "baseline_acc": 69.0,
+    "rerun_accs": [
+     69.0,
+     69.0,
+     69.0,
+     69.0,
+     69.0,
+     69.0,
+     69.0,
+     69.0,
+     69.0,
+     69.0
+    ],
+    "rerun_range_pp": 0.0,
+    "seed_mean": 69.04999999999998,
+    "seed_std_pp": 0.25980762113532896,
+    "seed_min": 68.60000000000001,
+    "seed_max": 69.39999999999999,
+    "offset_pp": 0.05000000000000171,
+    "offset_contrib_to_macro_pp": 0.008333333333333618,
+    "n_seeds_above_baseline": 9,
+    "n_seeds_below_baseline": 5,
+    "baseline_z_in_seed_cloud": -0.19245008972985603,
+    "n_questions": 500,
+    "mean_per_question_flip_rate": 0.0077,
+    "systematically_lost_questions": {
+     "n": 1,
+     "ids": [
+      "mmlu__miscellaneous__07401"
+     ]
+    },
+    "systematically_gained_questions": {
+     "n": 2,
+     "ids": [
+      "mmlu__high_school_macroeconomics__03839",
+      "mmlu__high_school_physics__04737"
+     ]
+    }
+   },
+   "gsm8k": {
+    "baseline_acc": 75.6,
+    "rerun_accs": [
+     75.2,
+     75.6,
+     75.0,
+     75.6,
+     74.2,
+     74.6,
+     73.2,
+     75.6,
+     73.2,
+     73.6
+    ],
+    "rerun_range_pp": 2.400000000000002,
+    "seed_mean": 73.27,
+    "seed_std_pp": 0.803181175078202,
+    "seed_min": 71.8,
+    "seed_max": 74.6,
+    "offset_pp": -2.3300000000000023,
+    "offset_contrib_to_macro_pp": -0.3883333333333337,
+    "n_seeds_above_baseline": 0,
+    "n_seeds_below_baseline": 20,
+    "baseline_z_in_seed_cloud": 2.900964405413433,
+    "n_questions": 500,
+    "mean_per_question_flip_rate": 0.0901,
+    "systematically_lost_questions": {
+     "n": 5,
+     "ids": [
+      "gsm8k__00166",
+      "gsm8k__00209",
+      "gsm8k__00358",
+      "gsm8k__00961",
+      "gsm8k__00967"
+     ]
+    },
+    "systematically_gained_questions": {
+     "n": 2,
+     "ids": [
+      "gsm8k__00686",
+      "gsm8k__01086"
+     ]
+    }
+   },
+   "ceval": {
+    "baseline_acc": 83.2,
+    "rerun_accs": [
+     83.2,
+     83.2,
+     83.2,
+     83.2,
+     83.2,
+     83.2,
+     83.2,
+     83.2,
+     83.2,
+     83.2
+    ],
+    "rerun_range_pp": 0.0,
+    "seed_mean": 83.39999999999999,
+    "seed_std_pp": 0.17888543819998334,
+    "seed_min": 83.0,
+    "seed_max": 83.6,
+    "offset_pp": 0.20000000000000018,
+    "offset_contrib_to_macro_pp": 0.03333333333333336,
+    "n_seeds_above_baseline": 14,
+    "n_seeds_below_baseline": 1,
+    "baseline_z_in_seed_cloud": -1.118033988749895,
+    "n_questions": 500,
+    "mean_per_question_flip_rate": 0.0038,
+    "systematically_lost_questions": {
+     "n": 0,
+     "ids": []
+    },
+    "systematically_gained_questions": {
+     "n": 0,
+     "ids": []
+    }
+   },
+   "cmmlu": {
+    "baseline_acc": 75.2,
+    "rerun_accs": [
+     75.2,
+     75.2,
+     75.2,
+     75.2,
+     75.2,
+     75.2,
+     75.2,
+     75.2,
+     75.2,
+     75.2
+    ],
+    "rerun_range_pp": 0.0,
+    "seed_mean": 74.63000000000001,
+    "seed_std_pp": 0.2123676058159532,
+    "seed_min": 74.4,
+    "seed_max": 75.2,
+    "offset_pp": -0.5700000000000006,
+    "offset_contrib_to_macro_pp": -0.0950000000000001,
+    "n_seeds_above_baseline": 0,
+    "n_seeds_below_baseline": 19,
+    "baseline_z_in_seed_cloud": 2.6840251732836267,
+    "n_questions": 500,
+    "mean_per_question_flip_rate": 0.0081,
+    "systematically_lost_questions": {
+     "n": 2,
+     "ids": [
+      "cmmlu__chinese_literature__0006",
+      "cmmlu__sociology__0003"
+     ]
+    },
+    "systematically_gained_questions": {
+     "n": 0,
+     "ids": []
+    }
+   },
+   "humaneval_plus": {
+    "baseline_acc": 70.1219512195122,
+    "rerun_accs": [
+     70.1219512195122,
+     70.1219512195122,
+     70.1219512195122,
+     70.1219512195122,
+     70.1219512195122,
+     70.1219512195122,
+     70.1219512195122,
+     70.1219512195122,
+     70.1219512195122,
+     70.1219512195122
+    ],
+    "rerun_range_pp": 0.0,
+    "seed_mean": 68.41463414634148,
+    "seed_std_pp": 0.8089328756964356,
+    "seed_min": 67.07317073170732,
+    "seed_max": 70.73170731707317,
+    "offset_pp": -1.7073170731707261,
+    "offset_contrib_to_macro_pp": -0.28455284552845433,
+    "n_seeds_above_baseline": 1,
+    "n_seeds_below_baseline": 19,
+    "baseline_z_in_seed_cloud": 2.110579412044329,
+    "n_questions": 164,
+    "mean_per_question_flip_rate": 0.03170731707317073,
+    "systematically_lost_questions": {
+     "n": 3,
+     "ids": [
+      "HumanEval/1",
+      "HumanEval/137",
+      "HumanEval/90"
+     ]
+    },
+    "systematically_gained_questions": {
+     "n": 0,
+     "ids": []
+    }
+   },
+   "mbpp_plus": {
+    "baseline_acc": 60.84656084656085,
+    "rerun_accs": [
+     60.84656084656085,
+     60.84656084656085,
+     60.84656084656085,
+     60.84656084656085,
+     60.84656084656085,
+     60.84656084656085,
+     60.84656084656085,
+     60.84656084656085,
+     60.84656084656085,
+     60.84656084656085
+    ],
+    "rerun_range_pp": 0.0,
+    "seed_mean": 60.47619047619048,
+    "seed_std_pp": 0.5636845437212301,
+    "seed_min": 59.78835978835979,
+    "seed_max": 61.64021164021164,
+    "offset_pp": -0.3703703703703726,
+    "offset_contrib_to_macro_pp": -0.06172839506172877,
+    "n_seeds_above_baseline": 5,
+    "n_seeds_below_baseline": 14,
+    "baseline_z_in_seed_cloud": 0.6570525562494967,
+    "n_questions": 378,
+    "mean_per_question_flip_rate": 0.019312169312169312,
+    "systematically_lost_questions": {
+     "n": 1,
+     "ids": [
+      "Mbpp/626"
+     ]
+    },
+    "systematically_gained_questions": {
+     "n": 0,
+     "ids": []
+    }
+   }
+  },
+  "suite_macro": {
+   "baseline": 72.32808534434551,
+   "seed_mean": 71.54013743708866,
+   "seed_std_pp": 0.19045864659334402,
+   "offset_pp": -0.78794790725685
+  }
+ }
+}

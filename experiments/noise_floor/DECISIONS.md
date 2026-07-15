@@ -1,0 +1,121 @@
+# noise_floor 实现级决策记录
+
+> 科学参数、预测和判据严格取自 `EXPERIMENT_PLAN.md` §2–§7；本文件只记录计划明确留给执行者的实现选择与资源事件。
+
+## 2026-07-13 启动与公共实现
+
+- prompt 输入直接复用 `experiments/ffn_permutation/results_base/tokenized.json` 的 32 条冻结 token ids；该文件来自同一冻结 prompt 集、`enable_thinking=False` chat template，避免不同单元重新 tokenization。
+- last-token logits 用 vLLM V1 自定义 `RawLogitsCapture` 在采样前读取；processor 原样返回 tensor、声明 argmax invariant。每条 prompt 单独请求，按 prompt id 保存原 dtype 连续字节及 float32 `.npy` 副本，规避降配 `max_num_seqs=8` 时的批调度映射歧义。
+- Part 1a 的 F9/F10/F7 在 vLLM 已加载的融合 FFN 权重上原位联动置换；F9 每层 seed=`401+layer`，F7 每层 seed=`402+layer`，F10 使用 4863 个有效奇对齐对且端点 0/9727 固定，与 v1.1 已记录口径一致。
+- Part 6 的覆盖范围选择为 Hugging Face 模型 `named_parameters()` 返回的全部唯一参数，包含 embedding、lm_head（若未因 tied weights 去重）、norm 与所有 attention/FFN 参数。每个配置从原始 Base 重新加载，使用单一 CPU `torch.Generator`，严格按 `named_parameters()` 顺序生成噪声并以参数原 dtype 原位相加；保存成同一时刻唯一的临时 checkpoint，GPU 单元完成后立即删除。
+- σ* 用每档 3 seed × 32 prompt 的 rel_l2 中位数曲线与 Part 1a F7 中位数参考线求首次交点；交点位于相邻非零档之间时在 log(σ)-log(rel_l2) 空间线性插值。若没有交点则机器可读结果记为相应区间界外而不外推。
+- P6-1 的“平台段”操作化为：至少两个相邻 σ 档均有非零中位漂移、相邻中位数之比在 `[1/3,3]`，且两档各自与 F7 中位参考线之比均在 `[1/3,3]`；该段以下的所有更小 σ 档须 32×3 全部逐比特一致。这里的倍数只落实原文“同量级/不随 σ 下降”的判读，不改变 P6-1 已写明的 F7 `[1/3,3]` 带。
+- Part 1b 的 F3-K30 `seed=301` 按冻结 `make_from_spec(..., layer_idx=L)` 语义落实为每层 generator seed=`301*1000+L`；三个 checkpoint 写入 `experiments/noise_floor/checkpoints/` 并按 §1/§9 保留到人工审阅。
+- 2026-07-13T03:07Z `part0_run_a` 首次技术启动在完成引擎加载后、提交任何 prompt 前中止：vLLM V1 RPC 拒绝序列化本地 `functools.partial`（无 logits、无 complete marker）。随后 identity 单元跳过无意义 mutation RPC；需要 mutation 的本机 worker RPC 设置 vLLM 官方错误信息指定的 `VLLM_ALLOW_INSECURE_SERIALIZATION=1`。这是进程内控制消息实现修复，不改变正式测量；未完成单元按原科学参数重新启动。
+- 2026-07-13T03:08Z `part0_run_a` 第二次技术启动在 prompt 0 后发现 vLLM 的全 greedy 快路径会跳过声明 argmax-invariant 的 processor，因而没有捕获文件并立即中止（仍无原始 logits/complete marker）。捕获器改为进入 mandatory pre-greedy processor 队列，但 `apply()` 仍逐元素原样返回同一 logits tensor；这是只读钩子的调度修复，不改变 temperature=0 的输出或科学参数。
+- Part 2 的八个旧锚点目录在本轮开始时只有既有 `perm_manifest.json`，权重已被上一实验的 rolling 流程清理。执行时逐锚点读取 manifest 的 scope/kind/base_seed，用冻结的 `ffn_benchmark_eval/scripts/make_checkpoint.py v1` 原样再生到同一目录、从盘加载完成一个 logits 单元，随后删除本轮新增的模型/tokenizer 文件并保留 manifest；任一时刻最多一个再生锚点 checkpoint。Instruct 与 Base 的旧冻结 tokenized 文件 SHA-256 均为 `a2d552b648d56798126cf751bc915c59b112c1ed9d9b59268939f973d86a01e5`，故 Part 2 继续复用相同 32 组 token ids。
+- Part 6a 每个 σ 在 rep=0（seed=`1000+10×档序号`）执行一次完整分层与全模型权重量化统计；rep=1/2 科学噪声配置照常生成和测量，但不重复零判据的 CPU 统计。checkpoint 生成限制 PyTorch CPU 线程数为 8，以减轻对同机任务的影响。
+- Part 6b 得到的 σ* 标记为 `at_or_below_lowest_grid`、数值上界 1e-6，不在 `[1e-4,1e-2]`；按 §6c 条件原样跳过行为臂，不另选 σ 或 seed。
+- 2026-07-13T03:07:11Z `part0_run_a`: GPU 0 free=46939 MiB，采用 normal 配置 (util=0.280000, max_model_len=4096, max_num_seqs=256)。
+- 2026-07-13T03:08:14Z `part0_run_a`: GPU 0 free=46939 MiB，采用 normal 配置 (util=0.280000, max_model_len=4096, max_num_seqs=256)。
+- 2026-07-13T03:09:28Z `part0_run_a`: GPU 0 free=46939 MiB，采用 normal 配置 (util=0.280000, max_model_len=4096, max_num_seqs=256)。
+- 2026-07-13T03:10:11Z `part0_run_b`: GPU 0 free=46939 MiB，采用 normal 配置 (util=0.280000, max_model_len=4096, max_num_seqs=256)。
+- 2026-07-13T03:11:21Z `part1a_f9_k100`: GPU 0 free=46939 MiB，采用 normal 配置 (util=0.280000, max_model_len=4096, max_num_seqs=256)。
+- 2026-07-13T03:12:24Z `part1a_f10_k100`: GPU 0 free=46939 MiB，采用 normal 配置 (util=0.280000, max_model_len=4096, max_num_seqs=256)。
+- 2026-07-13T03:12:59Z `part1a_f7`: GPU 0 free=46939 MiB，采用 normal 配置 (util=0.280000, max_model_len=4096, max_num_seqs=256)。
+- 2026-07-13T03:14:21Z `f9_k100_all36/mmlu`: GPU 0 free=46939 MiB，采用 normal 配置 (util=0.280000, max_model_len=4096, max_num_seqs=256)。
+- 2026-07-13T03:15:12Z `f9_k100_all36/gsm8k`: GPU 0 free=46939 MiB，采用 normal 配置 (util=0.280000, max_model_len=4096, max_num_seqs=256)。
+- 2026-07-13T03:16:05Z `f9_k100_all36/ceval`: GPU 0 free=46939 MiB，采用 normal 配置 (util=0.280000, max_model_len=4096, max_num_seqs=256)。
+- 2026-07-13T03:16:50Z `f9_k100_all36/cmmlu`: GPU 0 free=46939 MiB，采用 normal 配置 (util=0.280000, max_model_len=4096, max_num_seqs=256)。
+- 2026-07-13T03:17:41Z `f9_k100_all36/humaneval_plus`: GPU 0 free=46939 MiB，采用 normal 配置 (util=0.280000, max_model_len=4096, max_num_seqs=256)。
+- 2026-07-13T03:19:04Z `f9_k100_all36/mbpp_plus`: GPU 0 free=46939 MiB，采用 normal 配置 (util=0.280000, max_model_len=4096, max_num_seqs=256)。
+- 2026-07-13T03:22:51Z `f10_k100_all36/mmlu`: GPU 0 free=46939 MiB，采用 normal 配置 (util=0.280000, max_model_len=4096, max_num_seqs=256)。
+- 2026-07-13T03:23:38Z `f10_k100_all36/gsm8k`: GPU 0 free=46939 MiB，采用 normal 配置 (util=0.280000, max_model_len=4096, max_num_seqs=256)。
+- 2026-07-13T03:24:20Z `f10_k100_all36/ceval`: GPU 0 free=46939 MiB，采用 normal 配置 (util=0.280000, max_model_len=4096, max_num_seqs=256)。
+- 2026-07-13T03:25:02Z `f10_k100_all36/cmmlu`: GPU 0 free=46939 MiB，采用 normal 配置 (util=0.280000, max_model_len=4096, max_num_seqs=256)。
+- 2026-07-13T03:25:39Z `f10_k100_all36/humaneval_plus`: GPU 0 free=46939 MiB，采用 normal 配置 (util=0.280000, max_model_len=4096, max_num_seqs=256)。
+- 2026-07-13T03:26:57Z `f10_k100_all36/mbpp_plus`: GPU 0 free=46939 MiB，采用 normal 配置 (util=0.280000, max_model_len=4096, max_num_seqs=256)。
+- 2026-07-13T03:29:19Z `f3_k30_all36_s301/mmlu`: GPU 0 free=46939 MiB，采用 normal 配置 (util=0.280000, max_model_len=4096, max_num_seqs=256)。
+- 2026-07-13T03:30:06Z `f3_k30_all36_s301/gsm8k`: GPU 0 free=46939 MiB，采用 normal 配置 (util=0.280000, max_model_len=4096, max_num_seqs=256)。
+- 2026-07-13T03:30:56Z `f3_k30_all36_s301/ceval`: GPU 0 free=46939 MiB，采用 normal 配置 (util=0.280000, max_model_len=4096, max_num_seqs=256)。
+- 2026-07-13T03:31:38Z `f3_k30_all36_s301/cmmlu`: GPU 0 free=46939 MiB，采用 normal 配置 (util=0.280000, max_model_len=4096, max_num_seqs=256)。
+- 2026-07-13T03:32:14Z `f3_k30_all36_s301/humaneval_plus`: GPU 0 free=46939 MiB，采用 normal 配置 (util=0.280000, max_model_len=4096, max_num_seqs=256)。
+- 2026-07-13T03:33:33Z `f3_k30_all36_s301/mbpp_plus`: GPU 0 free=46939 MiB，采用 normal 配置 (util=0.280000, max_model_len=4096, max_num_seqs=256)。
+- 2026-07-13T03:36:53Z `part2_identity`: GPU 0 free=46939 MiB，采用 normal 配置 (util=0.280000, max_model_len=4096, max_num_seqs=256)。
+- 2026-07-13T03:38:47Z `part2_scope_single0`: GPU 0 free=46939 MiB，采用 normal 配置 (util=0.280000, max_model_len=4096, max_num_seqs=256)。
+- 2026-07-13T03:40:03Z `part2_scope_single17`: GPU 0 free=46939 MiB，采用 normal 配置 (util=0.280000, max_model_len=4096, max_num_seqs=256)。
+- 2026-07-13T03:41:19Z `part2_scope_single35`: GPU 0 free=46939 MiB，采用 normal 配置 (util=0.280000, max_model_len=4096, max_num_seqs=256)。
+- 2026-07-13T03:42:32Z `part2_scope_prefix6`: GPU 0 free=46939 MiB，采用 normal 配置 (util=0.280000, max_model_len=4096, max_num_seqs=256)。
+- 2026-07-13T03:43:52Z `part2_scope_prefix18`: GPU 0 free=46939 MiB，采用 normal 配置 (util=0.280000, max_model_len=4096, max_num_seqs=256)。
+- 2026-07-13T03:45:07Z `part2_scope_all36`: GPU 0 free=46939 MiB，采用 normal 配置 (util=0.280000, max_model_len=4096, max_num_seqs=256)。
+- 2026-07-13T03:46:26Z `part2_mag_adjswap`: GPU 0 free=46939 MiB，采用 normal 配置 (util=0.280000, max_model_len=4096, max_num_seqs=256)。
+- 2026-07-13T03:47:46Z `part2_mag_reverse`: GPU 0 free=46939 MiB，采用 normal 配置 (util=0.280000, max_model_len=4096, max_num_seqs=256)。
+- 2026-07-13T03:53:12Z `sigma_00_rep0`: GPU 0 free=46939 MiB，采用 normal 配置 (util=0.280000, max_model_len=4096, max_num_seqs=256)。
+- 2026-07-13T03:55:55Z `sigma_00_rep1`: GPU 0 free=46939 MiB，采用 normal 配置 (util=0.280000, max_model_len=4096, max_num_seqs=256)。
+- 2026-07-13T03:58:41Z `sigma_00_rep2`: GPU 0 free=46939 MiB，采用 normal 配置 (util=0.280000, max_model_len=4096, max_num_seqs=256)。
+- 2026-07-13T04:02:41Z `sigma_01_rep0`: GPU 0 free=46939 MiB，采用 normal 配置 (util=0.280000, max_model_len=4096, max_num_seqs=256)。
+- 2026-07-13T04:05:36Z `sigma_01_rep1`: GPU 0 free=46939 MiB，采用 normal 配置 (util=0.280000, max_model_len=4096, max_num_seqs=256)。
+- 2026-07-13T04:08:18Z `sigma_01_rep2`: GPU 0 free=46939 MiB，采用 normal 配置 (util=0.280000, max_model_len=4096, max_num_seqs=256)。
+- 2026-07-13T04:12:16Z `sigma_02_rep0`: GPU 0 free=46939 MiB，采用 normal 配置 (util=0.280000, max_model_len=4096, max_num_seqs=256)。
+- 2026-07-13T04:15:00Z `sigma_02_rep1`: GPU 0 free=46939 MiB，采用 normal 配置 (util=0.280000, max_model_len=4096, max_num_seqs=256)。
+- 2026-07-13T04:17:46Z `sigma_02_rep2`: GPU 0 free=46939 MiB，采用 normal 配置 (util=0.280000, max_model_len=4096, max_num_seqs=256)。
+- 2026-07-13T04:21:44Z `sigma_03_rep0`: GPU 0 free=46939 MiB，采用 normal 配置 (util=0.280000, max_model_len=4096, max_num_seqs=256)。
+- 2026-07-13T04:24:29Z `sigma_03_rep1`: GPU 0 free=46939 MiB，采用 normal 配置 (util=0.280000, max_model_len=4096, max_num_seqs=256)。
+- 2026-07-13T04:27:17Z `sigma_03_rep2`: GPU 0 free=46939 MiB，采用 normal 配置 (util=0.280000, max_model_len=4096, max_num_seqs=256)。
+- 2026-07-13T04:31:15Z `sigma_04_rep0`: GPU 0 free=46939 MiB，采用 normal 配置 (util=0.280000, max_model_len=4096, max_num_seqs=256)。
+- 2026-07-13T04:34:00Z `sigma_04_rep1`: GPU 0 free=46939 MiB，采用 normal 配置 (util=0.280000, max_model_len=4096, max_num_seqs=256)。
+- 2026-07-13T04:36:44Z `sigma_04_rep2`: GPU 0 free=48508 MiB，采用 normal 配置 (util=0.280000, max_model_len=4096, max_num_seqs=256)。
+- 2026-07-13T04:40:46Z `sigma_05_rep0`: GPU 0 free=48508 MiB，采用 normal 配置 (util=0.280000, max_model_len=4096, max_num_seqs=256)。
+- 2026-07-13T04:43:33Z `sigma_05_rep1`: GPU 0 free=48508 MiB，采用 normal 配置 (util=0.280000, max_model_len=4096, max_num_seqs=256)。
+- 2026-07-13T04:46:18Z `sigma_05_rep2`: GPU 0 free=48508 MiB，采用 normal 配置 (util=0.280000, max_model_len=4096, max_num_seqs=256)。
+- 2026-07-13T04:50:17Z `sigma_06_rep0`: GPU 0 free=48508 MiB，采用 normal 配置 (util=0.280000, max_model_len=4096, max_num_seqs=256)。
+- 2026-07-13T04:53:01Z `sigma_06_rep1`: GPU 0 free=48508 MiB，采用 normal 配置 (util=0.280000, max_model_len=4096, max_num_seqs=256)。
+- 2026-07-13T04:55:43Z `sigma_06_rep2`: GPU 0 free=22917 MiB，采用 normal 配置 (util=0.280000, max_model_len=4096, max_num_seqs=256)。
+- 2026-07-13T04:59:41Z `sigma_07_rep0`: GPU 0 free=22877 MiB，采用 normal 配置 (util=0.280000, max_model_len=4096, max_num_seqs=256)。
+- 2026-07-13T05:02:27Z `sigma_07_rep1`: GPU 0 free=22877 MiB，采用 normal 配置 (util=0.280000, max_model_len=4096, max_num_seqs=256)。
+- 2026-07-13T05:05:11Z `sigma_07_rep2`: GPU 0 free=22877 MiB，采用 normal 配置 (util=0.280000, max_model_len=4096, max_num_seqs=256)。
+- 2026-07-13T05:09:08Z `sigma_08_rep0`: GPU 0 free=22877 MiB，采用 normal 配置 (util=0.280000, max_model_len=4096, max_num_seqs=256)。
+- 2026-07-13T05:11:56Z `sigma_08_rep1`: GPU 0 free=22875 MiB，采用 normal 配置 (util=0.280000, max_model_len=4096, max_num_seqs=256)。
+- 2026-07-13T05:14:41Z `sigma_08_rep2`: GPU 0 free=22875 MiB，采用 normal 配置 (util=0.280000, max_model_len=4096, max_num_seqs=256)。
+- 2026-07-13T05:18:36Z `sigma_09_rep0`: GPU 0 free=22875 MiB，采用 normal 配置 (util=0.280000, max_model_len=4096, max_num_seqs=256)。
+- 2026-07-13T05:21:20Z `sigma_09_rep1`: GPU 0 free=22873 MiB，采用 normal 配置 (util=0.280000, max_model_len=4096, max_num_seqs=256)。
+- 2026-07-13T05:24:05Z `sigma_09_rep2`: GPU 0 free=22873 MiB，采用 normal 配置 (util=0.280000, max_model_len=4096, max_num_seqs=256)。
+- 2026-07-13T10:18:47Z `supp_s1_all_sigma0_rep0`: GPU 0 free=48508 MiB，采用 normal 配置 (util=0.280000, max_model_len=4096, max_num_seqs=256)。
+- 2026-07-13T10:22:06Z `supp_s1_all_sigma0_rep1`: GPU 0 free=48508 MiB，采用 normal 配置 (util=0.280000, max_model_len=4096, max_num_seqs=256)。
+- 2026-07-13T10:25:32Z `supp_s1_all_sigma0_rep2`: GPU 0 free=48508 MiB，采用 normal 配置 (util=0.280000, max_model_len=4096, max_num_seqs=256)。
+- 2026-07-13T10:28:51Z `supp_s1_all_sigma1_rep0`: GPU 0 free=48508 MiB，采用 normal 配置 (util=0.280000, max_model_len=4096, max_num_seqs=256)。
+- 2026-07-13T10:32:13Z `supp_s1_all_sigma1_rep1`: GPU 0 free=48508 MiB，采用 normal 配置 (util=0.280000, max_model_len=4096, max_num_seqs=256)。
+- 2026-07-13T10:35:33Z `supp_s1_all_sigma1_rep2`: GPU 0 free=48508 MiB，采用 normal 配置 (util=0.280000, max_model_len=4096, max_num_seqs=256)。
+- 2026-07-13T10:38:51Z `supp_s1_all_sigma2_rep0`: GPU 0 free=48508 MiB，采用 normal 配置 (util=0.280000, max_model_len=4096, max_num_seqs=256)。
+- 2026-07-13T10:42:12Z `supp_s1_all_sigma2_rep1`: GPU 0 free=39089 MiB，采用 normal 配置 (util=0.280000, max_model_len=4096, max_num_seqs=256)。
+- 2026-07-13T10:45:33Z `supp_s1_all_sigma2_rep2`: GPU 0 free=907 MiB <10 GiB; 按 §1 退避 600 秒。
+- 2026-07-13T10:55:33Z `supp_s1_all_sigma2_rep2`: GPU 0 free=905 MiB <10 GiB; 按 §1 退避 600 秒。
+- 2026-07-13T11:05:33Z `supp_s1_all_sigma2_rep2`: GPU 0 free=905 MiB <10 GiB; 按 §1 退避 600 秒。
+- 2026-07-13T11:15:33Z `supp_s1_all_sigma2_rep2`: GPU 0 free=905 MiB <10 GiB; 按 §1 退避 600 秒。
+- 2026-07-13T11:25:33Z `supp_s1_all_sigma2_rep2`: GPU 0 free=905 MiB <10 GiB; 按 §1 退避 600 秒。
+- 2026-07-13T11:35:33Z `supp_s1_all_sigma2_rep2`: GPU 0 free=905 MiB <10 GiB; 按 §1 退避 600 秒。
+- 2026-07-13T11:45:33Z `supp_s1_all_sigma2_rep2`: GPU 0 free=905 MiB <10 GiB; 按 §1 退避 600 秒。
+- 2026-07-13T11:55:33Z `supp_s1_all_sigma2_rep2`: GPU 0 free=905 MiB <10 GiB; 按 §1 退避 600 秒。
+- 2026-07-13T12:05:33Z `supp_s1_all_sigma2_rep2`: GPU 0 free=905 MiB <10 GiB; 按 §1 退避 600 秒。
+- 2026-07-13T12:15:33Z `supp_s1_all_sigma2_rep2`: GPU 0 free=905 MiB <10 GiB; 按 §1 退避 600 秒。
+- 2026-07-13T12:25:33Z `supp_s1_all_sigma2_rep2`: GPU 0 free=48508 MiB，采用 normal 配置 (util=0.280000, max_model_len=4096, max_num_seqs=256)。
+- 2026-07-13T12:28:06Z `supp_s2_ffn_sigma0_rep0`: GPU 0 free=21879 MiB，采用 normal 配置 (util=0.280000, max_model_len=4096, max_num_seqs=256)。
+- 2026-07-13T12:30:39Z `supp_s2_ffn_sigma0_rep1`: GPU 0 free=21879 MiB，采用 normal 配置 (util=0.280000, max_model_len=4096, max_num_seqs=256)。
+- 2026-07-13T12:33:22Z `supp_s2_ffn_sigma0_rep2`: GPU 0 free=21879 MiB，采用 normal 配置 (util=0.280000, max_model_len=4096, max_num_seqs=256)。
+- 2026-07-13T12:35:54Z `supp_s2_ffn_sigma1_rep0`: GPU 0 free=21879 MiB，采用 normal 配置 (util=0.280000, max_model_len=4096, max_num_seqs=256)。
+- 2026-07-13T12:38:26Z `supp_s2_ffn_sigma1_rep1`: GPU 0 free=21879 MiB，采用 normal 配置 (util=0.280000, max_model_len=4096, max_num_seqs=256)。
+- 2026-07-13T12:41:00Z `supp_s2_ffn_sigma1_rep2`: GPU 0 free=21879 MiB，采用 normal 配置 (util=0.280000, max_model_len=4096, max_num_seqs=256)。
+- 2026-07-13T12:43:36Z `supp_s2_ffn_sigma2_rep0`: GPU 0 free=21879 MiB，采用 normal 配置 (util=0.280000, max_model_len=4096, max_num_seqs=256)。
+- 2026-07-13T12:46:07Z `supp_s2_ffn_sigma2_rep1`: GPU 0 free=21879 MiB，采用 normal 配置 (util=0.280000, max_model_len=4096, max_num_seqs=256)。
+- 2026-07-13T12:48:39Z `supp_s2_ffn_sigma2_rep2`: GPU 0 free=21879 MiB，采用 normal 配置 (util=0.280000, max_model_len=4096, max_num_seqs=256)。
+- 2026-07-13T12:52:01Z `supp_s3_all_sigma0_rep0/gsm8k`: GPU 0 free=21879 MiB，采用 normal 配置 (util=0.280000, max_model_len=4096, max_num_seqs=256)。
+- 2026-07-13T12:56:08Z `supp_s3_all_sigma0_rep1/gsm8k`: GPU 0 free=21877 MiB，采用 normal 配置 (util=0.280000, max_model_len=4096, max_num_seqs=256)。
+- 2026-07-13T13:00:12Z `supp_s3_all_sigma0_rep2/gsm8k`: GPU 0 free=21877 MiB，采用 normal 配置 (util=0.280000, max_model_len=4096, max_num_seqs=256)。
+- 2026-07-13T13:04:23Z `supp_s3_all_sigma0_rep3/gsm8k`: GPU 0 free=21881 MiB，采用 normal 配置 (util=0.280000, max_model_len=4096, max_num_seqs=256)。
+- 2026-07-13T13:08:27Z `supp_s3_all_sigma0_rep4/gsm8k`: GPU 0 free=21877 MiB，采用 normal 配置 (util=0.280000, max_model_len=4096, max_num_seqs=256)。
+- 2026-07-13T13:12:25Z `supp_s3_all_sigma1_rep0/gsm8k`: GPU 0 free=21877 MiB，采用 normal 配置 (util=0.280000, max_model_len=4096, max_num_seqs=256)。
+- 2026-07-13T13:16:39Z `supp_s3_all_sigma1_rep1/gsm8k`: GPU 0 free=48508 MiB，采用 normal 配置 (util=0.280000, max_model_len=4096, max_num_seqs=256)。
+- 2026-07-13T13:20:18Z `supp_s3_all_sigma1_rep2/gsm8k`: GPU 0 free=905 MiB <10 GiB; 按 §1 退避 600 秒。
+- 2026-07-13T13:30:18Z `supp_s3_all_sigma1_rep2/gsm8k`: GPU 0 free=48508 MiB，采用 normal 配置 (util=0.280000, max_model_len=4096, max_num_seqs=256)。
+- 2026-07-13T13:33:57Z `supp_s3_all_sigma1_rep3/gsm8k`: GPU 0 free=48508 MiB，采用 normal 配置 (util=0.280000, max_model_len=4096, max_num_seqs=256)。
+- 2026-07-13T13:37:38Z `supp_s3_all_sigma1_rep4/gsm8k`: GPU 0 free=48508 MiB，采用 normal 配置 (util=0.280000, max_model_len=4096, max_num_seqs=256)。

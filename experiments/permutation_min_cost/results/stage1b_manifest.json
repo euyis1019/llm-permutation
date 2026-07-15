@@ -1,0 +1,51 @@
+{
+  "complete": true,
+  "expected_records": 1248,
+  "actual_records": 1248,
+  "instances": 52,
+  "layers": [
+    0,
+    17,
+    35
+  ],
+  "prompt_ids": [
+    24,
+    0
+  ],
+  "backends": [
+    "torch_bf16",
+    "vllm_bi"
+  ],
+  "shapes": [
+    "full",
+    "decode1"
+  ],
+  "capture": {
+    "prompt_ids": [
+      24,
+      0
+    ],
+    "prompt_rule": "id=24 and minimum id != 24",
+    "full_token_counts_after_cap124": {
+      "24": 124,
+      "0": 25
+    },
+    "model_config": {
+      "hidden_size": 2560,
+      "intermediate_size": 9728,
+      "num_hidden_layers": 36
+    }
+  },
+  "environment": {
+    "torch": "2.11.0+cu130",
+    "transformers": "5.13.0",
+    "cuda": "13.0",
+    "device_name": "NVIDIA GeForce RTX 4090",
+    "allow_tf32_matmul": false,
+    "allow_tf32_cudnn": true,
+    "float32_matmul_precision": "highest",
+    "cudnn_deterministic": false,
+    "visible_devices": "0"
+  },
+  "elapsed_seconds": 33.1
+}

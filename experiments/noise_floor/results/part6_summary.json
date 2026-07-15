@@ -1,0 +1,96 @@
+{
+  "f7_reference_median_rel_l2": 0.009879054923433795,
+  "f10_reference_median_rel_l2": 0.009489267376256938,
+  "curve": [
+    {
+      "sigma_index": 0,
+      "sigma": 1e-06,
+      "median_rel_l2": 0.00994350120440711,
+      "f7_ratio": 1.0065235269439028,
+      "n_bitwise_equal": 0,
+      "n_measurements": 96
+    },
+    {
+      "sigma_index": 1,
+      "sigma": 3e-06,
+      "median_rel_l2": 0.010382992650041212,
+      "f7_ratio": 1.0510107222313385,
+      "n_bitwise_equal": 0,
+      "n_measurements": 96
+    },
+    {
+      "sigma_index": 2,
+      "sigma": 1e-05,
+      "median_rel_l2": 0.009915254080831416,
+      "f7_ratio": 1.003664232831802,
+      "n_bitwise_equal": 0,
+      "n_measurements": 96
+    },
+    {
+      "sigma_index": 3,
+      "sigma": 3e-05,
+      "median_rel_l2": 0.01193927693323373,
+      "f7_ratio": 1.2085444433467971,
+      "n_bitwise_equal": 0,
+      "n_measurements": 96
+    },
+    {
+      "sigma_index": 4,
+      "sigma": 0.0001,
+      "median_rel_l2": 0.015613616030539765,
+      "f7_ratio": 1.5804766904881964,
+      "n_bitwise_equal": 0,
+      "n_measurements": 96
+    },
+    {
+      "sigma_index": 5,
+      "sigma": 0.0005,
+      "median_rel_l2": 0.05730806972820138,
+      "f7_ratio": 5.800966810323396,
+      "n_bitwise_equal": 0,
+      "n_measurements": 96
+    },
+    {
+      "sigma_index": 6,
+      "sigma": 0.001,
+      "median_rel_l2": 0.10070696647064417,
+      "f7_ratio": 10.19398791191659,
+      "n_bitwise_equal": 0,
+      "n_measurements": 96
+    },
+    {
+      "sigma_index": 7,
+      "sigma": 0.002,
+      "median_rel_l2": 0.19650375670460574,
+      "f7_ratio": 19.890946879795695,
+      "n_bitwise_equal": 0,
+      "n_measurements": 96
+    },
+    {
+      "sigma_index": 8,
+      "sigma": 0.005,
+      "median_rel_l2": 0.5441072353486904,
+      "f7_ratio": 55.07685093014624,
+      "n_bitwise_equal": 0,
+      "n_measurements": 96
+    },
+    {
+      "sigma_index": 9,
+      "sigma": 0.01,
+      "median_rel_l2": 1.0824052516964966,
+      "f7_ratio": 109.56566797993574,
+      "n_bitwise_equal": 0,
+      "n_measurements": 96
+    }
+  ],
+  "sigma_star": 1e-06,
+  "sigma_star_method": "at_or_below_lowest_grid",
+  "plateau_pairs": [],
+  "P6-1": false,
+  "P6-2": false,
+  "part6c": {
+    "eligible": false,
+    "status": "skipped",
+    "reason": "sigma_star outside [1e-4,1e-2]"
+  }
+}

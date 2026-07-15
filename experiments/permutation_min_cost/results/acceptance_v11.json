@@ -1,0 +1,334 @@
+{
+  "amendment": "v1.1",
+  "stage": "1b",
+  "stage1b_complete": true,
+  "raw_records": 1248,
+  "unique_measurement_keys": 1248,
+  "classification": {
+    "ceiling_estimate_rule": "median rel_l2 of predicted-ceil arm within backend",
+    "ceiling_estimate": {
+      "torch_bf16": 4.10052854199056e-05,
+      "vllm_bi": 5.739558923967774e-05
+    },
+    "sub_threshold": {
+      "torch_bf16": 0.0003,
+      "vllm_bi": 1.913186307989258e-05
+    },
+    "confusion_predicted_by_measured": {
+      "zero": {
+        "zero": 431,
+        "sub": 73,
+        "ceil": 0
+      },
+      "sub": {
+        "zero": 17,
+        "sub": 70,
+        "ceil": 33
+      },
+      "ceil": {
+        "zero": 64,
+        "sub": 187,
+        "ceil": 373
+      }
+    }
+  },
+  "S1b-1": {
+    "name": "free tier hard criterion",
+    "hard": true,
+    "threshold": "100% bitwise_equal",
+    "n": 504,
+    "bitwise_equal": 431,
+    "failures": 73,
+    "rate": 0.8551587301587301,
+    "pass": false,
+    "breakdown": [
+      {
+        "family": "F11_window_offset",
+        "backend": "torch_bf16",
+        "shape": "decode1",
+        "n": 30,
+        "bitwise_equal": 10,
+        "failures": 20,
+        "max_rel_l2": 5.984526440667013e-05,
+        "max_n_diff": 3
+      },
+      {
+        "family": "F11_window_offset",
+        "backend": "torch_bf16",
+        "shape": "full",
+        "n": 30,
+        "bitwise_equal": 30,
+        "failures": 0,
+        "max_rel_l2": 0.0,
+        "max_n_diff": 0
+      },
+      {
+        "family": "F11_window_offset",
+        "backend": "vllm_bi",
+        "shape": "decode1",
+        "n": 30,
+        "bitwise_equal": 30,
+        "failures": 0,
+        "max_rel_l2": 0.0,
+        "max_n_diff": 0
+      },
+      {
+        "family": "F11_window_offset",
+        "backend": "vllm_bi",
+        "shape": "full",
+        "n": 30,
+        "bitwise_equal": 30,
+        "failures": 0,
+        "max_rel_l2": 0.0,
+        "max_n_diff": 0
+      },
+      {
+        "family": "F8_identity",
+        "backend": "torch_bf16",
+        "shape": "decode1",
+        "n": 6,
+        "bitwise_equal": 6,
+        "failures": 0,
+        "max_rel_l2": 0.0,
+        "max_n_diff": 0
+      },
+      {
+        "family": "F8_identity",
+        "backend": "torch_bf16",
+        "shape": "full",
+        "n": 6,
+        "bitwise_equal": 6,
+        "failures": 0,
+        "max_rel_l2": 0.0,
+        "max_n_diff": 0
+      },
+      {
+        "family": "F8_identity",
+        "backend": "vllm_bi",
+        "shape": "decode1",
+        "n": 6,
+        "bitwise_equal": 6,
+        "failures": 0,
+        "max_rel_l2": 0.0,
+        "max_n_diff": 0
+      },
+      {
+        "family": "F8_identity",
+        "backend": "vllm_bi",
+        "shape": "full",
+        "n": 6,
+        "bitwise_equal": 6,
+        "failures": 0,
+        "max_rel_l2": 0.0,
+        "max_n_diff": 0
+      },
+      {
+        "family": "F9_inblock_shuffle",
+        "backend": "torch_bf16",
+        "shape": "decode1",
+        "n": 90,
+        "bitwise_equal": 37,
+        "failures": 53,
+        "max_rel_l2": 5.984526440667013e-05,
+        "max_n_diff": 3
+      },
+      {
+        "family": "F9_inblock_shuffle",
+        "backend": "torch_bf16",
+        "shape": "full",
+        "n": 90,
+        "bitwise_equal": 90,
+        "failures": 0,
+        "max_rel_l2": 0.0,
+        "max_n_diff": 0
+      },
+      {
+        "family": "F9_inblock_shuffle",
+        "backend": "vllm_bi",
+        "shape": "decode1",
+        "n": 90,
+        "bitwise_equal": 90,
+        "failures": 0,
+        "max_rel_l2": 0.0,
+        "max_n_diff": 0
+      },
+      {
+        "family": "F9_inblock_shuffle",
+        "backend": "vllm_bi",
+        "shape": "full",
+        "n": 90,
+        "bitwise_equal": 90,
+        "failures": 0,
+        "max_rel_l2": 0.0,
+        "max_n_diff": 0
+      }
+    ],
+    "failure_records": "results/stage1b_free_failures.jsonl"
+  },
+  "S1b-2": {
+    "name": "predicted saturation",
+    "threshold": ">=95% non-bitwise and measured ceil",
+    "n": 624,
+    "success": 373,
+    "rate": 0.5977564102564102,
+    "non_bitwise_rate": 0.8974358974358975,
+    "pass": false
+  },
+  "S1b-3": {
+    "name": "ceiling universality",
+    "threshold": "p95/p5 <= 3 in every backend x shape x layer",
+    "groups": [
+      {
+        "backend": "torch_bf16",
+        "shape": "full",
+        "layer": 0,
+        "n": 42,
+        "p5": 0.002745382905831492,
+        "p95": 0.003043074211476376,
+        "p95_over_p5": 1.1084334374678866,
+        "pass": true
+      },
+      {
+        "backend": "torch_bf16",
+        "shape": "full",
+        "layer": 17,
+        "n": 42,
+        "p5": 0.003104573106287397,
+        "p95": 0.00323555107789032,
+        "p95_over_p5": 1.042188721965563,
+        "pass": true
+      },
+      {
+        "backend": "torch_bf16",
+        "shape": "full",
+        "layer": 35,
+        "n": 42,
+        "p5": 0.0013405075741094847,
+        "p95": 0.0029244732069242728,
+        "p95_over_p5": 2.1816163245978193,
+        "pass": true
+      },
+      {
+        "backend": "torch_bf16",
+        "shape": "decode1",
+        "layer": 0,
+        "n": 0,
+        "p5": null,
+        "p95": null,
+        "p95_over_p5": null,
+        "pass": false,
+        "reason": "no measured-ceil records"
+      },
+      {
+        "backend": "torch_bf16",
+        "shape": "decode1",
+        "layer": 17,
+        "n": 0,
+        "p5": null,
+        "p95": null,
+        "p95_over_p5": null,
+        "pass": false,
+        "reason": "no measured-ceil records"
+      },
+      {
+        "backend": "torch_bf16",
+        "shape": "decode1",
+        "layer": 35,
+        "n": 0,
+        "p5": null,
+        "p95": null,
+        "p95_over_p5": null,
+        "pass": false,
+        "reason": "no measured-ceil records"
+      },
+      {
+        "backend": "vllm_bi",
+        "shape": "full",
+        "layer": 0,
+        "n": 59,
+        "p5": 2.830445979233349e-05,
+        "p95": 0.00018169549344551972,
+        "p95_over_p5": 6.419323837253857,
+        "pass": false
+      },
+      {
+        "backend": "vllm_bi",
+        "shape": "full",
+        "layer": 17,
+        "n": 62,
+        "p5": 3.5328103050603605e-05,
+        "p95": 0.0001942049292026552,
+        "p95_over_p5": 5.49717965112585,
+        "pass": false
+      },
+      {
+        "backend": "vllm_bi",
+        "shape": "full",
+        "layer": 35,
+        "n": 61,
+        "p5": 2.2254951222166844e-05,
+        "p95": 0.0001682159718515571,
+        "p95_over_p5": 7.558586409482088,
+        "pass": false
+      },
+      {
+        "backend": "vllm_bi",
+        "shape": "decode1",
+        "layer": 0,
+        "n": 40,
+        "p5": 3.708557897634649e-05,
+        "p95": 0.00018264939507186612,
+        "p95_over_p5": 4.925078699414711,
+        "pass": false
+      },
+      {
+        "backend": "vllm_bi",
+        "shape": "decode1",
+        "layer": 17,
+        "n": 34,
+        "p5": 3.7257714416937175e-05,
+        "p95": 0.00021285035750133124,
+        "p95_over_p5": 5.712920420168622,
+        "pass": false
+      },
+      {
+        "backend": "vllm_bi",
+        "shape": "decode1",
+        "layer": 35,
+        "n": 24,
+        "p5": 2.863251465147536e-05,
+        "p95": 0.00011889889862087499,
+        "p95_over_p5": 4.152583175741025,
+        "pass": false
+      }
+    ],
+    "pass": false
+  },
+  "S1b-4": {
+    "name": "three-tier classification accuracy",
+    "threshold": ">=85%",
+    "correct": 874,
+    "n": 1248,
+    "accuracy": 0.7003205128205128,
+    "pass": false
+  },
+  "S1b-5": {
+    "name": "kernel ceiling difference (record only)",
+    "measured_ceiling_median": {
+      "torch_bf16": 0.0029434524105608,
+      "vllm_bi": 7.013274984571358e-05
+    },
+    "torch_over_vllm_ratio": 41.96972765271801,
+    "pass": null
+  },
+  "hard_stop_triggered": true,
+  "next_stage_authorized": false,
+  "stage2b": "not run due S1b-1 hard failure",
+  "stage3b": "not run due S1b-1 hard failure",
+  "artifacts": {
+    "raw": "results/stage1b_singlelayer.jsonl",
+    "classified": "results/stage1b_classified.jsonl",
+    "free_failures": "results/stage1b_free_failures.jsonl",
+    "manifest": "results/stage1b_manifest.json"
+  }
+}
