@@ -51,7 +51,9 @@ cells = [
   <div style="padding:18px;border:1px solid #d7e3ea;border-radius:16px;background:#f7fbfc;"><b style="color:#1f6f78;">01 · 等价性成立</b><br><span style="color:#526777;line-height:1.65;">同一置换必须同时作用于 gate、up 的行与 down 的列。正确联动与错误做法之间有两个数量级以上的清晰分离。</span></div>
   <div style="padding:18px;border:1px solid #d7e3ea;border-radius:16px;background:#f7fbfc;"><b style="color:#1f6f78;">02 · 漂移来自归约</b><br><span style="color:#526777;line-height:1.65;">中间激活恢复原顺序后可与基线逐比特一致；首次差异锁定在 down projection 的并行求和路径。</span></div>
   <div style="padding:18px;border:1px solid #d7e3ea;border-radius:16px;background:#f7fbfc;"><b style="color:#1f6f78;">03 · 存在免费子空间</b><br><span style="color:#526777;line-height:1.65;">在当前部署栈中，只在对齐的八通道块内重排，可从单层保持到完整模型 logits 逐比特一致，并在六项 benchmark 上保持逐题 correctness 不变。</span></div>
-  <div style="padding:18px;border:1px solid #d7e3ea;border-radius:16px;background:#f7fbfc;"><b style="color:#1f6f78;">04 · 行为影响小但真实</b><br><span style="color:#526777;line-height:1.65;">跨块置换会改变少量低 margin 决策，影响主要出现在长生成任务；方向依赖模型与当前评测环境。</span></div>
+  <div style="padding:18px;border:1px solid #d7e3ea;border-radius:16px;background:#f7fbfc;"><b style="color:#1f6f78;">04 · 几何距离不是旋钮</b><br><span style="color:#526777;line-height:1.65;">极小的跨块交换也可与全局随机置换落在同一漂移尺度；是否改变归约分组比通道移动多远更关键。</span></div>
+  <div style="padding:18px;border:1px solid #d7e3ea;border-radius:16px;background:#f7fbfc;"><b style="color:#1f6f78;">05 · 参数扰动可落入同尺度</b><br><span style="color:#526777;line-height:1.65;">RandOpt 式方法会直接扰动权重并筛选候选。本仓库的响应标定显示，极小权重扰动有时可与 permutation 产生相近的 logits 漂移，但两者机制不同。</span></div>
+  <div style="padding:18px;border:1px solid #d7e3ea;border-radius:16px;background:#f7fbfc;"><b style="color:#1f6f78;">06 · 模型训练阶段改变方向</b><br><span style="color:#526777;line-height:1.65;">二十个种子中，Base benchmark 偏移全为正，post-trained Instruct 全为负；种子离散程度接近，重复基线稳定性则不同。</span></div>
 </div>
 
 最重要的工程结论是：**如果目标是无损通道重排，应先在目标硬件与推理 kernel 上寻找并验证对齐块；如果允许跨块，则必须把它当作数值扰动，而不是纯粹的权重重命名。**
@@ -266,6 +268,8 @@ display(anchor.style.hide(axis="index"))
 - **块内免费**：通道始终留在原来的对齐八通道块内；
 - **狭窄过渡**：只在小窗口内跨过一部分边界；
 - **跨块非零**：一旦实质改变归约分组，很快进入 backend 相关误差带。
+
+最直观的反例是奇数起点的相邻交换：每个被换通道只移动一个位置，但其中零起始编号的第 7、8 号通道等配对刚好跨过八通道边界。这套置换在完整模型上的 logits 相对漂移中位数为 0.009489，与全局随机置换的 0.009879 处于同一数量级；相反，保持在对齐块内的相邻交换可以逐比特为零。
 
 下图使用第二轮全新随机种子的 PyTorch BF16 矩阵乘结果。零值为了能出现在对数坐标上，仅在绘图时放到最下方；它们在原始记录中仍严格为零。
 """
@@ -494,8 +498,8 @@ display(pd.DataFrame(absolute_rows).style.hide(axis="index").format({
 **边界与解释**
 
 - 多选任务的逐题行为基本稳定，变化主要集中在需要长程自回归生成的任务。
-- Base 的同权重重复运行噪声地板为零，因此其偏移确实来自布局改变后的执行路径。Instruct 的 GSM8K 存在运行波动，但无运行噪声的 HumanEval+ 仍表现出布局效应。
-- Instruct 与 Base 的方向相反，说明不能把随机置换解释成天然增益或天然退化。
+- 二十个置换种子中，Base 的 suite 偏移全部为正，post-trained Instruct 全部为负；这是稳定的方向分离，说明不能把随机置换解释成天然增益或天然退化。
+- 两组种子偏移的标准差分别约为 0.21 和 0.19 个百分点，数值接近，不能表述为显著的种子方差差异。更清楚的稳定性差异来自同权重重复运行：Base 六项 correctness 全部稳定，Instruct 的 GSM8K 存在运行波动，但无运行噪声的 HumanEval+ 仍表现出布局效应。
 - 在半份数据上挑出的最好置换，其优势换到另一半数据后基本消失。当前证据不支持通过挑 seed 获得可迁移能力提升。
 """
     ),
@@ -503,7 +507,7 @@ display(pd.DataFrame(absolute_rows).style.hide(axis="index").format({
         r"""
 ## 锚点四：与高斯权重扰动放在同一刻度
 
-最后一轮用十档全模型 BF16 高斯权重扰动标定 logits 响应，并与全层随机置换参考线比较。实验前预测小扰动端会先出现逐比特零区，再进入平台；实际结果推翻了这个预测。
+RandOpt 一类方法直接对权重加参数扰动，再依据目标分数筛选候选，思路上接近零阶优化。这里没有运行完整的 RandOpt 搜索，而是用十档全模型 BF16 高斯权重扰动标定 logits 响应，并与全层随机置换参考线比较。实验前预测小扰动端会先出现逐比特零区，再进入平台；实际结果推翻了这个预测。
 """
     ),
     code(
@@ -543,7 +547,9 @@ display(pd.DataFrame(criteria_rows).style.hide(axis="index"))
     ),
     md(
         r"""
-最低预注册档已经与随机置换参考线处在同一尺度，补充实验继续降低扰动后仍未观察到逐比特零区。需要谨慎区分两件事：置换不改变精确函数，而高斯扰动真实改变权重；两者的 logits 漂移接近，**不等于**已经证明所有方法都存在统一的测量下限。
+最低预注册档已经与随机置换参考线处在同一尺度，补充实验继续降低扰动后仍未观察到逐比特零区。需要谨慎区分两件事：置换不改变精确函数，而高斯扰动真实改变权重；两者的 logits 漂移接近，**不等于**已经证明所有方法都存在统一的测量下限，也不等于已经找到了更好的权重。
+
+本实验没有保存中间 activation，因此证据只支持“参数改动经过模型传播后，在最终 logits 上形成了同尺度响应”，不能据此定位某一层 activation 的具体传播路径。
 
 行为层补充分析发现，小扰动与置换在 top-1 翻转、分布距离和候选重叠等描述性指标上处于相近范围；这不是统计等价性检验。明显分离要到更大的扰动档。翻转仍集中在低 margin prompt，这与最早的全模型实验形成闭环。
 """

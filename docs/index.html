@@ -284,8 +284,8 @@
           <div class="section-no">06</div>
           <div>
             <div class="section-kicker">Mechanism &amp; ablation</div>
-            <h2>为什么会动：归约布局 × 传播深度</h2>
-            <p class="section-intro">gate、up、SiLU 与逐元素乘在坐标对齐后逐 bit 相同。差异第一次出现在 native <span class="mono">down_proj</span>，随后由网络深度与生成长度决定是否变成行为差异。</p>
+            <h2>为什么会动：归约分组与传播深度，而不是几何距离</h2>
+            <p class="section-intro">gate、up、SiLU 与逐元素乘在坐标对齐后逐 bit 相同。差异第一次出现在 native <span class="mono">down_proj</span>；是否跨过归约分组边界，比通道移动了多远更能解释漂移是否出现。</p>
           </div>
         </div>
 
@@ -339,7 +339,7 @@
 
         <div class="callout">
           <strong class="callout-title">机制性的统一描述</strong>
-          <p>置换先改变 down GEMM 的物理归约布局，产生一次 BF16 低位扰动；扰动越早进入网络、要经历的后续层与生成步越多，就越可能在原本低 margin 的决策点改变轨迹。</p>
+          <p>置换先改变 down GEMM 的物理归约布局，产生一次 BF16 低位扰动；扰动越早进入网络、要经历的后续层与生成步越多，就越可能在原本低 margin 的决策点改变轨迹。一个关键反例是奇数起点的相邻交换：每个被换通道只移动一个位置，但其中零起始编号的第 7、8 号通道等配对刚好跨过八通道边界，完整模型 logits 漂移就可与全局随机置换处在同一数量级。这里不存在“几何距离越小、漂移必然越小”的连续旋钮。</p>
         </div>
       </section>
 
@@ -373,9 +373,29 @@
 
         <div class="spacer-lg"></div>
 
+        <div class="grid three">
+          <article class="card">
+            <div class="card-label">Geometry</div>
+            <h3>几何距离不是漂移旋钮</h3>
+            <p>极小的跨块交换可与全局随机置换落在同一漂移尺度；对齐块边界比矩阵上的移动距离更关键。</p>
+          </article>
+          <article class="card">
+            <div class="card-label">RandOpt context</div>
+            <h3>直接参数扰动可落入同一尺度</h3>
+            <p>RandOpt 式方法直接扰动权重并筛选候选。本仓库只做响应标定：极小权重扰动与 permutation 可产生相近的 logits 漂移，但机制不同，也未执行候选优化。</p>
+          </article>
+          <article class="card">
+            <div class="card-label">Model contrast</div>
+            <h3>Base 与 post-trained 方向相反</h3>
+            <p>二十个种子中，Base 全为正、Instruct 全为负；两组种子离散程度接近，真正清楚的稳定性差异来自重复基线噪声结构。</p>
+          </article>
+        </div>
+
+        <div class="spacer-lg"></div>
+
         <div class="callout success">
           <strong class="callout-title">一句话结论</strong>
-          <p><strong>FFN 联动 permutation 在数学上是“同一函数的另一套内部编号”；在当前 BF16 GPU 执行中，它相当于改变一次 down-GEMM 的低位量化路径，绝大多数行为保持不变，但长生成 benchmark 会留下约半到数个百分点的小而真实的痕迹。</strong></p>
+          <p><strong>FFN 联动 permutation 在数学上是“同一函数的另一套内部编号”；在当前 BF16 GPU 执行中，块内重排可以逐 bit 无损，跨块重排则会改变 down-GEMM 的低位量化路径，并在长生成 benchmark 留下小而真实、且随模型训练阶段改变方向的痕迹。</strong></p>
         </div>
       </section>
 
