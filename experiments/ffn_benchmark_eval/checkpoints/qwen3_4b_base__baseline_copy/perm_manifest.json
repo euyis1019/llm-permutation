@@ -1,0 +1,25 @@
+{
+  "tag": "qwen3_4b_base__baseline_copy",
+  "source": "/nvme0/if/models/Qwen3-4B-Base",
+  "out_dir": "/nvme0/if/permutation/experiments/ffn_benchmark_eval/checkpoints/qwen3_4b_base__baseline_copy",
+  "scope": "none",
+  "kind": "random",
+  "base_seed": 0,
+  "n_layers": 36,
+  "intermediate_size": 9728,
+  "permuted_layers": [],
+  "layer_perms": {},
+  "sentinel_sha256": {
+    "model.embed_tokens.weight": "32f43ae11e99276f9d7fb7b19410000320bbd8242099a371339b0839049a0a20",
+    "model.layers.0.self_attn.q_proj.weight": "6cade768a47249bca4d76595fdd54142e883956458bddf18790d824d39f65130",
+    "model.layers.35.self_attn.o_proj.weight": "e695d5686b636039e4a2edc0c7dab2cf9429c4d02132be139754155fadfaa5be",
+    "model.norm.weight": "0d48fe848019ac36f889d8bcdb945910bda1dce5c58eb6bf97d9167b01f9b9f7"
+  },
+  "verified": {
+    "non_ffn_unchanged": true,
+    "untouched_ffn_unchanged": true,
+    "rowcol_relation_layers": []
+  },
+  "gen_seconds": 31.6,
+  "generator": "make_checkpoint.py v1"
+}

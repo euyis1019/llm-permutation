@@ -1,0 +1,398 @@
+{
+  "qwen3_4b": {
+    "tags": [
+      "qwen3_4b__baseline_copy",
+      "qwen3_4b__baseline_original_run1",
+      "qwen3_4b__baseline_original_run2",
+      "qwen3_4b__baseline_rep02",
+      "qwen3_4b__baseline_rep03",
+      "qwen3_4b__baseline_rep04",
+      "qwen3_4b__baseline_rep05",
+      "qwen3_4b__baseline_rep06",
+      "qwen3_4b__baseline_rep07",
+      "qwen3_4b__baseline_rep08",
+      "qwen3_4b__baseline_rep09"
+    ],
+    "n_tags": 11,
+    "per_bench": {
+      "mmlu": {
+        "n_pairs": 55,
+        "delta_pp": {
+          "n": 55,
+          "mean": 0.0,
+          "std": 0.0,
+          "median": 0.0,
+          "q05": 0.0,
+          "q25": 0.0,
+          "q75": 0.0,
+          "q95": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "iqr": 0.0
+        },
+        "abs_delta_max_pp": 0.0,
+        "behavior_disagreement": {
+          "n": 55,
+          "mean": 0.0,
+          "std": 0.0,
+          "median": 0.0,
+          "q05": 0.0,
+          "q25": 0.0,
+          "q75": 0.0,
+          "q95": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "iqr": 0.0
+        }
+      },
+      "gsm8k": {
+        "n_pairs": 55,
+        "delta_pp": {
+          "n": 55,
+          "mean": -0.8363636363636371,
+          "std": 1.0994814705724847,
+          "median": -1.0000000000000009,
+          "q05": -2.400000000000002,
+          "q25": -1.8000000000000016,
+          "q75": 0.0,
+          "q95": 0.7199999999999995,
+          "min": -2.400000000000002,
+          "max": 2.400000000000002,
+          "iqr": 1.8000000000000016
+        },
+        "abs_delta_max_pp": 2.400000000000002,
+        "behavior_disagreement": {
+          "n": 55,
+          "mean": 0.05970909090909092,
+          "std": 0.014020339416553774,
+          "median": 0.062000000000000055,
+          "q05": 0.03720000000000004,
+          "q25": 0.05800000000000005,
+          "q75": 0.06799999999999995,
+          "q95": 0.07199999999999995,
+          "min": 0.0,
+          "max": 0.07799999999999996,
+          "iqr": 0.009999999999999898
+        }
+      },
+      "ceval": {
+        "n_pairs": 55,
+        "delta_pp": {
+          "n": 55,
+          "mean": 0.0,
+          "std": 0.0,
+          "median": 0.0,
+          "q05": 0.0,
+          "q25": 0.0,
+          "q75": 0.0,
+          "q95": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "iqr": 0.0
+        },
+        "abs_delta_max_pp": 0.0,
+        "behavior_disagreement": {
+          "n": 55,
+          "mean": 0.0,
+          "std": 0.0,
+          "median": 0.0,
+          "q05": 0.0,
+          "q25": 0.0,
+          "q75": 0.0,
+          "q95": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "iqr": 0.0
+        }
+      },
+      "cmmlu": {
+        "n_pairs": 55,
+        "delta_pp": {
+          "n": 55,
+          "mean": 0.0,
+          "std": 0.0,
+          "median": 0.0,
+          "q05": 0.0,
+          "q25": 0.0,
+          "q75": 0.0,
+          "q95": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "iqr": 0.0
+        },
+        "abs_delta_max_pp": 0.0,
+        "behavior_disagreement": {
+          "n": 55,
+          "mean": 0.0,
+          "std": 0.0,
+          "median": 0.0,
+          "q05": 0.0,
+          "q25": 0.0,
+          "q75": 0.0,
+          "q95": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "iqr": 0.0
+        }
+      },
+      "humaneval_plus": {
+        "n_pairs": 55,
+        "delta_pp": {
+          "n": 55,
+          "mean": 0.0,
+          "std": 0.0,
+          "median": 0.0,
+          "q05": 0.0,
+          "q25": 0.0,
+          "q75": 0.0,
+          "q95": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "iqr": 0.0
+        },
+        "abs_delta_max_pp": 0.0,
+        "behavior_disagreement": {
+          "n": 55,
+          "mean": 0.0,
+          "std": 0.0,
+          "median": 0.0,
+          "q05": 0.0,
+          "q25": 0.0,
+          "q75": 0.0,
+          "q95": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "iqr": 0.0
+        }
+      },
+      "mbpp_plus": {
+        "n_pairs": 55,
+        "delta_pp": {
+          "n": 55,
+          "mean": 0.0,
+          "std": 0.0,
+          "median": 0.0,
+          "q05": 0.0,
+          "q25": 0.0,
+          "q75": 0.0,
+          "q95": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "iqr": 0.0
+        },
+        "abs_delta_max_pp": 0.0,
+        "behavior_disagreement": {
+          "n": 55,
+          "mean": 0.0,
+          "std": 0.0,
+          "median": 0.0,
+          "q05": 0.0,
+          "q25": 0.0,
+          "q75": 0.0,
+          "q95": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "iqr": 0.0
+        }
+      }
+    }
+  },
+  "qwen3_4b_base": {
+    "tags": [
+      "qwen3_4b_base__baseline_copy",
+      "qwen3_4b_base__baseline_original_run1",
+      "qwen3_4b_base__baseline_original_run2",
+      "qwen3_4b_base__baseline_rep02",
+      "qwen3_4b_base__baseline_rep03",
+      "qwen3_4b_base__baseline_rep04",
+      "qwen3_4b_base__baseline_rep05",
+      "qwen3_4b_base__baseline_rep06",
+      "qwen3_4b_base__baseline_rep07",
+      "qwen3_4b_base__baseline_rep08",
+      "qwen3_4b_base__baseline_rep09"
+    ],
+    "n_tags": 11,
+    "per_bench": {
+      "mmlu": {
+        "n_pairs": 55,
+        "delta_pp": {
+          "n": 55,
+          "mean": 0.0,
+          "std": 0.0,
+          "median": 0.0,
+          "q05": 0.0,
+          "q25": 0.0,
+          "q75": 0.0,
+          "q95": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "iqr": 0.0
+        },
+        "abs_delta_max_pp": 0.0,
+        "behavior_disagreement": {
+          "n": 55,
+          "mean": 0.0,
+          "std": 0.0,
+          "median": 0.0,
+          "q05": 0.0,
+          "q25": 0.0,
+          "q75": 0.0,
+          "q95": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "iqr": 0.0
+        }
+      },
+      "gsm8k": {
+        "n_pairs": 55,
+        "delta_pp": {
+          "n": 55,
+          "mean": 0.0,
+          "std": 0.0,
+          "median": 0.0,
+          "q05": 0.0,
+          "q25": 0.0,
+          "q75": 0.0,
+          "q95": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "iqr": 0.0
+        },
+        "abs_delta_max_pp": 0.0,
+        "behavior_disagreement": {
+          "n": 55,
+          "mean": 0.0,
+          "std": 0.0,
+          "median": 0.0,
+          "q05": 0.0,
+          "q25": 0.0,
+          "q75": 0.0,
+          "q95": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "iqr": 0.0
+        }
+      },
+      "ceval": {
+        "n_pairs": 55,
+        "delta_pp": {
+          "n": 55,
+          "mean": 0.0,
+          "std": 0.0,
+          "median": 0.0,
+          "q05": 0.0,
+          "q25": 0.0,
+          "q75": 0.0,
+          "q95": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "iqr": 0.0
+        },
+        "abs_delta_max_pp": 0.0,
+        "behavior_disagreement": {
+          "n": 55,
+          "mean": 0.0,
+          "std": 0.0,
+          "median": 0.0,
+          "q05": 0.0,
+          "q25": 0.0,
+          "q75": 0.0,
+          "q95": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "iqr": 0.0
+        }
+      },
+      "cmmlu": {
+        "n_pairs": 55,
+        "delta_pp": {
+          "n": 55,
+          "mean": 0.0,
+          "std": 0.0,
+          "median": 0.0,
+          "q05": 0.0,
+          "q25": 0.0,
+          "q75": 0.0,
+          "q95": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "iqr": 0.0
+        },
+        "abs_delta_max_pp": 0.0,
+        "behavior_disagreement": {
+          "n": 55,
+          "mean": 0.0,
+          "std": 0.0,
+          "median": 0.0,
+          "q05": 0.0,
+          "q25": 0.0,
+          "q75": 0.0,
+          "q95": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "iqr": 0.0
+        }
+      },
+      "humaneval_plus": {
+        "n_pairs": 55,
+        "delta_pp": {
+          "n": 55,
+          "mean": 0.0,
+          "std": 0.0,
+          "median": 0.0,
+          "q05": 0.0,
+          "q25": 0.0,
+          "q75": 0.0,
+          "q95": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "iqr": 0.0
+        },
+        "abs_delta_max_pp": 0.0,
+        "behavior_disagreement": {
+          "n": 55,
+          "mean": 0.0,
+          "std": 0.0,
+          "median": 0.0,
+          "q05": 0.0,
+          "q25": 0.0,
+          "q75": 0.0,
+          "q95": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "iqr": 0.0
+        }
+      },
+      "mbpp_plus": {
+        "n_pairs": 55,
+        "delta_pp": {
+          "n": 55,
+          "mean": 0.0,
+          "std": 0.0,
+          "median": 0.0,
+          "q05": 0.0,
+          "q25": 0.0,
+          "q75": 0.0,
+          "q95": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "iqr": 0.0
+        },
+        "abs_delta_max_pp": 0.0,
+        "behavior_disagreement": {
+          "n": 55,
+          "mean": 0.0,
+          "std": 0.0,
+          "median": 0.0,
+          "q05": 0.0,
+          "q25": 0.0,
+          "q75": 0.0,
+          "q95": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "iqr": 0.0
+        }
+      }
+    }
+  }
+}

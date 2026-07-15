@@ -1,0 +1,3550 @@
+{
+  "benchmark_id": "math500",
+  "description": "MATH-500：数学推理，4-shot CoT，boxed 评分",
+  "created_at": "2026-06-12T11:25:43",
+  "source_note": "Data normalised from /mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/dataset/benchmark_aligned using src/scripts/suite/prepare_bench_data.py",
+  "protocol": {
+    "prompt_builder_id": "math500_cot_v1",
+    "scorer_id": "math500_boxed_v1",
+    "stop_tokens": [
+      "\n\nProblem:",
+      "Problem:"
+    ],
+    "fewshot": 4,
+    "generation_kwargs": {
+      "max_new_tokens": 2048,
+      "do_sample": false
+    },
+    "fewshot_examples": [
+      {
+        "question": "Convert the point $(0,3)$ in rectangular coordinates to polar coordinates.  Enter your answer in the form $(r,\\theta),$ where $r > 0$ and $0 \\le \\theta < 2 \\pi.$",
+        "target": "\\left( 3, \\frac{\\pi}{2} \\right)"
+      },
+      {
+        "question": "Define\n\\[p = \\sum_{k = 1}^\\infty \\frac{1}{k^2} \\quad \\text{and} \\quad q = \\sum_{k = 1}^\\infty \\frac{1}{k^3}.\\]Find a way to write\n\\[\\sum_{j = 1}^\\infty \\sum_{k = 1}^\\infty \\frac{1}{(j + k)^3}\\]in terms of $p$ and $q.$",
+        "target": "p - q"
+      },
+      {
+        "question": "If $f(x) = \\frac{3x-2}{x-2}$, what is the value of $f(-2) +f(-1)+f(0)$? Express your answer as a common fraction.",
+        "target": "\\frac{14}{3}"
+      },
+      {
+        "question": "How many positive whole-number divisors does 196 have?",
+        "target": "9"
+      }
+    ]
+  },
+  "bench_data": [
+    {
+      "bench_id": "math500",
+      "parent_benchmark": "math500",
+      "data_path": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+      "total_rows": 500,
+      "fewshot_examples": [],
+      "selection_rule": "all 500 test rows",
+      "selections": [
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 0,
+          "subject": "Precalculus",
+          "sample_id": "math500__0000"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 1,
+          "subject": "Intermediate Algebra",
+          "sample_id": "math500__0001"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 2,
+          "subject": "Algebra",
+          "sample_id": "math500__0002"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 3,
+          "subject": "Number Theory",
+          "sample_id": "math500__0003"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 4,
+          "subject": "Algebra",
+          "sample_id": "math500__0004"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 5,
+          "subject": "Prealgebra",
+          "sample_id": "math500__0005"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 6,
+          "subject": "Number Theory",
+          "sample_id": "math500__0006"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 7,
+          "subject": "Precalculus",
+          "sample_id": "math500__0007"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 8,
+          "subject": "Algebra",
+          "sample_id": "math500__0008"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 9,
+          "subject": "Prealgebra",
+          "sample_id": "math500__0009"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 10,
+          "subject": "Number Theory",
+          "sample_id": "math500__0010"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 11,
+          "subject": "Intermediate Algebra",
+          "sample_id": "math500__0011"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 12,
+          "subject": "Number Theory",
+          "sample_id": "math500__0012"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 13,
+          "subject": "Geometry",
+          "sample_id": "math500__0013"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 14,
+          "subject": "Precalculus",
+          "sample_id": "math500__0014"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 15,
+          "subject": "Precalculus",
+          "sample_id": "math500__0015"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 16,
+          "subject": "Intermediate Algebra",
+          "sample_id": "math500__0016"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 17,
+          "subject": "Precalculus",
+          "sample_id": "math500__0017"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 18,
+          "subject": "Geometry",
+          "sample_id": "math500__0018"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 19,
+          "subject": "Intermediate Algebra",
+          "sample_id": "math500__0019"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 20,
+          "subject": "Algebra",
+          "sample_id": "math500__0020"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 21,
+          "subject": "Intermediate Algebra",
+          "sample_id": "math500__0021"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 22,
+          "subject": "Algebra",
+          "sample_id": "math500__0022"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 23,
+          "subject": "Algebra",
+          "sample_id": "math500__0023"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 24,
+          "subject": "Algebra",
+          "sample_id": "math500__0024"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 25,
+          "subject": "Intermediate Algebra",
+          "sample_id": "math500__0025"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 26,
+          "subject": "Counting & Probability",
+          "sample_id": "math500__0026"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 27,
+          "subject": "Prealgebra",
+          "sample_id": "math500__0027"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 28,
+          "subject": "Precalculus",
+          "sample_id": "math500__0028"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 29,
+          "subject": "Counting & Probability",
+          "sample_id": "math500__0029"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 30,
+          "subject": "Number Theory",
+          "sample_id": "math500__0030"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 31,
+          "subject": "Prealgebra",
+          "sample_id": "math500__0031"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 32,
+          "subject": "Counting & Probability",
+          "sample_id": "math500__0032"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 33,
+          "subject": "Algebra",
+          "sample_id": "math500__0033"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 34,
+          "subject": "Counting & Probability",
+          "sample_id": "math500__0034"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 35,
+          "subject": "Number Theory",
+          "sample_id": "math500__0035"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 36,
+          "subject": "Intermediate Algebra",
+          "sample_id": "math500__0036"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 37,
+          "subject": "Geometry",
+          "sample_id": "math500__0037"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 38,
+          "subject": "Algebra",
+          "sample_id": "math500__0038"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 39,
+          "subject": "Number Theory",
+          "sample_id": "math500__0039"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 40,
+          "subject": "Prealgebra",
+          "sample_id": "math500__0040"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 41,
+          "subject": "Geometry",
+          "sample_id": "math500__0041"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 42,
+          "subject": "Algebra",
+          "sample_id": "math500__0042"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 43,
+          "subject": "Intermediate Algebra",
+          "sample_id": "math500__0043"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 44,
+          "subject": "Prealgebra",
+          "sample_id": "math500__0044"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 45,
+          "subject": "Geometry",
+          "sample_id": "math500__0045"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 46,
+          "subject": "Precalculus",
+          "sample_id": "math500__0046"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 47,
+          "subject": "Algebra",
+          "sample_id": "math500__0047"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 48,
+          "subject": "Algebra",
+          "sample_id": "math500__0048"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 49,
+          "subject": "Prealgebra",
+          "sample_id": "math500__0049"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 50,
+          "subject": "Number Theory",
+          "sample_id": "math500__0050"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 51,
+          "subject": "Intermediate Algebra",
+          "sample_id": "math500__0051"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 52,
+          "subject": "Prealgebra",
+          "sample_id": "math500__0052"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 53,
+          "subject": "Precalculus",
+          "sample_id": "math500__0053"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 54,
+          "subject": "Prealgebra",
+          "sample_id": "math500__0054"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 55,
+          "subject": "Algebra",
+          "sample_id": "math500__0055"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 56,
+          "subject": "Algebra",
+          "sample_id": "math500__0056"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 57,
+          "subject": "Intermediate Algebra",
+          "sample_id": "math500__0057"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 58,
+          "subject": "Algebra",
+          "sample_id": "math500__0058"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 59,
+          "subject": "Prealgebra",
+          "sample_id": "math500__0059"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 60,
+          "subject": "Intermediate Algebra",
+          "sample_id": "math500__0060"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 61,
+          "subject": "Intermediate Algebra",
+          "sample_id": "math500__0061"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 62,
+          "subject": "Precalculus",
+          "sample_id": "math500__0062"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 63,
+          "subject": "Intermediate Algebra",
+          "sample_id": "math500__0063"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 64,
+          "subject": "Precalculus",
+          "sample_id": "math500__0064"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 65,
+          "subject": "Prealgebra",
+          "sample_id": "math500__0065"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 66,
+          "subject": "Algebra",
+          "sample_id": "math500__0066"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 67,
+          "subject": "Prealgebra",
+          "sample_id": "math500__0067"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 68,
+          "subject": "Precalculus",
+          "sample_id": "math500__0068"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 69,
+          "subject": "Intermediate Algebra",
+          "sample_id": "math500__0069"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 70,
+          "subject": "Number Theory",
+          "sample_id": "math500__0070"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 71,
+          "subject": "Number Theory",
+          "sample_id": "math500__0071"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 72,
+          "subject": "Geometry",
+          "sample_id": "math500__0072"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 73,
+          "subject": "Algebra",
+          "sample_id": "math500__0073"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 74,
+          "subject": "Precalculus",
+          "sample_id": "math500__0074"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 75,
+          "subject": "Counting & Probability",
+          "sample_id": "math500__0075"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 76,
+          "subject": "Intermediate Algebra",
+          "sample_id": "math500__0076"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 77,
+          "subject": "Algebra",
+          "sample_id": "math500__0077"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 78,
+          "subject": "Intermediate Algebra",
+          "sample_id": "math500__0078"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 79,
+          "subject": "Prealgebra",
+          "sample_id": "math500__0079"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 80,
+          "subject": "Intermediate Algebra",
+          "sample_id": "math500__0080"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 81,
+          "subject": "Algebra",
+          "sample_id": "math500__0081"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 82,
+          "subject": "Algebra",
+          "sample_id": "math500__0082"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 83,
+          "subject": "Intermediate Algebra",
+          "sample_id": "math500__0083"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 84,
+          "subject": "Algebra",
+          "sample_id": "math500__0084"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 85,
+          "subject": "Geometry",
+          "sample_id": "math500__0085"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 86,
+          "subject": "Prealgebra",
+          "sample_id": "math500__0086"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 87,
+          "subject": "Algebra",
+          "sample_id": "math500__0087"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 88,
+          "subject": "Algebra",
+          "sample_id": "math500__0088"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 89,
+          "subject": "Number Theory",
+          "sample_id": "math500__0089"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 90,
+          "subject": "Prealgebra",
+          "sample_id": "math500__0090"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 91,
+          "subject": "Algebra",
+          "sample_id": "math500__0091"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 92,
+          "subject": "Counting & Probability",
+          "sample_id": "math500__0092"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 93,
+          "subject": "Algebra",
+          "sample_id": "math500__0093"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 94,
+          "subject": "Prealgebra",
+          "sample_id": "math500__0094"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 95,
+          "subject": "Precalculus",
+          "sample_id": "math500__0095"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 96,
+          "subject": "Intermediate Algebra",
+          "sample_id": "math500__0096"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 97,
+          "subject": "Prealgebra",
+          "sample_id": "math500__0097"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 98,
+          "subject": "Prealgebra",
+          "sample_id": "math500__0098"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 99,
+          "subject": "Precalculus",
+          "sample_id": "math500__0099"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 100,
+          "subject": "Geometry",
+          "sample_id": "math500__0100"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 101,
+          "subject": "Intermediate Algebra",
+          "sample_id": "math500__0101"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 102,
+          "subject": "Intermediate Algebra",
+          "sample_id": "math500__0102"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 103,
+          "subject": "Intermediate Algebra",
+          "sample_id": "math500__0103"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 104,
+          "subject": "Intermediate Algebra",
+          "sample_id": "math500__0104"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 105,
+          "subject": "Prealgebra",
+          "sample_id": "math500__0105"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 106,
+          "subject": "Intermediate Algebra",
+          "sample_id": "math500__0106"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 107,
+          "subject": "Number Theory",
+          "sample_id": "math500__0107"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 108,
+          "subject": "Intermediate Algebra",
+          "sample_id": "math500__0108"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 109,
+          "subject": "Precalculus",
+          "sample_id": "math500__0109"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 110,
+          "subject": "Intermediate Algebra",
+          "sample_id": "math500__0110"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 111,
+          "subject": "Counting & Probability",
+          "sample_id": "math500__0111"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 112,
+          "subject": "Algebra",
+          "sample_id": "math500__0112"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 113,
+          "subject": "Algebra",
+          "sample_id": "math500__0113"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 114,
+          "subject": "Intermediate Algebra",
+          "sample_id": "math500__0114"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 115,
+          "subject": "Counting & Probability",
+          "sample_id": "math500__0115"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 116,
+          "subject": "Algebra",
+          "sample_id": "math500__0116"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 117,
+          "subject": "Algebra",
+          "sample_id": "math500__0117"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 118,
+          "subject": "Intermediate Algebra",
+          "sample_id": "math500__0118"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 119,
+          "subject": "Prealgebra",
+          "sample_id": "math500__0119"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 120,
+          "subject": "Intermediate Algebra",
+          "sample_id": "math500__0120"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 121,
+          "subject": "Prealgebra",
+          "sample_id": "math500__0121"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 122,
+          "subject": "Algebra",
+          "sample_id": "math500__0122"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 123,
+          "subject": "Geometry",
+          "sample_id": "math500__0123"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 124,
+          "subject": "Algebra",
+          "sample_id": "math500__0124"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 125,
+          "subject": "Algebra",
+          "sample_id": "math500__0125"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 126,
+          "subject": "Intermediate Algebra",
+          "sample_id": "math500__0126"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 127,
+          "subject": "Number Theory",
+          "sample_id": "math500__0127"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 128,
+          "subject": "Algebra",
+          "sample_id": "math500__0128"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 129,
+          "subject": "Geometry",
+          "sample_id": "math500__0129"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 130,
+          "subject": "Number Theory",
+          "sample_id": "math500__0130"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 131,
+          "subject": "Algebra",
+          "sample_id": "math500__0131"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 132,
+          "subject": "Prealgebra",
+          "sample_id": "math500__0132"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 133,
+          "subject": "Prealgebra",
+          "sample_id": "math500__0133"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 134,
+          "subject": "Intermediate Algebra",
+          "sample_id": "math500__0134"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 135,
+          "subject": "Prealgebra",
+          "sample_id": "math500__0135"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 136,
+          "subject": "Intermediate Algebra",
+          "sample_id": "math500__0136"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 137,
+          "subject": "Number Theory",
+          "sample_id": "math500__0137"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 138,
+          "subject": "Counting & Probability",
+          "sample_id": "math500__0138"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 139,
+          "subject": "Intermediate Algebra",
+          "sample_id": "math500__0139"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 140,
+          "subject": "Number Theory",
+          "sample_id": "math500__0140"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 141,
+          "subject": "Number Theory",
+          "sample_id": "math500__0141"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 142,
+          "subject": "Counting & Probability",
+          "sample_id": "math500__0142"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 143,
+          "subject": "Precalculus",
+          "sample_id": "math500__0143"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 144,
+          "subject": "Precalculus",
+          "sample_id": "math500__0144"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 145,
+          "subject": "Intermediate Algebra",
+          "sample_id": "math500__0145"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 146,
+          "subject": "Algebra",
+          "sample_id": "math500__0146"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 147,
+          "subject": "Intermediate Algebra",
+          "sample_id": "math500__0147"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 148,
+          "subject": "Algebra",
+          "sample_id": "math500__0148"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 149,
+          "subject": "Number Theory",
+          "sample_id": "math500__0149"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 150,
+          "subject": "Intermediate Algebra",
+          "sample_id": "math500__0150"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 151,
+          "subject": "Precalculus",
+          "sample_id": "math500__0151"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 152,
+          "subject": "Geometry",
+          "sample_id": "math500__0152"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 153,
+          "subject": "Counting & Probability",
+          "sample_id": "math500__0153"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 154,
+          "subject": "Geometry",
+          "sample_id": "math500__0154"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 155,
+          "subject": "Counting & Probability",
+          "sample_id": "math500__0155"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 156,
+          "subject": "Precalculus",
+          "sample_id": "math500__0156"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 157,
+          "subject": "Intermediate Algebra",
+          "sample_id": "math500__0157"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 158,
+          "subject": "Algebra",
+          "sample_id": "math500__0158"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 159,
+          "subject": "Algebra",
+          "sample_id": "math500__0159"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 160,
+          "subject": "Number Theory",
+          "sample_id": "math500__0160"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 161,
+          "subject": "Algebra",
+          "sample_id": "math500__0161"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 162,
+          "subject": "Prealgebra",
+          "sample_id": "math500__0162"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 163,
+          "subject": "Algebra",
+          "sample_id": "math500__0163"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 164,
+          "subject": "Precalculus",
+          "sample_id": "math500__0164"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 165,
+          "subject": "Prealgebra",
+          "sample_id": "math500__0165"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 166,
+          "subject": "Prealgebra",
+          "sample_id": "math500__0166"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 167,
+          "subject": "Algebra",
+          "sample_id": "math500__0167"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 168,
+          "subject": "Counting & Probability",
+          "sample_id": "math500__0168"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 169,
+          "subject": "Geometry",
+          "sample_id": "math500__0169"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 170,
+          "subject": "Algebra",
+          "sample_id": "math500__0170"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 171,
+          "subject": "Prealgebra",
+          "sample_id": "math500__0171"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 172,
+          "subject": "Algebra",
+          "sample_id": "math500__0172"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 173,
+          "subject": "Algebra",
+          "sample_id": "math500__0173"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 174,
+          "subject": "Algebra",
+          "sample_id": "math500__0174"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 175,
+          "subject": "Intermediate Algebra",
+          "sample_id": "math500__0175"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 176,
+          "subject": "Number Theory",
+          "sample_id": "math500__0176"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 177,
+          "subject": "Geometry",
+          "sample_id": "math500__0177"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 178,
+          "subject": "Prealgebra",
+          "sample_id": "math500__0178"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 179,
+          "subject": "Precalculus",
+          "sample_id": "math500__0179"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 180,
+          "subject": "Prealgebra",
+          "sample_id": "math500__0180"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 181,
+          "subject": "Algebra",
+          "sample_id": "math500__0181"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 182,
+          "subject": "Prealgebra",
+          "sample_id": "math500__0182"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 183,
+          "subject": "Algebra",
+          "sample_id": "math500__0183"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 184,
+          "subject": "Intermediate Algebra",
+          "sample_id": "math500__0184"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 185,
+          "subject": "Algebra",
+          "sample_id": "math500__0185"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 186,
+          "subject": "Number Theory",
+          "sample_id": "math500__0186"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 187,
+          "subject": "Algebra",
+          "sample_id": "math500__0187"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 188,
+          "subject": "Algebra",
+          "sample_id": "math500__0188"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 189,
+          "subject": "Geometry",
+          "sample_id": "math500__0189"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 190,
+          "subject": "Counting & Probability",
+          "sample_id": "math500__0190"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 191,
+          "subject": "Algebra",
+          "sample_id": "math500__0191"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 192,
+          "subject": "Geometry",
+          "sample_id": "math500__0192"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 193,
+          "subject": "Intermediate Algebra",
+          "sample_id": "math500__0193"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 194,
+          "subject": "Intermediate Algebra",
+          "sample_id": "math500__0194"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 195,
+          "subject": "Intermediate Algebra",
+          "sample_id": "math500__0195"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 196,
+          "subject": "Algebra",
+          "sample_id": "math500__0196"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 197,
+          "subject": "Number Theory",
+          "sample_id": "math500__0197"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 198,
+          "subject": "Counting & Probability",
+          "sample_id": "math500__0198"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 199,
+          "subject": "Prealgebra",
+          "sample_id": "math500__0199"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 200,
+          "subject": "Prealgebra",
+          "sample_id": "math500__0200"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 201,
+          "subject": "Number Theory",
+          "sample_id": "math500__0201"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 202,
+          "subject": "Algebra",
+          "sample_id": "math500__0202"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 203,
+          "subject": "Intermediate Algebra",
+          "sample_id": "math500__0203"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 204,
+          "subject": "Intermediate Algebra",
+          "sample_id": "math500__0204"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 205,
+          "subject": "Precalculus",
+          "sample_id": "math500__0205"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 206,
+          "subject": "Precalculus",
+          "sample_id": "math500__0206"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 207,
+          "subject": "Counting & Probability",
+          "sample_id": "math500__0207"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 208,
+          "subject": "Number Theory",
+          "sample_id": "math500__0208"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 209,
+          "subject": "Number Theory",
+          "sample_id": "math500__0209"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 210,
+          "subject": "Prealgebra",
+          "sample_id": "math500__0210"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 211,
+          "subject": "Prealgebra",
+          "sample_id": "math500__0211"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 212,
+          "subject": "Algebra",
+          "sample_id": "math500__0212"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 213,
+          "subject": "Intermediate Algebra",
+          "sample_id": "math500__0213"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 214,
+          "subject": "Counting & Probability",
+          "sample_id": "math500__0214"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 215,
+          "subject": "Algebra",
+          "sample_id": "math500__0215"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 216,
+          "subject": "Prealgebra",
+          "sample_id": "math500__0216"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 217,
+          "subject": "Number Theory",
+          "sample_id": "math500__0217"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 218,
+          "subject": "Algebra",
+          "sample_id": "math500__0218"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 219,
+          "subject": "Counting & Probability",
+          "sample_id": "math500__0219"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 220,
+          "subject": "Prealgebra",
+          "sample_id": "math500__0220"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 221,
+          "subject": "Number Theory",
+          "sample_id": "math500__0221"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 222,
+          "subject": "Geometry",
+          "sample_id": "math500__0222"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 223,
+          "subject": "Number Theory",
+          "sample_id": "math500__0223"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 224,
+          "subject": "Precalculus",
+          "sample_id": "math500__0224"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 225,
+          "subject": "Algebra",
+          "sample_id": "math500__0225"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 226,
+          "subject": "Counting & Probability",
+          "sample_id": "math500__0226"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 227,
+          "subject": "Precalculus",
+          "sample_id": "math500__0227"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 228,
+          "subject": "Precalculus",
+          "sample_id": "math500__0228"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 229,
+          "subject": "Prealgebra",
+          "sample_id": "math500__0229"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 230,
+          "subject": "Intermediate Algebra",
+          "sample_id": "math500__0230"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 231,
+          "subject": "Algebra",
+          "sample_id": "math500__0231"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 232,
+          "subject": "Intermediate Algebra",
+          "sample_id": "math500__0232"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 233,
+          "subject": "Precalculus",
+          "sample_id": "math500__0233"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 234,
+          "subject": "Intermediate Algebra",
+          "sample_id": "math500__0234"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 235,
+          "subject": "Prealgebra",
+          "sample_id": "math500__0235"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 236,
+          "subject": "Precalculus",
+          "sample_id": "math500__0236"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 237,
+          "subject": "Intermediate Algebra",
+          "sample_id": "math500__0237"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 238,
+          "subject": "Algebra",
+          "sample_id": "math500__0238"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 239,
+          "subject": "Geometry",
+          "sample_id": "math500__0239"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 240,
+          "subject": "Prealgebra",
+          "sample_id": "math500__0240"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 241,
+          "subject": "Algebra",
+          "sample_id": "math500__0241"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 242,
+          "subject": "Algebra",
+          "sample_id": "math500__0242"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 243,
+          "subject": "Geometry",
+          "sample_id": "math500__0243"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 244,
+          "subject": "Prealgebra",
+          "sample_id": "math500__0244"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 245,
+          "subject": "Intermediate Algebra",
+          "sample_id": "math500__0245"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 246,
+          "subject": "Algebra",
+          "sample_id": "math500__0246"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 247,
+          "subject": "Intermediate Algebra",
+          "sample_id": "math500__0247"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 248,
+          "subject": "Precalculus",
+          "sample_id": "math500__0248"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 249,
+          "subject": "Number Theory",
+          "sample_id": "math500__0249"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 250,
+          "subject": "Algebra",
+          "sample_id": "math500__0250"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 251,
+          "subject": "Counting & Probability",
+          "sample_id": "math500__0251"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 252,
+          "subject": "Algebra",
+          "sample_id": "math500__0252"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 253,
+          "subject": "Prealgebra",
+          "sample_id": "math500__0253"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 254,
+          "subject": "Counting & Probability",
+          "sample_id": "math500__0254"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 255,
+          "subject": "Precalculus",
+          "sample_id": "math500__0255"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 256,
+          "subject": "Prealgebra",
+          "sample_id": "math500__0256"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 257,
+          "subject": "Geometry",
+          "sample_id": "math500__0257"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 258,
+          "subject": "Algebra",
+          "sample_id": "math500__0258"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 259,
+          "subject": "Intermediate Algebra",
+          "sample_id": "math500__0259"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 260,
+          "subject": "Precalculus",
+          "sample_id": "math500__0260"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 261,
+          "subject": "Geometry",
+          "sample_id": "math500__0261"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 262,
+          "subject": "Prealgebra",
+          "sample_id": "math500__0262"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 263,
+          "subject": "Geometry",
+          "sample_id": "math500__0263"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 264,
+          "subject": "Geometry",
+          "sample_id": "math500__0264"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 265,
+          "subject": "Algebra",
+          "sample_id": "math500__0265"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 266,
+          "subject": "Prealgebra",
+          "sample_id": "math500__0266"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 267,
+          "subject": "Geometry",
+          "sample_id": "math500__0267"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 268,
+          "subject": "Number Theory",
+          "sample_id": "math500__0268"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 269,
+          "subject": "Counting & Probability",
+          "sample_id": "math500__0269"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 270,
+          "subject": "Algebra",
+          "sample_id": "math500__0270"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 271,
+          "subject": "Number Theory",
+          "sample_id": "math500__0271"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 272,
+          "subject": "Number Theory",
+          "sample_id": "math500__0272"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 273,
+          "subject": "Prealgebra",
+          "sample_id": "math500__0273"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 274,
+          "subject": "Geometry",
+          "sample_id": "math500__0274"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 275,
+          "subject": "Algebra",
+          "sample_id": "math500__0275"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 276,
+          "subject": "Algebra",
+          "sample_id": "math500__0276"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 277,
+          "subject": "Prealgebra",
+          "sample_id": "math500__0277"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 278,
+          "subject": "Number Theory",
+          "sample_id": "math500__0278"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 279,
+          "subject": "Prealgebra",
+          "sample_id": "math500__0279"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 280,
+          "subject": "Number Theory",
+          "sample_id": "math500__0280"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 281,
+          "subject": "Prealgebra",
+          "sample_id": "math500__0281"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 282,
+          "subject": "Algebra",
+          "sample_id": "math500__0282"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 283,
+          "subject": "Prealgebra",
+          "sample_id": "math500__0283"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 284,
+          "subject": "Precalculus",
+          "sample_id": "math500__0284"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 285,
+          "subject": "Intermediate Algebra",
+          "sample_id": "math500__0285"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 286,
+          "subject": "Intermediate Algebra",
+          "sample_id": "math500__0286"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 287,
+          "subject": "Number Theory",
+          "sample_id": "math500__0287"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 288,
+          "subject": "Precalculus",
+          "sample_id": "math500__0288"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 289,
+          "subject": "Intermediate Algebra",
+          "sample_id": "math500__0289"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 290,
+          "subject": "Algebra",
+          "sample_id": "math500__0290"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 291,
+          "subject": "Counting & Probability",
+          "sample_id": "math500__0291"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 292,
+          "subject": "Intermediate Algebra",
+          "sample_id": "math500__0292"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 293,
+          "subject": "Algebra",
+          "sample_id": "math500__0293"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 294,
+          "subject": "Number Theory",
+          "sample_id": "math500__0294"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 295,
+          "subject": "Precalculus",
+          "sample_id": "math500__0295"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 296,
+          "subject": "Intermediate Algebra",
+          "sample_id": "math500__0296"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 297,
+          "subject": "Number Theory",
+          "sample_id": "math500__0297"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 298,
+          "subject": "Precalculus",
+          "sample_id": "math500__0298"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 299,
+          "subject": "Geometry",
+          "sample_id": "math500__0299"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 300,
+          "subject": "Counting & Probability",
+          "sample_id": "math500__0300"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 301,
+          "subject": "Prealgebra",
+          "sample_id": "math500__0301"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 302,
+          "subject": "Prealgebra",
+          "sample_id": "math500__0302"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 303,
+          "subject": "Geometry",
+          "sample_id": "math500__0303"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 304,
+          "subject": "Intermediate Algebra",
+          "sample_id": "math500__0304"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 305,
+          "subject": "Algebra",
+          "sample_id": "math500__0305"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 306,
+          "subject": "Intermediate Algebra",
+          "sample_id": "math500__0306"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 307,
+          "subject": "Precalculus",
+          "sample_id": "math500__0307"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 308,
+          "subject": "Geometry",
+          "sample_id": "math500__0308"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 309,
+          "subject": "Number Theory",
+          "sample_id": "math500__0309"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 310,
+          "subject": "Algebra",
+          "sample_id": "math500__0310"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 311,
+          "subject": "Number Theory",
+          "sample_id": "math500__0311"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 312,
+          "subject": "Intermediate Algebra",
+          "sample_id": "math500__0312"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 313,
+          "subject": "Prealgebra",
+          "sample_id": "math500__0313"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 314,
+          "subject": "Geometry",
+          "sample_id": "math500__0314"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 315,
+          "subject": "Algebra",
+          "sample_id": "math500__0315"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 316,
+          "subject": "Algebra",
+          "sample_id": "math500__0316"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 317,
+          "subject": "Intermediate Algebra",
+          "sample_id": "math500__0317"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 318,
+          "subject": "Algebra",
+          "sample_id": "math500__0318"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 319,
+          "subject": "Algebra",
+          "sample_id": "math500__0319"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 320,
+          "subject": "Geometry",
+          "sample_id": "math500__0320"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 321,
+          "subject": "Prealgebra",
+          "sample_id": "math500__0321"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 322,
+          "subject": "Algebra",
+          "sample_id": "math500__0322"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 323,
+          "subject": "Counting & Probability",
+          "sample_id": "math500__0323"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 324,
+          "subject": "Geometry",
+          "sample_id": "math500__0324"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 325,
+          "subject": "Geometry",
+          "sample_id": "math500__0325"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 326,
+          "subject": "Precalculus",
+          "sample_id": "math500__0326"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 327,
+          "subject": "Intermediate Algebra",
+          "sample_id": "math500__0327"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 328,
+          "subject": "Algebra",
+          "sample_id": "math500__0328"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 329,
+          "subject": "Prealgebra",
+          "sample_id": "math500__0329"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 330,
+          "subject": "Counting & Probability",
+          "sample_id": "math500__0330"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 331,
+          "subject": "Algebra",
+          "sample_id": "math500__0331"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 332,
+          "subject": "Intermediate Algebra",
+          "sample_id": "math500__0332"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 333,
+          "subject": "Intermediate Algebra",
+          "sample_id": "math500__0333"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 334,
+          "subject": "Algebra",
+          "sample_id": "math500__0334"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 335,
+          "subject": "Number Theory",
+          "sample_id": "math500__0335"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 336,
+          "subject": "Algebra",
+          "sample_id": "math500__0336"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 337,
+          "subject": "Prealgebra",
+          "sample_id": "math500__0337"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 338,
+          "subject": "Number Theory",
+          "sample_id": "math500__0338"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 339,
+          "subject": "Intermediate Algebra",
+          "sample_id": "math500__0339"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 340,
+          "subject": "Precalculus",
+          "sample_id": "math500__0340"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 341,
+          "subject": "Algebra",
+          "sample_id": "math500__0341"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 342,
+          "subject": "Prealgebra",
+          "sample_id": "math500__0342"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 343,
+          "subject": "Counting & Probability",
+          "sample_id": "math500__0343"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 344,
+          "subject": "Intermediate Algebra",
+          "sample_id": "math500__0344"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 345,
+          "subject": "Algebra",
+          "sample_id": "math500__0345"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 346,
+          "subject": "Algebra",
+          "sample_id": "math500__0346"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 347,
+          "subject": "Algebra",
+          "sample_id": "math500__0347"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 348,
+          "subject": "Counting & Probability",
+          "sample_id": "math500__0348"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 349,
+          "subject": "Counting & Probability",
+          "sample_id": "math500__0349"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 350,
+          "subject": "Number Theory",
+          "sample_id": "math500__0350"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 351,
+          "subject": "Precalculus",
+          "sample_id": "math500__0351"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 352,
+          "subject": "Precalculus",
+          "sample_id": "math500__0352"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 353,
+          "subject": "Counting & Probability",
+          "sample_id": "math500__0353"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 354,
+          "subject": "Algebra",
+          "sample_id": "math500__0354"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 355,
+          "subject": "Intermediate Algebra",
+          "sample_id": "math500__0355"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 356,
+          "subject": "Algebra",
+          "sample_id": "math500__0356"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 357,
+          "subject": "Prealgebra",
+          "sample_id": "math500__0357"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 358,
+          "subject": "Intermediate Algebra",
+          "sample_id": "math500__0358"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 359,
+          "subject": "Intermediate Algebra",
+          "sample_id": "math500__0359"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 360,
+          "subject": "Precalculus",
+          "sample_id": "math500__0360"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 361,
+          "subject": "Intermediate Algebra",
+          "sample_id": "math500__0361"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 362,
+          "subject": "Counting & Probability",
+          "sample_id": "math500__0362"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 363,
+          "subject": "Algebra",
+          "sample_id": "math500__0363"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 364,
+          "subject": "Intermediate Algebra",
+          "sample_id": "math500__0364"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 365,
+          "subject": "Number Theory",
+          "sample_id": "math500__0365"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 366,
+          "subject": "Number Theory",
+          "sample_id": "math500__0366"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 367,
+          "subject": "Algebra",
+          "sample_id": "math500__0367"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 368,
+          "subject": "Geometry",
+          "sample_id": "math500__0368"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 369,
+          "subject": "Prealgebra",
+          "sample_id": "math500__0369"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 370,
+          "subject": "Precalculus",
+          "sample_id": "math500__0370"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 371,
+          "subject": "Intermediate Algebra",
+          "sample_id": "math500__0371"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 372,
+          "subject": "Geometry",
+          "sample_id": "math500__0372"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 373,
+          "subject": "Algebra",
+          "sample_id": "math500__0373"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 374,
+          "subject": "Algebra",
+          "sample_id": "math500__0374"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 375,
+          "subject": "Number Theory",
+          "sample_id": "math500__0375"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 376,
+          "subject": "Geometry",
+          "sample_id": "math500__0376"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 377,
+          "subject": "Number Theory",
+          "sample_id": "math500__0377"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 378,
+          "subject": "Prealgebra",
+          "sample_id": "math500__0378"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 379,
+          "subject": "Prealgebra",
+          "sample_id": "math500__0379"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 380,
+          "subject": "Intermediate Algebra",
+          "sample_id": "math500__0380"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 381,
+          "subject": "Counting & Probability",
+          "sample_id": "math500__0381"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 382,
+          "subject": "Intermediate Algebra",
+          "sample_id": "math500__0382"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 383,
+          "subject": "Algebra",
+          "sample_id": "math500__0383"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 384,
+          "subject": "Prealgebra",
+          "sample_id": "math500__0384"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 385,
+          "subject": "Prealgebra",
+          "sample_id": "math500__0385"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 386,
+          "subject": "Algebra",
+          "sample_id": "math500__0386"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 387,
+          "subject": "Algebra",
+          "sample_id": "math500__0387"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 388,
+          "subject": "Algebra",
+          "sample_id": "math500__0388"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 389,
+          "subject": "Geometry",
+          "sample_id": "math500__0389"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 390,
+          "subject": "Algebra",
+          "sample_id": "math500__0390"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 391,
+          "subject": "Algebra",
+          "sample_id": "math500__0391"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 392,
+          "subject": "Precalculus",
+          "sample_id": "math500__0392"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 393,
+          "subject": "Algebra",
+          "sample_id": "math500__0393"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 394,
+          "subject": "Intermediate Algebra",
+          "sample_id": "math500__0394"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 395,
+          "subject": "Algebra",
+          "sample_id": "math500__0395"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 396,
+          "subject": "Prealgebra",
+          "sample_id": "math500__0396"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 397,
+          "subject": "Prealgebra",
+          "sample_id": "math500__0397"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 398,
+          "subject": "Prealgebra",
+          "sample_id": "math500__0398"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 399,
+          "subject": "Prealgebra",
+          "sample_id": "math500__0399"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 400,
+          "subject": "Geometry",
+          "sample_id": "math500__0400"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 401,
+          "subject": "Intermediate Algebra",
+          "sample_id": "math500__0401"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 402,
+          "subject": "Precalculus",
+          "sample_id": "math500__0402"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 403,
+          "subject": "Number Theory",
+          "sample_id": "math500__0403"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 404,
+          "subject": "Counting & Probability",
+          "sample_id": "math500__0404"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 405,
+          "subject": "Prealgebra",
+          "sample_id": "math500__0405"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 406,
+          "subject": "Number Theory",
+          "sample_id": "math500__0406"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 407,
+          "subject": "Algebra",
+          "sample_id": "math500__0407"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 408,
+          "subject": "Precalculus",
+          "sample_id": "math500__0408"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 409,
+          "subject": "Intermediate Algebra",
+          "sample_id": "math500__0409"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 410,
+          "subject": "Prealgebra",
+          "sample_id": "math500__0410"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 411,
+          "subject": "Prealgebra",
+          "sample_id": "math500__0411"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 412,
+          "subject": "Intermediate Algebra",
+          "sample_id": "math500__0412"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 413,
+          "subject": "Algebra",
+          "sample_id": "math500__0413"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 414,
+          "subject": "Algebra",
+          "sample_id": "math500__0414"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 415,
+          "subject": "Number Theory",
+          "sample_id": "math500__0415"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 416,
+          "subject": "Precalculus",
+          "sample_id": "math500__0416"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 417,
+          "subject": "Algebra",
+          "sample_id": "math500__0417"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 418,
+          "subject": "Algebra",
+          "sample_id": "math500__0418"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 419,
+          "subject": "Precalculus",
+          "sample_id": "math500__0419"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 420,
+          "subject": "Precalculus",
+          "sample_id": "math500__0420"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 421,
+          "subject": "Precalculus",
+          "sample_id": "math500__0421"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 422,
+          "subject": "Intermediate Algebra",
+          "sample_id": "math500__0422"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 423,
+          "subject": "Number Theory",
+          "sample_id": "math500__0423"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 424,
+          "subject": "Algebra",
+          "sample_id": "math500__0424"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 425,
+          "subject": "Precalculus",
+          "sample_id": "math500__0425"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 426,
+          "subject": "Geometry",
+          "sample_id": "math500__0426"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 427,
+          "subject": "Algebra",
+          "sample_id": "math500__0427"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 428,
+          "subject": "Intermediate Algebra",
+          "sample_id": "math500__0428"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 429,
+          "subject": "Intermediate Algebra",
+          "sample_id": "math500__0429"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 430,
+          "subject": "Prealgebra",
+          "sample_id": "math500__0430"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 431,
+          "subject": "Precalculus",
+          "sample_id": "math500__0431"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 432,
+          "subject": "Intermediate Algebra",
+          "sample_id": "math500__0432"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 433,
+          "subject": "Number Theory",
+          "sample_id": "math500__0433"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 434,
+          "subject": "Prealgebra",
+          "sample_id": "math500__0434"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 435,
+          "subject": "Algebra",
+          "sample_id": "math500__0435"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 436,
+          "subject": "Counting & Probability",
+          "sample_id": "math500__0436"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 437,
+          "subject": "Algebra",
+          "sample_id": "math500__0437"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 438,
+          "subject": "Number Theory",
+          "sample_id": "math500__0438"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 439,
+          "subject": "Intermediate Algebra",
+          "sample_id": "math500__0439"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 440,
+          "subject": "Algebra",
+          "sample_id": "math500__0440"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 441,
+          "subject": "Prealgebra",
+          "sample_id": "math500__0441"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 442,
+          "subject": "Algebra",
+          "sample_id": "math500__0442"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 443,
+          "subject": "Algebra",
+          "sample_id": "math500__0443"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 444,
+          "subject": "Counting & Probability",
+          "sample_id": "math500__0444"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 445,
+          "subject": "Intermediate Algebra",
+          "sample_id": "math500__0445"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 446,
+          "subject": "Algebra",
+          "sample_id": "math500__0446"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 447,
+          "subject": "Prealgebra",
+          "sample_id": "math500__0447"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 448,
+          "subject": "Number Theory",
+          "sample_id": "math500__0448"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 449,
+          "subject": "Algebra",
+          "sample_id": "math500__0449"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 450,
+          "subject": "Number Theory",
+          "sample_id": "math500__0450"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 451,
+          "subject": "Number Theory",
+          "sample_id": "math500__0451"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 452,
+          "subject": "Algebra",
+          "sample_id": "math500__0452"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 453,
+          "subject": "Algebra",
+          "sample_id": "math500__0453"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 454,
+          "subject": "Precalculus",
+          "sample_id": "math500__0454"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 455,
+          "subject": "Counting & Probability",
+          "sample_id": "math500__0455"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 456,
+          "subject": "Intermediate Algebra",
+          "sample_id": "math500__0456"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 457,
+          "subject": "Number Theory",
+          "sample_id": "math500__0457"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 458,
+          "subject": "Prealgebra",
+          "sample_id": "math500__0458"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 459,
+          "subject": "Algebra",
+          "sample_id": "math500__0459"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 460,
+          "subject": "Prealgebra",
+          "sample_id": "math500__0460"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 461,
+          "subject": "Algebra",
+          "sample_id": "math500__0461"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 462,
+          "subject": "Number Theory",
+          "sample_id": "math500__0462"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 463,
+          "subject": "Algebra",
+          "sample_id": "math500__0463"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 464,
+          "subject": "Intermediate Algebra",
+          "sample_id": "math500__0464"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 465,
+          "subject": "Number Theory",
+          "sample_id": "math500__0465"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 466,
+          "subject": "Precalculus",
+          "sample_id": "math500__0466"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 467,
+          "subject": "Prealgebra",
+          "sample_id": "math500__0467"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 468,
+          "subject": "Algebra",
+          "sample_id": "math500__0468"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 469,
+          "subject": "Algebra",
+          "sample_id": "math500__0469"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 470,
+          "subject": "Intermediate Algebra",
+          "sample_id": "math500__0470"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 471,
+          "subject": "Prealgebra",
+          "sample_id": "math500__0471"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 472,
+          "subject": "Algebra",
+          "sample_id": "math500__0472"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 473,
+          "subject": "Prealgebra",
+          "sample_id": "math500__0473"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 474,
+          "subject": "Intermediate Algebra",
+          "sample_id": "math500__0474"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 475,
+          "subject": "Counting & Probability",
+          "sample_id": "math500__0475"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 476,
+          "subject": "Prealgebra",
+          "sample_id": "math500__0476"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 477,
+          "subject": "Number Theory",
+          "sample_id": "math500__0477"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 478,
+          "subject": "Intermediate Algebra",
+          "sample_id": "math500__0478"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 479,
+          "subject": "Number Theory",
+          "sample_id": "math500__0479"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 480,
+          "subject": "Precalculus",
+          "sample_id": "math500__0480"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 481,
+          "subject": "Intermediate Algebra",
+          "sample_id": "math500__0481"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 482,
+          "subject": "Number Theory",
+          "sample_id": "math500__0482"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 483,
+          "subject": "Precalculus",
+          "sample_id": "math500__0483"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 484,
+          "subject": "Intermediate Algebra",
+          "sample_id": "math500__0484"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 485,
+          "subject": "Counting & Probability",
+          "sample_id": "math500__0485"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 486,
+          "subject": "Geometry",
+          "sample_id": "math500__0486"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 487,
+          "subject": "Number Theory",
+          "sample_id": "math500__0487"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 488,
+          "subject": "Prealgebra",
+          "sample_id": "math500__0488"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 489,
+          "subject": "Intermediate Algebra",
+          "sample_id": "math500__0489"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 490,
+          "subject": "Intermediate Algebra",
+          "sample_id": "math500__0490"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 491,
+          "subject": "Prealgebra",
+          "sample_id": "math500__0491"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 492,
+          "subject": "Precalculus",
+          "sample_id": "math500__0492"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 493,
+          "subject": "Algebra",
+          "sample_id": "math500__0493"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 494,
+          "subject": "Intermediate Algebra",
+          "sample_id": "math500__0494"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 495,
+          "subject": "Intermediate Algebra",
+          "sample_id": "math500__0495"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 496,
+          "subject": "Intermediate Algebra",
+          "sample_id": "math500__0496"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 497,
+          "subject": "Geometry",
+          "sample_id": "math500__0497"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 498,
+          "subject": "Intermediate Algebra",
+          "sample_id": "math500__0498"
+        },
+        {
+          "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-mtai/users/guoyifu02/0PM/datasets/benchmark/normalized/math500/math500.jsonl",
+          "source_split": "test",
+          "source_row": 499,
+          "subject": "Geometry",
+          "sample_id": "math500__0499"
+        }
+      ],
+      "protocol_override": null
+    }
+  ]
+}

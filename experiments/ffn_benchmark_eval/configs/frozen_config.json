@@ -1,0 +1,58 @@
+{
+  "experiment": "ffn_benchmark_eval",
+  "date_frozen": "2026-07-11",
+  "models": {
+    "qwen3_4b": {
+      "family": "qwen3_4b",
+      "original_path": "/nvme0/if/models/Qwen3-4B",
+      "num_layers": 36,
+      "intermediate_size": 9728,
+      "dtype": "bfloat16"
+    },
+    "qwen3_4b_base": {
+      "family": "qwen3_4b_base",
+      "original_path": "/nvme0/if/models/Qwen3-4B-Base",
+      "num_layers": 36,
+      "intermediate_size": 9728,
+      "dtype": "bfloat16"
+    }
+  },
+  "benchmarks": ["mmlu", "gsm8k", "ceval", "cmmlu", "humaneval_plus", "mbpp_plus"],
+  "sample_selection": {
+    "protocol_n": 500,
+    "stratified": ["mmlu", "ceval", "cmmlu"],
+    "fixed_id_subset": ["gsm8k"],
+    "selection_seed": 20260711,
+    "code_full": {"humaneval_plus": 164, "mbpp_plus": 378}
+  },
+  "stage1_seeds": [42, 43, 44],
+  "stage2_seeds": [1000, 1001, 1002, 1003, 1004, 1005, 1006, 1007, 1008, 1009,
+                    1010, 1011, 1012, 1013, 1014, 1015, 1016, 1017, 1018, 1019],
+  "permutation": {
+    "kind": "random",
+    "scope": "all36",
+    "prng": "torch.randperm generator manual_seed(seed*1000+layer_idx)",
+    "convention": "gate/up rows[perm], down cols[perm]; per-layer independent perm"
+  },
+  "vllm": {
+    "tensor_parallel_size": 1,
+    "dtype": "bfloat16",
+    "gpu_memory_utilization": 0.90,
+    "gpu_memory_utilization_shared": 0.28,
+    "gpu_memory_utilization_shared_note": "2026-07-11 13:14: another user's jobs occupy ~26GB of GPU0. Lowered to 0.38 (~18GB) to coexist. Verified gpu_memory_utilization-invariance of correctness: util 0.40 vs 0.90 on Qwen3-4B-Base gsm8k+mmlu gave 0 correctness diffs (3 gsm8k response-text diffs = same chunked-prefill residual), so results at 0.38 and 0.90 are mixable.",
+    "enable_prefix_caching": false,
+    "max_model_len": 4096,
+    "enforce_eager": true,
+    "batch_invariant": true,
+    "temperature": 0.0,
+    "n_runs": 1,
+    "env": {"VLLM_USE_FLASHINFER_SAMPLER": "0", "VLLM_BATCH_INVARIANT": "1"},
+    "determinism_note": "VLLM_BATCH_INVARIANT=1 gives bitwise cross-process determinism on a fixed GPU (probe: gsm8k 0/0). Two RTX 4090s are NOT bit-identical (probe: 28 resp/5 corr diffs), so each model family is pinned to one GPU: all of its baseline and permutation checkpoints run on the same device. Default vLLM was nondeterministic even same-GPU (69 resp/15 corr diffs)."
+  },
+  "gpu_pinning": {"qwen3_4b": 0, "qwen3_4b_base": 0},
+  "gpu_pinning_note": "2026-07-11: restricted to GPU0 only (GPU1 no longer available). Both families now run on GPU0 for same-device determinism. qwen3_4b_base results previously computed on GPU1 were discarded and recomputed on GPU0 so each family's baseline and permutations share one device.",
+  "equivalence_intervals_pp": {
+    "single_benchmark": [-1.0, 1.0],
+    "suite_macro": [-0.5, 0.5]
+  }
+}

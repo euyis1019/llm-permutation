@@ -1,0 +1,226 @@
+{
+  "scope_single_L0": {
+    "suite_macro_delta_pp": -0.611326192627006,
+    "mean_behavior_disagreement": 0.02702761646664087,
+    "per_bench_delta_pp": {
+      "mmlu": 0.40000000000000036,
+      "gsm8k": -2.0000000000000018,
+      "ceval": 0.20000000000000018,
+      "cmmlu": -0.6000000000000005,
+      "humaneval_plus": -0.6097560975609762,
+      "mbpp_plus": -1.0582010582010581
+    },
+    "per_bench_disagreement": {
+      "mmlu": 0.008000000000000007,
+      "gsm8k": 0.10799999999999998,
+      "ceval": 0.006000000000000005,
+      "cmmlu": 0.006000000000000005,
+      "humaneval_plus": 0.018292682926829285,
+      "mbpp_plus": 0.015873015873015928
+    },
+    "per_bench_text_match": {
+      "mmlu": 0.99,
+      "gsm8k": 0.308,
+      "ceval": 0.992,
+      "cmmlu": 0.99,
+      "humaneval_plus": 0.6829268292682927,
+      "mbpp_plus": 0.7380952380952381
+    }
+  },
+  "scope_single_L17": {
+    "suite_macro_delta_pp": -0.2107583774250447,
+    "mean_behavior_disagreement": 0.02057043919645546,
+    "per_bench_delta_pp": {
+      "mmlu": -0.20000000000000018,
+      "gsm8k": -0.40000000000000036,
+      "ceval": 0.0,
+      "cmmlu": -0.40000000000000036,
+      "humaneval_plus": 0.0,
+      "mbpp_plus": -0.2645502645502673
+    },
+    "per_bench_disagreement": {
+      "mmlu": 0.006000000000000005,
+      "gsm8k": 0.07999999999999996,
+      "ceval": 0.0040000000000000036,
+      "cmmlu": 0.008000000000000007,
+      "humaneval_plus": 0.012195121951219523,
+      "mbpp_plus": 0.013227513227513255
+    },
+    "per_bench_text_match": {
+      "mmlu": 0.994,
+      "gsm8k": 0.368,
+      "ceval": 0.996,
+      "cmmlu": 0.99,
+      "humaneval_plus": 0.7378048780487805,
+      "mbpp_plus": 0.791005291005291
+    }
+  },
+  "scope_single_L35": {
+    "suite_macro_delta_pp": -0.16666666666666682,
+    "mean_behavior_disagreement": 0.010333333333333342,
+    "per_bench_delta_pp": {
+      "mmlu": 0.0,
+      "gsm8k": -1.0000000000000009,
+      "ceval": 0.0,
+      "cmmlu": 0.0,
+      "humaneval_plus": 0.0,
+      "mbpp_plus": 0.0
+    },
+    "per_bench_disagreement": {
+      "mmlu": 0.0,
+      "gsm8k": 0.062000000000000055,
+      "ceval": 0.0,
+      "cmmlu": 0.0,
+      "humaneval_plus": 0.0,
+      "mbpp_plus": 0.0
+    },
+    "per_bench_text_match": {
+      "mmlu": 1.0,
+      "gsm8k": 0.418,
+      "ceval": 1.0,
+      "cmmlu": 1.0,
+      "humaneval_plus": 0.9939024390243902,
+      "mbpp_plus": 1.0
+    }
+  },
+  "scope_prefix6": {
+    "suite_macro_delta_pp": -0.7500279605970642,
+    "mean_behavior_disagreement": 0.025726803458510788,
+    "per_bench_delta_pp": {
+      "mmlu": -0.39999999999998925,
+      "gsm8k": -2.200000000000002,
+      "ceval": 0.20000000000000018,
+      "cmmlu": -0.8000000000000007,
+      "humaneval_plus": -1.8292682926829174,
+      "mbpp_plus": 0.5291005291005235
+    },
+    "per_bench_disagreement": {
+      "mmlu": 0.008000000000000007,
+      "gsm8k": 0.08599999999999997,
+      "ceval": 0.006000000000000005,
+      "cmmlu": 0.008000000000000007,
+      "humaneval_plus": 0.030487804878048808,
+      "mbpp_plus": 0.015873015873015928
+    },
+    "per_bench_text_match": {
+      "mmlu": 0.992,
+      "gsm8k": 0.29,
+      "ceval": 0.992,
+      "cmmlu": 0.988,
+      "humaneval_plus": 0.676829268292683,
+      "mbpp_plus": 0.746031746031746
+    }
+  },
+  "scope_prefix18": {
+    "suite_macro_delta_pp": -0.8382113821138182,
+    "mean_behavior_disagreement": 0.027275304340344992,
+    "per_bench_delta_pp": {
+      "mmlu": -0.39999999999998925,
+      "gsm8k": -2.8000000000000025,
+      "ceval": 0.40000000000000036,
+      "cmmlu": -0.40000000000000036,
+      "humaneval_plus": -1.8292682926829174,
+      "mbpp_plus": 0.0
+    },
+    "per_bench_disagreement": {
+      "mmlu": 0.008000000000000007,
+      "gsm8k": 0.09599999999999997,
+      "ceval": 0.0040000000000000036,
+      "cmmlu": 0.0040000000000000036,
+      "humaneval_plus": 0.030487804878048808,
+      "mbpp_plus": 0.021164021164021163
+    },
+    "per_bench_text_match": {
+      "mmlu": 0.992,
+      "gsm8k": 0.292,
+      "ceval": 0.994,
+      "cmmlu": 0.99,
+      "humaneval_plus": 0.676829268292683,
+      "mbpp_plus": 0.701058201058201
+    }
+  },
+  "scope_all36_random": {
+    "suite_macro_delta_pp": -0.8307050372091007,
+    "mean_behavior_disagreement": 0.026716221447928772,
+    "per_bench_delta_pp": {
+      "mmlu": -0.20000000000000018,
+      "gsm8k": -1.8000000000000016,
+      "ceval": 0.0,
+      "cmmlu": -0.20000000000000018,
+      "humaneval_plus": -3.0487804878048697,
+      "mbpp_plus": 0.2645502645502673
+    },
+    "per_bench_disagreement": {
+      "mmlu": 0.006000000000000005,
+      "gsm8k": 0.09399999999999997,
+      "ceval": 0.0,
+      "cmmlu": 0.006000000000000005,
+      "humaneval_plus": 0.030487804878048808,
+      "mbpp_plus": 0.023809523809523836
+    },
+    "per_bench_text_match": {
+      "mmlu": 0.994,
+      "gsm8k": 0.31,
+      "ceval": 0.998,
+      "cmmlu": 0.988,
+      "humaneval_plus": 0.6219512195121951,
+      "mbpp_plus": 0.7222222222222222
+    }
+  },
+  "mag_adjacent_swap_all36": {
+    "suite_macro_delta_pp": -0.20000000000000018,
+    "mean_behavior_disagreement": 0.011999999999999992,
+    "per_bench_delta_pp": {
+      "mmlu": 0.0,
+      "gsm8k": -1.200000000000001,
+      "ceval": 0.0,
+      "cmmlu": 0.0,
+      "humaneval_plus": 0.0,
+      "mbpp_plus": 0.0
+    },
+    "per_bench_disagreement": {
+      "mmlu": 0.0,
+      "gsm8k": 0.07199999999999995,
+      "ceval": 0.0,
+      "cmmlu": 0.0,
+      "humaneval_plus": 0.0,
+      "mbpp_plus": 0.0
+    },
+    "per_bench_text_match": {
+      "mmlu": 1.0,
+      "gsm8k": 0.436,
+      "ceval": 1.0,
+      "cmmlu": 1.0,
+      "humaneval_plus": 1.0,
+      "mbpp_plus": 0.9973544973544973
+    }
+  },
+  "mag_reverse_all36": {
+    "suite_macro_delta_pp": -0.45485008818342276,
+    "mean_behavior_disagreement": 0.028140878392910924,
+    "per_bench_delta_pp": {
+      "mmlu": 0.0,
+      "gsm8k": -1.8000000000000016,
+      "ceval": 0.40000000000000036,
+      "cmmlu": -0.8000000000000007,
+      "humaneval_plus": 0.0,
+      "mbpp_plus": -0.5291005291005346
+    },
+    "per_bench_disagreement": {
+      "mmlu": 0.008000000000000007,
+      "gsm8k": 0.09799999999999998,
+      "ceval": 0.0040000000000000036,
+      "cmmlu": 0.008000000000000007,
+      "humaneval_plus": 0.024390243902439046,
+      "mbpp_plus": 0.02645502645502651
+    },
+    "per_bench_text_match": {
+      "mmlu": 0.992,
+      "gsm8k": 0.318,
+      "ceval": 0.996,
+      "cmmlu": 0.988,
+      "humaneval_plus": 0.7073170731707317,
+      "mbpp_plus": 0.7142857142857143
+    }
+  }
+}

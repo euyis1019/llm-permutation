@@ -1,0 +1,38 @@
+kind: benchmark
+name: base_model_quick_test
+description: >
+  Base model 快速测试套件：覆盖英文知识（MMLU、MMLU-Redux）、高难推理（MMLU-Pro）、
+  链式推理（BBH）、数学（GSM8K、MATH-500）、中文知识（C-Eval、CMMLU）八个维度。
+  每个 benchmark 取前 500 条（MATH-500 全量 500 题），适合新模型快速摸底，
+  数据量远小于 s2_analysis，通常 1-2 小时内可跑完。
+
+# 行为契约（prompt_builder、scorer、stop_tokens、fewshot、generation_kwargs）
+# 全部由各 benchmark 的 benchmark_meta.json protocol 字段定义。
+# 本 suite 不重载任何协议字段。总共 8 个
+
+spec:
+  benchmarks:
+    - id: mmlu
+      nrows: 500
+
+    - id: mmlu_redux
+      nrows: 500
+
+    - id: mmlu_pro
+      nrows: 500
+
+    - id: bbh
+      nrows: 500
+
+    - id: gsm8k
+      nrows: 500
+
+    - id: math500
+
+    - id: ceval
+      nrows: 500
+
+    - id: cmmlu
+      nrows: 500
+    - id: cruxeval
+      nrows: 800

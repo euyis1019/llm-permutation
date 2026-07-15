@@ -1,0 +1,44 @@
+kind: benchmark
+name: base_model_eval_v1
+description: >
+  标准评测套件：5 个 protocol bench（进程内 runner）
+  + 2 个 code bench（evalplus external）。这是固定 7-bench
+  协议，driver/资源/metric 全部由 runner 字段与 submit_eval.py 自动决定，调用方
+  只需提供 model-path / model-tag / output-dir。0625确立
+
+# 行为契约（prompt_builder / scorer / stop_tokens / fewshot / generation_kwargs）
+# 由各 bench 的 normalized/{id}/benchmark_meta.json 定义，本 suite 不重载。
+# resources / batch_cap 是执行旋钮（可被命令行覆盖），不属于行为契约。
+
+spec:
+  batch_cap: 3 #这个字段决定是否循环拼接为一次 prompt，会影响 hope 任务需要申请的内存
+# 以下资源适配 qwen3-4b
+  resources:
+    protocol:
+      tp: 2
+      mem: 65536
+      vcore: 48
+      gpus: 2
+    external:
+      tp: 4
+      mem: 400000
+      vcore: 64
+      gpus: 4
+
+  benchmarks:
+    - id: gsm8k
+    - id: ceval
+    - id: cmmlu
+    - id: cruxeval
+    
+    - id: humaneval_plus
+      runner: external
+      framework: evalplus
+      dataset: humaneval
+      metric: base_pass_at_1
+
+    - id: mbpp_plus
+      runner: external
+      framework: evalplus
+      dataset: mbpp
+      metric: base_pass_at_1

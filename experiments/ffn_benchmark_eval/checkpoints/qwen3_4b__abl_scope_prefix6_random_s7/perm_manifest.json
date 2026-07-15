@@ -1,0 +1,114 @@
+{
+  "tag": "qwen3_4b__abl_scope_prefix6_random_s7",
+  "source": "/nvme0/if/models/Qwen3-4B",
+  "out_dir": "/nvme0/if/permutation/experiments/ffn_benchmark_eval/checkpoints/qwen3_4b__abl_scope_prefix6_random_s7",
+  "scope": "prefix:6",
+  "kind": "random",
+  "base_seed": 7,
+  "n_layers": 36,
+  "intermediate_size": 9728,
+  "permuted_layers": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+  ],
+  "layer_perms": {
+    "0": {
+      "perm_sha256": "b1d9ebe845b00351be1f53579998c7fad44c0c96876eecb1b8568c28b494cac1",
+      "first8": [
+        7937,
+        3660,
+        8949,
+        7443,
+        9341,
+        6577,
+        9035,
+        3327
+      ]
+    },
+    "1": {
+      "perm_sha256": "9de5d6a98160111c4693d8bf63b2069e9c0c0fa8d4250dc6b1e8647722ab3c45",
+      "first8": [
+        6536,
+        5006,
+        6898,
+        7676,
+        1439,
+        475,
+        8000,
+        1244
+      ]
+    },
+    "2": {
+      "perm_sha256": "9ddf833871e602bc9ec7e7dbfeefd3690dec71607323fd8673a3f7f43ed86954",
+      "first8": [
+        4489,
+        3476,
+        8144,
+        5386,
+        7187,
+        4491,
+        7437,
+        3956
+      ]
+    },
+    "3": {
+      "perm_sha256": "66668845d77b55351577147de47c4c459b81e9846c51c49e5fae96ac47219c63",
+      "first8": [
+        2070,
+        2386,
+        6501,
+        2571,
+        8540,
+        721,
+        4024,
+        5126
+      ]
+    },
+    "4": {
+      "perm_sha256": "777f2068b903b323fc566fa6f16b8a22c8c36cdbcbc70ea1d5ac01bed4c907eb",
+      "first8": [
+        5915,
+        1836,
+        5434,
+        188,
+        2835,
+        5182,
+        8646,
+        7017
+      ]
+    },
+    "5": {
+      "perm_sha256": "8d77028424dc6fb9e67eef1315303e36daede77327fc9e2d0ee9beae1cef073d",
+      "first8": [
+        9237,
+        9352,
+        9008,
+        4789,
+        4320,
+        3070,
+        1564,
+        4896
+      ]
+    }
+  },
+  "sentinel_sha256": {
+    "model.embed_tokens.weight": "eabe5625fc0575bf517c424041e9701c0fd521889e0f547c8522d2aa20e8c0f8",
+    "model.layers.0.self_attn.q_proj.weight": "d1a42b38b6bd851c98152836ca7cc1b88a9b730ae43391671989dfd027490c08",
+    "model.layers.35.self_attn.o_proj.weight": "823a07a2166fb8669db92428326681c14fdf64d3a905db53c0e061df0b4432e9",
+    "model.norm.weight": "2e185da56e34e5461e40b8cad00745efc88e6edb956d3879adcba96caaabbbef"
+  },
+  "verified": {
+    "non_ffn_unchanged": true,
+    "untouched_ffn_unchanged": true,
+    "rowcol_relation_layers": [
+      0,
+      5
+    ]
+  },
+  "gen_seconds": 33.4,
+  "generator": "make_checkpoint.py v1"
+}

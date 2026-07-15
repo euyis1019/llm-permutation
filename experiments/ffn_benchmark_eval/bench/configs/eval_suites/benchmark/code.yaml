@@ -1,0 +1,31 @@
+kind: benchmark
+name: code
+description: >
+  Code 域评测：HumanEval+（164）/ MBPP+（378）/ CRUXEval（800）。
+  HumanEval+ 和 MBPP+ 由 evalplus 框架 external runner 执行（in-process vLLM + 沙箱打分，pass@1）；
+  CRUXEval 走 src 协议层（函数输出预测，exact match，2-shot）。
+  evalplus 是黑盒框架，不走 prompt_builder/scorer；CRUXEval 走 normalized/cruxeval/benchmark_meta.json。
+  详见 src/eval/external/ 与 DESIGN_external_eval_integration.md。
+
+# external bench 字段说明：
+#   runner=external  → 不走 normalized/{id}/benchmark_meta.json 协议路径
+#   framework        → 评测脚手架名（evalplus）
+#   dataset          → 脚手架的数据集 key（humaneval / mbpp）
+#   metric           → 哪个 pass@1 映射成统一 accuracy（默认 base_pass_at_1）
+# 数据在 datasets/benchmark/evalplus/（CodeLab 预下载，离线节点无公网）。
+
+spec:
+  benchmarks:
+    - id: humaneval_plus
+      runner: external
+      framework: evalplus
+      dataset: humaneval
+      metric: base_pass_at_1
+
+    - id: mbpp_plus
+      runner: external
+      framework: evalplus
+      dataset: mbpp
+      metric: base_pass_at_1
+
+    - id: cruxeval         # 函数输出预测，src 协议，exact match，800 条全量

@@ -1,0 +1,3523 @@
+{
+  "benchmark": "ceval",
+  "model_tag": "qwen3_4b__perm_all36_s1019",
+  "kind": "protocol",
+  "total": 500,
+  "correct": 416,
+  "accuracy": 0.832,
+  "gen_seconds": 13.9,
+  "max_tokens": 8,
+  "stop": [
+    "\n\n",
+    "\n\n\n",
+    "\n\nQuestion",
+    "\n\nProblem",
+    "\n\n[",
+    "\n[",
+    "\n\nQ:",
+    "\n\nA:"
+  ],
+  "complete": true,
+  "samples": [
+    {
+      "sample_id": "ceval__accountant__0000",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__accountant__0001",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__accountant__0002",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__accountant__0003",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__accountant__0004",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__accountant__0005",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__accountant__0006",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__accountant__0007",
+      "target": "C",
+      "response": " A",
+      "extracted": "A",
+      "correct": false
+    },
+    {
+      "sample_id": "ceval__accountant__0008",
+      "target": "B",
+      "response": " B",
+      "extracted": "B",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__accountant__0009",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__accountant__0010",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__accountant__0011",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__accountant__0012",
+      "target": "B",
+      "response": " B",
+      "extracted": "B",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__accountant__0013",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__accountant__0014",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__accountant__0015",
+      "target": "B",
+      "response": " B",
+      "extracted": "B",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__accountant__0016",
+      "target": "C",
+      "response": " D",
+      "extracted": "D",
+      "correct": false
+    },
+    {
+      "sample_id": "ceval__accountant__0017",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__advanced_mathematics__0000",
+      "target": "B",
+      "response": " B",
+      "extracted": "B",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__advanced_mathematics__0001",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__advanced_mathematics__0002",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__advanced_mathematics__0003",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__advanced_mathematics__0004",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__advanced_mathematics__0005",
+      "target": "B",
+      "response": " A",
+      "extracted": "A",
+      "correct": false
+    },
+    {
+      "sample_id": "ceval__advanced_mathematics__0006",
+      "target": "B",
+      "response": " A",
+      "extracted": "A",
+      "correct": false
+    },
+    {
+      "sample_id": "ceval__art_studies__0000",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__art_studies__0001",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__art_studies__0002",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__art_studies__0003",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__art_studies__0004",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__art_studies__0005",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__art_studies__0006",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__art_studies__0007",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__art_studies__0008",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__art_studies__0009",
+      "target": "B",
+      "response": " A",
+      "extracted": "A",
+      "correct": false
+    },
+    {
+      "sample_id": "ceval__art_studies__0010",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__art_studies__0011",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__basic_medicine__0000",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__basic_medicine__0001",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__basic_medicine__0002",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__basic_medicine__0003",
+      "target": "B",
+      "response": " D",
+      "extracted": "D",
+      "correct": false
+    },
+    {
+      "sample_id": "ceval__basic_medicine__0004",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__basic_medicine__0005",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__basic_medicine__0006",
+      "target": "B",
+      "response": " B",
+      "extracted": "B",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__business_administration__0000",
+      "target": "B",
+      "response": " B",
+      "extracted": "B",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__business_administration__0001",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__business_administration__0002",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__business_administration__0003",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__business_administration__0004",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__business_administration__0005",
+      "target": "C",
+      "response": " B",
+      "extracted": "B",
+      "correct": false
+    },
+    {
+      "sample_id": "ceval__business_administration__0006",
+      "target": "B",
+      "response": " B",
+      "extracted": "B",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__business_administration__0007",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__business_administration__0008",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__business_administration__0009",
+      "target": "B",
+      "response": " A",
+      "extracted": "A",
+      "correct": false
+    },
+    {
+      "sample_id": "ceval__business_administration__0010",
+      "target": "B",
+      "response": " B",
+      "extracted": "B",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__business_administration__0011",
+      "target": "C",
+      "response": " A",
+      "extracted": "A",
+      "correct": false
+    },
+    {
+      "sample_id": "ceval__chinese_language_and_literature__0000",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__chinese_language_and_literature__0001",
+      "target": "B",
+      "response": " B",
+      "extracted": "B",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__chinese_language_and_literature__0002",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__chinese_language_and_literature__0003",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__chinese_language_and_literature__0004",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__chinese_language_and_literature__0005",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__chinese_language_and_literature__0006",
+      "target": "B",
+      "response": " B",
+      "extracted": "B",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__chinese_language_and_literature__0007",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__chinese_language_and_literature__0008",
+      "target": "A",
+      "response": " D",
+      "extracted": "D",
+      "correct": false
+    },
+    {
+      "sample_id": "ceval__civil_servant__0000",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__civil_servant__0001",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__civil_servant__0002",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__civil_servant__0003",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__civil_servant__0004",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__civil_servant__0005",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__civil_servant__0006",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__civil_servant__0007",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__civil_servant__0008",
+      "target": "A",
+      "response": " B",
+      "extracted": "B",
+      "correct": false
+    },
+    {
+      "sample_id": "ceval__civil_servant__0009",
+      "target": "D",
+      "response": " A",
+      "extracted": "A",
+      "correct": false
+    },
+    {
+      "sample_id": "ceval__civil_servant__0010",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__civil_servant__0011",
+      "target": "C",
+      "response": " B",
+      "extracted": "B",
+      "correct": false
+    },
+    {
+      "sample_id": "ceval__civil_servant__0012",
+      "target": "A",
+      "response": " C",
+      "extracted": "C",
+      "correct": false
+    },
+    {
+      "sample_id": "ceval__civil_servant__0013",
+      "target": "A",
+      "response": " D",
+      "extracted": "D",
+      "correct": false
+    },
+    {
+      "sample_id": "ceval__civil_servant__0014",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__civil_servant__0015",
+      "target": "C",
+      "response": " B",
+      "extracted": "B",
+      "correct": false
+    },
+    {
+      "sample_id": "ceval__civil_servant__0016",
+      "target": "A",
+      "response": " D",
+      "extracted": "D",
+      "correct": false
+    },
+    {
+      "sample_id": "ceval__clinical_medicine__0000",
+      "target": "B",
+      "response": " B",
+      "extracted": "B",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__clinical_medicine__0001",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__clinical_medicine__0002",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__clinical_medicine__0003",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__clinical_medicine__0004",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__clinical_medicine__0005",
+      "target": "B",
+      "response": " D",
+      "extracted": "D",
+      "correct": false
+    },
+    {
+      "sample_id": "ceval__clinical_medicine__0006",
+      "target": "B",
+      "response": " B",
+      "extracted": "B",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__clinical_medicine__0007",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__college_chemistry__0000",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__college_chemistry__0001",
+      "target": "B",
+      "response": " B",
+      "extracted": "B",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__college_chemistry__0002",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__college_chemistry__0003",
+      "target": "B",
+      "response": " B",
+      "extracted": "B",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__college_chemistry__0004",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__college_chemistry__0005",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__college_chemistry__0006",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__college_chemistry__0007",
+      "target": "B",
+      "response": " A",
+      "extracted": "A",
+      "correct": false
+    },
+    {
+      "sample_id": "ceval__college_chemistry__0008",
+      "target": "D",
+      "response": " A",
+      "extracted": "A",
+      "correct": false
+    },
+    {
+      "sample_id": "ceval__college_economics__0000",
+      "target": "B",
+      "response": " B",
+      "extracted": "B",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__college_economics__0001",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__college_economics__0002",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__college_economics__0003",
+      "target": "B",
+      "response": " B",
+      "extracted": "B",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__college_economics__0004",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__college_economics__0005",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__college_economics__0006",
+      "target": "D",
+      "response": " C",
+      "extracted": "C",
+      "correct": false
+    },
+    {
+      "sample_id": "ceval__college_economics__0007",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__college_economics__0008",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__college_economics__0009",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__college_economics__0010",
+      "target": "A",
+      "response": " C",
+      "extracted": "C",
+      "correct": false
+    },
+    {
+      "sample_id": "ceval__college_economics__0011",
+      "target": "B",
+      "response": " A",
+      "extracted": "A",
+      "correct": false
+    },
+    {
+      "sample_id": "ceval__college_economics__0012",
+      "target": "B",
+      "response": " B",
+      "extracted": "B",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__college_economics__0013",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__college_economics__0014",
+      "target": "B",
+      "response": " A",
+      "extracted": "A",
+      "correct": false
+    },
+    {
+      "sample_id": "ceval__college_economics__0015",
+      "target": "A",
+      "response": " D",
+      "extracted": "D",
+      "correct": false
+    },
+    {
+      "sample_id": "ceval__college_economics__0016",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__college_economics__0017",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__college_economics__0018",
+      "target": "B",
+      "response": " B",
+      "extracted": "B",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__college_economics__0019",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__college_physics__0000",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__college_physics__0001",
+      "target": "B",
+      "response": " B",
+      "extracted": "B",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__college_physics__0002",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__college_physics__0003",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__college_physics__0004",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__college_physics__0005",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__college_physics__0006",
+      "target": "A",
+      "response": " C",
+      "extracted": "C",
+      "correct": false
+    },
+    {
+      "sample_id": "ceval__college_programming__0000",
+      "target": "B",
+      "response": " B",
+      "extracted": "B",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__college_programming__0001",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__college_programming__0002",
+      "target": "B",
+      "response": " B",
+      "extracted": "B",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__college_programming__0003",
+      "target": "B",
+      "response": " B",
+      "extracted": "B",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__college_programming__0004",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__college_programming__0005",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__college_programming__0006",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__college_programming__0007",
+      "target": "B",
+      "response": " B",
+      "extracted": "B",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__college_programming__0008",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__college_programming__0009",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__college_programming__0010",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__college_programming__0011",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__college_programming__0012",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__college_programming__0013",
+      "target": "B",
+      "response": " B",
+      "extracted": "B",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__computer_architecture__0000",
+      "target": "B",
+      "response": " B",
+      "extracted": "B",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__computer_architecture__0001",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__computer_architecture__0002",
+      "target": "B",
+      "response": " B",
+      "extracted": "B",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__computer_architecture__0003",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__computer_architecture__0004",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__computer_architecture__0005",
+      "target": "B",
+      "response": " B",
+      "extracted": "B",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__computer_architecture__0006",
+      "target": "B",
+      "response": " B",
+      "extracted": "B",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__computer_architecture__0007",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__computer_network__0000",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__computer_network__0001",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__computer_network__0002",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__computer_network__0003",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__computer_network__0004",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__computer_network__0005",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__computer_network__0006",
+      "target": "C",
+      "response": " B",
+      "extracted": "B",
+      "correct": false
+    },
+    {
+      "sample_id": "ceval__discrete_mathematics__0000",
+      "target": "B",
+      "response": " C",
+      "extracted": "C",
+      "correct": false
+    },
+    {
+      "sample_id": "ceval__discrete_mathematics__0001",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__discrete_mathematics__0002",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__discrete_mathematics__0003",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__discrete_mathematics__0004",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__discrete_mathematics__0005",
+      "target": "D",
+      "response": " B",
+      "extracted": "B",
+      "correct": false
+    },
+    {
+      "sample_id": "ceval__education_science__0000",
+      "target": "B",
+      "response": " B",
+      "extracted": "B",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__education_science__0001",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__education_science__0002",
+      "target": "B",
+      "response": " B",
+      "extracted": "B",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__education_science__0003",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__education_science__0004",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__education_science__0005",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__education_science__0006",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__education_science__0007",
+      "target": "B",
+      "response": " B",
+      "extracted": "B",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__education_science__0008",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__education_science__0009",
+      "target": "A",
+      "response": " C",
+      "extracted": "C",
+      "correct": false
+    },
+    {
+      "sample_id": "ceval__education_science__0010",
+      "target": "B",
+      "response": " B",
+      "extracted": "B",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__electrical_engineer__0000",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__electrical_engineer__0001",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__electrical_engineer__0002",
+      "target": "B",
+      "response": " B",
+      "extracted": "B",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__electrical_engineer__0003",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__electrical_engineer__0004",
+      "target": "B",
+      "response": " B",
+      "extracted": "B",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__electrical_engineer__0005",
+      "target": "A",
+      "response": " C",
+      "extracted": "C",
+      "correct": false
+    },
+    {
+      "sample_id": "ceval__electrical_engineer__0006",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__electrical_engineer__0007",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__electrical_engineer__0008",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__electrical_engineer__0009",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__electrical_engineer__0010",
+      "target": "D",
+      "response": " A",
+      "extracted": "A",
+      "correct": false
+    },
+    {
+      "sample_id": "ceval__electrical_engineer__0011",
+      "target": "C",
+      "response": " B",
+      "extracted": "B",
+      "correct": false
+    },
+    {
+      "sample_id": "ceval__electrical_engineer__0012",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__electrical_engineer__0013",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__environmental_impact_assessment_engineer__0000",
+      "target": "B",
+      "response": " B",
+      "extracted": "B",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__environmental_impact_assessment_engineer__0001",
+      "target": "B",
+      "response": " B",
+      "extracted": "B",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__environmental_impact_assessment_engineer__0002",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__environmental_impact_assessment_engineer__0003",
+      "target": "B",
+      "response": " B",
+      "extracted": "B",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__environmental_impact_assessment_engineer__0004",
+      "target": "B",
+      "response": " B",
+      "extracted": "B",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__environmental_impact_assessment_engineer__0005",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__environmental_impact_assessment_engineer__0006",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__environmental_impact_assessment_engineer__0007",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__environmental_impact_assessment_engineer__0008",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__environmental_impact_assessment_engineer__0009",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__environmental_impact_assessment_engineer__0010",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__environmental_impact_assessment_engineer__0011",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__fire_engineer__0000",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__fire_engineer__0001",
+      "target": "B",
+      "response": " B",
+      "extracted": "B",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__fire_engineer__0002",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__fire_engineer__0003",
+      "target": "B",
+      "response": " B",
+      "extracted": "B",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__fire_engineer__0004",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__fire_engineer__0005",
+      "target": "A",
+      "response": " C",
+      "extracted": "C",
+      "correct": false
+    },
+    {
+      "sample_id": "ceval__fire_engineer__0006",
+      "target": "A",
+      "response": " C",
+      "extracted": "C",
+      "correct": false
+    },
+    {
+      "sample_id": "ceval__fire_engineer__0007",
+      "target": "B",
+      "response": " D",
+      "extracted": "D",
+      "correct": false
+    },
+    {
+      "sample_id": "ceval__fire_engineer__0008",
+      "target": "D",
+      "response": " C",
+      "extracted": "C",
+      "correct": false
+    },
+    {
+      "sample_id": "ceval__fire_engineer__0009",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__fire_engineer__0010",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__fire_engineer__0011",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__high_school_biology__0000",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__high_school_biology__0001",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__high_school_biology__0002",
+      "target": "B",
+      "response": " B",
+      "extracted": "B",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__high_school_biology__0003",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__high_school_biology__0004",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__high_school_biology__0005",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__high_school_biology__0006",
+      "target": "C",
+      "response": " D",
+      "extracted": "D",
+      "correct": false
+    },
+    {
+      "sample_id": "ceval__high_school_chemistry__0000",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__high_school_chemistry__0001",
+      "target": "B",
+      "response": " B",
+      "extracted": "B",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__high_school_chemistry__0002",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__high_school_chemistry__0003",
+      "target": "B",
+      "response": " B",
+      "extracted": "B",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__high_school_chemistry__0004",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__high_school_chemistry__0005",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__high_school_chemistry__0006",
+      "target": "B",
+      "response": " D",
+      "extracted": "D",
+      "correct": false
+    },
+    {
+      "sample_id": "ceval__high_school_chinese__0000",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__high_school_chinese__0001",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__high_school_chinese__0002",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__high_school_chinese__0003",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__high_school_chinese__0004",
+      "target": "B",
+      "response": " B",
+      "extracted": "B",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__high_school_chinese__0005",
+      "target": "D",
+      "response": " B",
+      "extracted": "B",
+      "correct": false
+    },
+    {
+      "sample_id": "ceval__high_school_chinese__0006",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__high_school_geography__0000",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__high_school_geography__0001",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__high_school_geography__0002",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__high_school_geography__0003",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__high_school_geography__0004",
+      "target": "B",
+      "response": " B",
+      "extracted": "B",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__high_school_geography__0005",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__high_school_geography__0006",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__high_school_history__0000",
+      "target": "B",
+      "response": " B",
+      "extracted": "B",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__high_school_history__0001",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__high_school_history__0002",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__high_school_history__0003",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__high_school_history__0004",
+      "target": "B",
+      "response": " B",
+      "extracted": "B",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__high_school_history__0005",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__high_school_history__0006",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__high_school_mathematics__0000",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__high_school_mathematics__0001",
+      "target": "B",
+      "response": " B",
+      "extracted": "B",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__high_school_mathematics__0002",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__high_school_mathematics__0003",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__high_school_mathematics__0004",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__high_school_mathematics__0005",
+      "target": "B",
+      "response": " A",
+      "extracted": "A",
+      "correct": false
+    },
+    {
+      "sample_id": "ceval__high_school_mathematics__0006",
+      "target": "D",
+      "response": " A",
+      "extracted": "A",
+      "correct": false
+    },
+    {
+      "sample_id": "ceval__high_school_physics__0000",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__high_school_physics__0001",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__high_school_physics__0002",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__high_school_physics__0003",
+      "target": "B",
+      "response": " B",
+      "extracted": "B",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__high_school_physics__0004",
+      "target": "B",
+      "response": " B",
+      "extracted": "B",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__high_school_physics__0005",
+      "target": "B",
+      "response": " B",
+      "extracted": "B",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__high_school_physics__0006",
+      "target": "C",
+      "response": " A",
+      "extracted": "A",
+      "correct": false
+    },
+    {
+      "sample_id": "ceval__high_school_politics__0000",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__high_school_politics__0001",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__high_school_politics__0002",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__high_school_politics__0003",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__high_school_politics__0004",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__high_school_politics__0005",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__high_school_politics__0006",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__ideological_and_moral_cultivation__0000",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__ideological_and_moral_cultivation__0001",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__ideological_and_moral_cultivation__0002",
+      "target": "B",
+      "response": " B",
+      "extracted": "B",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__ideological_and_moral_cultivation__0003",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__ideological_and_moral_cultivation__0004",
+      "target": "B",
+      "response": " B",
+      "extracted": "B",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__ideological_and_moral_cultivation__0005",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__ideological_and_moral_cultivation__0006",
+      "target": "B",
+      "response": " B",
+      "extracted": "B",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__law__0000",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__law__0001",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__law__0002",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__law__0003",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__law__0004",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__law__0005",
+      "target": "D",
+      "response": " C",
+      "extracted": "C",
+      "correct": false
+    },
+    {
+      "sample_id": "ceval__law__0006",
+      "target": "A",
+      "response": " D",
+      "extracted": "D",
+      "correct": false
+    },
+    {
+      "sample_id": "ceval__law__0007",
+      "target": "D",
+      "response": " B",
+      "extracted": "B",
+      "correct": false
+    },
+    {
+      "sample_id": "ceval__law__0008",
+      "target": "A",
+      "response": " B",
+      "extracted": "B",
+      "correct": false
+    },
+    {
+      "sample_id": "ceval__legal_professional__0000",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__legal_professional__0001",
+      "target": "B",
+      "response": " B",
+      "extracted": "B",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__legal_professional__0002",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__legal_professional__0003",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__legal_professional__0004",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__legal_professional__0005",
+      "target": "D",
+      "response": " B",
+      "extracted": "B",
+      "correct": false
+    },
+    {
+      "sample_id": "ceval__legal_professional__0006",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__legal_professional__0007",
+      "target": "B",
+      "response": " C",
+      "extracted": "C",
+      "correct": false
+    },
+    {
+      "sample_id": "ceval__legal_professional__0008",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__logic__0000",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__logic__0001",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__logic__0002",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__logic__0003",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__logic__0004",
+      "target": "B",
+      "response": " B",
+      "extracted": "B",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__logic__0005",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__logic__0006",
+      "target": "D",
+      "response": " C",
+      "extracted": "C",
+      "correct": false
+    },
+    {
+      "sample_id": "ceval__logic__0007",
+      "target": "B",
+      "response": " A",
+      "extracted": "A",
+      "correct": false
+    },
+    {
+      "sample_id": "ceval__mao_zedong_thought__0000",
+      "target": "B",
+      "response": " B",
+      "extracted": "B",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__mao_zedong_thought__0001",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__mao_zedong_thought__0002",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__mao_zedong_thought__0003",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__mao_zedong_thought__0004",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__mao_zedong_thought__0005",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__mao_zedong_thought__0006",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__mao_zedong_thought__0007",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__mao_zedong_thought__0008",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__marxism__0000",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__marxism__0001",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__marxism__0002",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__marxism__0003",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__marxism__0004",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__marxism__0005",
+      "target": "B",
+      "response": " B",
+      "extracted": "B",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__marxism__0006",
+      "target": "D",
+      "response": " A",
+      "extracted": "A",
+      "correct": false
+    },
+    {
+      "sample_id": "ceval__metrology_engineer__0000",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__metrology_engineer__0001",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__metrology_engineer__0002",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__metrology_engineer__0003",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__metrology_engineer__0004",
+      "target": "B",
+      "response": " B",
+      "extracted": "B",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__metrology_engineer__0005",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__metrology_engineer__0006",
+      "target": "B",
+      "response": " A",
+      "extracted": "A",
+      "correct": false
+    },
+    {
+      "sample_id": "ceval__metrology_engineer__0007",
+      "target": "C",
+      "response": " B",
+      "extracted": "B",
+      "correct": false
+    },
+    {
+      "sample_id": "ceval__metrology_engineer__0008",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__middle_school_biology__0000",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__middle_school_biology__0001",
+      "target": "B",
+      "response": " B",
+      "extracted": "B",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__middle_school_biology__0002",
+      "target": "B",
+      "response": " B",
+      "extracted": "B",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__middle_school_biology__0003",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__middle_school_biology__0004",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__middle_school_biology__0005",
+      "target": "B",
+      "response": " B",
+      "extracted": "B",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__middle_school_biology__0006",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__middle_school_biology__0007",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__middle_school_chemistry__0000",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__middle_school_chemistry__0001",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__middle_school_chemistry__0002",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__middle_school_chemistry__0003",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__middle_school_chemistry__0004",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__middle_school_chemistry__0005",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__middle_school_chemistry__0006",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__middle_school_geography__0000",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__middle_school_geography__0001",
+      "target": "B",
+      "response": " B",
+      "extracted": "B",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__middle_school_geography__0002",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__middle_school_geography__0003",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__middle_school_history__0000",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__middle_school_history__0001",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__middle_school_history__0002",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__middle_school_history__0003",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__middle_school_history__0004",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__middle_school_history__0005",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__middle_school_history__0006",
+      "target": "B",
+      "response": " D",
+      "extracted": "D",
+      "correct": false
+    },
+    {
+      "sample_id": "ceval__middle_school_history__0007",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__middle_school_mathematics__0000",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__middle_school_mathematics__0001",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__middle_school_mathematics__0002",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__middle_school_mathematics__0003",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__middle_school_mathematics__0004",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__middle_school_mathematics__0005",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__middle_school_mathematics__0006",
+      "target": "B",
+      "response": " B",
+      "extracted": "B",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__middle_school_physics__0000",
+      "target": "B",
+      "response": " B",
+      "extracted": "B",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__middle_school_physics__0001",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__middle_school_physics__0002",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__middle_school_physics__0003",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__middle_school_physics__0004",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__middle_school_physics__0005",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__middle_school_physics__0006",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__middle_school_politics__0000",
+      "target": "B",
+      "response": " B",
+      "extracted": "B",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__middle_school_politics__0001",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__middle_school_politics__0002",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__middle_school_politics__0003",
+      "target": "B",
+      "response": " B",
+      "extracted": "B",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__middle_school_politics__0004",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__middle_school_politics__0005",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__middle_school_politics__0006",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__middle_school_politics__0007",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__modern_chinese_history__0000",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__modern_chinese_history__0001",
+      "target": "A",
+      "response": " D",
+      "extracted": "D",
+      "correct": false
+    },
+    {
+      "sample_id": "ceval__modern_chinese_history__0002",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__modern_chinese_history__0003",
+      "target": "B",
+      "response": " C",
+      "extracted": "C",
+      "correct": false
+    },
+    {
+      "sample_id": "ceval__modern_chinese_history__0004",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__modern_chinese_history__0005",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__modern_chinese_history__0006",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__modern_chinese_history__0007",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__modern_chinese_history__0008",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__operating_system__0000",
+      "target": "B",
+      "response": " B",
+      "extracted": "B",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__operating_system__0001",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__operating_system__0002",
+      "target": "B",
+      "response": " B",
+      "extracted": "B",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__operating_system__0003",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__operating_system__0004",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__operating_system__0005",
+      "target": "D",
+      "response": " A",
+      "extracted": "A",
+      "correct": false
+    },
+    {
+      "sample_id": "ceval__operating_system__0006",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__physician__0000",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__physician__0001",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__physician__0002",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__physician__0003",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__physician__0004",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__physician__0005",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__physician__0006",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__physician__0007",
+      "target": "D",
+      "response": " A",
+      "extracted": "A",
+      "correct": false
+    },
+    {
+      "sample_id": "ceval__physician__0008",
+      "target": "D",
+      "response": " C",
+      "extracted": "C",
+      "correct": false
+    },
+    {
+      "sample_id": "ceval__physician__0009",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__physician__0010",
+      "target": "B",
+      "response": " B",
+      "extracted": "B",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__physician__0011",
+      "target": "D",
+      "response": " C",
+      "extracted": "C",
+      "correct": false
+    },
+    {
+      "sample_id": "ceval__physician__0012",
+      "target": "A",
+      "response": " C",
+      "extracted": "C",
+      "correct": false
+    },
+    {
+      "sample_id": "ceval__physician__0013",
+      "target": "C",
+      "response": " B",
+      "extracted": "B",
+      "correct": false
+    },
+    {
+      "sample_id": "ceval__physician__0014",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__physician__0015",
+      "target": "D",
+      "response": " B",
+      "extracted": "B",
+      "correct": false
+    },
+    {
+      "sample_id": "ceval__physician__0016",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__physician__0017",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__plant_protection__0000",
+      "target": "B",
+      "response": " B",
+      "extracted": "B",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__plant_protection__0001",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__plant_protection__0002",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__plant_protection__0003",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__plant_protection__0004",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__plant_protection__0005",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__plant_protection__0006",
+      "target": "B",
+      "response": " B",
+      "extracted": "B",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__plant_protection__0007",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__probability_and_statistics__0000",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__probability_and_statistics__0001",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__probability_and_statistics__0002",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__probability_and_statistics__0003",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__probability_and_statistics__0004",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__probability_and_statistics__0005",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__probability_and_statistics__0006",
+      "target": "C",
+      "response": " A",
+      "extracted": "A",
+      "correct": false
+    },
+    {
+      "sample_id": "ceval__professional_tour_guide__0000",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__professional_tour_guide__0001",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__professional_tour_guide__0002",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__professional_tour_guide__0003",
+      "target": "B",
+      "response": " B",
+      "extracted": "B",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__professional_tour_guide__0004",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__professional_tour_guide__0005",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__professional_tour_guide__0006",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__professional_tour_guide__0007",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__professional_tour_guide__0008",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__professional_tour_guide__0009",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__professional_tour_guide__0010",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__sports_science__0000",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__sports_science__0001",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__sports_science__0002",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__sports_science__0003",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__sports_science__0004",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__sports_science__0005",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__sports_science__0006",
+      "target": "D",
+      "response": " C",
+      "extracted": "C",
+      "correct": false
+    },
+    {
+      "sample_id": "ceval__tax_accountant__0000",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__tax_accountant__0001",
+      "target": "B",
+      "response": " B",
+      "extracted": "B",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__tax_accountant__0002",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__tax_accountant__0003",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__tax_accountant__0004",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__tax_accountant__0005",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__tax_accountant__0006",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__tax_accountant__0007",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__tax_accountant__0008",
+      "target": "B",
+      "response": " B",
+      "extracted": "B",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__tax_accountant__0009",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__tax_accountant__0010",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__tax_accountant__0011",
+      "target": "B",
+      "response": " B",
+      "extracted": "B",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__tax_accountant__0012",
+      "target": "A",
+      "response": " B",
+      "extracted": "B",
+      "correct": false
+    },
+    {
+      "sample_id": "ceval__tax_accountant__0013",
+      "target": "B",
+      "response": " B",
+      "extracted": "B",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__tax_accountant__0014",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__tax_accountant__0015",
+      "target": "D",
+      "response": " A",
+      "extracted": "A",
+      "correct": false
+    },
+    {
+      "sample_id": "ceval__tax_accountant__0016",
+      "target": "B",
+      "response": " D",
+      "extracted": "D",
+      "correct": false
+    },
+    {
+      "sample_id": "ceval__tax_accountant__0017",
+      "target": "D",
+      "response": " A",
+      "extracted": "A",
+      "correct": false
+    },
+    {
+      "sample_id": "ceval__teacher_qualification__0000",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__teacher_qualification__0001",
+      "target": "B",
+      "response": " B",
+      "extracted": "B",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__teacher_qualification__0002",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__teacher_qualification__0003",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__teacher_qualification__0004",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__teacher_qualification__0005",
+      "target": "B",
+      "response": " B",
+      "extracted": "B",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__teacher_qualification__0006",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__teacher_qualification__0007",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__teacher_qualification__0008",
+      "target": "D",
+      "response": " C",
+      "extracted": "C",
+      "correct": false
+    },
+    {
+      "sample_id": "ceval__teacher_qualification__0009",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__teacher_qualification__0010",
+      "target": "B",
+      "response": " B",
+      "extracted": "B",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__teacher_qualification__0011",
+      "target": "B",
+      "response": " C",
+      "extracted": "C",
+      "correct": false
+    },
+    {
+      "sample_id": "ceval__teacher_qualification__0012",
+      "target": "A",
+      "response": " B",
+      "extracted": "B",
+      "correct": false
+    },
+    {
+      "sample_id": "ceval__teacher_qualification__0013",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__teacher_qualification__0014",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__teacher_qualification__0015",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__urban_and_rural_planner__0000",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__urban_and_rural_planner__0001",
+      "target": "B",
+      "response": " B",
+      "extracted": "B",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__urban_and_rural_planner__0002",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__urban_and_rural_planner__0003",
+      "target": "B",
+      "response": " B",
+      "extracted": "B",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__urban_and_rural_planner__0004",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__urban_and_rural_planner__0005",
+      "target": "B",
+      "response": " D",
+      "extracted": "D",
+      "correct": false
+    },
+    {
+      "sample_id": "ceval__urban_and_rural_planner__0006",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__urban_and_rural_planner__0007",
+      "target": "D",
+      "response": " C",
+      "extracted": "C",
+      "correct": false
+    },
+    {
+      "sample_id": "ceval__urban_and_rural_planner__0008",
+      "target": "B",
+      "response": " D",
+      "extracted": "D",
+      "correct": false
+    },
+    {
+      "sample_id": "ceval__urban_and_rural_planner__0009",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__urban_and_rural_planner__0010",
+      "target": "B",
+      "response": " B",
+      "extracted": "B",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__urban_and_rural_planner__0011",
+      "target": "B",
+      "response": " B",
+      "extracted": "B",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__urban_and_rural_planner__0012",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__urban_and_rural_planner__0013",
+      "target": "C",
+      "response": " D",
+      "extracted": "D",
+      "correct": false
+    },
+    {
+      "sample_id": "ceval__urban_and_rural_planner__0014",
+      "target": "A",
+      "response": " D",
+      "extracted": "D",
+      "correct": false
+    },
+    {
+      "sample_id": "ceval__urban_and_rural_planner__0015",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__urban_and_rural_planner__0016",
+      "target": "A",
+      "response": " D",
+      "extracted": "D",
+      "correct": false
+    },
+    {
+      "sample_id": "ceval__veterinary_medicine__0000",
+      "target": "B",
+      "response": " B",
+      "extracted": "B",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__veterinary_medicine__0001",
+      "target": "B",
+      "response": " B",
+      "extracted": "B",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__veterinary_medicine__0002",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__veterinary_medicine__0003",
+      "target": "A",
+      "response": " D",
+      "extracted": "D",
+      "correct": false
+    },
+    {
+      "sample_id": "ceval__veterinary_medicine__0004",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "ceval__veterinary_medicine__0005",
+      "target": "B",
+      "response": " D",
+      "extracted": "D",
+      "correct": false
+    },
+    {
+      "sample_id": "ceval__veterinary_medicine__0006",
+      "target": "D",
+      "response": " C",
+      "extracted": "C",
+      "correct": false
+    },
+    {
+      "sample_id": "ceval__veterinary_medicine__0007",
+      "target": "B",
+      "response": " D",
+      "extracted": "D",
+      "correct": false
+    },
+    {
+      "sample_id": "ceval__veterinary_medicine__0008",
+      "target": "C",
+      "response": " A",
+      "extracted": "A",
+      "correct": false
+    }
+  ]
+}

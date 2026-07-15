@@ -1,0 +1,32 @@
+# evalplus 框架私有数据集（非我们规整的 EvalRow 格式）
+#
+# 这些文件被 evalplus 框架原样加载，我们不解析。计算节点无公网，
+# 故在 CodeLab（有代理）预下载到此 NFS 目录，由 src/eval/external/run_code_eval.sh
+# 通过 HUMANEVAL_OVERRIDE_PATH / MBPP_OVERRIDE_PATH + XDG_CACHE_HOME 喂入。
+#
+# 复现方式：用代理 export https_proxy=http://10.229.18.27:8412 后按下表 url 重新下载。
+
+framework: evalplus
+
+files:
+  - name: HumanEvalPlus-v0.1.10.jsonl
+    role: humaneval_plus_dataset
+    version: v0.1.10
+    url: https://github.com/evalplus/humanevalplus_release/releases/download/v0.1.10/HumanEvalPlus.jsonl.gz
+    note: 下载后 gunzip。evalplus HUMANEVAL_PLUS_VERSION=v0.1.10。
+
+  - name: MbppPlus-v0.2.0.jsonl
+    role: mbpp_plus_dataset
+    version: v0.2.0
+    url: https://github.com/evalplus/mbppplus_release/releases/download/v0.2.0/MbppPlus.jsonl.gz
+    note: 下载后 gunzip。evalplus MBPP_PLUS_VERSION=v0.2.0。
+
+  - name: HumanEval.jsonl
+    role: humaneval_base_dataset
+    url: https://github.com/openai/human-eval/raw/master/data/HumanEval.jsonl.gz
+    note: 下载后 gunzip。evalplus 评测期 get_human_eval() 读取（CACHE_DIR 字面名 HumanEval.jsonl）。
+
+  - name: sanitized-mbpp.json
+    role: mbpp_base_dataset
+    url: https://github.com/google-research/google-research/raw/master/mbpp/sanitized-mbpp.json
+    note: evalplus 评测期 get_mbpp() 读取（CACHE_DIR 字面名 sanitized-mbpp.json）。

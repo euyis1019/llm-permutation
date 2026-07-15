@@ -1,0 +1,47 @@
+kind: benchmark
+name: exp10_h1
+description: >
+  Exp10 H1 收敛验证套件（三域正交）。验证假设 H1：单域 calibration 剪出的 expert
+  在本域 benchmark 上最优，且三域 expert 的能力互补。
+  Math 域：GSM8K（全量 1,319）+ MATH-500（全量 500）。
+  Code 域：HumanEval+（evalplus, 164）+ MBPP+（evalplus, 378）+ CRUXEval（src, 800）。
+  Chinese 域：C-Eval（全量 1,346）+ CMMLU（全量 11,582）。
+  OOD General：MMLU（全量 14,042），作为域外通用能力对照基准，验证单域剪枝不损害 general 能力。
+  本套件作为 Exp10 批量运行的标准评测单元（2 模型 × 6 cali_sets × 10 runs）。
+
+# 约定：
+#   - 全部 bench 取全量（gsm8k=1319, math500=500, cruxeval=800, ceval=1346, cmmlu=11582, mmlu=14042）
+#   - evalplus external bench 无需 nrows（由框架自管数据集）
+#   - 协议字段（fewshot, stop_tokens, generation_kwargs）全部从 benchmark_meta.json 读取，
+#     suite 层不重载任何协议字段
+
+spec:
+  benchmarks:
+
+    # ── Math ──────────────────────────────────────────────────────────────────
+    - id: gsm8k            # 小学数学应用题 CoT，1,319 全量
+
+    - id: math500          # 竞赛级数学 CoT，500 全量
+
+    # ── Code ──────────────────────────────────────────────────────────────────
+    - id: humaneval_plus   # 基础代码生成，pass@1，164 题
+      runner: external
+      framework: evalplus
+      dataset: humaneval
+      metric: base_pass_at_1
+
+    - id: mbpp_plus        # 进阶代码生成，pass@1，378 题
+      runner: external
+      framework: evalplus
+      dataset: mbpp
+      metric: base_pass_at_1
+
+    - id: cruxeval         # 函数输出预测，exact match，800 全量
+
+    # ── Chinese ───────────────────────────────────────────────────────────────
+    - id: ceval            # 全量 1,346 条
+
+    - id: cmmlu            # 全量 11,582 条
+
+    # ── OOD General（域外通用对照）─────────────────────────────────────────────
+    - id: mmlu             # 通用英文知识，全量 14,042 条；验证单域剪枝不损害 general 能力

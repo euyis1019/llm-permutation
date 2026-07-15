@@ -1,0 +1,43 @@
+{
+  "tag": "qwen3_4b__abl_scope_single17_random_s7",
+  "source": "/nvme0/if/models/Qwen3-4B",
+  "out_dir": "/nvme0/if/permutation/experiments/ffn_benchmark_eval/checkpoints/qwen3_4b__abl_scope_single17_random_s7",
+  "scope": "single:17",
+  "kind": "random",
+  "base_seed": 7,
+  "n_layers": 36,
+  "intermediate_size": 9728,
+  "permuted_layers": [
+    17
+  ],
+  "layer_perms": {
+    "17": {
+      "perm_sha256": "837fd8a5f42887f09936bac1701150d8e09ced0a9a741d6dfd1edd7cb4329d18",
+      "first8": [
+        1110,
+        8416,
+        6605,
+        2400,
+        1609,
+        1074,
+        8055,
+        5123
+      ]
+    }
+  },
+  "sentinel_sha256": {
+    "model.embed_tokens.weight": "eabe5625fc0575bf517c424041e9701c0fd521889e0f547c8522d2aa20e8c0f8",
+    "model.layers.0.self_attn.q_proj.weight": "d1a42b38b6bd851c98152836ca7cc1b88a9b730ae43391671989dfd027490c08",
+    "model.layers.35.self_attn.o_proj.weight": "823a07a2166fb8669db92428326681c14fdf64d3a905db53c0e061df0b4432e9",
+    "model.norm.weight": "2e185da56e34e5461e40b8cad00745efc88e6edb956d3879adcba96caaabbbef"
+  },
+  "verified": {
+    "non_ffn_unchanged": true,
+    "untouched_ffn_unchanged": true,
+    "rowcol_relation_layers": [
+      17
+    ]
+  },
+  "gen_seconds": 32.0,
+  "generator": "make_checkpoint.py v1"
+}

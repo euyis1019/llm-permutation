@@ -1,0 +1,31 @@
+kind: benchmark
+name: s2_analysis
+
+# S2 analysis benchmark suite.
+# Standard capability evaluation covering reasoning, knowledge, and coding.
+spec:
+  tasks:
+    - id: mmlu_pro
+      fewshot: 5
+      batch_size: auto
+
+    - id: bbh
+      fewshot: 3
+      batch_size: auto
+      generation_kwargs:
+        max_gen_toks: 1024
+        do_sample: false
+
+    - id: humaneval
+      fewshot: 0
+      batch_size: 1
+      generation_kwargs:
+        max_gen_toks: 1024
+        do_sample: false
+
+    - id: gsm8k
+      fewshot: 4
+      batch_size: auto
+      generation_kwargs:
+        max_gen_toks: 2048
+        do_sample: false

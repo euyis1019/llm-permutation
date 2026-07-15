@@ -1,0 +1,3523 @@
+{
+  "benchmark": "mmlu",
+  "model_tag": "qwen3_4b_base__perm_all36_s42",
+  "kind": "protocol",
+  "total": 500,
+  "correct": 371,
+  "accuracy": 0.742,
+  "gen_seconds": 19.4,
+  "max_tokens": 10,
+  "stop": [
+    "\n\n",
+    "\n\n\n",
+    "\n\nQuestion",
+    "\n\nProblem",
+    "\n\n[",
+    "\n[",
+    "\n\nQ:",
+    "\n\nA:"
+  ],
+  "complete": true,
+  "samples": [
+    {
+      "sample_id": "mmlu__abstract_algebra__00000",
+      "target": "B",
+      "response": " B",
+      "extracted": "B",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__abstract_algebra__00001",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__abstract_algebra__00002",
+      "target": "D",
+      "response": " C",
+      "extracted": "C",
+      "correct": false
+    },
+    {
+      "sample_id": "mmlu__abstract_algebra__00003",
+      "target": "B",
+      "response": " B",
+      "extracted": "B",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__anatomy__00100",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__anatomy__00101",
+      "target": "B",
+      "response": " B",
+      "extracted": "B",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__anatomy__00102",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__anatomy__00103",
+      "target": "C",
+      "response": " D",
+      "extracted": "D",
+      "correct": false
+    },
+    {
+      "sample_id": "mmlu__anatomy__00104",
+      "target": "B",
+      "response": " B",
+      "extracted": "B",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__astronomy__00235",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__astronomy__00236",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__astronomy__00237",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__astronomy__00238",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__astronomy__00239",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__business_ethics__00387",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__business_ethics__00388",
+      "target": "B",
+      "response": " B",
+      "extracted": "B",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__business_ethics__00389",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__business_ethics__00390",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__clinical_knowledge__00487",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__clinical_knowledge__00488",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__clinical_knowledge__00489",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__clinical_knowledge__00490",
+      "target": "B",
+      "response": " B",
+      "extracted": "B",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__clinical_knowledge__00491",
+      "target": "B",
+      "response": " C",
+      "extracted": "C",
+      "correct": false
+    },
+    {
+      "sample_id": "mmlu__clinical_knowledge__00492",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__clinical_knowledge__00493",
+      "target": "B",
+      "response": " C",
+      "extracted": "C",
+      "correct": false
+    },
+    {
+      "sample_id": "mmlu__clinical_knowledge__00494",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__clinical_knowledge__00495",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__college_biology__00752",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__college_biology__00753",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__college_biology__00754",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__college_biology__00755",
+      "target": "B",
+      "response": " B",
+      "extracted": "B",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__college_biology__00756",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__college_chemistry__00896",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__college_chemistry__00897",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__college_chemistry__00898",
+      "target": "D",
+      "response": " C",
+      "extracted": "C",
+      "correct": false
+    },
+    {
+      "sample_id": "mmlu__college_chemistry__00899",
+      "target": "B",
+      "response": " A",
+      "extracted": "A",
+      "correct": false
+    },
+    {
+      "sample_id": "mmlu__college_computer_science__00996",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__college_computer_science__00997",
+      "target": "C",
+      "response": " A",
+      "extracted": "A",
+      "correct": false
+    },
+    {
+      "sample_id": "mmlu__college_computer_science__00998",
+      "target": "B",
+      "response": " D",
+      "extracted": "D",
+      "correct": false
+    },
+    {
+      "sample_id": "mmlu__college_computer_science__00999",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__college_mathematics__01096",
+      "target": "B",
+      "response": " B",
+      "extracted": "B",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__college_mathematics__01097",
+      "target": "D",
+      "response": " C",
+      "extracted": "C",
+      "correct": false
+    },
+    {
+      "sample_id": "mmlu__college_mathematics__01098",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__college_mathematics__01099",
+      "target": "A",
+      "response": " D",
+      "extracted": "D",
+      "correct": false
+    },
+    {
+      "sample_id": "mmlu__college_medicine__01196",
+      "target": "B",
+      "response": " B",
+      "extracted": "B",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__college_medicine__01197",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__college_medicine__01198",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__college_medicine__01199",
+      "target": "D",
+      "response": " C",
+      "extracted": "C",
+      "correct": false
+    },
+    {
+      "sample_id": "mmlu__college_medicine__01200",
+      "target": "A",
+      "response": " D",
+      "extracted": "D",
+      "correct": false
+    },
+    {
+      "sample_id": "mmlu__college_medicine__01201",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__college_physics__01369",
+      "target": "B",
+      "response": " B",
+      "extracted": "B",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__college_physics__01370",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__college_physics__01371",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__college_physics__01372",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__computer_security__01471",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__computer_security__01472",
+      "target": "A",
+      "response": " C",
+      "extracted": "C",
+      "correct": false
+    },
+    {
+      "sample_id": "mmlu__computer_security__01473",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__computer_security__01474",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__conceptual_physics__01571",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__conceptual_physics__01572",
+      "target": "B",
+      "response": " B",
+      "extracted": "B",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__conceptual_physics__01573",
+      "target": "B",
+      "response": " B",
+      "extracted": "B",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__conceptual_physics__01574",
+      "target": "B",
+      "response": " C",
+      "extracted": "C",
+      "correct": false
+    },
+    {
+      "sample_id": "mmlu__conceptual_physics__01575",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__conceptual_physics__01576",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__conceptual_physics__01577",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__conceptual_physics__01578",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__econometrics__01806",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__econometrics__01807",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__econometrics__01808",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__econometrics__01809",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__electrical_engineering__01920",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__electrical_engineering__01921",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__electrical_engineering__01922",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__electrical_engineering__01923",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__electrical_engineering__01924",
+      "target": "C",
+      "response": " D",
+      "extracted": "D",
+      "correct": false
+    },
+    {
+      "sample_id": "mmlu__elementary_mathematics__02065",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__elementary_mathematics__02066",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__elementary_mathematics__02067",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__elementary_mathematics__02068",
+      "target": "B",
+      "response": " C",
+      "extracted": "C",
+      "correct": false
+    },
+    {
+      "sample_id": "mmlu__elementary_mathematics__02069",
+      "target": "B",
+      "response": " B",
+      "extracted": "B",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__elementary_mathematics__02070",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__elementary_mathematics__02071",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__elementary_mathematics__02072",
+      "target": "B",
+      "response": " B",
+      "extracted": "B",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__elementary_mathematics__02073",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__elementary_mathematics__02074",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__elementary_mathematics__02075",
+      "target": "C",
+      "response": " B",
+      "extracted": "B",
+      "correct": false
+    },
+    {
+      "sample_id": "mmlu__elementary_mathematics__02076",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__elementary_mathematics__02077",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__formal_logic__02443",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__formal_logic__02444",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__formal_logic__02445",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__formal_logic__02446",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__global_facts__02569",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__global_facts__02570",
+      "target": "B",
+      "response": " B",
+      "extracted": "B",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__global_facts__02571",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__global_facts__02572",
+      "target": "A",
+      "response": " C",
+      "extracted": "C",
+      "correct": false
+    },
+    {
+      "sample_id": "mmlu__high_school_biology__02669",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__high_school_biology__02670",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__high_school_biology__02671",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__high_school_biology__02672",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__high_school_biology__02673",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__high_school_biology__02674",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__high_school_biology__02675",
+      "target": "B",
+      "response": " B",
+      "extracted": "B",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__high_school_biology__02676",
+      "target": "B",
+      "response": " B",
+      "extracted": "B",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__high_school_biology__02677",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__high_school_biology__02678",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__high_school_biology__02679",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__high_school_chemistry__02979",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__high_school_chemistry__02980",
+      "target": "A",
+      "response": " C",
+      "extracted": "C",
+      "correct": false
+    },
+    {
+      "sample_id": "mmlu__high_school_chemistry__02981",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__high_school_chemistry__02982",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__high_school_chemistry__02983",
+      "target": "B",
+      "response": " B",
+      "extracted": "B",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__high_school_chemistry__02984",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__high_school_chemistry__02985",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__high_school_computer_science__03182",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__high_school_computer_science__03183",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__high_school_computer_science__03184",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__high_school_computer_science__03185",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__high_school_european_history__03282",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__high_school_european_history__03283",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__high_school_european_history__03284",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__high_school_european_history__03285",
+      "target": "B",
+      "response": " D",
+      "extracted": "D",
+      "correct": false
+    },
+    {
+      "sample_id": "mmlu__high_school_european_history__03286",
+      "target": "B",
+      "response": " B",
+      "extracted": "B",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__high_school_european_history__03287",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__high_school_geography__03447",
+      "target": "B",
+      "response": " B",
+      "extracted": "B",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__high_school_geography__03448",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__high_school_geography__03449",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__high_school_geography__03450",
+      "target": "A",
+      "response": " C",
+      "extracted": "C",
+      "correct": false
+    },
+    {
+      "sample_id": "mmlu__high_school_geography__03451",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__high_school_geography__03452",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__high_school_geography__03453",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__high_school_government_and_politics__03645",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__high_school_government_and_politics__03646",
+      "target": "B",
+      "response": " B",
+      "extracted": "B",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__high_school_government_and_politics__03647",
+      "target": "B",
+      "response": " B",
+      "extracted": "B",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__high_school_government_and_politics__03648",
+      "target": "A",
+      "response": " D",
+      "extracted": "D",
+      "correct": false
+    },
+    {
+      "sample_id": "mmlu__high_school_government_and_politics__03649",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__high_school_government_and_politics__03650",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__high_school_government_and_politics__03651",
+      "target": "B",
+      "response": " B",
+      "extracted": "B",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__high_school_macroeconomics__03838",
+      "target": "B",
+      "response": " B",
+      "extracted": "B",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__high_school_macroeconomics__03839",
+      "target": "D",
+      "response": " C",
+      "extracted": "C",
+      "correct": false
+    },
+    {
+      "sample_id": "mmlu__high_school_macroeconomics__03840",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__high_school_macroeconomics__03841",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__high_school_macroeconomics__03842",
+      "target": "B",
+      "response": " B",
+      "extracted": "B",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__high_school_macroeconomics__03843",
+      "target": "B",
+      "response": " B",
+      "extracted": "B",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__high_school_macroeconomics__03844",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__high_school_macroeconomics__03845",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__high_school_macroeconomics__03846",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__high_school_macroeconomics__03847",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__high_school_macroeconomics__03848",
+      "target": "B",
+      "response": " B",
+      "extracted": "B",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__high_school_macroeconomics__03849",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__high_school_macroeconomics__03850",
+      "target": "D",
+      "response": " C",
+      "extracted": "C",
+      "correct": false
+    },
+    {
+      "sample_id": "mmlu__high_school_macroeconomics__03851",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__high_school_mathematics__04228",
+      "target": "D",
+      "response": " B",
+      "extracted": "B",
+      "correct": false
+    },
+    {
+      "sample_id": "mmlu__high_school_mathematics__04229",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__high_school_mathematics__04230",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__high_school_mathematics__04231",
+      "target": "B",
+      "response": " A",
+      "extracted": "A",
+      "correct": false
+    },
+    {
+      "sample_id": "mmlu__high_school_mathematics__04232",
+      "target": "C",
+      "response": " D",
+      "extracted": "D",
+      "correct": false
+    },
+    {
+      "sample_id": "mmlu__high_school_mathematics__04233",
+      "target": "B",
+      "response": " A",
+      "extracted": "A",
+      "correct": false
+    },
+    {
+      "sample_id": "mmlu__high_school_mathematics__04234",
+      "target": "C",
+      "response": " B",
+      "extracted": "B",
+      "correct": false
+    },
+    {
+      "sample_id": "mmlu__high_school_mathematics__04235",
+      "target": "A",
+      "response": " C",
+      "extracted": "C",
+      "correct": false
+    },
+    {
+      "sample_id": "mmlu__high_school_mathematics__04236",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__high_school_mathematics__04237",
+      "target": "B",
+      "response": " A",
+      "extracted": "A",
+      "correct": false
+    },
+    {
+      "sample_id": "mmlu__high_school_microeconomics__04498",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__high_school_microeconomics__04499",
+      "target": "C",
+      "response": " A",
+      "extracted": "A",
+      "correct": false
+    },
+    {
+      "sample_id": "mmlu__high_school_microeconomics__04500",
+      "target": "B",
+      "response": " B",
+      "extracted": "B",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__high_school_microeconomics__04501",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__high_school_microeconomics__04502",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__high_school_microeconomics__04503",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__high_school_microeconomics__04504",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__high_school_microeconomics__04505",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__high_school_physics__04736",
+      "target": "B",
+      "response": " B",
+      "extracted": "B",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__high_school_physics__04737",
+      "target": "A",
+      "response": " D",
+      "extracted": "D",
+      "correct": false
+    },
+    {
+      "sample_id": "mmlu__high_school_physics__04738",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__high_school_physics__04739",
+      "target": "C",
+      "response": " A",
+      "extracted": "A",
+      "correct": false
+    },
+    {
+      "sample_id": "mmlu__high_school_physics__04740",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__high_school_psychology__04887",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__high_school_psychology__04888",
+      "target": "B",
+      "response": " B",
+      "extracted": "B",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__high_school_psychology__04889",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__high_school_psychology__04890",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__high_school_psychology__04891",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__high_school_psychology__04892",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__high_school_psychology__04893",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__high_school_psychology__04894",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__high_school_psychology__04895",
+      "target": "A",
+      "response": " D",
+      "extracted": "D",
+      "correct": false
+    },
+    {
+      "sample_id": "mmlu__high_school_psychology__04896",
+      "target": "B",
+      "response": " B",
+      "extracted": "B",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__high_school_psychology__04897",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__high_school_psychology__04898",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__high_school_psychology__04899",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__high_school_psychology__04900",
+      "target": "B",
+      "response": " B",
+      "extracted": "B",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__high_school_psychology__04901",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__high_school_psychology__04902",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__high_school_psychology__04903",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__high_school_psychology__04904",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__high_school_psychology__04905",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__high_school_statistics__05432",
+      "target": "B",
+      "response": " B",
+      "extracted": "B",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__high_school_statistics__05433",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__high_school_statistics__05434",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__high_school_statistics__05435",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__high_school_statistics__05436",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__high_school_statistics__05437",
+      "target": "D",
+      "response": " C",
+      "extracted": "C",
+      "correct": false
+    },
+    {
+      "sample_id": "mmlu__high_school_statistics__05438",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__high_school_statistics__05439",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__high_school_us_history__05648",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__high_school_us_history__05649",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__high_school_us_history__05650",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__high_school_us_history__05651",
+      "target": "B",
+      "response": " B",
+      "extracted": "B",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__high_school_us_history__05652",
+      "target": "B",
+      "response": " B",
+      "extracted": "B",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__high_school_us_history__05653",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__high_school_us_history__05654",
+      "target": "B",
+      "response": " A",
+      "extracted": "A",
+      "correct": false
+    },
+    {
+      "sample_id": "mmlu__high_school_world_history__05852",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__high_school_world_history__05853",
+      "target": "B",
+      "response": " B",
+      "extracted": "B",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__high_school_world_history__05854",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__high_school_world_history__05855",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__high_school_world_history__05856",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__high_school_world_history__05857",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__high_school_world_history__05858",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__high_school_world_history__05859",
+      "target": "B",
+      "response": " B",
+      "extracted": "B",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__human_aging__06089",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__human_aging__06090",
+      "target": "B",
+      "response": " B",
+      "extracted": "B",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__human_aging__06091",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__human_aging__06092",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__human_aging__06093",
+      "target": "B",
+      "response": " B",
+      "extracted": "B",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__human_aging__06094",
+      "target": "D",
+      "response": " A",
+      "extracted": "A",
+      "correct": false
+    },
+    {
+      "sample_id": "mmlu__human_aging__06095",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__human_aging__06096",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__human_sexuality__06312",
+      "target": "B",
+      "response": " B",
+      "extracted": "B",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__human_sexuality__06313",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__human_sexuality__06314",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__human_sexuality__06315",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__human_sexuality__06316",
+      "target": "B",
+      "response": " B",
+      "extracted": "B",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__international_law__06443",
+      "target": "B",
+      "response": " B",
+      "extracted": "B",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__international_law__06444",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__international_law__06445",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__international_law__06446",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__jurisprudence__06564",
+      "target": "D",
+      "response": " A",
+      "extracted": "A",
+      "correct": false
+    },
+    {
+      "sample_id": "mmlu__jurisprudence__06565",
+      "target": "A",
+      "response": " B",
+      "extracted": "B",
+      "correct": false
+    },
+    {
+      "sample_id": "mmlu__jurisprudence__06566",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__jurisprudence__06567",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__logical_fallacies__06672",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__logical_fallacies__06673",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__logical_fallacies__06674",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__logical_fallacies__06675",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__logical_fallacies__06676",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__logical_fallacies__06677",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__machine_learning__06835",
+      "target": "D",
+      "response": " C",
+      "extracted": "C",
+      "correct": false
+    },
+    {
+      "sample_id": "mmlu__machine_learning__06836",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__machine_learning__06837",
+      "target": "B",
+      "response": " B",
+      "extracted": "B",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__machine_learning__06838",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__management__06947",
+      "target": "B",
+      "response": " B",
+      "extracted": "B",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__management__06948",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__management__06949",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__management__06950",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__marketing__07050",
+      "target": "B",
+      "response": " B",
+      "extracted": "B",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__marketing__07051",
+      "target": "A",
+      "response": " D",
+      "extracted": "D",
+      "correct": false
+    },
+    {
+      "sample_id": "mmlu__marketing__07052",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__marketing__07053",
+      "target": "B",
+      "response": " C",
+      "extracted": "C",
+      "correct": false
+    },
+    {
+      "sample_id": "mmlu__marketing__07054",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__marketing__07055",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__marketing__07056",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__marketing__07057",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__medical_genetics__07284",
+      "target": "B",
+      "response": " B",
+      "extracted": "B",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__medical_genetics__07285",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__medical_genetics__07286",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__miscellaneous__07384",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__miscellaneous__07385",
+      "target": "B",
+      "response": " B",
+      "extracted": "B",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__miscellaneous__07386",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__miscellaneous__07387",
+      "target": "C",
+      "response": " D",
+      "extracted": "D",
+      "correct": false
+    },
+    {
+      "sample_id": "mmlu__miscellaneous__07388",
+      "target": "B",
+      "response": " B",
+      "extracted": "B",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__miscellaneous__07389",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__miscellaneous__07390",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__miscellaneous__07391",
+      "target": "A",
+      "response": " B",
+      "extracted": "B",
+      "correct": false
+    },
+    {
+      "sample_id": "mmlu__miscellaneous__07392",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__miscellaneous__07393",
+      "target": "B",
+      "response": " B",
+      "extracted": "B",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__miscellaneous__07394",
+      "target": "A",
+      "response": " C",
+      "extracted": "C",
+      "correct": false
+    },
+    {
+      "sample_id": "mmlu__miscellaneous__07395",
+      "target": "B",
+      "response": " D",
+      "extracted": "D",
+      "correct": false
+    },
+    {
+      "sample_id": "mmlu__miscellaneous__07396",
+      "target": "B",
+      "response": " B",
+      "extracted": "B",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__miscellaneous__07397",
+      "target": "B",
+      "response": " B",
+      "extracted": "B",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__miscellaneous__07398",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__miscellaneous__07399",
+      "target": "B",
+      "response": " B",
+      "extracted": "B",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__miscellaneous__07400",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__miscellaneous__07401",
+      "target": "A",
+      "response": " B",
+      "extracted": "B",
+      "correct": false
+    },
+    {
+      "sample_id": "mmlu__miscellaneous__07402",
+      "target": "A",
+      "response": " B",
+      "extracted": "B",
+      "correct": false
+    },
+    {
+      "sample_id": "mmlu__miscellaneous__07403",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__miscellaneous__07404",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__miscellaneous__07405",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__miscellaneous__07406",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__miscellaneous__07407",
+      "target": "B",
+      "response": " D",
+      "extracted": "D",
+      "correct": false
+    },
+    {
+      "sample_id": "mmlu__miscellaneous__07408",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__miscellaneous__07409",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__miscellaneous__07410",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__miscellaneous__07411",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__moral_disputes__08167",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__moral_disputes__08168",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__moral_disputes__08169",
+      "target": "A",
+      "response": " D",
+      "extracted": "D",
+      "correct": false
+    },
+    {
+      "sample_id": "mmlu__moral_disputes__08170",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__moral_disputes__08171",
+      "target": "B",
+      "response": " C",
+      "extracted": "C",
+      "correct": false
+    },
+    {
+      "sample_id": "mmlu__moral_disputes__08172",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__moral_disputes__08173",
+      "target": "D",
+      "response": " A",
+      "extracted": "A",
+      "correct": false
+    },
+    {
+      "sample_id": "mmlu__moral_disputes__08174",
+      "target": "B",
+      "response": " D",
+      "extracted": "D",
+      "correct": false
+    },
+    {
+      "sample_id": "mmlu__moral_disputes__08175",
+      "target": "D",
+      "response": " B",
+      "extracted": "B",
+      "correct": false
+    },
+    {
+      "sample_id": "mmlu__moral_disputes__08176",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__moral_disputes__08177",
+      "target": "D",
+      "response": " C",
+      "extracted": "C",
+      "correct": false
+    },
+    {
+      "sample_id": "mmlu__moral_disputes__08178",
+      "target": "B",
+      "response": " B",
+      "extracted": "B",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__moral_scenarios__08513",
+      "target": "D",
+      "response": " C",
+      "extracted": "C",
+      "correct": false
+    },
+    {
+      "sample_id": "mmlu__moral_scenarios__08514",
+      "target": "A",
+      "response": " C",
+      "extracted": "C",
+      "correct": false
+    },
+    {
+      "sample_id": "mmlu__moral_scenarios__08515",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__moral_scenarios__08516",
+      "target": "B",
+      "response": " C",
+      "extracted": "C",
+      "correct": false
+    },
+    {
+      "sample_id": "mmlu__moral_scenarios__08517",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__moral_scenarios__08518",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__moral_scenarios__08519",
+      "target": "D",
+      "response": " C",
+      "extracted": "C",
+      "correct": false
+    },
+    {
+      "sample_id": "mmlu__moral_scenarios__08520",
+      "target": "D",
+      "response": " C",
+      "extracted": "C",
+      "correct": false
+    },
+    {
+      "sample_id": "mmlu__moral_scenarios__08521",
+      "target": "A",
+      "response": " C",
+      "extracted": "C",
+      "correct": false
+    },
+    {
+      "sample_id": "mmlu__moral_scenarios__08522",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__moral_scenarios__08523",
+      "target": "D",
+      "response": " C",
+      "extracted": "C",
+      "correct": false
+    },
+    {
+      "sample_id": "mmlu__moral_scenarios__08524",
+      "target": "B",
+      "response": " C",
+      "extracted": "C",
+      "correct": false
+    },
+    {
+      "sample_id": "mmlu__moral_scenarios__08525",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__moral_scenarios__08526",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__moral_scenarios__08527",
+      "target": "D",
+      "response": " C",
+      "extracted": "C",
+      "correct": false
+    },
+    {
+      "sample_id": "mmlu__moral_scenarios__08528",
+      "target": "A",
+      "response": " C",
+      "extracted": "C",
+      "correct": false
+    },
+    {
+      "sample_id": "mmlu__moral_scenarios__08529",
+      "target": "D",
+      "response": " C",
+      "extracted": "C",
+      "correct": false
+    },
+    {
+      "sample_id": "mmlu__moral_scenarios__08530",
+      "target": "C",
+      "response": " D",
+      "extracted": "D",
+      "correct": false
+    },
+    {
+      "sample_id": "mmlu__moral_scenarios__08531",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__moral_scenarios__08532",
+      "target": "A",
+      "response": " C",
+      "extracted": "C",
+      "correct": false
+    },
+    {
+      "sample_id": "mmlu__moral_scenarios__08533",
+      "target": "D",
+      "response": " C",
+      "extracted": "C",
+      "correct": false
+    },
+    {
+      "sample_id": "mmlu__moral_scenarios__08534",
+      "target": "A",
+      "response": " C",
+      "extracted": "C",
+      "correct": false
+    },
+    {
+      "sample_id": "mmlu__moral_scenarios__08535",
+      "target": "A",
+      "response": " C",
+      "extracted": "C",
+      "correct": false
+    },
+    {
+      "sample_id": "mmlu__moral_scenarios__08536",
+      "target": "B",
+      "response": " C",
+      "extracted": "C",
+      "correct": false
+    },
+    {
+      "sample_id": "mmlu__moral_scenarios__08537",
+      "target": "A",
+      "response": " C",
+      "extracted": "C",
+      "correct": false
+    },
+    {
+      "sample_id": "mmlu__moral_scenarios__08538",
+      "target": "A",
+      "response": " C",
+      "extracted": "C",
+      "correct": false
+    },
+    {
+      "sample_id": "mmlu__moral_scenarios__08539",
+      "target": "A",
+      "response": " C",
+      "extracted": "C",
+      "correct": false
+    },
+    {
+      "sample_id": "mmlu__moral_scenarios__08540",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__moral_scenarios__08541",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__moral_scenarios__08542",
+      "target": "B",
+      "response": " C",
+      "extracted": "C",
+      "correct": false
+    },
+    {
+      "sample_id": "mmlu__moral_scenarios__08543",
+      "target": "D",
+      "response": " C",
+      "extracted": "C",
+      "correct": false
+    },
+    {
+      "sample_id": "mmlu__moral_scenarios__08544",
+      "target": "B",
+      "response": " A",
+      "extracted": "A",
+      "correct": false
+    },
+    {
+      "sample_id": "mmlu__nutrition__09408",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__nutrition__09409",
+      "target": "B",
+      "response": " B",
+      "extracted": "B",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__nutrition__09410",
+      "target": "A",
+      "response": " D",
+      "extracted": "D",
+      "correct": false
+    },
+    {
+      "sample_id": "mmlu__nutrition__09411",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__nutrition__09412",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__nutrition__09413",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__nutrition__09414",
+      "target": "B",
+      "response": " B",
+      "extracted": "B",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__nutrition__09415",
+      "target": "B",
+      "response": " B",
+      "extracted": "B",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__nutrition__09416",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__nutrition__09417",
+      "target": "B",
+      "response": " B",
+      "extracted": "B",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__nutrition__09418",
+      "target": "B",
+      "response": " D",
+      "extracted": "D",
+      "correct": false
+    },
+    {
+      "sample_id": "mmlu__philosophy__09714",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__philosophy__09715",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__philosophy__09716",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__philosophy__09717",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__philosophy__09718",
+      "target": "B",
+      "response": " B",
+      "extracted": "B",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__philosophy__09719",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__philosophy__09720",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__philosophy__09721",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__philosophy__09722",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__philosophy__09723",
+      "target": "B",
+      "response": " B",
+      "extracted": "B",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__philosophy__09724",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__prehistory__10025",
+      "target": "D",
+      "response": " B",
+      "extracted": "B",
+      "correct": false
+    },
+    {
+      "sample_id": "mmlu__prehistory__10026",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__prehistory__10027",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__prehistory__10028",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__prehistory__10029",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__prehistory__10030",
+      "target": "B",
+      "response": " B",
+      "extracted": "B",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__prehistory__10031",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__prehistory__10032",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__prehistory__10033",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__prehistory__10034",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__prehistory__10035",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__professional_accounting__10349",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__professional_accounting__10350",
+      "target": "B",
+      "response": " C",
+      "extracted": "C",
+      "correct": false
+    },
+    {
+      "sample_id": "mmlu__professional_accounting__10351",
+      "target": "B",
+      "response": " B",
+      "extracted": "B",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__professional_accounting__10352",
+      "target": "D",
+      "response": " C",
+      "extracted": "C",
+      "correct": false
+    },
+    {
+      "sample_id": "mmlu__professional_accounting__10353",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__professional_accounting__10354",
+      "target": "C",
+      "response": " A",
+      "extracted": "A",
+      "correct": false
+    },
+    {
+      "sample_id": "mmlu__professional_accounting__10355",
+      "target": "D",
+      "response": " C",
+      "extracted": "C",
+      "correct": false
+    },
+    {
+      "sample_id": "mmlu__professional_accounting__10356",
+      "target": "D",
+      "response": " C",
+      "extracted": "C",
+      "correct": false
+    },
+    {
+      "sample_id": "mmlu__professional_accounting__10357",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__professional_accounting__10358",
+      "target": "C",
+      "response": " A",
+      "extracted": "A",
+      "correct": false
+    },
+    {
+      "sample_id": "mmlu__professional_law__10631",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__professional_law__10632",
+      "target": "B",
+      "response": " C",
+      "extracted": "C",
+      "correct": false
+    },
+    {
+      "sample_id": "mmlu__professional_law__10633",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__professional_law__10634",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__professional_law__10635",
+      "target": "B",
+      "response": " A",
+      "extracted": "A",
+      "correct": false
+    },
+    {
+      "sample_id": "mmlu__professional_law__10636",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__professional_law__10637",
+      "target": "B",
+      "response": " B",
+      "extracted": "B",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__professional_law__10638",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__professional_law__10639",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__professional_law__10640",
+      "target": "C",
+      "response": " D",
+      "extracted": "D",
+      "correct": false
+    },
+    {
+      "sample_id": "mmlu__professional_law__10641",
+      "target": "A",
+      "response": " D",
+      "extracted": "D",
+      "correct": false
+    },
+    {
+      "sample_id": "mmlu__professional_law__10642",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__professional_law__10643",
+      "target": "A",
+      "response": " D",
+      "extracted": "D",
+      "correct": false
+    },
+    {
+      "sample_id": "mmlu__professional_law__10644",
+      "target": "B",
+      "response": " C",
+      "extracted": "C",
+      "correct": false
+    },
+    {
+      "sample_id": "mmlu__professional_law__10645",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__professional_law__10646",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__professional_law__10647",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__professional_law__10648",
+      "target": "A",
+      "response": " D",
+      "extracted": "D",
+      "correct": false
+    },
+    {
+      "sample_id": "mmlu__professional_law__10649",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__professional_law__10650",
+      "target": "A",
+      "response": " D",
+      "extracted": "D",
+      "correct": false
+    },
+    {
+      "sample_id": "mmlu__professional_law__10651",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__professional_law__10652",
+      "target": "C",
+      "response": " A",
+      "extracted": "A",
+      "correct": false
+    },
+    {
+      "sample_id": "mmlu__professional_law__10653",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__professional_law__10654",
+      "target": "A",
+      "response": " D",
+      "extracted": "D",
+      "correct": false
+    },
+    {
+      "sample_id": "mmlu__professional_law__10655",
+      "target": "B",
+      "response": " C",
+      "extracted": "C",
+      "correct": false
+    },
+    {
+      "sample_id": "mmlu__professional_law__10656",
+      "target": "B",
+      "response": " D",
+      "extracted": "D",
+      "correct": false
+    },
+    {
+      "sample_id": "mmlu__professional_law__10657",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__professional_law__10658",
+      "target": "C",
+      "response": " B",
+      "extracted": "B",
+      "correct": false
+    },
+    {
+      "sample_id": "mmlu__professional_law__10659",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__professional_law__10660",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__professional_law__10661",
+      "target": "A",
+      "response": " C",
+      "extracted": "C",
+      "correct": false
+    },
+    {
+      "sample_id": "mmlu__professional_law__10662",
+      "target": "A",
+      "response": " D",
+      "extracted": "D",
+      "correct": false
+    },
+    {
+      "sample_id": "mmlu__professional_law__10663",
+      "target": "B",
+      "response": " B",
+      "extracted": "B",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__professional_law__10664",
+      "target": "C",
+      "response": " B",
+      "extracted": "B",
+      "correct": false
+    },
+    {
+      "sample_id": "mmlu__professional_law__10665",
+      "target": "A",
+      "response": " D",
+      "extracted": "D",
+      "correct": false
+    },
+    {
+      "sample_id": "mmlu__professional_law__10666",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__professional_law__10667",
+      "target": "A",
+      "response": " C",
+      "extracted": "C",
+      "correct": false
+    },
+    {
+      "sample_id": "mmlu__professional_law__10668",
+      "target": "D",
+      "response": " B",
+      "extracted": "B",
+      "correct": false
+    },
+    {
+      "sample_id": "mmlu__professional_law__10669",
+      "target": "A",
+      "response": " D",
+      "extracted": "D",
+      "correct": false
+    },
+    {
+      "sample_id": "mmlu__professional_law__10670",
+      "target": "C",
+      "response": " D",
+      "extracted": "D",
+      "correct": false
+    },
+    {
+      "sample_id": "mmlu__professional_law__10671",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__professional_law__10672",
+      "target": "D",
+      "response": " C",
+      "extracted": "C",
+      "correct": false
+    },
+    {
+      "sample_id": "mmlu__professional_law__10673",
+      "target": "B",
+      "response": " B",
+      "extracted": "B",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__professional_law__10674",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__professional_law__10675",
+      "target": "A",
+      "response": " C",
+      "extracted": "C",
+      "correct": false
+    },
+    {
+      "sample_id": "mmlu__professional_law__10676",
+      "target": "D",
+      "response": " C",
+      "extracted": "C",
+      "correct": false
+    },
+    {
+      "sample_id": "mmlu__professional_law__10677",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__professional_law__10678",
+      "target": "B",
+      "response": " B",
+      "extracted": "B",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__professional_law__10679",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__professional_law__10680",
+      "target": "D",
+      "response": " A",
+      "extracted": "A",
+      "correct": false
+    },
+    {
+      "sample_id": "mmlu__professional_law__10681",
+      "target": "C",
+      "response": " D",
+      "extracted": "D",
+      "correct": false
+    },
+    {
+      "sample_id": "mmlu__professional_law__10682",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__professional_law__10683",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__professional_law__10684",
+      "target": "B",
+      "response": " C",
+      "extracted": "C",
+      "correct": false
+    },
+    {
+      "sample_id": "mmlu__professional_law__10685",
+      "target": "B",
+      "response": " B",
+      "extracted": "B",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__professional_medicine__12165",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__professional_medicine__12166",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__professional_medicine__12167",
+      "target": "B",
+      "response": " B",
+      "extracted": "B",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__professional_medicine__12168",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__professional_medicine__12169",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__professional_medicine__12170",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__professional_medicine__12171",
+      "target": "B",
+      "response": " B",
+      "extracted": "B",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__professional_medicine__12172",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__professional_medicine__12173",
+      "target": "D",
+      "response": " A",
+      "extracted": "A",
+      "correct": false
+    },
+    {
+      "sample_id": "mmlu__professional_medicine__12174",
+      "target": "B",
+      "response": " A",
+      "extracted": "A",
+      "correct": false
+    },
+    {
+      "sample_id": "mmlu__professional_psychology__12437",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__professional_psychology__12438",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__professional_psychology__12439",
+      "target": "B",
+      "response": " A",
+      "extracted": "A",
+      "correct": false
+    },
+    {
+      "sample_id": "mmlu__professional_psychology__12440",
+      "target": "B",
+      "response": " B",
+      "extracted": "B",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__professional_psychology__12441",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__professional_psychology__12442",
+      "target": "B",
+      "response": " B",
+      "extracted": "B",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__professional_psychology__12443",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__professional_psychology__12444",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__professional_psychology__12445",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__professional_psychology__12446",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__professional_psychology__12447",
+      "target": "B",
+      "response": " B",
+      "extracted": "B",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__professional_psychology__12448",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__professional_psychology__12449",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__professional_psychology__12450",
+      "target": "B",
+      "response": " C",
+      "extracted": "C",
+      "correct": false
+    },
+    {
+      "sample_id": "mmlu__professional_psychology__12451",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__professional_psychology__12452",
+      "target": "B",
+      "response": " B",
+      "extracted": "B",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__professional_psychology__12453",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__professional_psychology__12454",
+      "target": "B",
+      "response": " B",
+      "extracted": "B",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__professional_psychology__12455",
+      "target": "B",
+      "response": " D",
+      "extracted": "D",
+      "correct": false
+    },
+    {
+      "sample_id": "mmlu__professional_psychology__12456",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__professional_psychology__12457",
+      "target": "B",
+      "response": " B",
+      "extracted": "B",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__professional_psychology__12458",
+      "target": "B",
+      "response": " B",
+      "extracted": "B",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__public_relations__13049",
+      "target": "B",
+      "response": " B",
+      "extracted": "B",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__public_relations__13050",
+      "target": "B",
+      "response": " C",
+      "extracted": "C",
+      "correct": false
+    },
+    {
+      "sample_id": "mmlu__public_relations__13051",
+      "target": "B",
+      "response": " B",
+      "extracted": "B",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__public_relations__13052",
+      "target": "B",
+      "response": " B",
+      "extracted": "B",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__security_studies__13159",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__security_studies__13160",
+      "target": "B",
+      "response": " D",
+      "extracted": "D",
+      "correct": false
+    },
+    {
+      "sample_id": "mmlu__security_studies__13161",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__security_studies__13162",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__security_studies__13163",
+      "target": "B",
+      "response": " C",
+      "extracted": "C",
+      "correct": false
+    },
+    {
+      "sample_id": "mmlu__security_studies__13164",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__security_studies__13165",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__security_studies__13166",
+      "target": "A",
+      "response": " B",
+      "extracted": "B",
+      "correct": false
+    },
+    {
+      "sample_id": "mmlu__security_studies__13167",
+      "target": "B",
+      "response": " B",
+      "extracted": "B",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__sociology__13404",
+      "target": "C",
+      "response": " C",
+      "extracted": "C",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__sociology__13405",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__sociology__13406",
+      "target": "B",
+      "response": " B",
+      "extracted": "B",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__sociology__13407",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__sociology__13408",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__sociology__13409",
+      "target": "B",
+      "response": " B",
+      "extracted": "B",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__sociology__13410",
+      "target": "D",
+      "response": " B",
+      "extracted": "B",
+      "correct": false
+    },
+    {
+      "sample_id": "mmlu__us_foreign_policy__13605",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__us_foreign_policy__13606",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__us_foreign_policy__13607",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__virology__13705",
+      "target": "A",
+      "response": " D",
+      "extracted": "D",
+      "correct": false
+    },
+    {
+      "sample_id": "mmlu__virology__13706",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__virology__13707",
+      "target": "B",
+      "response": " D",
+      "extracted": "D",
+      "correct": false
+    },
+    {
+      "sample_id": "mmlu__virology__13708",
+      "target": "B",
+      "response": " B",
+      "extracted": "B",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__virology__13709",
+      "target": "B",
+      "response": " B",
+      "extracted": "B",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__virology__13710",
+      "target": "A",
+      "response": " B",
+      "extracted": "B",
+      "correct": false
+    },
+    {
+      "sample_id": "mmlu__world_religions__13871",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__world_religions__13872",
+      "target": "B",
+      "response": " A",
+      "extracted": "A",
+      "correct": false
+    },
+    {
+      "sample_id": "mmlu__world_religions__13873",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__world_religions__13874",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__world_religions__13875",
+      "target": "D",
+      "response": " D",
+      "extracted": "D",
+      "correct": true
+    },
+    {
+      "sample_id": "mmlu__world_religions__13876",
+      "target": "A",
+      "response": " A",
+      "extracted": "A",
+      "correct": true
+    }
+  ]
+}

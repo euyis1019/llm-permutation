@@ -1,0 +1,10 @@
+kind: benchmark
+name: smoke
+
+# Minimal smoke-test benchmark suite.
+# Use this to verify the benchmark plan compilation pipeline end-to-end.
+spec:
+  tasks:
+    - id: mmlu
+      fewshot: 5
+      batch_size: auto
