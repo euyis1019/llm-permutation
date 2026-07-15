@@ -1,0 +1,48 @@
+# Python and notebook caches
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Local environments and editor state
+.venv/
+venv/
+.env
+.env.*
+.idea/
+.vscode/
+.DS_Store
+
+# Agent- or machine-local state
+.agents/
+.claude/
+.cache/
+skills-lock.json
+
+# Local model link / weights
+models
+*.safetensors
+*.ckpt
+*.pth
+*.pt
+pytorch_model*.bin
+*.gguf
+*.onnx
+*.pkl
+*.pickle
+wandb/
+
+# Reconstructable experiment artifacts
+**/logs/
+*.log
+experiments/noise_floor/checkpoints/
+experiments/noise_floor/results/**/logits/
+experiments/noise_floor/results/**/*.npy
+experiments/noise_floor/results/**/*.npz
+
+# Temporary exports
+*.tmp
+*.bak
+*~
