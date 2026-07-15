@@ -1,0 +1,43 @@
+{
+  "env": {
+    "torch": "2.13.0+cu130",
+    "transformers": "4.57.6",
+    "cuda": "13.0",
+    "device_name": "NVIDIA GeForce RTX 4090",
+    "allow_tf32_matmul": false,
+    "allow_tf32_cudnn": true,
+    "float32_matmul_precision": "highest",
+    "cudnn_deterministic": false,
+    "visible_devices": "0"
+  },
+  "model_path": "/nvme0/if/models/Qwen3-4B-Base",
+  "sha_all_mlp_start": "4d76f7fc8630f3193b016d86a3587cf6c71e7ddfc12210be71d9f07712dfc725",
+  "n_prompts": 32,
+  "cases": {
+    "baseline-repeat": "done",
+    "one-layer-first:s42": "done",
+    "one-layer-first:s43": "done",
+    "one-layer-first:s44": "done",
+    "one-layer-middle:s42": "done",
+    "one-layer-middle:s43": "done",
+    "one-layer-middle:s44": "done",
+    "one-layer-last:s42": "done",
+    "one-layer-last:s43": "done",
+    "one-layer-last:s44": "done",
+    "prefix-6:s42": "done",
+    "prefix-6:s43": "done",
+    "prefix-6:s44": "done",
+    "half-18:s42": "done",
+    "half-18:s43": "done",
+    "half-18:s44": "done",
+    "all-36:s42": "done",
+    "all-36:s43": "done",
+    "all-36:s44": "done",
+    "neg-L17-gate-only:s42": "done",
+    "neg-L17-up-only:s42": "done",
+    "neg-L17-down-only:s42": "done",
+    "neg-L17-independent-triplet:s42": "done"
+  },
+  "sha_all_mlp_end": "4d76f7fc8630f3193b016d86a3587cf6c71e7ddfc12210be71d9f07712dfc725",
+  "sha_match": true
+}

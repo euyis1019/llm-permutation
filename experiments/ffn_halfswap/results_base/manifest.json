@@ -1,0 +1,24 @@
+{
+  "env": {
+    "torch": "2.13.0+cu130",
+    "transformers": "4.57.6",
+    "cuda": "13.0",
+    "device_name": "NVIDIA GeForce RTX 4090",
+    "allow_tf32_matmul": false,
+    "allow_tf32_cudnn": true,
+    "float32_matmul_precision": "highest",
+    "cudnn_deterministic": false,
+    "visible_devices": "1"
+  },
+  "model_path": "/nvme0/if/models/Qwen3-4B-Base",
+  "tokenized_path": "/nvme0/if/permutation/experiments/ffn_permutation/results_base/tokenized.json",
+  "m": 9728,
+  "half": 4864,
+  "n_layers": 36,
+  "n_gen_repeats": 8,
+  "gen_tokens": 64,
+  "sha_all_mlp_start": "4d76f7fc8630f3193b016d86a3587cf6c71e7ddfc12210be71d9f07712dfc725",
+  "restore_equal": true,
+  "sha_all_mlp_end": "4d76f7fc8630f3193b016d86a3587cf6c71e7ddfc12210be71d9f07712dfc725",
+  "sha_match": true
+}

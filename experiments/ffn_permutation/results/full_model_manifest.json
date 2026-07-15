@@ -1,0 +1,42 @@
+{
+  "env": {
+    "torch": "2.13.0+cu130",
+    "transformers": "4.57.6",
+    "cuda": "13.0",
+    "device_name": "NVIDIA GeForce RTX 4090",
+    "allow_tf32_matmul": false,
+    "allow_tf32_cudnn": true,
+    "float32_matmul_precision": "highest",
+    "cudnn_deterministic": false,
+    "visible_devices": "0"
+  },
+  "sha_all_mlp_start": "1089154b7bdf4e413142281ed3c0089650980bba7a4e5cafe9f51feb557bda72",
+  "n_prompts": 32,
+  "cases": {
+    "baseline-repeat": "done",
+    "one-layer-first:s42": "done",
+    "one-layer-first:s43": "done",
+    "one-layer-first:s44": "done",
+    "one-layer-middle:s42": "done",
+    "one-layer-middle:s43": "done",
+    "one-layer-middle:s44": "done",
+    "one-layer-last:s42": "done",
+    "one-layer-last:s43": "done",
+    "one-layer-last:s44": "done",
+    "prefix-6:s42": "done",
+    "prefix-6:s43": "done",
+    "prefix-6:s44": "done",
+    "half-18:s42": "done",
+    "half-18:s43": "done",
+    "half-18:s44": "done",
+    "all-36:s42": "done",
+    "all-36:s43": "done",
+    "all-36:s44": "done",
+    "neg-L17-gate-only:s42": "done",
+    "neg-L17-up-only:s42": "done",
+    "neg-L17-down-only:s42": "done",
+    "neg-L17-independent-triplet:s42": "done"
+  },
+  "sha_all_mlp_end": "1089154b7bdf4e413142281ed3c0089650980bba7a4e5cafe9f51feb557bda72",
+  "sha_match": true
+}

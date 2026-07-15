@@ -1,0 +1,88 @@
+{
+  "L0": {
+    "n_tokens": 28,
+    "seed0": {
+      "fp32_orig_vs_fp64": 1.8090098903898877e-07,
+      "fp32_perm_vs_fp64": 1.7135115006159975e-07,
+      "fp32_reorder_effect": 2.4798246338425275e-07,
+      "bf16_orig_vs_fp64": 0.002159843232818406,
+      "bf16_reorder_drift": 0.0029410814560694035,
+      "fp32_rounded_to_bf16_reorder": 4.8702885446577835e-06
+    },
+    "seed1": {
+      "fp32_orig_vs_fp64": 1.8090098903898877e-07,
+      "fp32_perm_vs_fp64": 1.8728652084257237e-07,
+      "fp32_reorder_effect": 2.582418022421354e-07,
+      "bf16_orig_vs_fp64": 0.002159843232818406,
+      "bf16_reorder_drift": 0.0028554306615567577,
+      "fp32_rounded_to_bf16_reorder": 1.6992602405688493e-05
+    },
+    "seed2": {
+      "fp32_orig_vs_fp64": 1.8090098903898877e-07,
+      "fp32_perm_vs_fp64": 1.6630023622712364e-07,
+      "fp32_reorder_effect": 2.442155054242375e-07,
+      "bf16_orig_vs_fp64": 0.002159843232818406,
+      "bf16_reorder_drift": 0.0028898264259611156,
+      "fp32_rounded_to_bf16_reorder": 1.1145277483343981e-05
+    }
+  },
+  "L17": {
+    "n_tokens": 28,
+    "seed0": {
+      "fp32_orig_vs_fp64": 1.8546129532263877e-07,
+      "fp32_perm_vs_fp64": 1.7057909037943078e-07,
+      "fp32_reorder_effect": 2.474008292781185e-07,
+      "bf16_orig_vs_fp64": 0.002324849398741728,
+      "bf16_reorder_drift": 0.0032199168422725145,
+      "fp32_rounded_to_bf16_reorder": 7.949899262688775e-06
+    },
+    "seed1": {
+      "fp32_orig_vs_fp64": 1.8546129532263877e-07,
+      "fp32_perm_vs_fp64": 1.6753312030856585e-07,
+      "fp32_reorder_effect": 2.4869217797642734e-07,
+      "bf16_orig_vs_fp64": 0.002324849398741728,
+      "bf16_reorder_drift": 0.003094456264003784,
+      "fp32_rounded_to_bf16_reorder": 1.700126400360031e-05
+    },
+    "seed2": {
+      "fp32_orig_vs_fp64": 1.8546129532263877e-07,
+      "fp32_perm_vs_fp64": 1.7583497071673173e-07,
+      "fp32_reorder_effect": 2.523166546941579e-07,
+      "bf16_orig_vs_fp64": 0.002324849398741728,
+      "bf16_reorder_drift": 0.003092094560309883,
+      "fp32_rounded_to_bf16_reorder": 1.0055731211248925e-05
+    }
+  },
+  "L35": {
+    "n_tokens": 28,
+    "seed0": {
+      "fp32_orig_vs_fp64": 1.532009688953675e-07,
+      "fp32_perm_vs_fp64": 1.5497380815199875e-07,
+      "fp32_reorder_effect": 2.3116197972145006e-07,
+      "bf16_orig_vs_fp64": 0.0013559820211782097,
+      "bf16_reorder_drift": 0.0012111954451648882,
+      "fp32_rounded_to_bf16_reorder": 9.18903978092381e-06
+    },
+    "seed1": {
+      "fp32_orig_vs_fp64": 1.532009688953675e-07,
+      "fp32_perm_vs_fp64": 2.3790372563973814e-07,
+      "fp32_reorder_effect": 2.7574134010776096e-07,
+      "bf16_orig_vs_fp64": 0.0013559820211782097,
+      "bf16_reorder_drift": 0.0011680109981114673,
+      "fp32_rounded_to_bf16_reorder": 8.408235743765244e-06
+    },
+    "seed2": {
+      "fp32_orig_vs_fp64": 1.532009688953675e-07,
+      "fp32_perm_vs_fp64": 1.4334939613879374e-07,
+      "fp32_reorder_effect": 2.074551766985873e-07,
+      "bf16_orig_vs_fp64": 0.0013559820211782097,
+      "bf16_reorder_drift": 0.001225827284005271,
+      "fp32_rounded_to_bf16_reorder": 2.3135037620078946e-06
+    }
+  },
+  "theory": {
+    "bf16_eps": 0.0078125,
+    "quantization_floor_ulp_over_sqrt12": 0.002255274489021976,
+    "sqrt2_x_floor": 0.0031894397692489303
+  }
+}

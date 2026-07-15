@@ -1,0 +1,2811 @@
+{
+  "env": {
+    "torch": "2.13.0+cu130",
+    "transformers": "4.57.6",
+    "cuda": "13.0",
+    "device_name": "NVIDIA GeForce RTX 4090",
+    "allow_tf32_matmul": false,
+    "allow_tf32_cudnn": true,
+    "float32_matmul_precision": "highest",
+    "cudnn_deterministic": false,
+    "visible_devices": "0"
+  },
+  "d": 7,
+  "m": 11,
+  "runs": [
+    {
+      "device": "cpu",
+      "perm_checks": [
+        {
+          "perm": "identity",
+          "bijection": true,
+          "involution": true,
+          "seeds": [
+            {
+              "weight_seed": 1000,
+              "gate_coordinate_equal": true,
+              "up_coordinate_equal": true,
+              "product_coordinate_equal": true,
+              "canonical_bitwise_equal_baseline": true,
+              "native_vs_baseline": {
+                "bitwise_equal": true,
+                "max_abs": 0.0,
+                "mean_abs": 0.0,
+                "rel_l2": 0.0,
+                "rel_linf": 0.0,
+                "cosine": 0.9999999403953552,
+                "n_diff": 0,
+                "n_total": 28
+              },
+              "weights_changed_by_apply": "identity-noop-expected",
+              "restore_equal": {
+                "gate": true,
+                "up": true,
+                "down": true
+              },
+              "wrong_direction_differs": null
+            },
+            {
+              "weight_seed": 1001,
+              "gate_coordinate_equal": true,
+              "up_coordinate_equal": true,
+              "product_coordinate_equal": true,
+              "canonical_bitwise_equal_baseline": true,
+              "native_vs_baseline": {
+                "bitwise_equal": true,
+                "max_abs": 0.0,
+                "mean_abs": 0.0,
+                "rel_l2": 0.0,
+                "rel_linf": 0.0,
+                "cosine": 1.0,
+                "n_diff": 0,
+                "n_total": 28
+              },
+              "weights_changed_by_apply": "identity-noop-expected",
+              "restore_equal": {
+                "gate": true,
+                "up": true,
+                "down": true
+              },
+              "wrong_direction_differs": null
+            },
+            {
+              "weight_seed": 1002,
+              "gate_coordinate_equal": true,
+              "up_coordinate_equal": true,
+              "product_coordinate_equal": true,
+              "canonical_bitwise_equal_baseline": true,
+              "native_vs_baseline": {
+                "bitwise_equal": true,
+                "max_abs": 0.0,
+                "mean_abs": 0.0,
+                "rel_l2": 0.0,
+                "rel_linf": 0.0,
+                "cosine": 0.9999999403953552,
+                "n_diff": 0,
+                "n_total": 28
+              },
+              "weights_changed_by_apply": "identity-noop-expected",
+              "restore_equal": {
+                "gate": true,
+                "up": true,
+                "down": true
+              },
+              "wrong_direction_differs": null
+            },
+            {
+              "weight_seed": 1003,
+              "gate_coordinate_equal": true,
+              "up_coordinate_equal": true,
+              "product_coordinate_equal": true,
+              "canonical_bitwise_equal_baseline": true,
+              "native_vs_baseline": {
+                "bitwise_equal": true,
+                "max_abs": 0.0,
+                "mean_abs": 0.0,
+                "rel_l2": 0.0,
+                "rel_linf": 0.0,
+                "cosine": 1.0,
+                "n_diff": 0,
+                "n_total": 28
+              },
+              "weights_changed_by_apply": "identity-noop-expected",
+              "restore_equal": {
+                "gate": true,
+                "up": true,
+                "down": true
+              },
+              "wrong_direction_differs": null
+            },
+            {
+              "weight_seed": 1004,
+              "gate_coordinate_equal": true,
+              "up_coordinate_equal": true,
+              "product_coordinate_equal": true,
+              "canonical_bitwise_equal_baseline": true,
+              "native_vs_baseline": {
+                "bitwise_equal": true,
+                "max_abs": 0.0,
+                "mean_abs": 0.0,
+                "rel_l2": 0.0,
+                "rel_linf": 0.0,
+                "cosine": 1.0000001192092896,
+                "n_diff": 0,
+                "n_total": 28
+              },
+              "weights_changed_by_apply": "identity-noop-expected",
+              "restore_equal": {
+                "gate": true,
+                "up": true,
+                "down": true
+              },
+              "wrong_direction_differs": null
+            }
+          ],
+          "inv_roundtrip": true
+        },
+        {
+          "perm": "adjacent_swap",
+          "bijection": true,
+          "involution": true,
+          "seeds": [
+            {
+              "weight_seed": 1000,
+              "gate_coordinate_equal": true,
+              "up_coordinate_equal": true,
+              "product_coordinate_equal": true,
+              "canonical_bitwise_equal_baseline": true,
+              "native_vs_baseline": {
+                "bitwise_equal": true,
+                "max_abs": 0.0,
+                "mean_abs": 0.0,
+                "rel_l2": 0.0,
+                "rel_linf": 0.0,
+                "cosine": 0.9999999403953552,
+                "n_diff": 0,
+                "n_total": 28
+              },
+              "weights_changed_by_apply": {
+                "gate": true,
+                "up": true,
+                "down": true
+              },
+              "restore_equal": {
+                "gate": true,
+                "up": true,
+                "down": true
+              },
+              "wrong_direction_differs": null
+            },
+            {
+              "weight_seed": 1001,
+              "gate_coordinate_equal": true,
+              "up_coordinate_equal": true,
+              "product_coordinate_equal": true,
+              "canonical_bitwise_equal_baseline": true,
+              "native_vs_baseline": {
+                "bitwise_equal": true,
+                "max_abs": 0.0,
+                "mean_abs": 0.0,
+                "rel_l2": 0.0,
+                "rel_linf": 0.0,
+                "cosine": 1.0,
+                "n_diff": 0,
+                "n_total": 28
+              },
+              "weights_changed_by_apply": {
+                "gate": true,
+                "up": true,
+                "down": true
+              },
+              "restore_equal": {
+                "gate": true,
+                "up": true,
+                "down": true
+              },
+              "wrong_direction_differs": null
+            },
+            {
+              "weight_seed": 1002,
+              "gate_coordinate_equal": true,
+              "up_coordinate_equal": true,
+              "product_coordinate_equal": true,
+              "canonical_bitwise_equal_baseline": true,
+              "native_vs_baseline": {
+                "bitwise_equal": true,
+                "max_abs": 0.0,
+                "mean_abs": 0.0,
+                "rel_l2": 0.0,
+                "rel_linf": 0.0,
+                "cosine": 0.9999999403953552,
+                "n_diff": 0,
+                "n_total": 28
+              },
+              "weights_changed_by_apply": {
+                "gate": true,
+                "up": true,
+                "down": true
+              },
+              "restore_equal": {
+                "gate": true,
+                "up": true,
+                "down": true
+              },
+              "wrong_direction_differs": null
+            },
+            {
+              "weight_seed": 1003,
+              "gate_coordinate_equal": true,
+              "up_coordinate_equal": true,
+              "product_coordinate_equal": true,
+              "canonical_bitwise_equal_baseline": true,
+              "native_vs_baseline": {
+                "bitwise_equal": true,
+                "max_abs": 0.0,
+                "mean_abs": 0.0,
+                "rel_l2": 0.0,
+                "rel_linf": 0.0,
+                "cosine": 1.0,
+                "n_diff": 0,
+                "n_total": 28
+              },
+              "weights_changed_by_apply": {
+                "gate": true,
+                "up": true,
+                "down": true
+              },
+              "restore_equal": {
+                "gate": true,
+                "up": true,
+                "down": true
+              },
+              "wrong_direction_differs": null
+            },
+            {
+              "weight_seed": 1004,
+              "gate_coordinate_equal": true,
+              "up_coordinate_equal": true,
+              "product_coordinate_equal": true,
+              "canonical_bitwise_equal_baseline": true,
+              "native_vs_baseline": {
+                "bitwise_equal": true,
+                "max_abs": 0.0,
+                "mean_abs": 0.0,
+                "rel_l2": 0.0,
+                "rel_linf": 0.0,
+                "cosine": 1.0000001192092896,
+                "n_diff": 0,
+                "n_total": 28
+              },
+              "weights_changed_by_apply": {
+                "gate": true,
+                "up": true,
+                "down": true
+              },
+              "restore_equal": {
+                "gate": true,
+                "up": true,
+                "down": true
+              },
+              "wrong_direction_differs": null
+            }
+          ],
+          "inv_roundtrip": true
+        },
+        {
+          "perm": "reverse",
+          "bijection": true,
+          "involution": true,
+          "seeds": [
+            {
+              "weight_seed": 1000,
+              "gate_coordinate_equal": true,
+              "up_coordinate_equal": true,
+              "product_coordinate_equal": true,
+              "canonical_bitwise_equal_baseline": true,
+              "native_vs_baseline": {
+                "bitwise_equal": true,
+                "max_abs": 0.0,
+                "mean_abs": 0.0,
+                "rel_l2": 0.0,
+                "rel_linf": 0.0,
+                "cosine": 0.9999999403953552,
+                "n_diff": 0,
+                "n_total": 28
+              },
+              "weights_changed_by_apply": {
+                "gate": true,
+                "up": true,
+                "down": true
+              },
+              "restore_equal": {
+                "gate": true,
+                "up": true,
+                "down": true
+              },
+              "wrong_direction_differs": null
+            },
+            {
+              "weight_seed": 1001,
+              "gate_coordinate_equal": true,
+              "up_coordinate_equal": true,
+              "product_coordinate_equal": true,
+              "canonical_bitwise_equal_baseline": true,
+              "native_vs_baseline": {
+                "bitwise_equal": true,
+                "max_abs": 0.0,
+                "mean_abs": 0.0,
+                "rel_l2": 0.0,
+                "rel_linf": 0.0,
+                "cosine": 1.0,
+                "n_diff": 0,
+                "n_total": 28
+              },
+              "weights_changed_by_apply": {
+                "gate": true,
+                "up": true,
+                "down": true
+              },
+              "restore_equal": {
+                "gate": true,
+                "up": true,
+                "down": true
+              },
+              "wrong_direction_differs": null
+            },
+            {
+              "weight_seed": 1002,
+              "gate_coordinate_equal": true,
+              "up_coordinate_equal": true,
+              "product_coordinate_equal": true,
+              "canonical_bitwise_equal_baseline": true,
+              "native_vs_baseline": {
+                "bitwise_equal": true,
+                "max_abs": 0.0,
+                "mean_abs": 0.0,
+                "rel_l2": 0.0,
+                "rel_linf": 0.0,
+                "cosine": 0.9999999403953552,
+                "n_diff": 0,
+                "n_total": 28
+              },
+              "weights_changed_by_apply": {
+                "gate": true,
+                "up": true,
+                "down": true
+              },
+              "restore_equal": {
+                "gate": true,
+                "up": true,
+                "down": true
+              },
+              "wrong_direction_differs": null
+            },
+            {
+              "weight_seed": 1003,
+              "gate_coordinate_equal": true,
+              "up_coordinate_equal": true,
+              "product_coordinate_equal": true,
+              "canonical_bitwise_equal_baseline": true,
+              "native_vs_baseline": {
+                "bitwise_equal": true,
+                "max_abs": 0.0,
+                "mean_abs": 0.0,
+                "rel_l2": 0.0,
+                "rel_linf": 0.0,
+                "cosine": 1.0,
+                "n_diff": 0,
+                "n_total": 28
+              },
+              "weights_changed_by_apply": {
+                "gate": true,
+                "up": true,
+                "down": true
+              },
+              "restore_equal": {
+                "gate": true,
+                "up": true,
+                "down": true
+              },
+              "wrong_direction_differs": null
+            },
+            {
+              "weight_seed": 1004,
+              "gate_coordinate_equal": true,
+              "up_coordinate_equal": true,
+              "product_coordinate_equal": true,
+              "canonical_bitwise_equal_baseline": true,
+              "native_vs_baseline": {
+                "bitwise_equal": true,
+                "max_abs": 0.0,
+                "mean_abs": 0.0,
+                "rel_l2": 0.0,
+                "rel_linf": 0.0,
+                "cosine": 1.0000001192092896,
+                "n_diff": 0,
+                "n_total": 28
+              },
+              "weights_changed_by_apply": {
+                "gate": true,
+                "up": true,
+                "down": true
+              },
+              "restore_equal": {
+                "gate": true,
+                "up": true,
+                "down": true
+              },
+              "wrong_direction_differs": null
+            }
+          ],
+          "inv_roundtrip": true
+        },
+        {
+          "perm": "random-s42",
+          "bijection": true,
+          "involution": false,
+          "seeds": [
+            {
+              "weight_seed": 1000,
+              "gate_coordinate_equal": true,
+              "up_coordinate_equal": true,
+              "product_coordinate_equal": true,
+              "canonical_bitwise_equal_baseline": true,
+              "native_vs_baseline": {
+                "bitwise_equal": true,
+                "max_abs": 0.0,
+                "mean_abs": 0.0,
+                "rel_l2": 0.0,
+                "rel_linf": 0.0,
+                "cosine": 0.9999999403953552,
+                "n_diff": 0,
+                "n_total": 28
+              },
+              "weights_changed_by_apply": {
+                "gate": true,
+                "up": true,
+                "down": true
+              },
+              "restore_equal": {
+                "gate": true,
+                "up": true,
+                "down": true
+              },
+              "wrong_direction_differs": true
+            },
+            {
+              "weight_seed": 1001,
+              "gate_coordinate_equal": true,
+              "up_coordinate_equal": true,
+              "product_coordinate_equal": true,
+              "canonical_bitwise_equal_baseline": true,
+              "native_vs_baseline": {
+                "bitwise_equal": true,
+                "max_abs": 0.0,
+                "mean_abs": 0.0,
+                "rel_l2": 0.0,
+                "rel_linf": 0.0,
+                "cosine": 1.0,
+                "n_diff": 0,
+                "n_total": 28
+              },
+              "weights_changed_by_apply": {
+                "gate": true,
+                "up": true,
+                "down": true
+              },
+              "restore_equal": {
+                "gate": true,
+                "up": true,
+                "down": true
+              },
+              "wrong_direction_differs": true
+            },
+            {
+              "weight_seed": 1002,
+              "gate_coordinate_equal": true,
+              "up_coordinate_equal": true,
+              "product_coordinate_equal": true,
+              "canonical_bitwise_equal_baseline": true,
+              "native_vs_baseline": {
+                "bitwise_equal": true,
+                "max_abs": 0.0,
+                "mean_abs": 0.0,
+                "rel_l2": 0.0,
+                "rel_linf": 0.0,
+                "cosine": 0.9999999403953552,
+                "n_diff": 0,
+                "n_total": 28
+              },
+              "weights_changed_by_apply": {
+                "gate": true,
+                "up": true,
+                "down": true
+              },
+              "restore_equal": {
+                "gate": true,
+                "up": true,
+                "down": true
+              },
+              "wrong_direction_differs": true
+            },
+            {
+              "weight_seed": 1003,
+              "gate_coordinate_equal": true,
+              "up_coordinate_equal": true,
+              "product_coordinate_equal": true,
+              "canonical_bitwise_equal_baseline": true,
+              "native_vs_baseline": {
+                "bitwise_equal": true,
+                "max_abs": 0.0,
+                "mean_abs": 0.0,
+                "rel_l2": 0.0,
+                "rel_linf": 0.0,
+                "cosine": 1.0,
+                "n_diff": 0,
+                "n_total": 28
+              },
+              "weights_changed_by_apply": {
+                "gate": true,
+                "up": true,
+                "down": true
+              },
+              "restore_equal": {
+                "gate": true,
+                "up": true,
+                "down": true
+              },
+              "wrong_direction_differs": true
+            },
+            {
+              "weight_seed": 1004,
+              "gate_coordinate_equal": true,
+              "up_coordinate_equal": true,
+              "product_coordinate_equal": true,
+              "canonical_bitwise_equal_baseline": true,
+              "native_vs_baseline": {
+                "bitwise_equal": true,
+                "max_abs": 0.0,
+                "mean_abs": 0.0,
+                "rel_l2": 0.0,
+                "rel_linf": 0.0,
+                "cosine": 1.0000001192092896,
+                "n_diff": 0,
+                "n_total": 28
+              },
+              "weights_changed_by_apply": {
+                "gate": true,
+                "up": true,
+                "down": true
+              },
+              "restore_equal": {
+                "gate": true,
+                "up": true,
+                "down": true
+              },
+              "wrong_direction_differs": true
+            }
+          ],
+          "inv_roundtrip": true
+        },
+        {
+          "perm": "random-s43",
+          "bijection": true,
+          "involution": false,
+          "seeds": [
+            {
+              "weight_seed": 1000,
+              "gate_coordinate_equal": true,
+              "up_coordinate_equal": true,
+              "product_coordinate_equal": true,
+              "canonical_bitwise_equal_baseline": true,
+              "native_vs_baseline": {
+                "bitwise_equal": true,
+                "max_abs": 0.0,
+                "mean_abs": 0.0,
+                "rel_l2": 0.0,
+                "rel_linf": 0.0,
+                "cosine": 0.9999999403953552,
+                "n_diff": 0,
+                "n_total": 28
+              },
+              "weights_changed_by_apply": {
+                "gate": true,
+                "up": true,
+                "down": true
+              },
+              "restore_equal": {
+                "gate": true,
+                "up": true,
+                "down": true
+              },
+              "wrong_direction_differs": true
+            },
+            {
+              "weight_seed": 1001,
+              "gate_coordinate_equal": true,
+              "up_coordinate_equal": true,
+              "product_coordinate_equal": true,
+              "canonical_bitwise_equal_baseline": true,
+              "native_vs_baseline": {
+                "bitwise_equal": true,
+                "max_abs": 0.0,
+                "mean_abs": 0.0,
+                "rel_l2": 0.0,
+                "rel_linf": 0.0,
+                "cosine": 1.0,
+                "n_diff": 0,
+                "n_total": 28
+              },
+              "weights_changed_by_apply": {
+                "gate": true,
+                "up": true,
+                "down": true
+              },
+              "restore_equal": {
+                "gate": true,
+                "up": true,
+                "down": true
+              },
+              "wrong_direction_differs": true
+            },
+            {
+              "weight_seed": 1002,
+              "gate_coordinate_equal": true,
+              "up_coordinate_equal": true,
+              "product_coordinate_equal": true,
+              "canonical_bitwise_equal_baseline": true,
+              "native_vs_baseline": {
+                "bitwise_equal": true,
+                "max_abs": 0.0,
+                "mean_abs": 0.0,
+                "rel_l2": 0.0,
+                "rel_linf": 0.0,
+                "cosine": 0.9999999403953552,
+                "n_diff": 0,
+                "n_total": 28
+              },
+              "weights_changed_by_apply": {
+                "gate": true,
+                "up": true,
+                "down": true
+              },
+              "restore_equal": {
+                "gate": true,
+                "up": true,
+                "down": true
+              },
+              "wrong_direction_differs": true
+            },
+            {
+              "weight_seed": 1003,
+              "gate_coordinate_equal": true,
+              "up_coordinate_equal": true,
+              "product_coordinate_equal": true,
+              "canonical_bitwise_equal_baseline": true,
+              "native_vs_baseline": {
+                "bitwise_equal": true,
+                "max_abs": 0.0,
+                "mean_abs": 0.0,
+                "rel_l2": 0.0,
+                "rel_linf": 0.0,
+                "cosine": 1.0,
+                "n_diff": 0,
+                "n_total": 28
+              },
+              "weights_changed_by_apply": {
+                "gate": true,
+                "up": true,
+                "down": true
+              },
+              "restore_equal": {
+                "gate": true,
+                "up": true,
+                "down": true
+              },
+              "wrong_direction_differs": true
+            },
+            {
+              "weight_seed": 1004,
+              "gate_coordinate_equal": true,
+              "up_coordinate_equal": true,
+              "product_coordinate_equal": true,
+              "canonical_bitwise_equal_baseline": true,
+              "native_vs_baseline": {
+                "bitwise_equal": true,
+                "max_abs": 0.0,
+                "mean_abs": 0.0,
+                "rel_l2": 0.0,
+                "rel_linf": 0.0,
+                "cosine": 1.0000001192092896,
+                "n_diff": 0,
+                "n_total": 28
+              },
+              "weights_changed_by_apply": {
+                "gate": true,
+                "up": true,
+                "down": true
+              },
+              "restore_equal": {
+                "gate": true,
+                "up": true,
+                "down": true
+              },
+              "wrong_direction_differs": true
+            }
+          ],
+          "inv_roundtrip": true
+        },
+        {
+          "perm": "random-s44",
+          "bijection": true,
+          "involution": false,
+          "seeds": [
+            {
+              "weight_seed": 1000,
+              "gate_coordinate_equal": true,
+              "up_coordinate_equal": true,
+              "product_coordinate_equal": true,
+              "canonical_bitwise_equal_baseline": true,
+              "native_vs_baseline": {
+                "bitwise_equal": true,
+                "max_abs": 0.0,
+                "mean_abs": 0.0,
+                "rel_l2": 0.0,
+                "rel_linf": 0.0,
+                "cosine": 0.9999999403953552,
+                "n_diff": 0,
+                "n_total": 28
+              },
+              "weights_changed_by_apply": {
+                "gate": true,
+                "up": true,
+                "down": true
+              },
+              "restore_equal": {
+                "gate": true,
+                "up": true,
+                "down": true
+              },
+              "wrong_direction_differs": true
+            },
+            {
+              "weight_seed": 1001,
+              "gate_coordinate_equal": true,
+              "up_coordinate_equal": true,
+              "product_coordinate_equal": true,
+              "canonical_bitwise_equal_baseline": true,
+              "native_vs_baseline": {
+                "bitwise_equal": true,
+                "max_abs": 0.0,
+                "mean_abs": 0.0,
+                "rel_l2": 0.0,
+                "rel_linf": 0.0,
+                "cosine": 1.0,
+                "n_diff": 0,
+                "n_total": 28
+              },
+              "weights_changed_by_apply": {
+                "gate": true,
+                "up": true,
+                "down": true
+              },
+              "restore_equal": {
+                "gate": true,
+                "up": true,
+                "down": true
+              },
+              "wrong_direction_differs": true
+            },
+            {
+              "weight_seed": 1002,
+              "gate_coordinate_equal": true,
+              "up_coordinate_equal": true,
+              "product_coordinate_equal": true,
+              "canonical_bitwise_equal_baseline": true,
+              "native_vs_baseline": {
+                "bitwise_equal": true,
+                "max_abs": 0.0,
+                "mean_abs": 0.0,
+                "rel_l2": 0.0,
+                "rel_linf": 0.0,
+                "cosine": 0.9999999403953552,
+                "n_diff": 0,
+                "n_total": 28
+              },
+              "weights_changed_by_apply": {
+                "gate": true,
+                "up": true,
+                "down": true
+              },
+              "restore_equal": {
+                "gate": true,
+                "up": true,
+                "down": true
+              },
+              "wrong_direction_differs": true
+            },
+            {
+              "weight_seed": 1003,
+              "gate_coordinate_equal": true,
+              "up_coordinate_equal": true,
+              "product_coordinate_equal": true,
+              "canonical_bitwise_equal_baseline": true,
+              "native_vs_baseline": {
+                "bitwise_equal": true,
+                "max_abs": 0.0,
+                "mean_abs": 0.0,
+                "rel_l2": 0.0,
+                "rel_linf": 0.0,
+                "cosine": 1.0,
+                "n_diff": 0,
+                "n_total": 28
+              },
+              "weights_changed_by_apply": {
+                "gate": true,
+                "up": true,
+                "down": true
+              },
+              "restore_equal": {
+                "gate": true,
+                "up": true,
+                "down": true
+              },
+              "wrong_direction_differs": true
+            },
+            {
+              "weight_seed": 1004,
+              "gate_coordinate_equal": true,
+              "up_coordinate_equal": true,
+              "product_coordinate_equal": true,
+              "canonical_bitwise_equal_baseline": true,
+              "native_vs_baseline": {
+                "bitwise_equal": true,
+                "max_abs": 0.0,
+                "mean_abs": 0.0,
+                "rel_l2": 0.0,
+                "rel_linf": 0.0,
+                "cosine": 1.0000001192092896,
+                "n_diff": 0,
+                "n_total": 28
+              },
+              "weights_changed_by_apply": {
+                "gate": true,
+                "up": true,
+                "down": true
+              },
+              "restore_equal": {
+                "gate": true,
+                "up": true,
+                "down": true
+              },
+              "wrong_direction_differs": true
+            }
+          ],
+          "inv_roundtrip": true
+        },
+        {
+          "perm": "random-s45",
+          "bijection": true,
+          "involution": false,
+          "seeds": [
+            {
+              "weight_seed": 1000,
+              "gate_coordinate_equal": true,
+              "up_coordinate_equal": true,
+              "product_coordinate_equal": true,
+              "canonical_bitwise_equal_baseline": true,
+              "native_vs_baseline": {
+                "bitwise_equal": true,
+                "max_abs": 0.0,
+                "mean_abs": 0.0,
+                "rel_l2": 0.0,
+                "rel_linf": 0.0,
+                "cosine": 0.9999999403953552,
+                "n_diff": 0,
+                "n_total": 28
+              },
+              "weights_changed_by_apply": {
+                "gate": true,
+                "up": true,
+                "down": true
+              },
+              "restore_equal": {
+                "gate": true,
+                "up": true,
+                "down": true
+              },
+              "wrong_direction_differs": true
+            },
+            {
+              "weight_seed": 1001,
+              "gate_coordinate_equal": true,
+              "up_coordinate_equal": true,
+              "product_coordinate_equal": true,
+              "canonical_bitwise_equal_baseline": true,
+              "native_vs_baseline": {
+                "bitwise_equal": true,
+                "max_abs": 0.0,
+                "mean_abs": 0.0,
+                "rel_l2": 0.0,
+                "rel_linf": 0.0,
+                "cosine": 1.0,
+                "n_diff": 0,
+                "n_total": 28
+              },
+              "weights_changed_by_apply": {
+                "gate": true,
+                "up": true,
+                "down": true
+              },
+              "restore_equal": {
+                "gate": true,
+                "up": true,
+                "down": true
+              },
+              "wrong_direction_differs": true
+            },
+            {
+              "weight_seed": 1002,
+              "gate_coordinate_equal": true,
+              "up_coordinate_equal": true,
+              "product_coordinate_equal": true,
+              "canonical_bitwise_equal_baseline": true,
+              "native_vs_baseline": {
+                "bitwise_equal": true,
+                "max_abs": 0.0,
+                "mean_abs": 0.0,
+                "rel_l2": 0.0,
+                "rel_linf": 0.0,
+                "cosine": 0.9999999403953552,
+                "n_diff": 0,
+                "n_total": 28
+              },
+              "weights_changed_by_apply": {
+                "gate": true,
+                "up": true,
+                "down": true
+              },
+              "restore_equal": {
+                "gate": true,
+                "up": true,
+                "down": true
+              },
+              "wrong_direction_differs": true
+            },
+            {
+              "weight_seed": 1003,
+              "gate_coordinate_equal": true,
+              "up_coordinate_equal": true,
+              "product_coordinate_equal": true,
+              "canonical_bitwise_equal_baseline": true,
+              "native_vs_baseline": {
+                "bitwise_equal": true,
+                "max_abs": 0.0,
+                "mean_abs": 0.0,
+                "rel_l2": 0.0,
+                "rel_linf": 0.0,
+                "cosine": 1.0,
+                "n_diff": 0,
+                "n_total": 28
+              },
+              "weights_changed_by_apply": {
+                "gate": true,
+                "up": true,
+                "down": true
+              },
+              "restore_equal": {
+                "gate": true,
+                "up": true,
+                "down": true
+              },
+              "wrong_direction_differs": true
+            },
+            {
+              "weight_seed": 1004,
+              "gate_coordinate_equal": true,
+              "up_coordinate_equal": true,
+              "product_coordinate_equal": true,
+              "canonical_bitwise_equal_baseline": true,
+              "native_vs_baseline": {
+                "bitwise_equal": true,
+                "max_abs": 0.0,
+                "mean_abs": 0.0,
+                "rel_l2": 0.0,
+                "rel_linf": 0.0,
+                "cosine": 1.0000001192092896,
+                "n_diff": 0,
+                "n_total": 28
+              },
+              "weights_changed_by_apply": {
+                "gate": true,
+                "up": true,
+                "down": true
+              },
+              "restore_equal": {
+                "gate": true,
+                "up": true,
+                "down": true
+              },
+              "wrong_direction_differs": true
+            }
+          ],
+          "inv_roundtrip": true
+        },
+        {
+          "perm": "random-s46",
+          "bijection": true,
+          "involution": false,
+          "seeds": [
+            {
+              "weight_seed": 1000,
+              "gate_coordinate_equal": true,
+              "up_coordinate_equal": true,
+              "product_coordinate_equal": true,
+              "canonical_bitwise_equal_baseline": true,
+              "native_vs_baseline": {
+                "bitwise_equal": true,
+                "max_abs": 0.0,
+                "mean_abs": 0.0,
+                "rel_l2": 0.0,
+                "rel_linf": 0.0,
+                "cosine": 0.9999999403953552,
+                "n_diff": 0,
+                "n_total": 28
+              },
+              "weights_changed_by_apply": {
+                "gate": true,
+                "up": true,
+                "down": true
+              },
+              "restore_equal": {
+                "gate": true,
+                "up": true,
+                "down": true
+              },
+              "wrong_direction_differs": true
+            },
+            {
+              "weight_seed": 1001,
+              "gate_coordinate_equal": true,
+              "up_coordinate_equal": true,
+              "product_coordinate_equal": true,
+              "canonical_bitwise_equal_baseline": true,
+              "native_vs_baseline": {
+                "bitwise_equal": true,
+                "max_abs": 0.0,
+                "mean_abs": 0.0,
+                "rel_l2": 0.0,
+                "rel_linf": 0.0,
+                "cosine": 1.0,
+                "n_diff": 0,
+                "n_total": 28
+              },
+              "weights_changed_by_apply": {
+                "gate": true,
+                "up": true,
+                "down": true
+              },
+              "restore_equal": {
+                "gate": true,
+                "up": true,
+                "down": true
+              },
+              "wrong_direction_differs": true
+            },
+            {
+              "weight_seed": 1002,
+              "gate_coordinate_equal": true,
+              "up_coordinate_equal": true,
+              "product_coordinate_equal": true,
+              "canonical_bitwise_equal_baseline": true,
+              "native_vs_baseline": {
+                "bitwise_equal": true,
+                "max_abs": 0.0,
+                "mean_abs": 0.0,
+                "rel_l2": 0.0,
+                "rel_linf": 0.0,
+                "cosine": 0.9999999403953552,
+                "n_diff": 0,
+                "n_total": 28
+              },
+              "weights_changed_by_apply": {
+                "gate": true,
+                "up": true,
+                "down": true
+              },
+              "restore_equal": {
+                "gate": true,
+                "up": true,
+                "down": true
+              },
+              "wrong_direction_differs": true
+            },
+            {
+              "weight_seed": 1003,
+              "gate_coordinate_equal": true,
+              "up_coordinate_equal": true,
+              "product_coordinate_equal": true,
+              "canonical_bitwise_equal_baseline": true,
+              "native_vs_baseline": {
+                "bitwise_equal": true,
+                "max_abs": 0.0,
+                "mean_abs": 0.0,
+                "rel_l2": 0.0,
+                "rel_linf": 0.0,
+                "cosine": 1.0,
+                "n_diff": 0,
+                "n_total": 28
+              },
+              "weights_changed_by_apply": {
+                "gate": true,
+                "up": true,
+                "down": true
+              },
+              "restore_equal": {
+                "gate": true,
+                "up": true,
+                "down": true
+              },
+              "wrong_direction_differs": true
+            },
+            {
+              "weight_seed": 1004,
+              "gate_coordinate_equal": true,
+              "up_coordinate_equal": true,
+              "product_coordinate_equal": true,
+              "canonical_bitwise_equal_baseline": true,
+              "native_vs_baseline": {
+                "bitwise_equal": true,
+                "max_abs": 0.0,
+                "mean_abs": 0.0,
+                "rel_l2": 0.0,
+                "rel_linf": 0.0,
+                "cosine": 1.0000001192092896,
+                "n_diff": 0,
+                "n_total": 28
+              },
+              "weights_changed_by_apply": {
+                "gate": true,
+                "up": true,
+                "down": true
+              },
+              "restore_equal": {
+                "gate": true,
+                "up": true,
+                "down": true
+              },
+              "wrong_direction_differs": true
+            }
+          ],
+          "inv_roundtrip": true
+        }
+      ],
+      "float64_controls": [
+        {
+          "perm_seed": 42,
+          "cases": {
+            "baseline-repeat": {
+              "max_abs": 0.0,
+              "rel_l2": 0.0
+            },
+            "valid-triplet": {
+              "max_abs": 1.4210854715202004e-14,
+              "rel_l2": 1.6223239529025078e-16
+            },
+            "gate-only": {
+              "max_abs": 62.988503299251555,
+              "rel_l2": 0.7756197467487613
+            },
+            "up-only": {
+              "max_abs": 94.57039792805995,
+              "rel_l2": 1.232565005368409
+            },
+            "down-only": {
+              "max_abs": 115.87350593997132,
+              "rel_l2": 1.3549003886223476
+            },
+            "gate+up": {
+              "max_abs": 121.7966290954457,
+              "rel_l2": 1.3473917089525138
+            },
+            "gate+down": {
+              "max_abs": 139.52328014379162,
+              "rel_l2": 1.675165421330553
+            },
+            "up+down": {
+              "max_abs": 82.06451731528468,
+              "rel_l2": 0.9799683800675112
+            },
+            "independent-triplet": {
+              "max_abs": 64.39097994629836,
+              "rel_l2": 0.9612184759201164
+            },
+            "wrong-direction": {
+              "max_abs": 150.85202566491108,
+              "rel_l2": 1.703833963104455
+            }
+          }
+        },
+        {
+          "perm_seed": 43,
+          "cases": {
+            "baseline-repeat": {
+              "max_abs": 0.0,
+              "rel_l2": 0.0
+            },
+            "valid-triplet": {
+              "max_abs": 1.4210854715202004e-14,
+              "rel_l2": 1.9172325237561517e-16
+            },
+            "gate-only": {
+              "max_abs": 53.73557957248065,
+              "rel_l2": 0.9431063198841747
+            },
+            "up-only": {
+              "max_abs": 94.55910124812527,
+              "rel_l2": 1.2299800394556526
+            },
+            "down-only": {
+              "max_abs": 39.74646989238537,
+              "rel_l2": 0.7306540744417311
+            },
+            "gate+up": {
+              "max_abs": 87.16502206529263,
+              "rel_l2": 1.1589282011787205
+            },
+            "gate+down": {
+              "max_abs": 83.84950623387068,
+              "rel_l2": 1.2413392719491407
+            },
+            "up+down": {
+              "max_abs": 62.67985120622147,
+              "rel_l2": 0.9604395058710843
+            },
+            "independent-triplet": {
+              "max_abs": 101.87363325148105,
+              "rel_l2": 1.5870162315439673
+            },
+            "wrong-direction": {
+              "max_abs": 66.27283873264373,
+              "rel_l2": 1.029127365783279
+            }
+          }
+        },
+        {
+          "perm_seed": 44,
+          "cases": {
+            "baseline-repeat": {
+              "max_abs": 0.0,
+              "rel_l2": 0.0
+            },
+            "valid-triplet": {
+              "max_abs": 1.4210854715202004e-14,
+              "rel_l2": 1.6717706411844665e-16
+            },
+            "gate-only": {
+              "max_abs": 85.54698762100341,
+              "rel_l2": 1.871753354252871
+            },
+            "up-only": {
+              "max_abs": 86.2516998584748,
+              "rel_l2": 1.7377805503418022
+            },
+            "down-only": {
+              "max_abs": 65.69209176813568,
+              "rel_l2": 1.27247689134932
+            },
+            "gate+up": {
+              "max_abs": 86.3897117951881,
+              "rel_l2": 1.5794095728293764
+            },
+            "gate+down": {
+              "max_abs": 83.00764472210486,
+              "rel_l2": 1.8228186167895495
+            },
+            "up+down": {
+              "max_abs": 96.24833736156475,
+              "rel_l2": 1.8879415759742724
+            },
+            "independent-triplet": {
+              "max_abs": 122.74462421302486,
+              "rel_l2": 1.6663252900246333
+            },
+            "wrong-direction": {
+              "max_abs": 59.1676330939204,
+              "rel_l2": 0.930201136539945
+            }
+          }
+        },
+        {
+          "perm_seed": 45,
+          "cases": {
+            "baseline-repeat": {
+              "max_abs": 0.0,
+              "rel_l2": 0.0
+            },
+            "valid-triplet": {
+              "max_abs": 1.4210854715202004e-14,
+              "rel_l2": 1.7951884033217315e-16
+            },
+            "gate-only": {
+              "max_abs": 85.90748018605433,
+              "rel_l2": 1.3033307882082592
+            },
+            "up-only": {
+              "max_abs": 122.6359719337375,
+              "rel_l2": 1.5282447813542137
+            },
+            "down-only": {
+              "max_abs": 110.23346510719364,
+              "rel_l2": 1.5421073658460485
+            },
+            "gate+up": {
+              "max_abs": 87.3557785347841,
+              "rel_l2": 1.5053227403409486
+            },
+            "gate+down": {
+              "max_abs": 104.39202759205247,
+              "rel_l2": 1.8105391430549735
+            },
+            "up+down": {
+              "max_abs": 57.41134308920746,
+              "rel_l2": 1.1482504276228165
+            },
+            "independent-triplet": {
+              "max_abs": 112.66429886986549,
+              "rel_l2": 1.9413942493479186
+            },
+            "wrong-direction": {
+              "max_abs": 72.73325443672547,
+              "rel_l2": 1.3095862337671689
+            }
+          }
+        },
+        {
+          "perm_seed": 46,
+          "cases": {
+            "baseline-repeat": {
+              "max_abs": 0.0,
+              "rel_l2": 0.0
+            },
+            "valid-triplet": {
+              "max_abs": 1.0658141036401503e-14,
+              "rel_l2": 2.7869928154630706e-16
+            },
+            "gate-only": {
+              "max_abs": 64.49198156384251,
+              "rel_l2": 1.5951715839513434
+            },
+            "up-only": {
+              "max_abs": 34.15403837980414,
+              "rel_l2": 1.2696248015008418
+            },
+            "down-only": {
+              "max_abs": 64.25040490761504,
+              "rel_l2": 1.7980435561950827
+            },
+            "gate+up": {
+              "max_abs": 45.97453219051028,
+              "rel_l2": 1.3112673986536107
+            },
+            "gate+down": {
+              "max_abs": 76.53499889149728,
+              "rel_l2": 2.1975335539690364
+            },
+            "up+down": {
+              "max_abs": 63.14969565215931,
+              "rel_l2": 1.62320835094643
+            },
+            "independent-triplet": {
+              "max_abs": 59.12919630104032,
+              "rel_l2": 1.9123508491650099
+            },
+            "wrong-direction": {
+              "max_abs": 66.39441124055273,
+              "rel_l2": 1.6051742555127144
+            }
+          }
+        }
+      ]
+    },
+    {
+      "device": "cuda",
+      "perm_checks": [
+        {
+          "perm": "identity",
+          "bijection": true,
+          "involution": true,
+          "seeds": [
+            {
+              "weight_seed": 1000,
+              "gate_coordinate_equal": true,
+              "up_coordinate_equal": true,
+              "product_coordinate_equal": true,
+              "canonical_bitwise_equal_baseline": true,
+              "native_vs_baseline": {
+                "bitwise_equal": true,
+                "max_abs": 0.0,
+                "mean_abs": 0.0,
+                "rel_l2": 0.0,
+                "rel_linf": 0.0,
+                "cosine": 1.0000001192092896,
+                "n_diff": 0,
+                "n_total": 28
+              },
+              "weights_changed_by_apply": "identity-noop-expected",
+              "restore_equal": {
+                "gate": true,
+                "up": true,
+                "down": true
+              },
+              "wrong_direction_differs": null
+            },
+            {
+              "weight_seed": 1001,
+              "gate_coordinate_equal": true,
+              "up_coordinate_equal": true,
+              "product_coordinate_equal": true,
+              "canonical_bitwise_equal_baseline": true,
+              "native_vs_baseline": {
+                "bitwise_equal": true,
+                "max_abs": 0.0,
+                "mean_abs": 0.0,
+                "rel_l2": 0.0,
+                "rel_linf": 0.0,
+                "cosine": 1.0,
+                "n_diff": 0,
+                "n_total": 28
+              },
+              "weights_changed_by_apply": "identity-noop-expected",
+              "restore_equal": {
+                "gate": true,
+                "up": true,
+                "down": true
+              },
+              "wrong_direction_differs": null
+            },
+            {
+              "weight_seed": 1002,
+              "gate_coordinate_equal": true,
+              "up_coordinate_equal": true,
+              "product_coordinate_equal": true,
+              "canonical_bitwise_equal_baseline": true,
+              "native_vs_baseline": {
+                "bitwise_equal": true,
+                "max_abs": 0.0,
+                "mean_abs": 0.0,
+                "rel_l2": 0.0,
+                "rel_linf": 0.0,
+                "cosine": 0.9999998807907104,
+                "n_diff": 0,
+                "n_total": 28
+              },
+              "weights_changed_by_apply": "identity-noop-expected",
+              "restore_equal": {
+                "gate": true,
+                "up": true,
+                "down": true
+              },
+              "wrong_direction_differs": null
+            },
+            {
+              "weight_seed": 1003,
+              "gate_coordinate_equal": true,
+              "up_coordinate_equal": true,
+              "product_coordinate_equal": true,
+              "canonical_bitwise_equal_baseline": true,
+              "native_vs_baseline": {
+                "bitwise_equal": true,
+                "max_abs": 0.0,
+                "mean_abs": 0.0,
+                "rel_l2": 0.0,
+                "rel_linf": 0.0,
+                "cosine": 1.0,
+                "n_diff": 0,
+                "n_total": 28
+              },
+              "weights_changed_by_apply": "identity-noop-expected",
+              "restore_equal": {
+                "gate": true,
+                "up": true,
+                "down": true
+              },
+              "wrong_direction_differs": null
+            },
+            {
+              "weight_seed": 1004,
+              "gate_coordinate_equal": true,
+              "up_coordinate_equal": true,
+              "product_coordinate_equal": true,
+              "canonical_bitwise_equal_baseline": true,
+              "native_vs_baseline": {
+                "bitwise_equal": true,
+                "max_abs": 0.0,
+                "mean_abs": 0.0,
+                "rel_l2": 0.0,
+                "rel_linf": 0.0,
+                "cosine": 1.0,
+                "n_diff": 0,
+                "n_total": 28
+              },
+              "weights_changed_by_apply": "identity-noop-expected",
+              "restore_equal": {
+                "gate": true,
+                "up": true,
+                "down": true
+              },
+              "wrong_direction_differs": null
+            }
+          ],
+          "inv_roundtrip": true
+        },
+        {
+          "perm": "adjacent_swap",
+          "bijection": true,
+          "involution": true,
+          "seeds": [
+            {
+              "weight_seed": 1000,
+              "gate_coordinate_equal": true,
+              "up_coordinate_equal": true,
+              "product_coordinate_equal": true,
+              "canonical_bitwise_equal_baseline": true,
+              "native_vs_baseline": {
+                "bitwise_equal": true,
+                "max_abs": 0.0,
+                "mean_abs": 0.0,
+                "rel_l2": 0.0,
+                "rel_linf": 0.0,
+                "cosine": 1.0000001192092896,
+                "n_diff": 0,
+                "n_total": 28
+              },
+              "weights_changed_by_apply": {
+                "gate": true,
+                "up": true,
+                "down": true
+              },
+              "restore_equal": {
+                "gate": true,
+                "up": true,
+                "down": true
+              },
+              "wrong_direction_differs": null
+            },
+            {
+              "weight_seed": 1001,
+              "gate_coordinate_equal": true,
+              "up_coordinate_equal": true,
+              "product_coordinate_equal": true,
+              "canonical_bitwise_equal_baseline": true,
+              "native_vs_baseline": {
+                "bitwise_equal": true,
+                "max_abs": 0.0,
+                "mean_abs": 0.0,
+                "rel_l2": 0.0,
+                "rel_linf": 0.0,
+                "cosine": 1.0,
+                "n_diff": 0,
+                "n_total": 28
+              },
+              "weights_changed_by_apply": {
+                "gate": true,
+                "up": true,
+                "down": true
+              },
+              "restore_equal": {
+                "gate": true,
+                "up": true,
+                "down": true
+              },
+              "wrong_direction_differs": null
+            },
+            {
+              "weight_seed": 1002,
+              "gate_coordinate_equal": true,
+              "up_coordinate_equal": true,
+              "product_coordinate_equal": true,
+              "canonical_bitwise_equal_baseline": true,
+              "native_vs_baseline": {
+                "bitwise_equal": true,
+                "max_abs": 0.0,
+                "mean_abs": 0.0,
+                "rel_l2": 0.0,
+                "rel_linf": 0.0,
+                "cosine": 0.9999998807907104,
+                "n_diff": 0,
+                "n_total": 28
+              },
+              "weights_changed_by_apply": {
+                "gate": true,
+                "up": true,
+                "down": true
+              },
+              "restore_equal": {
+                "gate": true,
+                "up": true,
+                "down": true
+              },
+              "wrong_direction_differs": null
+            },
+            {
+              "weight_seed": 1003,
+              "gate_coordinate_equal": true,
+              "up_coordinate_equal": true,
+              "product_coordinate_equal": true,
+              "canonical_bitwise_equal_baseline": true,
+              "native_vs_baseline": {
+                "bitwise_equal": true,
+                "max_abs": 0.0,
+                "mean_abs": 0.0,
+                "rel_l2": 0.0,
+                "rel_linf": 0.0,
+                "cosine": 1.0,
+                "n_diff": 0,
+                "n_total": 28
+              },
+              "weights_changed_by_apply": {
+                "gate": true,
+                "up": true,
+                "down": true
+              },
+              "restore_equal": {
+                "gate": true,
+                "up": true,
+                "down": true
+              },
+              "wrong_direction_differs": null
+            },
+            {
+              "weight_seed": 1004,
+              "gate_coordinate_equal": true,
+              "up_coordinate_equal": true,
+              "product_coordinate_equal": true,
+              "canonical_bitwise_equal_baseline": true,
+              "native_vs_baseline": {
+                "bitwise_equal": true,
+                "max_abs": 0.0,
+                "mean_abs": 0.0,
+                "rel_l2": 0.0,
+                "rel_linf": 0.0,
+                "cosine": 1.0,
+                "n_diff": 0,
+                "n_total": 28
+              },
+              "weights_changed_by_apply": {
+                "gate": true,
+                "up": true,
+                "down": true
+              },
+              "restore_equal": {
+                "gate": true,
+                "up": true,
+                "down": true
+              },
+              "wrong_direction_differs": null
+            }
+          ],
+          "inv_roundtrip": true
+        },
+        {
+          "perm": "reverse",
+          "bijection": true,
+          "involution": true,
+          "seeds": [
+            {
+              "weight_seed": 1000,
+              "gate_coordinate_equal": true,
+              "up_coordinate_equal": true,
+              "product_coordinate_equal": true,
+              "canonical_bitwise_equal_baseline": true,
+              "native_vs_baseline": {
+                "bitwise_equal": true,
+                "max_abs": 0.0,
+                "mean_abs": 0.0,
+                "rel_l2": 0.0,
+                "rel_linf": 0.0,
+                "cosine": 1.0000001192092896,
+                "n_diff": 0,
+                "n_total": 28
+              },
+              "weights_changed_by_apply": {
+                "gate": true,
+                "up": true,
+                "down": true
+              },
+              "restore_equal": {
+                "gate": true,
+                "up": true,
+                "down": true
+              },
+              "wrong_direction_differs": null
+            },
+            {
+              "weight_seed": 1001,
+              "gate_coordinate_equal": true,
+              "up_coordinate_equal": true,
+              "product_coordinate_equal": true,
+              "canonical_bitwise_equal_baseline": true,
+              "native_vs_baseline": {
+                "bitwise_equal": true,
+                "max_abs": 0.0,
+                "mean_abs": 0.0,
+                "rel_l2": 0.0,
+                "rel_linf": 0.0,
+                "cosine": 1.0,
+                "n_diff": 0,
+                "n_total": 28
+              },
+              "weights_changed_by_apply": {
+                "gate": true,
+                "up": true,
+                "down": true
+              },
+              "restore_equal": {
+                "gate": true,
+                "up": true,
+                "down": true
+              },
+              "wrong_direction_differs": null
+            },
+            {
+              "weight_seed": 1002,
+              "gate_coordinate_equal": true,
+              "up_coordinate_equal": true,
+              "product_coordinate_equal": true,
+              "canonical_bitwise_equal_baseline": true,
+              "native_vs_baseline": {
+                "bitwise_equal": true,
+                "max_abs": 0.0,
+                "mean_abs": 0.0,
+                "rel_l2": 0.0,
+                "rel_linf": 0.0,
+                "cosine": 0.9999998807907104,
+                "n_diff": 0,
+                "n_total": 28
+              },
+              "weights_changed_by_apply": {
+                "gate": true,
+                "up": true,
+                "down": true
+              },
+              "restore_equal": {
+                "gate": true,
+                "up": true,
+                "down": true
+              },
+              "wrong_direction_differs": null
+            },
+            {
+              "weight_seed": 1003,
+              "gate_coordinate_equal": true,
+              "up_coordinate_equal": true,
+              "product_coordinate_equal": true,
+              "canonical_bitwise_equal_baseline": true,
+              "native_vs_baseline": {
+                "bitwise_equal": true,
+                "max_abs": 0.0,
+                "mean_abs": 0.0,
+                "rel_l2": 0.0,
+                "rel_linf": 0.0,
+                "cosine": 1.0,
+                "n_diff": 0,
+                "n_total": 28
+              },
+              "weights_changed_by_apply": {
+                "gate": true,
+                "up": true,
+                "down": true
+              },
+              "restore_equal": {
+                "gate": true,
+                "up": true,
+                "down": true
+              },
+              "wrong_direction_differs": null
+            },
+            {
+              "weight_seed": 1004,
+              "gate_coordinate_equal": true,
+              "up_coordinate_equal": true,
+              "product_coordinate_equal": true,
+              "canonical_bitwise_equal_baseline": true,
+              "native_vs_baseline": {
+                "bitwise_equal": true,
+                "max_abs": 0.0,
+                "mean_abs": 0.0,
+                "rel_l2": 0.0,
+                "rel_linf": 0.0,
+                "cosine": 1.0,
+                "n_diff": 0,
+                "n_total": 28
+              },
+              "weights_changed_by_apply": {
+                "gate": true,
+                "up": true,
+                "down": true
+              },
+              "restore_equal": {
+                "gate": true,
+                "up": true,
+                "down": true
+              },
+              "wrong_direction_differs": null
+            }
+          ],
+          "inv_roundtrip": true
+        },
+        {
+          "perm": "random-s42",
+          "bijection": true,
+          "involution": false,
+          "seeds": [
+            {
+              "weight_seed": 1000,
+              "gate_coordinate_equal": true,
+              "up_coordinate_equal": true,
+              "product_coordinate_equal": true,
+              "canonical_bitwise_equal_baseline": true,
+              "native_vs_baseline": {
+                "bitwise_equal": true,
+                "max_abs": 0.0,
+                "mean_abs": 0.0,
+                "rel_l2": 0.0,
+                "rel_linf": 0.0,
+                "cosine": 1.0000001192092896,
+                "n_diff": 0,
+                "n_total": 28
+              },
+              "weights_changed_by_apply": {
+                "gate": true,
+                "up": true,
+                "down": true
+              },
+              "restore_equal": {
+                "gate": true,
+                "up": true,
+                "down": true
+              },
+              "wrong_direction_differs": true
+            },
+            {
+              "weight_seed": 1001,
+              "gate_coordinate_equal": true,
+              "up_coordinate_equal": true,
+              "product_coordinate_equal": true,
+              "canonical_bitwise_equal_baseline": true,
+              "native_vs_baseline": {
+                "bitwise_equal": true,
+                "max_abs": 0.0,
+                "mean_abs": 0.0,
+                "rel_l2": 0.0,
+                "rel_linf": 0.0,
+                "cosine": 1.0,
+                "n_diff": 0,
+                "n_total": 28
+              },
+              "weights_changed_by_apply": {
+                "gate": true,
+                "up": true,
+                "down": true
+              },
+              "restore_equal": {
+                "gate": true,
+                "up": true,
+                "down": true
+              },
+              "wrong_direction_differs": true
+            },
+            {
+              "weight_seed": 1002,
+              "gate_coordinate_equal": true,
+              "up_coordinate_equal": true,
+              "product_coordinate_equal": true,
+              "canonical_bitwise_equal_baseline": true,
+              "native_vs_baseline": {
+                "bitwise_equal": true,
+                "max_abs": 0.0,
+                "mean_abs": 0.0,
+                "rel_l2": 0.0,
+                "rel_linf": 0.0,
+                "cosine": 0.9999998807907104,
+                "n_diff": 0,
+                "n_total": 28
+              },
+              "weights_changed_by_apply": {
+                "gate": true,
+                "up": true,
+                "down": true
+              },
+              "restore_equal": {
+                "gate": true,
+                "up": true,
+                "down": true
+              },
+              "wrong_direction_differs": true
+            },
+            {
+              "weight_seed": 1003,
+              "gate_coordinate_equal": true,
+              "up_coordinate_equal": true,
+              "product_coordinate_equal": true,
+              "canonical_bitwise_equal_baseline": true,
+              "native_vs_baseline": {
+                "bitwise_equal": true,
+                "max_abs": 0.0,
+                "mean_abs": 0.0,
+                "rel_l2": 0.0,
+                "rel_linf": 0.0,
+                "cosine": 1.0,
+                "n_diff": 0,
+                "n_total": 28
+              },
+              "weights_changed_by_apply": {
+                "gate": true,
+                "up": true,
+                "down": true
+              },
+              "restore_equal": {
+                "gate": true,
+                "up": true,
+                "down": true
+              },
+              "wrong_direction_differs": true
+            },
+            {
+              "weight_seed": 1004,
+              "gate_coordinate_equal": true,
+              "up_coordinate_equal": true,
+              "product_coordinate_equal": true,
+              "canonical_bitwise_equal_baseline": true,
+              "native_vs_baseline": {
+                "bitwise_equal": true,
+                "max_abs": 0.0,
+                "mean_abs": 0.0,
+                "rel_l2": 0.0,
+                "rel_linf": 0.0,
+                "cosine": 1.0,
+                "n_diff": 0,
+                "n_total": 28
+              },
+              "weights_changed_by_apply": {
+                "gate": true,
+                "up": true,
+                "down": true
+              },
+              "restore_equal": {
+                "gate": true,
+                "up": true,
+                "down": true
+              },
+              "wrong_direction_differs": true
+            }
+          ],
+          "inv_roundtrip": true
+        },
+        {
+          "perm": "random-s43",
+          "bijection": true,
+          "involution": false,
+          "seeds": [
+            {
+              "weight_seed": 1000,
+              "gate_coordinate_equal": true,
+              "up_coordinate_equal": true,
+              "product_coordinate_equal": true,
+              "canonical_bitwise_equal_baseline": true,
+              "native_vs_baseline": {
+                "bitwise_equal": true,
+                "max_abs": 0.0,
+                "mean_abs": 0.0,
+                "rel_l2": 0.0,
+                "rel_linf": 0.0,
+                "cosine": 1.0000001192092896,
+                "n_diff": 0,
+                "n_total": 28
+              },
+              "weights_changed_by_apply": {
+                "gate": true,
+                "up": true,
+                "down": true
+              },
+              "restore_equal": {
+                "gate": true,
+                "up": true,
+                "down": true
+              },
+              "wrong_direction_differs": true
+            },
+            {
+              "weight_seed": 1001,
+              "gate_coordinate_equal": true,
+              "up_coordinate_equal": true,
+              "product_coordinate_equal": true,
+              "canonical_bitwise_equal_baseline": true,
+              "native_vs_baseline": {
+                "bitwise_equal": true,
+                "max_abs": 0.0,
+                "mean_abs": 0.0,
+                "rel_l2": 0.0,
+                "rel_linf": 0.0,
+                "cosine": 1.0,
+                "n_diff": 0,
+                "n_total": 28
+              },
+              "weights_changed_by_apply": {
+                "gate": true,
+                "up": true,
+                "down": true
+              },
+              "restore_equal": {
+                "gate": true,
+                "up": true,
+                "down": true
+              },
+              "wrong_direction_differs": true
+            },
+            {
+              "weight_seed": 1002,
+              "gate_coordinate_equal": true,
+              "up_coordinate_equal": true,
+              "product_coordinate_equal": true,
+              "canonical_bitwise_equal_baseline": true,
+              "native_vs_baseline": {
+                "bitwise_equal": true,
+                "max_abs": 0.0,
+                "mean_abs": 0.0,
+                "rel_l2": 0.0,
+                "rel_linf": 0.0,
+                "cosine": 0.9999998807907104,
+                "n_diff": 0,
+                "n_total": 28
+              },
+              "weights_changed_by_apply": {
+                "gate": true,
+                "up": true,
+                "down": true
+              },
+              "restore_equal": {
+                "gate": true,
+                "up": true,
+                "down": true
+              },
+              "wrong_direction_differs": true
+            },
+            {
+              "weight_seed": 1003,
+              "gate_coordinate_equal": true,
+              "up_coordinate_equal": true,
+              "product_coordinate_equal": true,
+              "canonical_bitwise_equal_baseline": true,
+              "native_vs_baseline": {
+                "bitwise_equal": true,
+                "max_abs": 0.0,
+                "mean_abs": 0.0,
+                "rel_l2": 0.0,
+                "rel_linf": 0.0,
+                "cosine": 1.0,
+                "n_diff": 0,
+                "n_total": 28
+              },
+              "weights_changed_by_apply": {
+                "gate": true,
+                "up": true,
+                "down": true
+              },
+              "restore_equal": {
+                "gate": true,
+                "up": true,
+                "down": true
+              },
+              "wrong_direction_differs": true
+            },
+            {
+              "weight_seed": 1004,
+              "gate_coordinate_equal": true,
+              "up_coordinate_equal": true,
+              "product_coordinate_equal": true,
+              "canonical_bitwise_equal_baseline": true,
+              "native_vs_baseline": {
+                "bitwise_equal": true,
+                "max_abs": 0.0,
+                "mean_abs": 0.0,
+                "rel_l2": 0.0,
+                "rel_linf": 0.0,
+                "cosine": 1.0,
+                "n_diff": 0,
+                "n_total": 28
+              },
+              "weights_changed_by_apply": {
+                "gate": true,
+                "up": true,
+                "down": true
+              },
+              "restore_equal": {
+                "gate": true,
+                "up": true,
+                "down": true
+              },
+              "wrong_direction_differs": true
+            }
+          ],
+          "inv_roundtrip": true
+        },
+        {
+          "perm": "random-s44",
+          "bijection": true,
+          "involution": false,
+          "seeds": [
+            {
+              "weight_seed": 1000,
+              "gate_coordinate_equal": true,
+              "up_coordinate_equal": true,
+              "product_coordinate_equal": true,
+              "canonical_bitwise_equal_baseline": true,
+              "native_vs_baseline": {
+                "bitwise_equal": true,
+                "max_abs": 0.0,
+                "mean_abs": 0.0,
+                "rel_l2": 0.0,
+                "rel_linf": 0.0,
+                "cosine": 1.0000001192092896,
+                "n_diff": 0,
+                "n_total": 28
+              },
+              "weights_changed_by_apply": {
+                "gate": true,
+                "up": true,
+                "down": true
+              },
+              "restore_equal": {
+                "gate": true,
+                "up": true,
+                "down": true
+              },
+              "wrong_direction_differs": true
+            },
+            {
+              "weight_seed": 1001,
+              "gate_coordinate_equal": true,
+              "up_coordinate_equal": true,
+              "product_coordinate_equal": true,
+              "canonical_bitwise_equal_baseline": true,
+              "native_vs_baseline": {
+                "bitwise_equal": true,
+                "max_abs": 0.0,
+                "mean_abs": 0.0,
+                "rel_l2": 0.0,
+                "rel_linf": 0.0,
+                "cosine": 1.0,
+                "n_diff": 0,
+                "n_total": 28
+              },
+              "weights_changed_by_apply": {
+                "gate": true,
+                "up": true,
+                "down": true
+              },
+              "restore_equal": {
+                "gate": true,
+                "up": true,
+                "down": true
+              },
+              "wrong_direction_differs": true
+            },
+            {
+              "weight_seed": 1002,
+              "gate_coordinate_equal": true,
+              "up_coordinate_equal": true,
+              "product_coordinate_equal": true,
+              "canonical_bitwise_equal_baseline": true,
+              "native_vs_baseline": {
+                "bitwise_equal": true,
+                "max_abs": 0.0,
+                "mean_abs": 0.0,
+                "rel_l2": 0.0,
+                "rel_linf": 0.0,
+                "cosine": 0.9999998807907104,
+                "n_diff": 0,
+                "n_total": 28
+              },
+              "weights_changed_by_apply": {
+                "gate": true,
+                "up": true,
+                "down": true
+              },
+              "restore_equal": {
+                "gate": true,
+                "up": true,
+                "down": true
+              },
+              "wrong_direction_differs": true
+            },
+            {
+              "weight_seed": 1003,
+              "gate_coordinate_equal": true,
+              "up_coordinate_equal": true,
+              "product_coordinate_equal": true,
+              "canonical_bitwise_equal_baseline": true,
+              "native_vs_baseline": {
+                "bitwise_equal": true,
+                "max_abs": 0.0,
+                "mean_abs": 0.0,
+                "rel_l2": 0.0,
+                "rel_linf": 0.0,
+                "cosine": 1.0,
+                "n_diff": 0,
+                "n_total": 28
+              },
+              "weights_changed_by_apply": {
+                "gate": true,
+                "up": true,
+                "down": true
+              },
+              "restore_equal": {
+                "gate": true,
+                "up": true,
+                "down": true
+              },
+              "wrong_direction_differs": true
+            },
+            {
+              "weight_seed": 1004,
+              "gate_coordinate_equal": true,
+              "up_coordinate_equal": true,
+              "product_coordinate_equal": true,
+              "canonical_bitwise_equal_baseline": true,
+              "native_vs_baseline": {
+                "bitwise_equal": true,
+                "max_abs": 0.0,
+                "mean_abs": 0.0,
+                "rel_l2": 0.0,
+                "rel_linf": 0.0,
+                "cosine": 1.0,
+                "n_diff": 0,
+                "n_total": 28
+              },
+              "weights_changed_by_apply": {
+                "gate": true,
+                "up": true,
+                "down": true
+              },
+              "restore_equal": {
+                "gate": true,
+                "up": true,
+                "down": true
+              },
+              "wrong_direction_differs": true
+            }
+          ],
+          "inv_roundtrip": true
+        },
+        {
+          "perm": "random-s45",
+          "bijection": true,
+          "involution": false,
+          "seeds": [
+            {
+              "weight_seed": 1000,
+              "gate_coordinate_equal": true,
+              "up_coordinate_equal": true,
+              "product_coordinate_equal": true,
+              "canonical_bitwise_equal_baseline": true,
+              "native_vs_baseline": {
+                "bitwise_equal": true,
+                "max_abs": 0.0,
+                "mean_abs": 0.0,
+                "rel_l2": 0.0,
+                "rel_linf": 0.0,
+                "cosine": 1.0000001192092896,
+                "n_diff": 0,
+                "n_total": 28
+              },
+              "weights_changed_by_apply": {
+                "gate": true,
+                "up": true,
+                "down": true
+              },
+              "restore_equal": {
+                "gate": true,
+                "up": true,
+                "down": true
+              },
+              "wrong_direction_differs": true
+            },
+            {
+              "weight_seed": 1001,
+              "gate_coordinate_equal": true,
+              "up_coordinate_equal": true,
+              "product_coordinate_equal": true,
+              "canonical_bitwise_equal_baseline": true,
+              "native_vs_baseline": {
+                "bitwise_equal": true,
+                "max_abs": 0.0,
+                "mean_abs": 0.0,
+                "rel_l2": 0.0,
+                "rel_linf": 0.0,
+                "cosine": 1.0,
+                "n_diff": 0,
+                "n_total": 28
+              },
+              "weights_changed_by_apply": {
+                "gate": true,
+                "up": true,
+                "down": true
+              },
+              "restore_equal": {
+                "gate": true,
+                "up": true,
+                "down": true
+              },
+              "wrong_direction_differs": true
+            },
+            {
+              "weight_seed": 1002,
+              "gate_coordinate_equal": true,
+              "up_coordinate_equal": true,
+              "product_coordinate_equal": true,
+              "canonical_bitwise_equal_baseline": true,
+              "native_vs_baseline": {
+                "bitwise_equal": true,
+                "max_abs": 0.0,
+                "mean_abs": 0.0,
+                "rel_l2": 0.0,
+                "rel_linf": 0.0,
+                "cosine": 0.9999998807907104,
+                "n_diff": 0,
+                "n_total": 28
+              },
+              "weights_changed_by_apply": {
+                "gate": true,
+                "up": true,
+                "down": true
+              },
+              "restore_equal": {
+                "gate": true,
+                "up": true,
+                "down": true
+              },
+              "wrong_direction_differs": true
+            },
+            {
+              "weight_seed": 1003,
+              "gate_coordinate_equal": true,
+              "up_coordinate_equal": true,
+              "product_coordinate_equal": true,
+              "canonical_bitwise_equal_baseline": true,
+              "native_vs_baseline": {
+                "bitwise_equal": true,
+                "max_abs": 0.0,
+                "mean_abs": 0.0,
+                "rel_l2": 0.0,
+                "rel_linf": 0.0,
+                "cosine": 1.0,
+                "n_diff": 0,
+                "n_total": 28
+              },
+              "weights_changed_by_apply": {
+                "gate": true,
+                "up": true,
+                "down": true
+              },
+              "restore_equal": {
+                "gate": true,
+                "up": true,
+                "down": true
+              },
+              "wrong_direction_differs": true
+            },
+            {
+              "weight_seed": 1004,
+              "gate_coordinate_equal": true,
+              "up_coordinate_equal": true,
+              "product_coordinate_equal": true,
+              "canonical_bitwise_equal_baseline": true,
+              "native_vs_baseline": {
+                "bitwise_equal": true,
+                "max_abs": 0.0,
+                "mean_abs": 0.0,
+                "rel_l2": 0.0,
+                "rel_linf": 0.0,
+                "cosine": 1.0,
+                "n_diff": 0,
+                "n_total": 28
+              },
+              "weights_changed_by_apply": {
+                "gate": true,
+                "up": true,
+                "down": true
+              },
+              "restore_equal": {
+                "gate": true,
+                "up": true,
+                "down": true
+              },
+              "wrong_direction_differs": true
+            }
+          ],
+          "inv_roundtrip": true
+        },
+        {
+          "perm": "random-s46",
+          "bijection": true,
+          "involution": false,
+          "seeds": [
+            {
+              "weight_seed": 1000,
+              "gate_coordinate_equal": true,
+              "up_coordinate_equal": true,
+              "product_coordinate_equal": true,
+              "canonical_bitwise_equal_baseline": true,
+              "native_vs_baseline": {
+                "bitwise_equal": true,
+                "max_abs": 0.0,
+                "mean_abs": 0.0,
+                "rel_l2": 0.0,
+                "rel_linf": 0.0,
+                "cosine": 1.0000001192092896,
+                "n_diff": 0,
+                "n_total": 28
+              },
+              "weights_changed_by_apply": {
+                "gate": true,
+                "up": true,
+                "down": true
+              },
+              "restore_equal": {
+                "gate": true,
+                "up": true,
+                "down": true
+              },
+              "wrong_direction_differs": true
+            },
+            {
+              "weight_seed": 1001,
+              "gate_coordinate_equal": true,
+              "up_coordinate_equal": true,
+              "product_coordinate_equal": true,
+              "canonical_bitwise_equal_baseline": true,
+              "native_vs_baseline": {
+                "bitwise_equal": true,
+                "max_abs": 0.0,
+                "mean_abs": 0.0,
+                "rel_l2": 0.0,
+                "rel_linf": 0.0,
+                "cosine": 1.0,
+                "n_diff": 0,
+                "n_total": 28
+              },
+              "weights_changed_by_apply": {
+                "gate": true,
+                "up": true,
+                "down": true
+              },
+              "restore_equal": {
+                "gate": true,
+                "up": true,
+                "down": true
+              },
+              "wrong_direction_differs": true
+            },
+            {
+              "weight_seed": 1002,
+              "gate_coordinate_equal": true,
+              "up_coordinate_equal": true,
+              "product_coordinate_equal": true,
+              "canonical_bitwise_equal_baseline": true,
+              "native_vs_baseline": {
+                "bitwise_equal": true,
+                "max_abs": 0.0,
+                "mean_abs": 0.0,
+                "rel_l2": 0.0,
+                "rel_linf": 0.0,
+                "cosine": 0.9999998807907104,
+                "n_diff": 0,
+                "n_total": 28
+              },
+              "weights_changed_by_apply": {
+                "gate": true,
+                "up": true,
+                "down": true
+              },
+              "restore_equal": {
+                "gate": true,
+                "up": true,
+                "down": true
+              },
+              "wrong_direction_differs": true
+            },
+            {
+              "weight_seed": 1003,
+              "gate_coordinate_equal": true,
+              "up_coordinate_equal": true,
+              "product_coordinate_equal": true,
+              "canonical_bitwise_equal_baseline": true,
+              "native_vs_baseline": {
+                "bitwise_equal": true,
+                "max_abs": 0.0,
+                "mean_abs": 0.0,
+                "rel_l2": 0.0,
+                "rel_linf": 0.0,
+                "cosine": 1.0,
+                "n_diff": 0,
+                "n_total": 28
+              },
+              "weights_changed_by_apply": {
+                "gate": true,
+                "up": true,
+                "down": true
+              },
+              "restore_equal": {
+                "gate": true,
+                "up": true,
+                "down": true
+              },
+              "wrong_direction_differs": true
+            },
+            {
+              "weight_seed": 1004,
+              "gate_coordinate_equal": true,
+              "up_coordinate_equal": true,
+              "product_coordinate_equal": true,
+              "canonical_bitwise_equal_baseline": true,
+              "native_vs_baseline": {
+                "bitwise_equal": true,
+                "max_abs": 0.0,
+                "mean_abs": 0.0,
+                "rel_l2": 0.0,
+                "rel_linf": 0.0,
+                "cosine": 1.0,
+                "n_diff": 0,
+                "n_total": 28
+              },
+              "weights_changed_by_apply": {
+                "gate": true,
+                "up": true,
+                "down": true
+              },
+              "restore_equal": {
+                "gate": true,
+                "up": true,
+                "down": true
+              },
+              "wrong_direction_differs": true
+            }
+          ],
+          "inv_roundtrip": true
+        }
+      ],
+      "float64_controls": [
+        {
+          "perm_seed": 42,
+          "cases": {
+            "baseline-repeat": {
+              "max_abs": 0.0,
+              "rel_l2": 0.0
+            },
+            "valid-triplet": {
+              "max_abs": 1.4210854715202004e-14,
+              "rel_l2": 1.728499000373757e-16
+            },
+            "gate-only": {
+              "max_abs": 62.988503299251526,
+              "rel_l2": 0.7756197467487612
+            },
+            "up-only": {
+              "max_abs": 94.57039792805996,
+              "rel_l2": 1.2325650053684092
+            },
+            "down-only": {
+              "max_abs": 115.87350593997135,
+              "rel_l2": 1.3549003886223479
+            },
+            "gate+up": {
+              "max_abs": 121.79662909544567,
+              "rel_l2": 1.3473917089525134
+            },
+            "gate+down": {
+              "max_abs": 139.52328014379162,
+              "rel_l2": 1.675165421330553
+            },
+            "up+down": {
+              "max_abs": 82.06451731528469,
+              "rel_l2": 0.9799683800675112
+            },
+            "independent-triplet": {
+              "max_abs": 64.39097994629839,
+              "rel_l2": 0.9612184759201167
+            },
+            "wrong-direction": {
+              "max_abs": 150.8520256649111,
+              "rel_l2": 1.7038339631044552
+            }
+          }
+        },
+        {
+          "perm_seed": 43,
+          "cases": {
+            "baseline-repeat": {
+              "max_abs": 0.0,
+              "rel_l2": 0.0
+            },
+            "valid-triplet": {
+              "max_abs": 1.4210854715202004e-14,
+              "rel_l2": 1.7111383521808517e-16
+            },
+            "gate-only": {
+              "max_abs": 53.73557957248066,
+              "rel_l2": 0.9431063198841749
+            },
+            "up-only": {
+              "max_abs": 94.55910124812529,
+              "rel_l2": 1.2299800394556528
+            },
+            "down-only": {
+              "max_abs": 39.74646989238538,
+              "rel_l2": 0.7306540744417311
+            },
+            "gate+up": {
+              "max_abs": 87.16502206529265,
+              "rel_l2": 1.1589282011787205
+            },
+            "gate+down": {
+              "max_abs": 83.8495062338707,
+              "rel_l2": 1.241339271949141
+            },
+            "up+down": {
+              "max_abs": 62.679851206221464,
+              "rel_l2": 0.9604395058710843
+            },
+            "independent-triplet": {
+              "max_abs": 101.87363325148111,
+              "rel_l2": 1.5870162315439675
+            },
+            "wrong-direction": {
+              "max_abs": 66.27283873264373,
+              "rel_l2": 1.029127365783279
+            }
+          }
+        },
+        {
+          "perm_seed": 44,
+          "cases": {
+            "baseline-repeat": {
+              "max_abs": 0.0,
+              "rel_l2": 0.0
+            },
+            "valid-triplet": {
+              "max_abs": 7.105427357601002e-15,
+              "rel_l2": 1.0080713710143405e-16
+            },
+            "gate-only": {
+              "max_abs": 85.54698762100341,
+              "rel_l2": 1.8717533542528708
+            },
+            "up-only": {
+              "max_abs": 86.2516998584748,
+              "rel_l2": 1.737780550341802
+            },
+            "down-only": {
+              "max_abs": 65.69209176813568,
+              "rel_l2": 1.2724768913493198
+            },
+            "gate+up": {
+              "max_abs": 86.38971179518812,
+              "rel_l2": 1.579409572829376
+            },
+            "gate+down": {
+              "max_abs": 83.00764472210486,
+              "rel_l2": 1.8228186167895495
+            },
+            "up+down": {
+              "max_abs": 96.24833736156475,
+              "rel_l2": 1.8879415759742721
+            },
+            "independent-triplet": {
+              "max_abs": 122.74462421302484,
+              "rel_l2": 1.666325290024633
+            },
+            "wrong-direction": {
+              "max_abs": 59.167633093920394,
+              "rel_l2": 0.9302011365399447
+            }
+          }
+        },
+        {
+          "perm_seed": 45,
+          "cases": {
+            "baseline-repeat": {
+              "max_abs": 0.0,
+              "rel_l2": 0.0
+            },
+            "valid-triplet": {
+              "max_abs": 1.4210854715202004e-14,
+              "rel_l2": 1.514242535835161e-16
+            },
+            "gate-only": {
+              "max_abs": 85.90748018605431,
+              "rel_l2": 1.303330788208259
+            },
+            "up-only": {
+              "max_abs": 122.63597193373751,
+              "rel_l2": 1.528244781354214
+            },
+            "down-only": {
+              "max_abs": 110.23346510719364,
+              "rel_l2": 1.5421073658460487
+            },
+            "gate+up": {
+              "max_abs": 87.3557785347841,
+              "rel_l2": 1.5053227403409488
+            },
+            "gate+down": {
+              "max_abs": 104.39202759205246,
+              "rel_l2": 1.8105391430549738
+            },
+            "up+down": {
+              "max_abs": 57.41134308920744,
+              "rel_l2": 1.1482504276228165
+            },
+            "independent-triplet": {
+              "max_abs": 112.66429886986546,
+              "rel_l2": 1.9413942493479186
+            },
+            "wrong-direction": {
+              "max_abs": 72.73325443672547,
+              "rel_l2": 1.3095862337671689
+            }
+          }
+        },
+        {
+          "perm_seed": 46,
+          "cases": {
+            "baseline-repeat": {
+              "max_abs": 0.0,
+              "rel_l2": 0.0
+            },
+            "valid-triplet": {
+              "max_abs": 7.105427357601002e-15,
+              "rel_l2": 1.7716748788828795e-16
+            },
+            "gate-only": {
+              "max_abs": 64.4919815638425,
+              "rel_l2": 1.5951715839513432
+            },
+            "up-only": {
+              "max_abs": 34.154038379804135,
+              "rel_l2": 1.2696248015008416
+            },
+            "down-only": {
+              "max_abs": 64.25040490761504,
+              "rel_l2": 1.7980435561950827
+            },
+            "gate+up": {
+              "max_abs": 45.97453219051029,
+              "rel_l2": 1.3112673986536105
+            },
+            "gate+down": {
+              "max_abs": 76.53499889149728,
+              "rel_l2": 2.1975335539690364
+            },
+            "up+down": {
+              "max_abs": 63.14969565215932,
+              "rel_l2": 1.6232083509464297
+            },
+            "independent-triplet": {
+              "max_abs": 59.129196301040324,
+              "rel_l2": 1.9123508491650094
+            },
+            "wrong-direction": {
+              "max_abs": 66.39441124055271,
+              "rel_l2": 1.6051742555127142
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "problems": [],
+  "passed": true
+}
