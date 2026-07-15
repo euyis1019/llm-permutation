@@ -1,0 +1,520 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <meta name="description" content="从直觉、逐神经元求和与矩阵证明三个角度解释 SwiGLU FFN 的联合 permutation 等价性，并区分精确数学等价与 BF16 数值近似。">
+  <title>数学直觉：FFN 联动置换为何等价</title>
+  <link rel="stylesheet" href="assets/report.css">
+</head>
+<body>
+  <div class="reading-progress" aria-hidden="true"></div>
+  <header class="sitebar">
+    <div class="sitebar-inner">
+      <a class="brand" href="index.html">
+        <span class="brand-mark" aria-hidden="true">Pπ</span>
+        <span class="brand-text">FFN permutation notes</span>
+      </a>
+      <nav class="topnav" aria-label="文档导航">
+        <a href="index.html">总览</a>
+        <a href="math-equivalence.html" aria-current="page">数学直觉</a>
+        <a href="experiment-atlas.html">实验证据</a>
+        <button class="theme-toggle" type="button" data-theme-toggle aria-label="切换主题">◐</button>
+      </nav>
+    </div>
+  </header>
+
+  <div class="page-shell">
+    <aside class="toc" aria-label="页内目录">
+      <p class="toc-title">本页目录</p>
+      <ol>
+        <li><a href="#intuition">01 · 换编号，不换功能</a></li>
+        <li><a href="#bundle">02 · 神经元其实是三件套</a></li>
+        <li><a href="#proof">03 · 两种严格证明</a></li>
+        <li><a href="#implementation">04 · 代码里的方向</a></li>
+        <li><a href="#precision">05 · 为何 BF16 会漂</a></li>
+        <li><a href="#not-equivalent">06 · 哪些并不等价</a></li>
+        <li><a href="#merge">07 · 对 alignment / merge 的含义</a></li>
+        <li><a href="#sources">08 · 术语与证据入口</a></li>
+      </ol>
+      <div class="toc-divider"></div>
+      <p class="toc-note">核心阅读约 12 分钟。若只看一节，读完 01 与 05，就能避免“数学等价 = BF16 逐 bit 相同”这个最常见的误解。</p>
+    </aside>
+
+    <main>
+      <header class="hero compact" id="top">
+        <div class="eyebrow">Mathematical intuition · exact symmetry</div>
+        <h1>把神经元换个座位，为什么函数没有变？</h1>
+        <p class="lede">因为这里做的不是“把功能搬错位置”，而是给 FFN 的<strong>内部临时坐标重新编号</strong>：入口与出口坐标都不动，三条配套线路一起改名，离开中间空间前再翻回原字典。</p>
+        <div class="hero-meta">
+          <span>对象 <strong>SwiGLU FFN</strong></span>
+          <span>模型 <strong>Qwen3-4B</strong></span>
+          <span>中间维 <strong>m = 9728</strong></span>
+          <span>最后核对 <strong>2026-07-13</strong></span>
+        </div>
+        <div class="status-strip" aria-label="三层结论">
+          <div class="status-item exact"><small>精确实数函数</small><b>完全相同</b></div>
+          <div class="status-item numeric"><small>BF16 执行张量</small><b>按置换类别判断</b></div>
+          <div class="status-item behavior"><small>最终任务行为</small><b>块内零差，跨块可变</b></div>
+        </div>
+      </header>
+
+      <section class="doc-section" id="intuition">
+        <div class="callout success">
+          <strong class="callout-title">最终轮补充边界</strong>
+          <p>“数学等价”不自动保证任意 BF16 执行都逐 bit 相同，但也不是所有置换都会漂移。在当前 vLLM batch-invariant 栈中，只在原对齐 8 通道块内重排已经从 logits 到六项 benchmark 逐题验证为零差；跨块重排才进入 backend 相关的非零漂移范围。</p>
+        </div>
+
+        <div class="spacer-md"></div>
+
+        <div class="section-heading">
+          <div class="section-no">01</div>
+          <div>
+            <div class="section-kicker">One-sentence model</div>
+            <h2>换编号，不换功能</h2>
+            <p class="section-intro">先暂时忘掉矩阵。把 FFN 想成若干个并行的小单元，每个单元算出一份贡献，最后把所有贡献加起来。</p>
+          </div>
+        </div>
+
+        <div class="callout success">
+          <strong class="callout-title">最重要的一句话</strong>
+          <p>联合 permutation 只是把 <span class="mono">1, 2, …, m</span> 这套内部编号换成另一套编号。只要每个单元的“开关、内容、写回方向”始终绑在一起，最终只是把同一批求和项换了枚举顺序。</p>
+        </div>
+
+        <div class="spacer-md"></div>
+
+        <div class="flow" aria-label="内部坐标换名流程">
+          <div class="flow-node"><strong>x</strong><span>模型隐藏状态<br>入口坐标不变</span></div>
+          <div class="flow-arrow" aria-hidden="true">→</div>
+          <div class="flow-node"><strong>P</strong><span>进入中间空间后<br>给坐标换名</span></div>
+          <div class="flow-arrow" aria-hidden="true">→</div>
+          <div class="flow-node"><strong>P<sup>−1</sup></strong><span>离开前把名字<br>翻回原字典</span></div>
+          <div class="flow-arrow" aria-hidden="true">→</div>
+          <div class="flow-node"><strong>y</strong><span>输出隐藏状态<br>出口坐标不变</span></div>
+        </div>
+
+        <div class="spacer-lg"></div>
+
+        <div class="demo" data-permutation-demo>
+          <div class="demo-toolbar">
+            <p>四个求和项的玩具例子：右侧只改变顺序，项本身没有拆散。</p>
+            <button class="demo-button" type="button" data-permutation-toggle aria-pressed="true">恢复原编号</button>
+          </div>
+          <div class="neuron-demo">
+            <div class="neuron-side">
+              <div class="neuron-title">原编号 · 1, 2, 3, 4</div>
+              <div class="neuron-list">
+                <div class="neuron n-a"><span class="neuron-dot">1</span><span class="neuron-term">v₁ · a₁(x)</span><span class="neuron-value">bundle A</span></div>
+                <div class="neuron n-b"><span class="neuron-dot">2</span><span class="neuron-term">v₂ · a₂(x)</span><span class="neuron-value">bundle B</span></div>
+                <div class="neuron n-c"><span class="neuron-dot">3</span><span class="neuron-term">v₃ · a₃(x)</span><span class="neuron-value">bundle C</span></div>
+                <div class="neuron n-d"><span class="neuron-dot">4</span><span class="neuron-term">v₄ · a₄(x)</span><span class="neuron-value">bundle D</span></div>
+              </div>
+              <div class="sum-line">y = A + B + C + D</div>
+            </div>
+            <div class="demo-arrow" aria-hidden="true">π →</div>
+            <div class="neuron-side">
+              <div class="neuron-title">新编号 · π = (3, 1, 4, 2)</div>
+              <div class="neuron-list" data-permutation-target data-original-order="a,b,c,d" data-permuted-order="c,a,d,b" data-state="permuted">
+                <div class="neuron n-c" data-neuron="c"><span class="neuron-dot">3</span><span class="neuron-term">v₃ · a₃(x)</span><span class="neuron-value">bundle C</span></div>
+                <div class="neuron n-a" data-neuron="a"><span class="neuron-dot">1</span><span class="neuron-term">v₁ · a₁(x)</span><span class="neuron-value">bundle A</span></div>
+                <div class="neuron n-d" data-neuron="d"><span class="neuron-dot">4</span><span class="neuron-term">v₄ · a₄(x)</span><span class="neuron-value">bundle D</span></div>
+                <div class="neuron n-b" data-neuron="b"><span class="neuron-dot">2</span><span class="neuron-term">v₂ · a₂(x)</span><span class="neuron-value">bundle B</span></div>
+              </div>
+              <div class="sum-line">y′ = C + A + D + B = y</div>
+            </div>
+          </div>
+        </div>
+
+        <noscript><p class="noscript">JavaScript 已关闭；上图仍显示置换后的静态状态，只是“恢复原编号”按钮不可用。</p></noscript>
+      </section>
+
+      <section class="doc-section" id="bundle">
+        <div class="section-heading">
+          <div class="section-no">02</div>
+          <div>
+            <div class="section-kicker">What is one neuron?</div>
+            <h2>这里的“一个神经元”，其实是三件套</h2>
+            <p class="section-intro">SwiGLU 有 gate 与 up 两条输入分支，再由 down 写回 hidden space。因此只看一张权重矩阵的某一行，会漏掉这个内部坐标真正的完整定义。</p>
+          </div>
+        </div>
+
+        <div class="equation">
+          <span class="eq-label">SwiGLU</span>
+          <div class="eq-main">
+            f(x) = W<sub>d</sub>[ SiLU(W<sub>g</sub>x) ⊙ (W<sub>u</sub>x) ]
+          </div>
+        </div>
+
+        <div class="spacer-md"></div>
+
+        <div class="grid three">
+          <article class="card">
+            <div class="card-label">gate · 第 k 行</div>
+            <h3>开关</h3>
+            <p><span class="mono">SiLU(w<sub>g,k</sub><sup>T</sup>x)</span> 决定这一内部特征被放行多少。</p>
+          </article>
+          <article class="card">
+            <div class="card-label">up · 第 k 行</div>
+            <h3>内容</h3>
+            <p><span class="mono">w<sub>u,k</sub><sup>T</sup>x</span> 提供这一内部特征携带的数值。</p>
+          </article>
+          <article class="card">
+            <div class="card-label">down · 第 k 列</div>
+            <h3>写回方向</h3>
+            <p><span class="mono">v<sub>k</sub></span> 把标量贡献投回原来的 hidden 坐标。</p>
+          </article>
+        </div>
+
+        <div class="spacer-md"></div>
+
+        <div class="equation">
+          <span class="eq-label">按神经元展开</span>
+          <div class="eq-main">
+            f(x) = Σ<sub>k=1</sub><sup>m</sup>
+            v<sub>k</sub> · SiLU(w<sub>g,k</sub><sup>T</sup>x) · (w<sub>u,k</sub><sup>T</sup>x)
+          </div>
+        </div>
+
+        <div class="spacer-md"></div>
+
+        <div class="callout">
+          <strong class="callout-title">因此真正应该一起移动的是 bundle</strong>
+          <p>第 <span class="mono">k</span> 个内部坐标是三元组 <span class="mono">(w<sub>g,k</sub>, w<sub>u,k</sub>, v<sub>k</sub>)</span>。三件套一起移动只是重排求和项；只移动其中一件，就把别人的开关、内容或写回方向配在了一起。</p>
+        </div>
+
+        <div class="spacer-md"></div>
+
+        <div class="layer-stack">
+          <div class="layer-row"><dt>输入 / 输出维</dt><dd><span class="mono">d = 2560</span>。这是 Transformer residual stream 的坐标，置换前后都不改变。</dd></div>
+          <div class="layer-row"><dt>中间维</dt><dd><span class="mono">m = 9728</span>。这里没有被外部直接观察的固定编号，所以允许重新命名。</dd></div>
+          <div class="layer-row"><dt>权重形状</dt><dd><span class="mono">W<sub>g</sub>, W<sub>u</sub> ∈ ℝ<sup>m×d</sup></span>；<span class="mono">W<sub>d</sub> ∈ ℝ<sup>d×m</sup></span>。</dd></div>
+          <div class="layer-row"><dt>bias</dt><dd>当前 Qwen3 三个 projection 都是 <span class="mono">bias=False</span>。若存在 gate/up bias，也必须随对应行一起置换。</dd></div>
+        </div>
+      </section>
+
+      <section class="doc-section" id="proof">
+        <div class="section-heading">
+          <div class="section-no">03</div>
+          <div>
+            <div class="section-kicker">Two exact proofs</div>
+            <h2>同一件事的两种严格证明</h2>
+            <p class="section-intro">逐神经元视角最直观；矩阵视角最适合检查实现。二者证明的是同一个命题：参数不同，但对所有输入实现的精确函数相同。</p>
+          </div>
+        </div>
+
+        <div class="grid two">
+          <article class="card">
+            <div class="card-label">证明 A · 求和项</div>
+            <h3>重排有限和</h3>
+            <p>设 <span class="mono">π</span> 是 <span class="mono">{1,…,m}</span> 的双射。联动置换后，每一个 bundle 都完整保留，只是第 <span class="mono">k</span> 项变为原来的第 <span class="mono">π(k)</span> 项。</p>
+            <p class="mono">Σ<sub>k</sub> b<sub>π(k)</sub> = Σ<sub>j</sub> b<sub>j</sub></p>
+            <p>因为 <span class="mono">π</span> 不丢项也不重复项，所以精确有限和相同。</p>
+          </article>
+          <article class="card">
+            <div class="card-label">证明 B · 坐标变换</div>
+            <h3>中间改名，出口撤销</h3>
+            <p>令 permutation matrix 为 <span class="mono">P</span>。gate/up 在输出行上左乘 <span class="mono">P</span>；down 在输入列上右乘 <span class="mono">P<sup>T</sup></span>。</p>
+            <p class="mono">θ<sub>P</sub> = (PW<sub>g</sub>, PW<sub>u</sub>, W<sub>d</sub>P<sup>T</sup>)</p>
+            <p>由于 <span class="mono">P<sup>T</sup>P = I</span>，中间坐标变换在出口被准确撤销。</p>
+          </article>
+        </div>
+
+        <div class="spacer-md"></div>
+
+        <div class="equation">
+          <span class="eq-label">矩阵推导</span>
+          <div class="eq-steps">
+            <div class="eq-row"><span>h′</span><span>=</span><span>SiLU(PW<sub>g</sub>x) ⊙ (PW<sub>u</sub>x)<span class="reason">定义</span></span></div>
+            <div class="eq-row"><span></span><span>=</span><span>P·SiLU(W<sub>g</sub>x) ⊙ P·(W<sub>u</sub>x)<span class="reason">SiLU 逐坐标</span></span></div>
+            <div class="eq-row"><span></span><span>=</span><span>P[SiLU(W<sub>g</sub>x) ⊙ (W<sub>u</sub>x)]<span class="reason">两支使用同一个 P</span></span></div>
+            <div class="eq-row"><span></span><span>=</span><span>Ph</span></div>
+            <div class="eq-row"><span>y′</span><span>=</span><span>W<sub>d</sub>P<sup>T</sup>h′ = W<sub>d</sub>P<sup>T</sup>Ph = W<sub>d</sub>h = y</span></div>
+          </div>
+        </div>
+
+        <div class="spacer-md"></div>
+
+        <div class="grid two">
+          <div class="callout success">
+            <strong class="callout-title">为什么 SiLU 可以“穿过” P？</strong>
+            <p>SiLU 对每个坐标独立作用。先重排再逐元素计算，与先逐元素计算再重排完全一样：<span class="mono">φ(Pz)=Pφ(z)</span>。</p>
+          </div>
+          <div class="callout success">
+            <strong class="callout-title">为什么两个分支必须同一个 P？</strong>
+            <p>Hadamard 乘法按位置配对。只有 <span class="mono">(Pa)⊙(Pb)=P(a⊙b)</span>；若两边用不同置换，配对关系就变了。</p>
+          </div>
+        </div>
+
+        <div class="spacer-md"></div>
+
+        <details>
+          <summary>更抽象地说：这是参数空间里的 permutation orbit</summary>
+          <div class="details-body">
+            <p>定义 <span class="mono">θ ~ θ′ ⇔ f<sub>θ</sub>(x)=f<sub>θ′</sub>(x), ∀x</span>。那么所有 <span class="mono">T<sub>P</sub>(θ)</span> 都与 <span class="mono">θ</span> 属于同一个等价类。每层的中间坐标互相独立，36 层整体可分别选择 <span class="mono">P<sub>ℓ</sub></span>，对应的离散对称群可写作 <span class="mono">S<sub>m₁</sub> × … × S<sub>m₃₆</sub></span>。</p>
+          </div>
+        </details>
+      </section>
+
+      <section class="doc-section" id="implementation">
+        <div class="section-heading">
+          <div class="section-no">04</div>
+          <div>
+            <div class="section-kicker">Indexing convention</div>
+            <h2>矩阵里是 P<sup>T</sup>，代码里为何三处都写 perm？</h2>
+            <p class="section-intro">这是实现中最容易写反的地方。关键在于先固定一个约定：本项目把 <span class="mono">z[..., perm]</span> 定义为置换后的向量。</p>
+          </div>
+        </div>
+
+        <pre aria-label="PyTorch 联动置换实现"><code># 约定：z_perm = z[..., perm]
+gate.weight = gate.weight[perm, :]   # 行重排：P W_g
+up.weight   = up.weight[perm, :]     # 行重排：P W_u
+down.weight = down.weight[:, perm]   # 列重排：W_d P^T
+
+# 恢复时才使用 inverse
+inv_perm = torch.argsort(perm)</code></pre>
+
+        <div class="spacer-md"></div>
+
+        <div class="callout warning">
+          <strong class="callout-title">“同一个索引写法”不等于“同一个矩阵乘法方向”</strong>
+          <p><span class="mono">gate/up[perm, :]</span> 是重排行，对应左乘 <span class="mono">P</span>；<span class="mono">down[:, perm]</span> 是重排列，对应右乘 <span class="mono">P<sup>T</sup></span>。数组索引看起来相同，是因为行与列所处的张量位置不同。</p>
+        </div>
+
+        <div class="spacer-md"></div>
+
+        <div class="data-table-wrap">
+          <table>
+            <caption>实现方向检查表</caption>
+            <thead><tr><th>对象</th><th>轴</th><th>代码</th><th>矩阵记号</th><th>语义</th></tr></thead>
+            <tbody>
+              <tr><td><strong>gate</strong></td><td>输出行</td><td class="mono">[perm, :]</td><td class="mono">P W<sub>g</sub></td><td>给开关换编号</td></tr>
+              <tr><td><strong>up</strong></td><td>输出行</td><td class="mono">[perm, :]</td><td class="mono">P W<sub>u</sub></td><td>给内容换同一编号</td></tr>
+              <tr><td><strong>down</strong></td><td>输入列</td><td class="mono">[:, perm]</td><td class="mono">W<sub>d</sub>P<sup>T</sup></td><td>按新编号读取，再写回原空间</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="spacer-md"></div>
+
+        <div class="grid two">
+          <article class="card">
+            <div class="card-label">方向单测</div>
+            <h3>一定用非自逆 permutation</h3>
+            <p><span class="mono">reverse</span>、half-swap、单次交换都是自逆的，写成 <span class="mono">perm</span> 或 <span class="mono">argsort(perm)</span> 看不出差别。随机非对合置换才能抓住方向 bug。</p>
+          </article>
+          <article class="card">
+            <div class="card-label">canonical-down</div>
+            <h3>先逆排，再走原 down</h3>
+            <p>把 <span class="mono">h′</span> 用 inverse 恢复成原坐标，再送进原 <span class="mono">down</span>。项目中 120/120 case 与 baseline 逐 bit 相同，直接证明公式与索引都没错。</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="doc-section" id="precision">
+        <div class="section-heading">
+          <div class="section-no">05</div>
+          <div>
+            <div class="section-kicker">Exact math ≠ finite arithmetic</div>
+            <h2>数学等价，为何 BF16 仍会出现差异？</h2>
+            <p class="section-intro">精确实数代数只关心“有哪些求和项”；GPU kernel 还关心这些项如何分 tile、如何归约、最后落到哪个 BF16 格点。置换不改精确值，却会改变物理执行路径。</p>
+          </div>
+        </div>
+
+        <div class="layer-stack">
+          <div class="layer-row"><dt>函数等价</dt><dd><span class="badge good">严格成立</span> 对任意实数输入，<span class="mono">f<sub>θ</sub>(x)=f<sub>θP</sub>(x)</span>。</dd></div>
+          <div class="layer-row"><dt>坐标等价</dt><dd><span class="badge good">逐 bit 通过</span> gate / up / product 在重排坐标后 120/120 完全相同。</dd></div>
+          <div class="layer-row"><dt>BF16 张量</dt><dd><span class="badge warn">近似</span> native <span class="mono">down_proj</span> 的物理布局改变，低位舍入可落到相邻格点。</dd></div>
+          <div class="layer-row"><dt>任务行为</dt><dd><span class="badge warn">经验判断</span> 大多数 token 不变；低 margin 分叉与长生成会放大微小差异。</dd></div>
+        </div>
+
+        <div class="spacer-lg"></div>
+
+        <h3>误差第一次出现在哪里？</h3>
+        <p class="muted">gate/up 做的是“整行搬家”：每个点积内部的输入顺序没有变，输出只是换了存放位置；SiLU 与逐元素乘也只跟着位置走。因此直到 <span class="mono">h′=Ph</span> 都可逐 bit 对齐。第一次可见差异出现在 <span class="mono">down_proj</span>：同一批乘积被放入了不同的物理列与 kernel 分组。</p>
+
+        <div class="spacer-md"></div>
+
+        <div class="grid three">
+          <article class="card">
+            <div class="card-label">纯 FP32 归约顺序</div>
+            <div class="card-number slate">2.5e−7</div>
+            <p>相对误差，极小。真实 kernel 的 FP32 accumulation 本身非常准确。</p>
+          </article>
+          <article class="card">
+            <div class="card-label">单次 BF16 GEMM</div>
+            <div class="card-number slate">2.325e−3</div>
+            <p>对 FP64 参考的固有误差，接近 <span class="mono">ulp/√12 = 2.255e−3</span>。</p>
+          </article>
+          <article class="card">
+            <div class="card-label">两种布局之差</div>
+            <div class="card-number slate">3.09–3.22e−3</div>
+            <p>接近 <span class="mono">√2 × ulp/√12 = 3.189e−3</span>。</p>
+          </article>
+        </div>
+
+        <div class="spacer-md"></div>
+
+        <div class="callout">
+          <strong class="callout-title">更精确的机制图景</strong>
+          <p>置换改变 tile / reduction tree 后，FP32 内部结果只在很低位略有不同；写回 BF16 时，靠近量化边界的元素可能分别落到相邻格点。就本模型、输入与 kernel 的实测而言，置换差异近似于把 BF16 输出量化误差重新抽样一次。它是实验观察到的定量闭环，不应外推成对所有硬件与 kernel 都成立的普适上界。</p>
+        </div>
+
+        <div class="spacer-md"></div>
+
+        <details>
+          <summary>为什么早期的“BF16 链式加法吃掉小项”还不够精确？</summary>
+          <div class="details-body">
+            <p>它正确说明了有限精度加法不满足实数域的结合律，但真实 GPU GEMM 并不是把 9728 项直接用 BF16 一项项累加。后续分解实验测得 FP32 累加顺序效应只有约 <span class="mono">2.5e−7</span>；主导可见漂移的是结果写回 BF16 格点时的边界翻转。因此正式解释应把“归约布局变化”与“BF16 输出量化”连起来。</p>
+          </div>
+        </details>
+
+        <div class="spacer-md"></div>
+
+        <div class="callout warning">
+          <strong class="callout-title">不要把“逐 bit 不同”误判成“公式不成立”</strong>
+          <p>FP64 valid-triplet 的误差约 <span class="mono">1.4e−14</span>；真正错误的单矩阵或错方向置换，在同样设置下是 <span class="mono">O(1)</span> 的函数破坏。BF16 valid 的小漂移与错误变换之间有 235–317 倍的清晰分离。</p>
+        </div>
+      </section>
+
+      <section class="doc-section" id="not-equivalent">
+        <div class="section-heading">
+          <div class="section-no">06</div>
+          <div>
+            <div class="section-kicker">Counterexamples</div>
+            <h2>哪些说法并不成立</h2>
+            <p class="section-intro">“存在联合对称性”是一条非常具体的命题。把它扩大成“每张矩阵都能随便换”或“任何两个模型都等价”，都会越过证据边界。</p>
+          </div>
+        </div>
+
+        <div class="grid two">
+          <article class="card claim-card">
+            <div class="claim-index">×</div>
+            <h3>单独置换 gate / up</h3>
+            <p>开关与内容的坐标错配。Hadamard 乘法会把原本不属于同一 bundle 的两项乘在一起。</p>
+          </article>
+          <article class="card claim-card">
+            <div class="claim-index">×</div>
+            <h3>单独置换 down</h3>
+            <p>中间激活本身没换编号，down 却按另一套字典读取，于是贡献被写回错误方向。</p>
+          </article>
+          <article class="card claim-card">
+            <div class="claim-index">×</div>
+            <h3>三个独立 permutation</h3>
+            <p>三件套被拆散。只有 gate 与 up 共用 <span class="mono">P</span>、down 使用匹配的 <span class="mono">P<sup>T</sup></span> 才成立。</p>
+          </article>
+          <article class="card claim-card">
+            <div class="claim-index">×</div>
+            <h3>两个 checkpoint 自动等价</h3>
+            <p>合法置换只保证每个 checkpoint 自己的精确函数不变，不保证独立训练模型之间存在完美一一匹配。</p>
+          </article>
+        </div>
+
+        <div class="spacer-md"></div>
+
+        <div class="data-table-wrap">
+          <table>
+            <caption>真实单 MLP 的 BF16 输出差异：valid 与负对照</caption>
+            <thead><tr><th>变换</th><th class="num">median rel_l2</th><th>解释</th><th>判断</th></tr></thead>
+            <tbody>
+              <tr><td><strong>baseline-repeat</strong></td><td class="num">0</td><td>相同权重重复执行</td><td><span class="badge good">bitwise</span></td></tr>
+              <tr><td><strong>valid-triplet</strong></td><td class="num">4.72e−3</td><td>正确三矩阵联动；仅有限精度漂移</td><td><span class="badge good">valid</span></td></tr>
+              <tr><td>gate-only</td><td class="num">1.40</td><td>开关错配</td><td><span class="badge bad">broken</span></td></tr>
+              <tr><td>up-only</td><td class="num">1.51</td><td>内容错配</td><td><span class="badge bad">broken</span></td></tr>
+              <tr><td>down-only</td><td class="num">1.48</td><td>写回方向错配</td><td><span class="badge bad">broken</span></td></tr>
+              <tr><td>independent-triplet</td><td class="num">1.54</td><td>三套坐标互不一致</td><td><span class="badge bad">broken</span></td></tr>
+              <tr><td>wrong-direction</td><td class="num">1.48</td><td><span class="mono">perm / inverse</span> 写反</td><td><span class="badge bad">broken</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="doc-section" id="merge">
+        <div class="section-heading">
+          <div class="section-no">07</div>
+          <div>
+            <div class="section-kicker">Research boundary</div>
+            <h2>它为 alignment / merge 打开了门，但还没有走完路</h2>
+            <p class="section-intro">这项对称性提供的是一个“可以无损搜索的重参数化基元”：我们可以合法地给模型 B 重编号，再寻找与模型 A 更相似的神经元对应关系。</p>
+          </div>
+        </div>
+
+        <div class="flow" aria-label="从合法重参数化到 merge 的研究流程">
+          <div class="flow-node"><strong>checkpoint B</strong><span>原模型函数<br>保持不动</span></div>
+          <div class="flow-arrow" aria-hidden="true">→</div>
+          <div class="flow-node"><strong>search P</strong><span>在合法 orbit 内<br>搜索近似对齐</span></div>
+          <div class="flow-arrow" aria-hidden="true">→</div>
+          <div class="flow-node"><strong>align A / B</strong><span>让相似 bundle<br>尽量同编号</span></div>
+          <div class="flow-arrow" aria-hidden="true">→</div>
+          <div class="flow-node"><strong>merge + eval</strong><span>合并仍需独立<br>验证函数与能力</span></div>
+        </div>
+
+        <div class="spacer-md"></div>
+
+        <div class="decision-matrix">
+          <article class="decision good">
+            <div class="card-label">已经证明</div>
+            <h3>合法重编号</h3>
+            <p>同一 checkpoint 的联合 permutation 在精确实数域不改变函数，实现方向与恢复机制已验证。</p>
+          </article>
+          <article class="decision warn">
+            <div class="card-label">下一步问题</div>
+            <h3>如何找到 P</h3>
+            <p>需要定义 bundle 相似度、求 assignment，并处理独立训练模型只存在近似匹配的现实。</p>
+          </article>
+          <article class="decision bad">
+            <div class="card-label">尚未证明</div>
+            <h3>merge 必然更好</h3>
+            <p>当前仓库没有完成跨 checkpoint assignment 或 merge；合并后的函数与任务能力仍可能改变。</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="doc-section" id="sources">
+        <div class="section-heading">
+          <div class="section-no">08</div>
+          <div>
+            <div class="section-kicker">Glossary &amp; provenance</div>
+            <h2>术语与证据入口</h2>
+            <p class="section-intro">所有结论都对应仓库内可追溯的计划、实现、原始结果或聚合报告。</p>
+          </div>
+        </div>
+
+        <details>
+          <summary>permutation / permutation matrix</summary>
+          <div class="details-body"><p>permutation 是有限索引集合上的双射；permutation matrix <span class="mono">P</span> 每行每列恰有一个 1。它是正交矩阵，所以 <span class="mono">P<sup>−1</sup>=P<sup>T</sup></span>。</p></div>
+        </details>
+        <details>
+          <summary>rel_l2</summary>
+          <div class="details-body"><p><span class="mono">‖a−b‖₂ / max(‖a‖₂, ε)</span>。它衡量相对于参考张量整体尺度的差异，不能直接解释成“准确率下降百分比”。</p></div>
+        </details>
+        <details>
+          <summary>bitwise equal / functionally equivalent</summary>
+          <div class="details-body"><p>bitwise equal 要求存储的每一位都相同；functionally equivalent 要求对所有输入的精确函数值相同。有限精度不同执行路径可以满足后者而不满足前者。</p></div>
+        </details>
+
+        <div class="spacer-md"></div>
+
+        <div class="source-grid">
+          <a class="source-card" href="plans/ffn_permutation_experiment_plan.md"><strong>数学定义与预注册方案</strong><span>docs/plans/ffn_permutation_experiment_plan.md</span></a>
+          <a class="source-card" href="../experiments/ffn_permutation/permutation.py"><strong>联动置换实现</strong><span>experiments/ffn_permutation/permutation.py</span></a>
+          <a class="source-card" href="../experiments/ffn_permutation/RESULT.md"><strong>代数、单层与全模型结果</strong><span>experiments/ffn_permutation/RESULT.md</span></a>
+          <a class="source-card" href="../experiments/activation_magnitudes/RESULT.md"><strong>BF16 漂移的定量细化</strong><span>experiments/activation_magnitudes/RESULT.md</span></a>
+        </div>
+
+        <div class="page-links">
+          <a class="page-link" href="index.html"><small>返回</small><strong>研究总览</strong><span>用一页串起数学、数值传播与 benchmark 结论。</span></a>
+          <a class="page-link" href="experiment-atlas.html"><small>继续阅读</small><strong>实验证据图谱 →</strong><span>从合成单测到 76 个 checkpoint 的完整证据链。</span></a>
+        </div>
+      </section>
+
+      <footer class="doc-footer">
+        <div><strong>范围说明</strong> 本页解释的是 Qwen3 SwiGLU FFN intermediate axis 的联合置换对称性。</div>
+        <div><strong>措辞约定</strong> “完全等价”仅指精确实数函数；BF16、token 与 benchmark 层均单独标注。</div>
+      </footer>
+    </main>
+  </div>
+
+  <script src="assets/report.js"></script>
+</body>
+</html>

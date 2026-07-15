@@ -1,0 +1,582 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <meta name="description" content="Qwen3-4B FFN permutation 从合成代数、真实单层、全模型传播、BF16 量化分解到 76 checkpoint benchmark 的完整实验证据图谱。">
+  <title>实验证据图谱：从代数恒等到 benchmark</title>
+  <link rel="stylesheet" href="assets/report.css">
+</head>
+<body>
+  <div class="reading-progress" aria-hidden="true"></div>
+  <header class="sitebar">
+    <div class="sitebar-inner">
+      <a class="brand" href="index.html">
+        <span class="brand-mark" aria-hidden="true">Pπ</span>
+        <span class="brand-text">FFN permutation notes</span>
+      </a>
+      <nav class="topnav" aria-label="文档导航">
+        <a href="index.html">总览</a>
+        <a href="math-equivalence.html">数学直觉</a>
+        <a href="experiment-atlas.html" aria-current="page">实验证据</a>
+        <button class="theme-toggle" type="button" data-theme-toggle aria-label="切换主题">◐</button>
+      </nav>
+    </div>
+  </header>
+
+  <div class="page-shell">
+    <aside class="toc" aria-label="页内目录">
+      <p class="toc-title">本页目录</p>
+      <ol>
+        <li><a href="#map">01 · 证据链地图</a></li>
+        <li><a href="#algebra">02 · 合成与真实 MLP</a></li>
+        <li><a href="#propagation">03 · 全模型传播</a></li>
+        <li><a href="#quantization">04 · BF16 定量闭环</a></li>
+        <li><a href="#halfswap">05 · half-swap 复验</a></li>
+        <li><a href="#benchmark">06 · 76 checkpoint benchmark</a></li>
+        <li><a href="#ablation">07 · scope × block structure</a></li>
+        <li><a href="#validity">08 · 可信度与限定</a></li>
+        <li><a href="#data">09 · 数据索引</a></li>
+      </ol>
+      <div class="toc-divider"></div>
+      <p class="toc-note">图表旁均保留真实表格；即使关闭 JavaScript，主要数字与结论仍可阅读。</p>
+    </aside>
+
+    <main>
+      <header class="hero compact" id="top">
+        <div class="eyebrow">Evidence atlas · Qwen3-4B / Base</div>
+        <h1>从代数恒等，到 193,192 条任务记录</h1>
+        <p class="lede">证据没有把“等价”压成一个词，而是逐层回答：公式是否正确、BF16 漂移从何而来、误差怎样传播、token 何时翻转，以及 benchmark 上到底会动多少。</p>
+        <div class="hero-meta">
+          <span><strong>159</strong> 个真实单 MLP case</span>
+          <span><strong>23</strong> 个全模型 case</span>
+          <span><strong>76</strong> 个 benchmark checkpoint</span>
+          <span><strong>6</strong> 个任务</span>
+          <span><strong>2</strong> 个模型</span>
+        </div>
+        <div class="status-strip" aria-label="结论摘要">
+          <div class="status-item exact"><small>代数 / 方向</small><b>全部通过</b></div>
+          <div class="status-item numeric"><small>BF16 / logits</small><b>块内零差，跨块可定位</b></div>
+          <div class="status-item behavior"><small>benchmark</small><b>最终轮已闭环</b></div>
+        </div>
+      </header>
+
+      <section class="doc-section" id="map">
+        <div class="section-heading">
+          <div class="section-no">01</div>
+          <div>
+            <div class="section-kicker">Evidence architecture</div>
+            <h2>先把四种“等价”拆开</h2>
+            <p class="section-intro">每一层使用不同问题、不同对照与不同判据。上一层成立，不自动保证下一层逐 bit 或逐样本相同。</p>
+          </div>
+        </div>
+
+        <div class="grid four">
+          <article class="card">
+            <div class="card-label">L1 · exact function</div>
+            <h3>实数函数</h3>
+            <p>三矩阵联动后，对任意输入是否实现同一数学函数？</p>
+            <span class="badge good">严格等价</span>
+          </article>
+          <article class="card">
+            <div class="card-label">L2 · finite tensor</div>
+            <h3>BF16 张量</h3>
+            <p>有限精度 kernel 是否逐 bit 相同，残差来自哪一步？</p>
+            <span class="badge warn">按置换类别判断</span>
+          </article>
+          <article class="card">
+            <div class="card-label">L3 · token path</div>
+            <h3>生成轨迹</h3>
+            <p>logits 的低位变化会不会跨过低 margin 决策边界？</p>
+            <span class="badge warn">高度接近</span>
+          </article>
+          <article class="card">
+            <div class="card-label">L4 · task utility</div>
+            <h3>任务能力</h3>
+            <p>最终正确率是否落入预注册的实用等价区间？</p>
+            <span class="badge warn">按任务判断</span>
+          </article>
+        </div>
+
+        <div class="spacer-lg"></div>
+
+        <div class="evidence-ladder" aria-label="实验递进证据链">
+          <div class="evidence-step"><span class="evidence-index">A</span><span class="evidence-copy"><strong>小矩阵方向性单测</strong><span>先抓 P / P<sup>T</sup>、perm / inverse 错误</span></span><span class="evidence-result">FP64 ≈ 1.4e−14</span></div>
+          <div class="evidence-step"><span class="evidence-index">B</span><span class="evidence-copy"><strong>真实 layer 0 / 17 / 35 MLP</strong><span>valid 与 9 类负对照做尺度分离</span></span><span class="evidence-result">median separation 316.5×</span></div>
+          <div class="evidence-step"><span class="evidence-index">C</span><span class="evidence-copy"><strong>36 层全模型传播</strong><span>逐层 hook、logits、margin 与 greedy generation</span></span><span class="evidence-result">top-1 97.8–98.5%</span></div>
+          <div class="evidence-step"><span class="evidence-index">H</span><span class="evidence-copy"><strong>前后半块交换</strong><span>换一种大位移结构复验，不依赖随机置换形状</span></span><span class="evidence-result">28/32 文本完全一致</span></div>
+          <div class="evidence-step"><span class="evidence-index">Q</span><span class="evidence-copy"><strong>activation / GEMM 定量分解</strong><span>区分 FP32 accumulation 与 BF16 写回量化</span></span><span class="evidence-result">3.09–3.22e−3 ≈ theory</span></div>
+          <div class="evidence-step"><span class="evidence-index">E</span><span class="evidence-copy"><strong>双模型 benchmark</strong><span>20 seed 分布、null 地板、scope / magnitude 消融</span></span><span class="evidence-result">76 ckpt × 2,542 samples</span></div>
+          <div class="evidence-step"><span class="evidence-index">F</span><span class="evidence-copy"><strong>最终轮端到端验收</strong><span>块内免费类、重复运行、锚点失败与高斯扰动标定</span></span><span class="evidence-result">硬判据全部通过</span></div>
+        </div>
+
+        <div class="spacer-md"></div>
+
+      </section>
+
+      <section class="doc-section" id="algebra">
+        <div class="section-heading">
+          <div class="section-no">02</div>
+          <div>
+            <div class="section-kicker">Stage A / B</div>
+            <h2>先证明公式，再标定“错误有多大”</h2>
+            <p class="section-intro">Stage A 在小矩阵上验证方向；Stage B 把同一逻辑放进真实权重与真实 hidden state，并用负对照建立数量级参照。</p>
+          </div>
+        </div>
+
+        <div class="metric-grid">
+          <div class="metric"><div class="metric-label">真实 MLP case</div><div class="metric-value">159</div><div class="metric-note">3 层 × 多输入 × 多 permutation × controls</div></div>
+          <div class="metric"><div class="metric-label">坐标对齐</div><div class="metric-value accent-up">120/120</div><div class="metric-note">gate / up / product bitwise</div></div>
+          <div class="metric"><div class="metric-label">canonical-down</div><div class="metric-value accent-up">120/120</div><div class="metric-note">与 baseline bitwise 相同</div></div>
+          <div class="metric"><div class="metric-label">最坏分离</div><div class="metric-value">235.45×</div><div class="metric-note">valid max vs negative min</div></div>
+        </div>
+
+        <div class="spacer-lg"></div>
+
+        <div class="figure">
+          <div class="figure-head">
+            <span class="figure-title">单 MLP 输出差异</span>
+            <span class="figure-subtitle">median rel_l2 · 横条按 log10 比例示意</span>
+          </div>
+          <div class="chart-host">
+            <div class="bar-list">
+              <div class="bar-row"><span class="bar-label"><strong>valid-triplet</strong>正确联动</span><span class="bar-track"><i class="bar-fill up" style="--value:20"></i></span><span class="bar-value">4.72e−3</span></div>
+              <div class="bar-row"><span class="bar-label"><strong>gate-only</strong>负对照</span><span class="bar-track"><i class="bar-fill down" style="--value:95"></i></span><span class="bar-value">1.40</span></div>
+              <div class="bar-row"><span class="bar-label"><strong>up-only</strong>负对照</span><span class="bar-track"><i class="bar-fill down" style="--value:96"></i></span><span class="bar-value">1.51</span></div>
+              <div class="bar-row"><span class="bar-label"><strong>down-only</strong>负对照</span><span class="bar-track"><i class="bar-fill down" style="--value:96"></i></span><span class="bar-value">1.48</span></div>
+              <div class="bar-row"><span class="bar-label"><strong>independent</strong>三个 P</span><span class="bar-track"><i class="bar-fill down" style="--value:97"></i></span><span class="bar-value">1.54</span></div>
+              <div class="bar-row"><span class="bar-label"><strong>wrong-dir.</strong>方向写反</span><span class="bar-track"><i class="bar-fill down" style="--value:96"></i></span><span class="bar-value">1.48</span></div>
+            </div>
+          </div>
+          <div class="figure-caption">valid 不是 0，是 BF16 native down 的有限精度漂移；但所有公式错误都在 <span class="mono">O(1)</span>。median 分离 316.5×，最坏仍有 235.45×。</div>
+        </div>
+
+        <div class="spacer-md"></div>
+
+        <div class="data-table-wrap">
+          <table>
+            <caption>Stage A / B 关键判据</caption>
+            <thead><tr><th>检查</th><th class="num">结果</th><th>含义</th></tr></thead>
+            <tbody>
+              <tr><td>FP64 valid-triplet</td><td class="num">≈ 1.4e−14</td><td>精确公式在机器精度内成立</td></tr>
+              <tr><td>BF16 valid-triplet</td><td class="num">median 4.72e−3</td><td>有限精度小漂移</td></tr>
+              <tr><td>canonical-down rel_l2 max</td><td class="num">0</td><td>恢复原顺序后逐 bit 一致，排除公式 / 索引错误</td></tr>
+              <tr><td>inverse restore</td><td class="num">159/159</td><td>每个 case 后权重与 checksum 恢复</td></tr>
+              <tr><td>负对照 median</td><td class="num">1.40–1.54</td><td>错误置换破坏函数，与 valid 清晰分离</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="doc-section" id="propagation">
+        <div class="section-heading">
+          <div class="section-no">03</div>
+          <div>
+            <div class="section-kicker">Stage C</div>
+            <h2>误差越早注入，传播越深；但不会按层数线性相加</h2>
+            <p class="section-intro">32 条固定 prompt、1255 个 token、23 个全模型 case。每个 case 的第一个非 bitwise 差异都精确出现在第一个被置换层的 <span class="mono">mlp_out</span>。</p>
+          </div>
+        </div>
+
+        <div class="figure">
+          <div class="figure-head">
+            <span class="figure-title">全模型 logits 相对漂移</span>
+            <span class="figure-subtitle">3 seeds 的 min–max 与均值 · 越小越接近</span>
+          </div>
+          <div class="chart-host" data-range-chart="full-model"></div>
+          <div class="figure-caption">只置换 L0 已接近全 36 层；只置换 L35 只有约 <span class="mono">3.8e−3</span>。主导因素是扰动要穿过多少后续网络，而不是一共置换了多少层。</div>
+        </div>
+
+        <noscript><p class="noscript">图表需要 JavaScript；下方表格包含同一组关键数据。</p></noscript>
+
+        <div class="spacer-md"></div>
+
+        <div class="data-table-wrap">
+          <table>
+            <caption>全模型传播摘要</caption>
+            <thead><tr><th>case</th><th class="num">logits rel_l2</th><th class="num">top-1 agreement</th><th>解释</th></tr></thead>
+            <tbody>
+              <tr><td><strong>only L35</strong></td><td class="num">≈ 3.8e−3</td><td class="num">99.4–99.5%</td><td>几乎没有下游传播</td></tr>
+              <tr><td><strong>only L17</strong></td><td class="num">≈ 1.7e−2</td><td class="num">98.4–98.9%</td><td>穿过约半个网络</td></tr>
+              <tr><td><strong>only L0</strong></td><td class="num">≈ 2.1e−2</td><td class="num">98.1–98.2%</td><td>单次早期注入已接近饱和</td></tr>
+              <tr><td><strong>all 36</strong></td><td class="num">2.04–2.22e−2</td><td class="num">97.8–98.5%</td><td>多层注入没有线性累积</td></tr>
+              <tr><td>错误 L17 control</td><td class="num">0.30–0.34</td><td class="num">82–84%</td><td>真正公式错误的量级完全不同</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="spacer-lg"></div>
+
+        <div class="grid two">
+          <article class="card">
+            <div class="card-label">低 margin 翻转</div>
+            <div class="card-number">0.031–0.125</div>
+            <p>发生 top-1 翻转位置的 baseline top1−top2 margin 中位数；全体 token 的中位数是 <strong>1.875</strong>。</p>
+          </article>
+          <article class="card">
+            <div class="card-label">64-token greedy exact</div>
+            <div class="card-number">26–29 / 32</div>
+            <p>all-36 三个 seed 与 baseline 逐 token 完全一致；其余分叉多为近并列处的同义改写。</p>
+          </article>
+        </div>
+
+        <div class="spacer-md"></div>
+
+        <div class="callout warning">
+          <strong class="callout-title">98% top-1 一致，不等于 98% benchmark 正确率</strong>
+          <p>这里统计所有 prompt 中所有 token 的局部 argmax。benchmark 正确率是最终答案层面的指标，并且长生成会沿几百步累计分叉机会；二者必须分开报告。</p>
+        </div>
+      </section>
+
+      <section class="doc-section" id="quantization">
+        <div class="section-heading">
+          <div class="section-no">04</div>
+          <div>
+            <div class="section-kicker">Activation magnitudes</div>
+            <h2>把“为什么会漂”闭合到 BF16 格点</h2>
+            <p class="section-intro">144 条 prompt、16,132 个 token 的量级画像，加上 L0 / L17 / L35 的 down-GEMM 分解，进一步修正了早期仅用“不满足结合律”概括的解释。</p>
+          </div>
+        </div>
+
+        <div class="metric-grid">
+          <div class="metric"><div class="metric-label">对消比</div><div class="metric-value">30–70×</div><div class="metric-note">Σ|乘积| / |最终输出| 的典型量级</div></div>
+          <div class="metric"><div class="metric-label">FP32 顺序效应</div><div class="metric-value">2.5e−7</div><div class="metric-note">真实累加器本身非常准</div></div>
+          <div class="metric"><div class="metric-label">BF16 固有误差</div><div class="metric-value">2.325e−3</div><div class="metric-note">L17，对 FP64 参考</div></div>
+          <div class="metric"><div class="metric-label">置换漂移</div><div class="metric-value">3.09–3.22e−3</div><div class="metric-note">L17，3 个随机 seed</div></div>
+        </div>
+
+        <div class="spacer-lg"></div>
+
+        <div class="equation">
+          <span class="eq-label">L17 定量闭环</span>
+          <div class="eq-main">
+            measured 3.09–3.22×10<sup>−3</sup>
+            &nbsp;≈&nbsp; √2 · ulp/√12
+            &nbsp;=&nbsp; 3.189×10<sup>−3</sup>
+          </div>
+        </div>
+
+        <div class="spacer-md"></div>
+
+        <div class="callout success">
+          <strong class="callout-title">当前最精确的解释</strong>
+          <p>置换改变 down GEMM 的物理列布局与 tile / reduction tree，产生极低位的内部差异；写回 BF16 时，靠近量化边界的元素可能落到相邻格点。在本模型、输入与 kernel 条件下，观测量级接近“两次独立 BF16 量化误差之差”。</p>
+        </div>
+
+        <div class="spacer-md"></div>
+
+        <div class="data-table-wrap">
+          <table>
+            <caption>L17 down-GEMM 三层分解</caption>
+            <thead><tr><th>比较</th><th class="num">rel_l2</th><th>解释</th></tr></thead>
+            <tbody>
+              <tr><td>FP32 GEMM vs FP64</td><td class="num">1.9e−7</td><td>FP32 accumulation 本身</td></tr>
+              <tr><td>FP32 原顺序 vs 置换顺序</td><td class="num">≈ 2.5e−7</td><td>纯归约顺序效应，几乎可忽略</td></tr>
+              <tr><td>各自舍入到 BF16 后对比</td><td class="num">0.8–1.7e−5</td><td>理想化单链最后舍入</td></tr>
+              <tr><td>BF16 GEMM vs FP64</td><td class="num">2.325e−3</td><td>接近理论量化地板 2.255e−3</td></tr>
+              <tr><td><strong>BF16 原布局 vs 置换布局</strong></td><td class="num"><strong>3.09–3.22e−3</strong></td><td>接近 √2× 理论地板 3.189e−3</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="spacer-md"></div>
+
+        <div class="callout warning">
+          <strong class="callout-title">复现边界</strong>
+          <p>上述定量 decomposition 来自 Qwen3-4B instruct 的现有 JSON；Base 复验只覆盖 activation 量级，没有同名 decomposition 文件。当前目录中的独立 <span class="mono">down_gemm_decomposition.json</span> 也未保留对应的独立生成脚本，因此这里把它作为现有实验证据，而不夸大为跨模型、跨 kernel 定理。</p>
+        </div>
+      </section>
+
+      <section class="doc-section" id="halfswap">
+        <div class="section-heading">
+          <div class="section-no">05</div>
+          <div>
+            <div class="section-kicker">Structured permutation</div>
+            <h2>half-swap：换一种置换形状，现象仍一致</h2>
+            <p class="section-intro">每层把 9728 维中间轴的前后 4864 维整块交换，36 层全部应用。这是大位移、自逆、结构化的置换。</p>
+          </div>
+        </div>
+
+        <div class="grid three">
+          <article class="card"><div class="card-label">重复确定性</div><div class="card-number">8 / 8</div><p>baseline 与 half-swap 各自温度 0 重复生成，条件内逐 token 完全一致。</p></article>
+          <article class="card"><div class="card-label">与 baseline 文本</div><div class="card-number">28 / 32</div><p>64-token 输出逐 token 完全一致；4 条在近并列位置发生同义改写。</p></article>
+          <article class="card"><div class="card-label">logits rel_l2</div><div class="card-number">2.13e−2</div><p>与 all-36 随机置换的 2.0–2.2e−2 同量级。</p></article>
+        </div>
+
+        <div class="spacer-md"></div>
+
+        <div class="callout">
+          <strong class="callout-title">它排除了“只有随机置换才这样”</strong>
+          <p>half-swap、reverse 与 random 都会显著改变 down GEMM 的物理分组，因而表现出同量级 BF16 漂移。决定因素不是 permutation 看起来是否随机，而是它对底层布局改变了多少。</p>
+        </div>
+      </section>
+
+      <section class="doc-section" id="benchmark">
+        <div class="section-heading">
+          <div class="section-no">06</div>
+          <div>
+            <div class="section-kicker">Downstream utility</div>
+            <h2>76 个 checkpoint：单选题几乎免疫，长生成更敏感</h2>
+            <p class="section-intro">Qwen3-4B 与 Qwen3-4B-Base，每个 checkpoint 固定评测 2,542 条样本。20-seed sweep 用于估计置换选择带来的分布，而不是从单个 seed 下结论。</p>
+          </div>
+        </div>
+
+        <div class="data-table-wrap">
+          <table>
+            <caption>实验规模拆解</caption>
+            <thead><tr><th>组</th><th>内容</th><th class="num">checkpoint</th></tr></thead>
+            <tbody>
+              <tr><td>baseline / null</td><td>每族原始×2、copy、rep02–09</td><td class="num">22</td></tr>
+              <tr><td>确认 seed</td><td>每族 all-36 random seed 42 / 43 / 44</td><td class="num">6</td></tr>
+              <tr><td>seed sweep</td><td>每族 seed 1000–1019</td><td class="num">40</td></tr>
+              <tr><td>消融</td><td>scope 6 arms + magnitude 2 arms，仅 instruct</td><td class="num">8</td></tr>
+              <tr><td><strong>合计</strong></td><td>76 × 6 benchmark × 逐样本原始记录</td><td class="num"><strong>76</strong></td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="spacer-lg"></div>
+
+        <div class="grid two">
+          <div class="figure">
+            <div class="figure-head"><span class="figure-title">Qwen3-4B instruct</span><span class="figure-subtitle">20 seeds · accuracy Δpp</span></div>
+            <div class="chart-host" data-range-chart="bench-instruct"></div>
+            <div class="figure-caption">六任务平均分 <span class="accent-down mono">−0.79 ± 0.19pp</span>；19/20 seed 超出预注册 ±0.5pp。</div>
+          </div>
+          <div class="figure">
+            <div class="figure-head"><span class="figure-title">Qwen3-4B-Base</span><span class="figure-subtitle">20 seeds · accuracy Δpp</span></div>
+            <div class="chart-host" data-range-chart="bench-base"></div>
+            <div class="figure-caption">六任务平均分 <span class="accent-up mono">+0.49 ± 0.21pp</span>；11/20 seed 超出预注册 ±0.5pp。</div>
+          </div>
+        </div>
+
+        <noscript><p class="noscript">图表需要 JavaScript；下方完整表格给出均值、标准差与范围。</p></noscript>
+
+        <div class="spacer-md"></div>
+
+        <div class="data-table-wrap">
+          <table>
+            <caption>20-seed benchmark 分布（accuracy delta，百分点）</caption>
+            <thead><tr><th rowspan="2">benchmark</th><th colspan="3">Qwen3-4B instruct</th><th colspan="3">Qwen3-4B-Base</th></tr><tr><th class="num">mean ± std</th><th class="num">min … max</th><th class="num">|Δ|&gt;1pp</th><th class="num">mean ± std</th><th class="num">min … max</th><th class="num">|Δ|&gt;1pp</th></tr></thead>
+            <tbody>
+              <tr><td><strong>MMLU</strong></td><td class="num">+0.05 ± 0.26</td><td class="num">−0.40 … +0.40</td><td class="num">0/20</td><td class="num">+0.45 ± 0.22</td><td class="num">0 … +0.80</td><td class="num">0/20</td></tr>
+              <tr><td><strong>C-Eval</strong></td><td class="num">+0.20 ± 0.18</td><td class="num">−0.20 … +0.40</td><td class="num">0/20</td><td class="num">+0.45 ± 0.27</td><td class="num">0 … +0.80</td><td class="num">0/20</td></tr>
+              <tr><td><strong>CMMLU</strong></td><td class="num">−0.57 ± 0.21</td><td class="num">−0.80 … 0</td><td class="num">0/20</td><td class="num">+0.18 ± 0.22</td><td class="num">−0.20 … +0.60</td><td class="num">0/20</td></tr>
+              <tr><td><strong>GSM8K</strong></td><td class="num accent-down">−2.33 ± 0.80</td><td class="num">−3.80 … −1.00</td><td class="num">20/20</td><td class="num accent-up">+0.97 ± 0.68</td><td class="num">−1.00 … +2.00</td><td class="num">12/20</td></tr>
+              <tr><td><strong>HumanEval+</strong></td><td class="num accent-down">−1.71 ± 0.81</td><td class="num">−3.05 … +0.61</td><td class="num">18/20</td><td class="num">−0.12 ± 0.99</td><td class="num">−1.83 … +2.44</td><td class="num">6/20</td></tr>
+              <tr><td><strong>MBPP+</strong></td><td class="num">−0.37 ± 0.56</td><td class="num">−1.06 … +0.79</td><td class="num">4/20</td><td class="num accent-up">+1.03 ± 0.59</td><td class="num">−0.26 … +2.12</td><td class="num">10/20</td></tr>
+              <tr><td><strong>六任务平均分</strong></td><td class="num accent-down"><strong>−0.79 ± 0.19</strong></td><td class="num">−1.11 … −0.32</td><td class="num">19/20 &gt;0.5</td><td class="num accent-up"><strong>+0.49 ± 0.21</strong></td><td class="num">+0.13 … +0.99</td><td class="num">11/20 &gt;0.5</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="spacer-md"></div>
+
+        <div class="grid two">
+          <div class="callout success">
+            <strong class="callout-title">多选任务：实用上几乎等价</strong>
+            <p>MMLU / C-Eval / CMMLU 在两个模型的 20 个 seed 中全部落在 ±1pp 内，逐样本 correctness 一致率均在 99% 左右。</p>
+          </div>
+          <div class="callout warning">
+            <strong class="callout-title">生成任务：小而真实，方向不普适</strong>
+            <p>GSM8K / HumanEval+ / MBPP+ 可出现 1–2.3pp 级偏移；instruct 整体略降，Base 整体略升，说明不能把 permutation 说成普遍增益或普遍退化。</p>
+          </div>
+        </div>
+
+        <div class="spacer-md"></div>
+
+        <details>
+          <summary>绝对 baseline 分数是多少？</summary>
+          <div class="details-body">
+            <p>instruct：MMLU 69.0、GSM8K 75.6、C-Eval 83.2、CMMLU 75.2、HumanEval+ 70.12、MBPP+ 60.85，macro 72.33。Base：73.8、77.2、86.0、78.8、56.10、61.90，macro 72.30。表中所有 delta 均相对各自模型 baseline，不是在两个模型之间相减。</p>
+          </div>
+        </details>
+      </section>
+
+      <section class="doc-section" id="ablation">
+        <div class="section-heading">
+          <div class="section-no">07</div>
+          <div>
+            <div class="section-kicker">Scope × magnitude</div>
+            <h2>影响取决于传播深度与是否改变归约分组</h2>
+            <p class="section-intro">固定 Qwen3-4B instruct，其余条件不变，分别改变置换层位置、层数和通道重排结构。后续复审否定了简单的连续位移规律。</p>
+          </div>
+        </div>
+
+        <div class="grid two">
+          <div class="figure">
+            <div class="figure-head"><span class="figure-title">scope · 传播深度</span><span class="figure-subtitle">六任务平均分变化幅度</span></div>
+            <div class="chart-host">
+              <div class="bar-list">
+                <div class="bar-row"><span class="bar-label"><strong>only L0</strong>第 0 层</span><span class="bar-track"><i class="bar-fill down" style="--value:68"></i></span><span class="bar-value">−0.61</span></div>
+                <div class="bar-row"><span class="bar-label"><strong>only L17</strong>中间层</span><span class="bar-track"><i class="bar-fill down" style="--value:23"></i></span><span class="bar-value">−0.21</span></div>
+                <div class="bar-row"><span class="bar-label"><strong>only L35</strong>最后层</span><span class="bar-track"><i class="bar-fill down" style="--value:19"></i></span><span class="bar-value">−0.17</span></div>
+                <div class="bar-row"><span class="bar-label"><strong>prefix 6</strong>前 6 层</span><span class="bar-track"><i class="bar-fill down" style="--value:83"></i></span><span class="bar-value">−0.75</span></div>
+                <div class="bar-row"><span class="bar-label"><strong>prefix 18</strong>前 18 层</span><span class="bar-track"><i class="bar-fill down" style="--value:93"></i></span><span class="bar-value">−0.84</span></div>
+                <div class="bar-row"><span class="bar-label"><strong>all 36</strong>全部层</span><span class="bar-track"><i class="bar-fill down" style="--value:92"></i></span><span class="bar-value">−0.83</span></div>
+              </div>
+            </div>
+            <div class="figure-caption">只置换 L0 已达到 all-36 约 75% 的宏观影响；越早注入，后续传播越深。</div>
+          </div>
+          <div class="figure">
+            <div class="figure-head"><span class="figure-title">structure · 归约分组</span><span class="figure-subtitle">观测六任务平均分变化</span></div>
+            <div class="chart-host">
+              <div class="bar-list">
+                <div class="bar-row"><span class="bar-label"><strong>adjacent*</strong>偶对齐交换</span><span class="bar-track"><i class="bar-fill down" style="--value:22"></i></span><span class="bar-value">−0.20*</span></div>
+                <div class="bar-row"><span class="bar-label"><strong>reverse</strong>位移≈4864</span><span class="bar-track"><i class="bar-fill down" style="--value:51"></i></span><span class="bar-value">−0.46</span></div>
+                <div class="bar-row"><span class="bar-label"><strong>random</strong>位移≈3242</span><span class="bar-track"><i class="bar-fill down" style="--value:92"></i></span><span class="bar-value">−0.83</span></div>
+              </div>
+            </div>
+            <div class="figure-caption">* 后续复审确认：adjacent 的原始分数完全落在 Instruct 自身运行地板内，证据与零效应一致。决定零差边界的是是否保持对齐归约块，不是几何位移本身。</div>
+          </div>
+        </div>
+
+        <div class="spacer-md"></div>
+
+        <div class="callout">
+          <strong class="callout-title">统一机制</strong>
+          <p><strong>当前证据支持两个关键因素：是否改变 down-proj 的物理归约分组，以及扰动还要向后传播多深。</strong> 这是由 logits 实验、half-swap、量化分解、复审勘误与 benchmark 消融共同支持的机制性总结，不是一个已拟合的连续预测规律。</p>
+        </div>
+      </section>
+
+      <section class="doc-section" id="validity">
+        <div class="section-heading">
+          <div class="section-no">08</div>
+          <div>
+            <div class="section-kicker">Validity &amp; caveats</div>
+            <h2>为什么可信，以及哪里仍需克制</h2>
+            <p class="section-intro">数值效应很小，因此“系统本身是否稳定”与“结论适用到哪”比多跑几个 seed 更重要。</p>
+          </div>
+        </div>
+
+        <div class="grid two">
+          <article class="card">
+            <div class="card-label">baseline copy</div>
+            <h3>重存 checkpoint 不引入偏移</h3>
+            <p>不置换、按同样流程重存的 checkpoint 与原始 baseline tensor 逐字节一致，全部 benchmark 逐样本 <span class="mono">Δ=0.00pp</span>。</p>
+          </article>
+          <article class="card">
+            <div class="card-label">null distribution</div>
+            <h3>11 个同权重 baseline / 模型</h3>
+            <p>Base 六个任务 correctness 地板全部为 0；instruct 除 GSM8K 外也为 0，因此多数偏移不能归因于重跑噪声。</p>
+          </article>
+          <article class="card">
+            <div class="card-label">deterministic serving</div>
+            <h3>冻结 vLLM 推理路径</h3>
+            <p><span class="mono">VLLM_BATCH_INVARIANT=1</span>、eager、关闭 prefix cache，并把每个模型族固定同一 GPU。</p>
+          </article>
+          <article class="card">
+            <div class="card-label">paired records</div>
+            <h3>保存逐样本输出</h3>
+            <p>不是只比较聚合 accuracy；456 份 raw 文件全部 complete，共 193,192 条 checkpoint×sample 记录。</p>
+          </article>
+        </div>
+
+        <div class="spacer-lg"></div>
+
+        <div class="callout danger">
+          <strong class="callout-title">最重要的三项限定</strong>
+          <ul>
+            <li><strong>instruct GSM8K 有残余 null 噪声。</strong> 同权重两两重跑 max|Δ|=2.4pp、mean disagreement=5.97%，因此它的 −2.33pp 部分混淆；Base 六项 null 全为 0，HumanEval+ 等任务也提供独立真实效应证据。</li>
+            <li><strong>suite 级严格预注册判据没有通过。</strong> instruct 19/20、Base 11/20 seed 超出 ±0.5pp，所以不能写成“BF16 benchmark 完全等价”；准确表述是“小而可测，且任务依赖”。</li>
+            <li><strong>两套执行环境不同。</strong> logits/activation 主实验为 PyTorch 2.13 + Transformers 4.57.6；benchmark 为 vLLM 0.24 + PyTorch 2.11 + Transformers 5.13。跨实验可谈机制一致性，不能假设 kernel 逐 bit 可比。</li>
+          </ul>
+        </div>
+
+        <div class="spacer-md"></div>
+
+        <details>
+          <summary>中途 GPU 配置变化是否污染结果？</summary>
+          <div class="details-body"><p>benchmark 中途因资源占用把 <span class="mono">gpu_memory_utilization</span> 从 0.90 降到 0.28，并从双卡调度改为固定 GPU0；项目对 0.40 vs 0.90 在 Base GSM8K + MMLU 做了逐样本验证，correctness 无差异。该偏离已在原报告记录，但它仍提醒读者：结论绑定于当前硬件与确定性配置。</p></div>
+        </details>
+        <details>
+          <summary>这些实验是否已经证明 permutation merge 有效？</summary>
+          <div class="details-body"><p>没有。它们证明联合 permutation 是合法重参数化，并量化 BF16 风险；当前仓库尚未完成两个独立 checkpoint 的 assignment 搜索或 merge 后任务评估。</p></div>
+        </details>
+      </section>
+
+      <section class="doc-section" id="data">
+        <div class="section-heading">
+          <div class="section-no">09</div>
+          <div>
+            <div class="section-kicker">Raw evidence</div>
+            <h2>结果、配置与原始数据入口</h2>
+            <p class="section-intro">下面优先链接聚合报告和最关键 JSON；每份报告内部还有更细的逐样本索引。</p>
+          </div>
+        </div>
+
+        <div class="source-grid">
+          <a class="source-card" href="../experiments/ffn_permutation/RESULT.md"><strong>主实验结论</strong><span>experiments/ffn_permutation/RESULT.md</span></a>
+          <a class="source-card" href="../experiments/ffn_permutation/results/summary.json"><strong>Stage A / B / C 聚合 JSON</strong><span>experiments/ffn_permutation/results/summary.json</span></a>
+          <a class="source-card" href="../experiments/ffn_halfswap/RESULT.md"><strong>half-swap 复验</strong><span>experiments/ffn_halfswap/RESULT.md</span></a>
+          <a class="source-card" href="../experiments/activation_magnitudes/RESULT.md"><strong>activation 与量化分解</strong><span>experiments/activation_magnitudes/RESULT.md</span></a>
+          <a class="source-card" href="../experiments/activation_magnitudes/results/down_gemm_decomposition.json"><strong>down-GEMM decomposition</strong><span>experiments/activation_magnitudes/results/down_gemm_decomposition.json</span></a>
+          <a class="source-card" href="../experiments/ffn_benchmark_eval/RESULT.md"><strong>benchmark 完整报告</strong><span>experiments/ffn_benchmark_eval/RESULT.md</span></a>
+          <a class="source-card" href="../experiments/ffn_benchmark_eval/results/stage2_distribution.json"><strong>20-seed 分布</strong><span>experiments/ffn_benchmark_eval/results/stage2_distribution.json</span></a>
+          <a class="source-card" href="../experiments/ffn_benchmark_eval/results/null_distribution.json"><strong>null 噪声地板</strong><span>experiments/ffn_benchmark_eval/results/null_distribution.json</span></a>
+          <a class="source-card" href="../experiments/ffn_benchmark_eval/results/ablation_summary.json"><strong>scope / magnitude 消融</strong><span>experiments/ffn_benchmark_eval/results/ablation_summary.json</span></a>
+          <a class="source-card" href="../experiments/ffn_benchmark_eval/configs/frozen_config.json"><strong>冻结评测配置</strong><span>experiments/ffn_benchmark_eval/configs/frozen_config.json</span></a>
+          <a class="source-card" href="../experiments/noise_floor/EXECUTION_REPORT.md"><strong>最终轮执行报告</strong><span>experiments/noise_floor/EXECUTION_REPORT.md</span></a>
+          <a class="source-card" href="../experiments/noise_floor/results/acceptance_noise_floor.json"><strong>最终轮机器验收</strong><span>experiments/noise_floor/results/acceptance_noise_floor.json</span></a>
+          <a class="source-card" href="reports/current_findings.md"><strong>当前适用边界</strong><span>docs/reports/current_findings.md</span></a>
+        </div>
+
+        <div class="page-links">
+          <a class="page-link" href="math-equivalence.html"><small>回到原理</small><strong>← 数学直觉</strong><span>从 neuron bundle 到 P / P<sup>T</sup> 的完整证明。</span></a>
+          <a class="page-link" href="index.html"><small>返回入口</small><strong>研究总览</strong><span>更短的一页式结论与阅读路线。</span></a>
+        </div>
+      </section>
+
+      <footer class="doc-footer">
+        <div><strong>最后核对</strong> 2026-07-13 · 页面同时纳入 benchmark 勘误与 noise_floor 最终轮验收。</div>
+        <div><strong>解释优先级</strong> 后续勘误与机器验收优先于早期报告中保留的原始机制判断。</div>
+      </footer>
+    </main>
+  </div>
+
+  <script>
+    window.REPORT_CHARTS = {
+      "full-model": {
+        domain: [0, 0.024], ticks: [0, 0.006, 0.012, 0.018, 0.024], tickDigits: 3, valueDigits: 4,
+        unit: "logits rel_l2（3 seeds）", aria: "不同置换范围的全模型 logits 相对误差",
+        rows: [
+          {label:"only L35", mean:0.003838, min:0.003824, max:0.003853, tone:"amber"},
+          {label:"only L17", mean:0.017280, min:0.017048, max:0.017401, tone:"amber"},
+          {label:"only L0", mean:0.021517, min:0.021329, max:0.021656, tone:"amber", emphasis:true},
+          {label:"prefix 6", mean:0.021529, min:0.021419, max:0.021714, tone:"amber"},
+          {label:"prefix 18", mean:0.021955, min:0.021693, max:0.022451, tone:"amber"},
+          {label:"all 36", mean:0.021419, min:0.020444, max:0.022187, tone:"amber", emphasis:true}
+        ]
+      },
+      "bench-instruct": {
+        domain: [-4, 3], ticks: [-4,-3,-2,-1,0,1,2,3], band: [-1,1], valueDigits: 2,
+        unit: "accuracy delta（pp）", aria: "Qwen3-4B instruct 二十个置换 seed 的 benchmark 正确率变化范围",
+        width:480, labelWidth:98, valueWidth:50, right:10,
+        rows: [
+          {label:"MMLU", mean:0.05, min:-0.40, max:0.40},
+          {label:"C-Eval", mean:0.20, min:-0.20, max:0.40},
+          {label:"CMMLU", mean:-0.57, min:-0.80, max:0.00},
+          {label:"GSM8K", mean:-2.33, min:-3.80, max:-1.00, emphasis:true},
+          {label:"HumanEval+", mean:-1.71, min:-3.05, max:0.61, emphasis:true},
+          {label:"MBPP+", mean:-0.37, min:-1.06, max:0.79}
+        ]
+      },
+      "bench-base": {
+        domain: [-4, 3], ticks: [-4,-3,-2,-1,0,1,2,3], band: [-1,1], valueDigits: 2,
+        unit: "accuracy delta（pp）", aria: "Qwen3-4B Base 二十个置换 seed 的 benchmark 正确率变化范围",
+        width:480, labelWidth:98, valueWidth:50, right:10,
+        rows: [
+          {label:"MMLU", mean:0.45, min:0.00, max:0.80},
+          {label:"C-Eval", mean:0.45, min:0.00, max:0.80},
+          {label:"CMMLU", mean:0.18, min:-0.20, max:0.60},
+          {label:"GSM8K", mean:0.97, min:-1.00, max:2.00, emphasis:true},
+          {label:"HumanEval+", mean:-0.12, min:-1.83, max:2.44, emphasis:true},
+          {label:"MBPP+", mean:1.03, min:-0.26, max:2.12, emphasis:true}
+        ]
+      }
+    };
+  </script>
+  <script src="assets/report.js"></script>
+</body>
+</html>

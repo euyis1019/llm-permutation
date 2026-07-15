@@ -1,0 +1,460 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <meta name="description" content="Qwen3 FFN permutation 研究总览：从数学联合对称性、BF16 数值漂移到双模型 benchmark 的完整结论。">
+  <title>FFN permutation：从精确等价到 BF16 行为</title>
+  <link rel="stylesheet" href="assets/report.css">
+</head>
+<body>
+  <div class="reading-progress" aria-hidden="true"></div>
+  <header class="sitebar">
+    <div class="sitebar-inner">
+      <a class="brand" href="index.html">
+        <span class="brand-mark" aria-hidden="true">Pπ</span>
+        <span class="brand-text">FFN permutation notes</span>
+      </a>
+      <nav class="topnav" aria-label="文档导航">
+        <a href="index.html" aria-current="page">总览</a>
+        <a href="math-equivalence.html">数学直觉</a>
+        <a href="experiment-atlas.html">实验证据</a>
+        <button class="theme-toggle" type="button" data-theme-toggle aria-label="切换主题">◐</button>
+      </nav>
+    </div>
+  </header>
+
+  <div class="page-shell">
+    <aside class="toc" aria-label="页内目录">
+      <p class="toc-title">研究总览</p>
+      <ol>
+        <li><a href="#question">01 · 问题是什么</a></li>
+        <li><a href="#intuition">02 · 数学直觉</a></li>
+        <li><a href="#levels">03 · 四层等价</a></li>
+        <li><a href="#evidence">04 · 证据链</a></li>
+        <li><a href="#benchmarks">05 · benchmark 结果</a></li>
+        <li><a href="#mechanism">06 · 机制与消融</a></li>
+        <li><a href="#verdict">07 · 最终判断</a></li>
+        <li><a href="#read-next">08 · 深入阅读</a></li>
+      </ol>
+      <div class="toc-divider"></div>
+      <p class="toc-note">本页是一份可独立阅读的 executive report；数学推导和原始证据各有单独长文。</p>
+    </aside>
+
+    <main>
+      <header class="hero" id="top">
+        <div class="eyebrow">BF16 numerical equivalence · research synthesis</div>
+        <h1>同一个 FFN，换一套神经元编号之后</h1>
+        <p class="lede">在精确实数域，它仍是<strong>同一个函数</strong>；在当前 BF16 部署里，块内重排可保持逐比特一致，跨块重排则会沿一条可定位的数值路径产生<strong>很小但真实的漂移</strong>。多选题几乎不受影响，长文本生成更敏感。</p>
+        <div class="hero-meta">
+          <span><strong>Qwen3-4B</strong> instruct / Base</span>
+          <span><strong>36</strong> 层 SwiGLU</span>
+          <span><strong>76</strong> benchmark checkpoints</span>
+          <span><strong>193,192</strong> 条逐样本记录</span>
+          <span>2026-07-13</span>
+        </div>
+        <div class="status-strip" aria-label="结论分层">
+          <div class="status-item exact"><small>数学层</small><b>严格等价</b></div>
+          <div class="status-item numeric"><small>BF16 层</small><b>块内逐 bit，跨块漂移</b></div>
+          <div class="status-item behavior"><small>任务层</small><b>小而可测、任务依赖</b></div>
+        </div>
+      </header>
+
+      <section class="doc-section" id="question">
+        <div class="section-heading">
+          <div class="section-no">01</div>
+          <div>
+            <div class="section-kicker">Research question</div>
+            <h2>为什么要给神经元重新编号？</h2>
+            <p class="section-intro">做模型对齐或 merge 时，两个 checkpoint 里功能相似的 FFN 神经元未必恰好拥有相同编号。直接逐行平均，可能把本不对应的内部特征混在一起。</p>
+          </div>
+        </div>
+
+        <div class="callout">
+          <strong class="callout-title">当前研究先解决一个更基础的问题</strong>
+          <p>能否在不改变单个模型精确函数的前提下，合法地重排 FFN 中间神经元？如果可以，后续才有资格在这些等价编号中搜索更好的跨模型对齐。</p>
+        </div>
+
+        <div class="spacer-md"></div>
+
+        <div class="grid three">
+          <article class="card claim-card">
+            <div class="claim-index">1</div>
+            <h3>数学上：可以</h3>
+            <p>gate、up 用同一个行置换，down 用匹配的列置换；这只是中间坐标换名。</p>
+          </article>
+          <article class="card claim-card">
+            <div class="claim-index">2</div>
+            <h3>单矩阵：不可以</h3>
+            <p>只动任一矩阵都会拆散神经元 bundle，真实单 MLP 输出误差约为正确联动的 317 倍。</p>
+          </article>
+          <article class="card claim-card">
+            <div class="claim-index">3</div>
+            <h3>工程上：要测</h3>
+            <p>BF16 kernel 不保证代数重排后逐 bit 相同；微小差异可在长生成中跨过低 margin 分叉。</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="doc-section" id="intuition">
+        <div class="section-heading">
+          <div class="section-no">02</div>
+          <div>
+            <div class="section-kicker">Mathematical intuition</div>
+            <h2>一个内部“神经元”，是三条配套线路</h2>
+            <p class="section-intro">第 <span class="mono">k</span> 个坐标不只是一张矩阵的一行，而是 gate 第 k 行、up 第 k 行、down 第 k 列组成的 bundle。</p>
+          </div>
+        </div>
+
+        <div class="grid three">
+          <article class="card"><div class="card-label">gate row k</div><h3>开关</h3><p><span class="mono">SiLU(w<sub>g,k</sub><sup>T</sup>x)</span></p></article>
+          <article class="card"><div class="card-label">up row k</div><h3>内容</h3><p><span class="mono">w<sub>u,k</sub><sup>T</sup>x</span></p></article>
+          <article class="card"><div class="card-label">down column k</div><h3>写回方向</h3><p><span class="mono">v<sub>k</sub></span></p></article>
+        </div>
+
+        <div class="spacer-md"></div>
+
+        <div class="equation">
+          <span class="eq-label">逐神经元展开</span>
+          <div class="eq-main">f(x) = Σ<sub>k=1</sub><sup>m</sup> v<sub>k</sub> · SiLU(w<sub>g,k</sub><sup>T</sup>x) · (w<sub>u,k</sub><sup>T</sup>x)</div>
+        </div>
+
+        <div class="spacer-md"></div>
+
+        <div class="callout success">
+          <strong class="callout-title">最直观的等价理由</strong>
+          <p>联合 permutation 把这些完整 bundle 重新排序，等价于把 <span class="mono">A+B+C</span> 写成 <span class="mono">C+A+B</span>。入口 <span class="mono">x</span> 与出口 <span class="mono">y</span> 的坐标都没有改变。</p>
+        </div>
+
+        <div class="spacer-md"></div>
+
+        <div class="equation">
+          <span class="eq-label">矩阵形式</span>
+          <div class="eq-steps">
+            <div class="eq-row"><span>W′<sub>g</sub></span><span>=</span><span>PW<sub>g</sub></span></div>
+            <div class="eq-row"><span>W′<sub>u</sub></span><span>=</span><span>PW<sub>u</sub></span></div>
+            <div class="eq-row"><span>W′<sub>d</sub></span><span>=</span><span>W<sub>d</sub>P<sup>T</sup></span></div>
+            <div class="eq-row"><span>f′(x)</span><span>=</span><span>W<sub>d</sub>P<sup>T</sup>P[SiLU(W<sub>g</sub>x)⊙W<sub>u</sub>x] = f(x)</span></div>
+          </div>
+        </div>
+
+        <div class="spacer-md"></div>
+
+        <p class="muted">这里依赖两件事：SiLU 是逐坐标函数，所以 <span class="mono">SiLU(Pz)=P·SiLU(z)</span>；两个分支共用同一个 P，所以 <span class="mono">(Pa)⊙(Pb)=P(a⊙b)</span>。详细方向约定、反例与证明见 <a href="math-equivalence.html">数学直觉长文</a>。</p>
+      </section>
+
+      <section class="doc-section" id="levels">
+        <div class="section-heading">
+          <div class="section-no">03</div>
+          <div>
+            <div class="section-kicker">Four meanings of equivalence</div>
+            <h2>“等价”必须带上层级</h2>
+            <p class="section-intro">本项目最容易被误读的地方，是把数学函数相同直接替换成 BF16 张量、文本或 benchmark 完全相同。</p>
+          </div>
+        </div>
+
+        <div class="layer-stack">
+          <div class="layer-row"><dt>① 精确实数函数</dt><dd><span class="badge good">完全等价</span> 对所有输入，联动置换前后的数学输出完全相同。</dd></div>
+          <div class="layer-row"><dt>② BF16 执行张量</dt><dd><span class="badge warn">小漂移</span> down GEMM 物理布局改变，写回 BF16 格点时可能得到相邻的舍入值。</dd></div>
+          <div class="layer-row"><dt>③ token / 文本轨迹</dt><dd><span class="badge warn">高度接近</span> logits top-1 一致约 98%；翻转集中在原本近并列的位置。</dd></div>
+          <div class="layer-row"><dt>④ benchmark 能力</dt><dd><span class="badge warn">任务依赖</span> 多选题几乎不动；长生成存在约 1–2.3pp 的小偏移。</dd></div>
+        </div>
+
+        <div class="spacer-md"></div>
+
+        <div class="callout warning">
+          <strong class="callout-title">所以两句话可以同时为真</strong>
+          <p>“这两个参数化在数学上实现同一个函数”与“BF16 benchmark 分数不是逐样本完全相同”并不矛盾。前者是精确代数命题，后者是有限精度执行与长序列决策的经验事实。</p>
+        </div>
+      </section>
+
+      <section class="doc-section" id="evidence">
+        <div class="section-heading">
+          <div class="section-no">04</div>
+          <div>
+            <div class="section-kicker">Evidence chain</div>
+            <h2>每一层现象，都有专门对照</h2>
+            <p class="section-intro">不是用最终 benchmark 倒推数学正确，也不是用公式证明替代工程测量；实验从方向单测逐级走到任务层。</p>
+          </div>
+        </div>
+
+        <div class="evidence-ladder">
+          <div class="evidence-step"><span class="evidence-index">A</span><span class="evidence-copy"><strong>小矩阵 + FP64</strong><span>验证 permutation 方向与 inverse</span></span><span class="evidence-result">误差 ≈ 1.4e−14</span></div>
+          <div class="evidence-step"><span class="evidence-index">B</span><span class="evidence-copy"><strong>真实 MLP + 9 类负对照</strong><span>定位 down 之前逐 bit 相同</span></span><span class="evidence-result">valid / error = 316.5×</span></div>
+          <div class="evidence-step"><span class="evidence-index">C</span><span class="evidence-copy"><strong>36 层全模型</strong><span>逐层 hook、logits、margin、generation</span></span><span class="evidence-result">top-1 97.8–98.5%</span></div>
+          <div class="evidence-step"><span class="evidence-index">Q</span><span class="evidence-copy"><strong>BF16 量化分解</strong><span>分离 FP32 累加与 BF16 写回</span></span><span class="evidence-result">measured ≈ √2·theory</span></div>
+          <div class="evidence-step"><span class="evidence-index">E</span><span class="evidence-copy"><strong>双模型 × 20 seed benchmark</strong><span>null 地板、scope、magnitude</span></span><span class="evidence-result">193,192 records</span></div>
+        </div>
+
+        <div class="spacer-lg"></div>
+
+        <div class="metric-grid">
+          <div class="metric"><div class="metric-label">single MLP valid</div><div class="metric-value">4.72e−3</div><div class="metric-note">median rel_l2</div></div>
+          <div class="metric"><div class="metric-label">wrong controls</div><div class="metric-value">1.40–1.54</div><div class="metric-note">median rel_l2</div></div>
+          <div class="metric"><div class="metric-label">all-36 logits</div><div class="metric-value">2.0–2.2e−2</div><div class="metric-note">median rel_l2</div></div>
+          <div class="metric"><div class="metric-label">greedy exact</div><div class="metric-value">26–29/32</div><div class="metric-note">64-token generation</div></div>
+        </div>
+      </section>
+
+      <section class="doc-section" id="benchmarks">
+        <div class="section-heading">
+          <div class="section-no">05</div>
+          <div>
+            <div class="section-kicker">Downstream benchmarks</div>
+            <h2>正确率变化集中在需要长生成的任务</h2>
+            <p class="section-intro">20 个 all-36 random permutation seed，相对各自模型 baseline 的 accuracy 变化。先看每项任务的完整观察范围，再展开每个 seed 的六任务总体表现；两种视角均保留，避免均值掩盖波动。</p>
+          </div>
+        </div>
+
+        <div class="grid two">
+          <div class="figure">
+            <div class="figure-head"><span class="figure-title">Qwen3-4B instruct</span><span class="figure-subtitle">六任务平均分 −0.79pp</span></div>
+            <div class="chart-host" data-range-chart="home-instruct"></div>
+            <div class="figure-caption">GSM8K 20/20 seed 为负；但该项还有 2.4pp 的同权重 null 地板，需谨慎解读。</div>
+          </div>
+          <div class="figure">
+            <div class="figure-head"><span class="figure-title">Qwen3-4B-Base</span><span class="figure-subtitle">六任务平均分 +0.49pp</span></div>
+            <div class="chart-host" data-range-chart="home-base"></div>
+            <div class="figure-caption">六个任务的同权重 correctness null 地板均为 0，因此每一点偏移都是真实执行路径效应。</div>
+          </div>
+        </div>
+
+        <div class="legend" aria-label="任务级范围图图例">
+          <span class="legend-key"><span class="legend-swatch range"></span>胶囊：20-seed 最小值至最大值</span>
+          <span class="legend-key"><span class="legend-swatch mean"></span>圆点与竖线：均值</span>
+          <span class="legend-key"><span class="legend-swatch band"></span>竖带：变化不超过 1pp</span>
+          <span class="legend-key"><span class="legend-swatch generation"></span>淡红行：长生成任务</span>
+        </div>
+
+        <noscript><p class="noscript">图表需要 JavaScript；关键数字已在下方卡片与实验证据长文的完整表格中列出。</p></noscript>
+
+        <div class="spacer-md"></div>
+
+        <div class="figure">
+          <div class="figure-head"><span class="figure-title">六任务总体表现 · 逐 seed 展开</span><span class="figure-subtitle">每个点是一组独立随机置换；深色短线为均值</span></div>
+          <div class="chart-host seed-chart-host" data-seed-chart="home-macro"></div>
+          <div class="figure-caption">浅色横带是预注册的 suite 级实用等价区间。Instruct 的 20 组结果整体偏负，Base 整体偏正；方向随模型改变，不能解释为置换天然提升或天然退化。</div>
+        </div>
+
+        <div class="spacer-md"></div>
+
+        <div class="grid two">
+          <article class="card">
+            <div class="card-label">多选 · MMLU / C-Eval / CMMLU</div>
+            <div class="card-number accent-up">0 / 20</div>
+            <p>两个模型、三个任务均没有 seed 越过 ±1pp；逐样本 correctness 一致率约 99% 以上。</p>
+          </article>
+          <article class="card">
+            <div class="card-label">生成 · GSM8K / HumanEval+ / MBPP+</div>
+            <div class="card-number">1–2.3pp</div>
+            <p>均值偏移可达该量级，单 seed 范围更宽；方向随模型改变，不是普遍下降或提升。</p>
+          </article>
+        </div>
+
+        <div class="spacer-md"></div>
+
+        <div class="data-table-wrap">
+          <table>
+            <caption>绝对正确率（%）：baseline 与 20 组随机置换的平均结果</caption>
+            <thead>
+              <tr><th>任务</th><th class="num">Instruct baseline</th><th class="num">Instruct 置换均值</th><th class="num">Base baseline</th><th class="num">Base 置换均值</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>MMLU</strong></td><td class="num">69.00</td><td class="num">69.05</td><td class="num">73.80</td><td class="num">74.25</td></tr>
+              <tr><td><strong>C-Eval</strong></td><td class="num">83.20</td><td class="num">83.40</td><td class="num">86.00</td><td class="num">86.45</td></tr>
+              <tr><td><strong>CMMLU</strong></td><td class="num">75.20</td><td class="num">74.63</td><td class="num">78.80</td><td class="num">78.98</td></tr>
+              <tr><td><strong>GSM8K</strong></td><td class="num">75.60</td><td class="num">73.27</td><td class="num">77.20</td><td class="num">78.17</td></tr>
+              <tr><td><strong>HumanEval+</strong></td><td class="num">70.12</td><td class="num">68.41</td><td class="num">56.10</td><td class="num">55.98</td></tr>
+              <tr><td><strong>MBPP+</strong></td><td class="num">60.85</td><td class="num">60.48</td><td class="num">61.90</td><td class="num">62.94</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="spacer-md"></div>
+
+        <div class="callout danger">
+          <strong class="callout-title">suite 级不能称为“完全实用等价”</strong>
+          <p>预注册 macro 区间是 ±0.5pp。instruct 有 19/20、Base 有 11/20 seed 越界。因此严格结论是：<strong>效应很小，但可测；多选与生成任务的敏感度不同。</strong></p>
+        </div>
+      </section>
+
+      <section class="doc-section" id="mechanism">
+        <div class="section-heading">
+          <div class="section-no">06</div>
+          <div>
+            <div class="section-kicker">Mechanism &amp; ablation</div>
+            <h2>为什么会动：归约布局 × 传播深度</h2>
+            <p class="section-intro">gate、up、SiLU 与逐元素乘在坐标对齐后逐 bit 相同。差异第一次出现在 native <span class="mono">down_proj</span>，随后由网络深度与生成长度决定是否变成行为差异。</p>
+          </div>
+        </div>
+
+        <div class="grid three">
+          <article class="card">
+            <div class="card-label">FP32 reorder effect</div>
+            <div class="card-number">2.5e−7</div>
+            <p>纯累加顺序的相对效应很小，说明不能把真实 kernel 简化成 BF16 链式累加。</p>
+          </article>
+          <article class="card">
+            <div class="card-label">BF16 intrinsic</div>
+            <div class="card-number">2.325e−3</div>
+            <p>单次 GEMM 对 FP64 的误差，接近理论量化下限 <span class="mono">ulp/√12</span>。</p>
+          </article>
+          <article class="card">
+            <div class="card-label">permutation drift</div>
+            <div class="card-number">3.09–3.22e−3</div>
+            <p>接近 <span class="mono">√2×</span> 理论下限：可理解为 BF16 写回量化误差重新抽样。</p>
+          </article>
+        </div>
+
+        <div class="spacer-lg"></div>
+
+        <div class="grid two">
+          <div class="figure">
+            <div class="figure-head"><span class="figure-title">位置 / 范围</span><span class="figure-subtitle">|macro Δpp| · instruct</span></div>
+            <div class="chart-host">
+              <div class="bar-list">
+                <div class="bar-row"><span class="bar-label"><strong>only L0</strong>早期注入</span><span class="bar-track"><i class="bar-fill down" style="--value:68"></i></span><span class="bar-value">−0.61</span></div>
+                <div class="bar-row"><span class="bar-label"><strong>only L17</strong>中间注入</span><span class="bar-track"><i class="bar-fill down" style="--value:23"></i></span><span class="bar-value">−0.21</span></div>
+                <div class="bar-row"><span class="bar-label"><strong>only L35</strong>末层注入</span><span class="bar-track"><i class="bar-fill down" style="--value:19"></i></span><span class="bar-value">−0.17</span></div>
+                <div class="bar-row"><span class="bar-label"><strong>all 36</strong>全部层</span><span class="bar-track"><i class="bar-fill down" style="--value:92"></i></span><span class="bar-value">−0.83</span></div>
+              </div>
+            </div>
+            <div class="figure-caption">只置换 L0 已有 all-36 约 75% 的宏观影响：传播深度比层数更关键。</div>
+          </div>
+          <div class="figure">
+            <div class="figure-head"><span class="figure-title">置换结构</span><span class="figure-subtitle">观测 macro Δpp · instruct</span></div>
+            <div class="chart-host">
+              <div class="bar-list">
+                <div class="bar-row"><span class="bar-label"><strong>adjacent*</strong>偶对齐交换</span><span class="bar-track"><i class="bar-fill down" style="--value:22"></i></span><span class="bar-value">−0.20*</span></div>
+                <div class="bar-row"><span class="bar-label"><strong>reverse</strong>大位移</span><span class="bar-track"><i class="bar-fill down" style="--value:51"></i></span><span class="bar-value">−0.46</span></div>
+                <div class="bar-row"><span class="bar-label"><strong>random</strong>大位移</span><span class="bar-track"><i class="bar-fill down" style="--value:92"></i></span><span class="bar-value">−0.83</span></div>
+              </div>
+            </div>
+            <div class="figure-caption">* 后续复审确认：adjacent 的原始分数落在 Instruct 自身运行地板内，证据与零效应一致。它保持对齐归约块，不能用来支持“位移越小、影响越小”的连续规律。</div>
+          </div>
+        </div>
+
+        <div class="spacer-md"></div>
+
+        <div class="callout">
+          <strong class="callout-title">机制性的统一描述</strong>
+          <p>置换先改变 down GEMM 的物理归约布局，产生一次 BF16 低位扰动；扰动越早进入网络、要经历的后续层与生成步越多，就越可能在原本低 margin 的决策点改变轨迹。</p>
+        </div>
+      </section>
+
+      <section class="doc-section" id="verdict">
+        <div class="section-heading">
+          <div class="section-no">07</div>
+          <div>
+            <div class="section-kicker">Final interpretation</div>
+            <h2>最终应该怎样表述这组结果</h2>
+            <p class="section-intro">最准确的答案不是简单的“有影响”或“没影响”，而是把数学、执行与任务三个层次同时保留。</p>
+          </div>
+        </div>
+
+        <div class="decision-matrix">
+          <article class="decision good">
+            <div class="card-label">可以放心说</div>
+            <h3>联合置换是精确对称性</h3>
+            <p>它是合法的重参数化基元，可用于后续 alignment 搜索；单矩阵置换不是。</p>
+          </article>
+          <article class="decision warn">
+            <div class="card-label">必须带限定</div>
+            <h3>BF16 下小而可测</h3>
+            <p>不是逐 bit 等价；多选几乎免疫，长生成任务可能出现 1–2.3pp 偏移。</p>
+          </article>
+          <article class="decision bad">
+            <div class="card-label">不能据此声称</div>
+            <h3>merge 已被证明有效</h3>
+            <p>当前只验证了重编号基元，尚未完成跨 checkpoint assignment 或 merge 评估。</p>
+          </article>
+        </div>
+
+        <div class="spacer-lg"></div>
+
+        <div class="callout success">
+          <strong class="callout-title">一句话结论</strong>
+          <p><strong>FFN 联动 permutation 在数学上是“同一函数的另一套内部编号”；在当前 BF16 GPU 执行中，它相当于改变一次 down-GEMM 的低位量化路径，绝大多数行为保持不变，但长生成 benchmark 会留下约半到数个百分点的小而真实的痕迹。</strong></p>
+        </div>
+      </section>
+
+      <section class="doc-section" id="read-next">
+        <div class="section-heading">
+          <div class="section-no">08</div>
+          <div>
+            <div class="section-kicker">Read next</div>
+            <h2>按你的问题继续深入</h2>
+            <p class="section-intro">两篇长文都可以独立阅读，并直接链接到仓库证据。</p>
+          </div>
+        </div>
+
+        <div class="page-links">
+          <a class="page-link" href="math-equivalence.html"><small>如果你在问“为什么”</small><strong>数学直觉与完整证明 →</strong><span>neuron bundle、逐项求和、P / P<sup>T</sup>、PyTorch 索引与反例。</span></a>
+          <a class="page-link" href="experiment-atlas.html"><small>如果你在问“凭什么”</small><strong>实验证据图谱 →</strong><span>Stage A/B/C、量化闭环、half-swap、76 checkpoint benchmark 与限定。</span></a>
+        </div>
+
+        <div class="spacer-md"></div>
+
+        <div class="source-grid">
+          <a class="source-card" href="../experiments/ffn_permutation/RESULT.md"><strong>主实验报告</strong><span>experiments/ffn_permutation/RESULT.md</span></a>
+          <a class="source-card" href="../experiments/ffn_benchmark_eval/RESULT.md"><strong>benchmark 报告</strong><span>experiments/ffn_benchmark_eval/RESULT.md</span></a>
+          <a class="source-card" href="../experiments/activation_magnitudes/RESULT.md"><strong>量级与 BF16 分解</strong><span>experiments/activation_magnitudes/RESULT.md</span></a>
+          <a class="source-card" href="plans/ffn_permutation_experiment_plan.md"><strong>预注册实验方案</strong><span>docs/plans/ffn_permutation_experiment_plan.md</span></a>
+        </div>
+      </section>
+
+      <footer class="doc-footer">
+        <div><strong>文档结构</strong> 总览 / 数学直觉 / 实验证据，均可离线打开、打印并支持浅深主题。</div>
+        <div><strong>数据口径</strong> 所有 benchmark delta 都是相对各模型 baseline 的百分点变化，不是模型间差值。</div>
+      </footer>
+    </main>
+  </div>
+
+  <script>
+    window.REPORT_CHARTS = {
+      "home-instruct": {
+        domain:[-4,3], ticks:[-4,-3,-2,-1,0,1,2,3], band:[-1,1], valueDigits:2, width:480, labelWidth:98, valueWidth:50, right:10,
+        unit:"accuracy delta（pp）", aria:"Qwen3-4B instruct 二十个置换 seed 的 benchmark 变化范围",
+        rows:[
+          {label:"MMLU",mean:0.05,min:-0.40,max:0.40},
+          {label:"C-Eval",mean:0.20,min:-0.20,max:0.40},
+          {label:"CMMLU",mean:-0.57,min:-0.80,max:0.00},
+          {label:"GSM8K",mean:-2.33,min:-3.80,max:-1.00,emphasis:true,shade:true},
+          {label:"HumanEval+",mean:-1.71,min:-3.05,max:0.61,emphasis:true,shade:true},
+          {label:"MBPP+",mean:-0.37,min:-1.06,max:0.79,emphasis:true,shade:true}
+        ]
+      },
+      "home-base": {
+        domain:[-4,3], ticks:[-4,-3,-2,-1,0,1,2,3], band:[-1,1], valueDigits:2, width:480, labelWidth:98, valueWidth:50, right:10,
+        unit:"accuracy delta（pp）", aria:"Qwen3-4B Base 二十个置换 seed 的 benchmark 变化范围",
+        rows:[
+          {label:"MMLU",mean:0.45,min:0.00,max:0.80},
+          {label:"C-Eval",mean:0.45,min:0.00,max:0.80},
+          {label:"CMMLU",mean:0.18,min:-0.20,max:0.60},
+          {label:"GSM8K",mean:0.97,min:-1.00,max:2.00,emphasis:true,shade:true},
+          {label:"HumanEval+",mean:-0.12,min:-1.83,max:2.44,emphasis:true,shade:true},
+          {label:"MBPP+",mean:1.03,min:-0.26,max:2.12,emphasis:true,shade:true}
+        ]
+      }
+    };
+    window.REPORT_SEED_CHARTS = {
+      "home-macro": {
+        domain:[-1.25,1.10], ticks:[-1.0,-0.5,0,0.5,1.0], band:[-0.5,0.5], tickDigits:1,
+        unit:"六任务平均分变化（百分点）", aria:"两个模型各二十组随机置换的六任务平均分分布",
+        groups:[
+          {
+            label:"Qwen3-4B Instruct", tone:"down", seedStart:1000, mean:-0.79,
+            values:[-0.926,-0.760,-0.943,-0.893,-0.847,-1.113,-0.785,-0.911,-0.580,-0.995,-0.761,-0.320,-1.037,-0.594,-0.738,-0.753,-0.637,-0.981,-0.591,-0.592]
+          },
+          {
+            label:"Qwen3-4B Base", tone:"up", seedStart:1000, mean:0.49,
+            values:[0.497,0.306,0.536,0.722,0.510,0.308,0.227,0.364,0.577,0.681,0.522,0.842,0.354,0.518,0.994,0.132,0.610,0.432,0.150,0.584]
+          }
+        ]
+      }
+    };
+  </script>
+  <script src="assets/report.js"></script>
+</body>
+</html>
